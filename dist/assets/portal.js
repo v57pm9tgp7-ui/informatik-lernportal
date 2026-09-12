@@ -1,6 +1,17 @@
 (function(){'use strict';
   const UI_KEY='informatikPortal_ui_v1';
   const KEYS={onenote:'onenoteWorkshopGS1_student_v3',digipen:'digitalArbeiten_digipen_v1',scan:'digitalArbeiten_scannen_v1'};
+  const HOME_TRACKS={
+    onenote:{required:[1,2,3,4,5,6,7,8,9,10],optional:[11,12],summaryWord:'Grundaufträgen',tasks:[
+      [1,'Workshop-Notizbuch öffnen'],[2,'Abschnitte und Seiten'],[3,'Text gestalten'],[4,'Text strukturieren'],[5,'Bilder einfügen'],[6,'PDF aus Teams'],[7,'Links und To-dos'],[8,'YouTube-Video'],[9,'Mit dem HP-Stift'],[10,'Gemeinsam arbeiten'],[11,'Zusatzaufgaben'],[12,'OneNote mal anders']
+    ],nextHref:'digipen.html#auftrag-1',nextLabel:'DigiPen beginnen'},
+    digipen:{required:[1,2,3,4,5],optional:[6,7,8,9],summaryWord:'Pflichtaufträgen',tasks:[
+      [1,'Funktioniert der Stift?'],[2,'Stift, Marker, Radierer und Lasso'],[3,'Wichtiges im Text markieren'],[4,'Handschrift umwandeln'],[5,'Einen freien Samstag planen'],[6,'Eine Rechnung mit dem Stift'],[7,'Eine Party planen'],[8,'Meine Freizeit als Mindmap'],[9,'Welche Handschrift erkennt OneNote?']
+    ],nextHref:'scannen.html#auftrag-1',nextLabel:'Scan-Workshop beginnen'},
+    scan:{required:[1,2,3,4,5,7],optional:[6,8],summaryWord:'Pflichtaufträgen',tasks:[
+      [1,'OneDrive fürs Scannen vorbereiten',1],[2,'Eine Seite als PDF scannen',2],[3,'Eine Packliste gut lesbar scannen',3],[4,'Mehrere Seiten in eine PDF bringen',4],[5,'Den Scan am Notebook wiederfinden',5],[7,'Infos übernehmen, ohne alles abzutippen',6],[6,'Einen Aushang sichern',7],[8,'Einen Mini-Comic als PDF machen',8]
+    ],nextHref:'#woche-38',nextLabel:'Woche 38 anzeigen'}
+  };
   const views=['start','wochen','woche-37','woche-38','scan-guide','training','fortschritt'];
   const $=(s,r=document)=>r.querySelector(s);const $$=(s,r=document)=>[...r.querySelectorAll(s)];
   function read(key){try{return JSON.parse(localStorage.getItem(key)||'{}')}catch{return {}}}
@@ -10,16 +21,47 @@
   function stats(){
     const one=read(KEYS.onenote),pen=read(KEYS.digipen),scan=read(KEYS.scan);
     const count=(arr,min,max)=>[...new Set(Array.isArray(arr)?arr:[])].filter(n=>n>=min&&n<=max).length;
+    const countIds=(arr,ids)=>[...new Set(Array.isArray(arr)?arr:[])].filter(n=>ids.includes(Number(n))).length;
+    const scanSequence=[1,2,3,4,5,7,6,8],scanLast=Number(scan.last);
     return {
       onenote:{done:count(one.doneTasks,1,12),total:12,last:Number(one.lastTask)||1,raw:one},
       digipen:{done:count(pen.done,1,5),total:5,last:Number(pen.last)||1,raw:pen},
-      scan:{done:count(scan.done,1,5),total:5,last:Number(scan.last)||1,raw:scan}
+      scan:{done:countIds(scan.done,[1,2,3,4,5,7]),total:6,last:scanSequence.includes(scanLast)?scanLast:1,raw:scan}
     };
   }
   function state(s){return s.done===0?'open':s.done>=s.total?'done':'working'}
   function stateText(s){return state(s)==='open'?'Offen':state(s)==='done'?'Erledigt':'In Arbeit'}
   function percent(s){return Math.round(s.done/s.total*100)}
-  function moduleHref(id,s){if(id==='onenote')return `onenote.html#auftrag-${Math.min(s.last,12)}`;return `${id==='scan'?'scannen':'digipen'}.html#auftrag-${Math.min(s.last,9)}`}
+  function visibleTaskNumber(id,last){return id==='scan'?(last===7?6:last===6?7:last):last}
+  function moduleHref(id,s){if(id==='onenote')return `onenote.html#auftrag-${Math.min(s.last,12)}`;if(id==='scan')return `scannen.html#auftrag-${s.last}`;return `digipen.html#auftrag-${Math.min(s.last,9)}`}
+  function storedIds(value){return new Set((Array.isArray(value)?value:[]).map(Number).filter(Number.isInteger))}
+  function taskHref(track,id){const files={onenote:'onenote',digipen:'digipen',scan:'scannen'};return `${files[track]}.html#auftrag-${id}`}
+  function homeTaskState(track,id,raw){
+    const done=storedIds(track==='onenote'?raw.doneTasks:raw.done).has(id);if(done)return'done';
+    const prefix=track==='onenote'?`t${id}-`:`${id}_`,checks=raw.checks&&typeof raw.checks==='object'?raw.checks:{};
+    const started=Object.entries(checks).some(([key,value])=>value&&key.startsWith(prefix))||String(raw.notes?.[id]||'').trim().length>0;
+    return started?'working':'open';
+  }
+  function updateHomeOverview(s){
+    Object.entries(HOME_TRACKS).forEach(([track,config])=>{
+      const raw=s[track].raw||{},optional=new Set(config.optional),doneIds=storedIds(track==='onenote'?raw.doneTasks:raw.done);
+      const requiredDone=config.required.filter(id=>doneIds.has(id)).length,optionalDone=config.optional.filter(id=>doneIds.has(id)).length,ready=requiredDone===config.required.length;
+      const summary=$(`[data-home-summary="${track}"]`);if(summary)summary.textContent=`${requiredDone} von ${config.required.length} ${config.summaryWord} erledigt · ${optionalDone} von ${config.optional.length} Zusatzaufträgen`;
+      const bar=$(`[data-home-bar="${track}"]`);if(bar)bar.style.width=Math.round(requiredDone/config.required.length*100)+'%';
+      const list=$(`[data-home-task-list="${track}"]`);if(list)list.innerHTML=config.tasks.map(([id,title,number=id])=>{
+        const status=homeTaskState(track,id,raw),statusText=status==='done'?'Erledigt':status==='working'?'In Arbeit':'Offen',extra=optional.has(id)?'<small>Zusatz</small>':'';
+        return `<li><a class="home-task-row is-${status}" href="${taskHref(track,id)}" data-module-open="${track}"><span class="home-task-number">${number}</span><span class="home-task-name">${title}${extra}</span><span class="home-task-state">${statusText}</span></a></li>`;
+      }).join('');
+      const transition=$(`[data-home-transition="${track}"]`),transitionState=$(`[data-transition-state="${track}"]`),transitionLink=$(`[data-transition-link="${track}"]`);
+      transition?.classList.toggle('is-ready',ready);if(transitionState)transitionState.textContent=ready?'Wechsel möglich':`${config.required.length-requiredDone} offen`;
+      if(transitionLink){
+        const nextRequired=config.required.find(id=>!doneIds.has(id)),nextTask=config.tasks.find(task=>task[0]===(nextRequired||config.required[0]));
+        transitionLink.href=ready?config.nextHref:taskHref(track,nextRequired||config.required[0]);
+        transitionLink.textContent=ready?config.nextLabel:`Offenen Auftrag ${nextTask?.[2]||nextRequired||config.required[0]} öffnen`;
+        transitionLink.dataset.moduleOpen=ready?(track==='onenote'?'digipen':track==='digipen'?'scan':track):track;
+      }
+    });
+  }
   function updateModule(id,s){
     $$(`[data-module="${id}"]`).forEach(card=>{
       const label=$('[data-status]',card),bar=$('[data-progress-bar]',card),copy=$('[data-progress-copy]',card),link=$('[data-module-link]',card);
@@ -31,6 +73,7 @@
   }
   function updateDashboard(){
     const s=stats();Object.entries(s).forEach(([id,value])=>updateModule(id,value));
+    updateHomeOverview(s);
     const total=s.onenote.total+s.digipen.total+s.scan.total,done=s.onenote.done+s.digipen.done+s.scan.done,p=Math.round(done/total*100);
     $$('[data-total-progress]').forEach(el=>el.textContent=`${done} von ${total}`);$$('[data-total-percent]').forEach(el=>el.textContent=p+'%');
     const ring=$('[data-progress-ring]');if(ring)ring.style.setProperty('--p',p*3.6+'deg');
@@ -39,9 +82,9 @@
     const names={digipen:'DigiPen',scan:'Scannen mit OneDrive',onenote:'OneNote'};const next=s[id];
     const continueTitle=$('[data-continue-title]'),continueText=$('[data-continue-text]'),continueLink=$('[data-continue-link]');
     if(continueTitle)continueTitle.textContent=next.done>=next.total?'Zusatzauftrag auswählen':`${names[id]} weiterbearbeiten`;
-    if(continueText)continueText.textContent=next.done>=next.total?'Die Pflichtaufträge sind abgeschlossen. Wählen Sie freiwillig einen Zusatzauftrag.':`Weiter mit Auftrag ${next.last}. Ihr bisheriger Arbeitsstand bleibt erhalten.`;
+    if(continueText)continueText.textContent=next.done>=next.total?'Die Pflichtaufträge sind abgeschlossen. Wählen Sie freiwillig einen Zusatzauftrag.':`Weiter mit Auftrag ${visibleTaskNumber(id,next.last)}. Ihr bisheriger Arbeitsstand bleibt erhalten.`;
     if(continueLink){continueLink.href=moduleHref(id,next);continueLink.dataset.moduleOpen=id}
-    const weekDone=s.digipen.done+s.scan.done,weekTotal=10;$$('[data-week-progress]').forEach(el=>el.textContent=`${weekDone} von ${weekTotal} Pflichtaufträgen`);$$('[data-week-percent]').forEach(el=>el.textContent=Math.round(weekDone/weekTotal*100)+'%');
+    const weekDone=s.digipen.done+s.scan.done,weekTotal=11;$$('[data-week-progress]').forEach(el=>el.textContent=`${weekDone} von ${weekTotal} Pflichtaufträgen`);$$('[data-week-percent]').forEach(el=>el.textContent=Math.round(weekDone/weekTotal*100)+'%');
     $$('[data-week37-progress]').forEach(el=>el.textContent=`${s.onenote.done} von ${s.onenote.total} Aufträgen`);$$('[data-week37-percent]').forEach(el=>el.textContent=percent(s.onenote)+'%');
   }
   function currentView(){const hash=location.hash.replace('#','');return views.includes(hash)?hash:'start'}
@@ -83,6 +126,9 @@
   document.addEventListener('click',e=>{const open=e.target.closest('[data-module-open]');if(open){saveUi({lastModule:open.dataset.moduleOpen,lastRoute:open.getAttribute('href')})}});
   window.addEventListener('scroll',()=>{clearTimeout(window.__portalScrollTimer);window.__portalScrollTimer=setTimeout(()=>sessionStorage.setItem('portalScroll:'+currentView(),String(scrollY)),100)},{passive:true});
   window.addEventListener('hashchange',showView);
+  window.addEventListener('pageshow',updateDashboard);
+  window.addEventListener('storage',updateDashboard);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)updateDashboard()});
   document.addEventListener('DOMContentLoaded',()=>{
     updateDashboard();showView();setLarge(Boolean(ui().largeText));
     $$('[data-font-toggle]').forEach(b=>b.addEventListener('click',()=>setLarge(!document.documentElement.classList.contains('portal-large'))));

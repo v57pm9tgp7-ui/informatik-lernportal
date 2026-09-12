@@ -1,12 +1,14 @@
 # Informatik-Lernportal
 
-Version 1.6.0 · OneDrive-Scan-Guide, Wochenansichten und überarbeitete Workshops · Schuljahr 2026/27
+Version 1.8.0 · Dreispaltige Kurzübersicht auf der Startseite · Schuljahr 2026/27
 
 Statische Lernumgebung für den Informatikunterricht der GS1 an der BFF Bern. Die visuelle Leitidee lautet **«Ruhiger digitaler Arbeitsplatz»**: eine professionelle Arbeitsoberfläche mit klaren Wegen zu Wochen, Training und Fortschritt.
 
 ## Enthalten
 
 - eigenständige Startseite als Arbeitsgrundlage für den Informatikunterricht bei Herrn Marti
+- dreispaltige Kurzübersicht mit dem Stand aller Aufträge aus Woche 37 und 38
+- klar sichtbare Wechselpunkte nach den verpflichtenden Aufträgen
 - direkter Einstieg in die aktuelle Woche 38
 - Wochenübersicht mit Woche 37 und Woche 38
 - Unterrichtseinheit «DigiPen sinnvoll nutzen»
@@ -15,7 +17,7 @@ Statische Lernumgebung für den Informatikunterricht der GS1 an der BFF Bern. Di
 - sechs vergrösserbare, eigens erstellte Schrittgrafiken für die aktuelle Scanlogik
 - deutschsprachige Videohilfe, die erst nach einem bewussten Klick geladen wird
 - genaue Fehlerhilfe für Kamera, Randerkennung, Licht, Speicherort und Synchronisation
-- je fünf Pflicht- und vier freiwillige Zusatzaufträge für DigiPen und Scannen
+- fünf DigiPen-Pflichtaufträge mit vier Zusatzaufträgen sowie sechs Scan-Pflichtaufträge mit zwei Zusatzaufträgen
 - gestufte Hilfe zu jedem Auftrag mit Startweg, Problemlösungen und Ersatzwegen
 - OneNote Workshop ausschliesslich in Woche 37
 - sicherer Import des bisherigen OneNote-Arbeitsstands aus einer JSON-Sicherung
@@ -78,7 +80,36 @@ npm test
 
 Der Test kontrolliert Einstiegspunkte, lokale Verknüpfungen, eindeutige IDs, JavaScript-Syntax, Navigation, Speicherschlüssel, Fortschrittszählung, Rückkehrzustand, Schriftvergrösserung und offensichtliche Zugangsdaten.
 
-Die Tests prüfen zusätzlich die getrennten Wochenansichten, den OneNote-Import, alle Hilfen, die DigiPen-Abschlussübersicht, die Screenshot-Vergrösserung, den Scan-Guide, seine sechs lokalen Grafiken, die verzögerte Videoladung und die eindeutigen Scan-Speicherorte.
+Die Tests prüfen zusätzlich die dreispaltige Kurzübersicht, die Wechselpunkte, die getrennten Wochenansichten, den OneNote-Import, alle Hilfen, beide Abschlussübersichten, die Screenshot-Vergrösserung, den Scan-Guide, seine sechs lokalen Grafiken, die verzögerte Videoladung und die eindeutigen Scan-Speicherorte.
+
+Für die browsergestützten Prüfungen muss Playwright mit Chromium installiert sein:
+
+```bash
+npm run test:browser
+```
+
+## Änderungen in Version 1.8.0
+
+- Kurzübersicht direkt unter dem Startbild ergänzt
+- Woche 37, DigiPen und Scannen in drei klar getrennten Spalten dargestellt
+- alle Grund-, Pflicht- und Zusatzaufträge mit «Offen», «In Arbeit» oder «Erledigt» angezeigt
+- jede Aufgabe aus der Kurzübersicht direkt aufrufbar gemacht
+- Wechsel nach OneNote-Auftrag 10, DigiPen-Pflichtauftrag 5 und Scan-Pflichtauftrag 6 sichtbar erklärt
+- Wechselhinweis automatisch grün markiert, sobald alle erforderlichen Aufträge erledigt sind
+- nächster noch offener Pflichtauftrag automatisch verlinkt
+- Darstellung für Tablet, Smartphone und grosse Schrift angepasst
+
+## Änderungen in Version 1.7.0
+
+- Scan-Guide so angepasst, dass die Sprungnavigation beim Scrollen keine Inhalte oder Videos mehr verdeckt
+- Scan-Workshop auf sechs Pflichtaufträge und zwei freiwillige Zusatzaufträge fokussiert
+- OneDrive auf Microsoft365.com als verbindlichen Weg zum Wiederfinden der PDF ergänzt
+- OCR-Auftrag als alltagsnahes Problem mit Infozettel und kontrollierter Nachricht neu aufgebaut
+- Abschlussübersicht für den Scan-Workshop mit direkten Wegen zu offenen Aufträgen ergänzt
+- Scan-Duell und wenig ergiebige Aufgaben entfernt; Aushang und Mini-Comic als freiwillige Reserve beibehalten
+- DigiPen-Auftrag zur Partyplanung konkretisiert
+- realistische Workshopdauer von 90–100 Minuten ausgewiesen
+- automatisierte Browserprüfung für Navigation, Abschlusswege und responsive Darstellung ergänzt
 
 ## Änderungen in Version 1.6.0
 
