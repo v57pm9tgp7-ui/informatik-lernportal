@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img" aria-labelledby="title desc">
+  <title id="title">Scan benennen und in OneDrive speichern</title>
+  <desc id="desc">Schematische Speicheransicht mit Dateiname, OneDrive-Ordner und Speichern-Schaltfläche.</desc>
+  <rect width="960" height="640" rx="36" fill="#eef7f5"/>
+  <rect x="54" y="28" width="386" height="584" rx="42" fill="#10263a"/>
+  <rect x="68" y="42" width="358" height="556" rx="31" fill="#fff"/>
+  <rect x="186" y="51" width="122" height="17" rx="8" fill="#10263a"/>
+  <text x="92" y="112" fill="#10263a" font-family="Segoe UI,Arial" font-size="24" font-weight="750">Speichern unter</text>
+  <text x="92" y="165" fill="#587181" font-family="Segoe UI,Arial" font-size="14" font-weight="650">DATEINAME</text>
+  <rect x="92" y="180" width="310" height="62" rx="13" fill="#fff" stroke="#5ba99a" stroke-width="3"/>
+  <text x="108" y="219" fill="#10263a" font-family="Segoe UI,Arial" font-size="16" font-weight="650">EineSeite_Mia_Muster.pdf</text>
+  <text x="92" y="281" fill="#587181" font-family="Segoe UI,Arial" font-size="14" font-weight="650">SPEICHERORT</text>
+  <rect x="92" y="296" width="310" height="91" rx="13" fill="#f3f7f8"/>
+  <text x="110" y="330" fill="#10263a" font-family="Segoe UI,Arial" font-size="17" font-weight="700">OneDrive – BFF Bern</text>
+  <text x="110" y="361" fill="#497080" font-family="Segoe UI,Arial" font-size="15">Informatik  ›  Scannen</text>
+  <rect x="92" y="428" width="310" height="60" rx="13" fill="#087a69"/>
+  <text x="247" y="467" text-anchor="middle" fill="#fff" font-family="Segoe UI,Arial" font-size="19" font-weight="750">Speichern</text>
+  <rect x="92" y="513" width="310" height="48" rx="12" fill="#e6f5f1"/>
+  <text x="247" y="544" text-anchor="middle" fill="#075b4d" font-family="Segoe UI,Arial" font-size="15" font-weight="700">✓ PDF in OneDrive gespeichert</text>
+  <circle cx="877" cy="102" r="26" fill="#087ea4"/>
+  <text x="877" y="111" text-anchor="middle" fill="#fff" font-family="Segoe UI,Arial" font-size="22" font-weight="800">6</text>
+  <text x="505" y="151" fill="#10263a" font-family="Segoe UI,Arial" font-size="31" font-weight="750">Benennen und speichern</text>
+  <text x="505" y="205" fill="#38536a" font-family="Segoe UI,Arial" font-size="20">Der Dateiname soll sofort zeigen,</text>
+  <text x="505" y="238" fill="#38536a" font-family="Segoe UI,Arial" font-size="20">was die PDF enthält und wem sie gehört.</text>
+  <rect x="505" y="276" width="392" height="82" rx="18" fill="#fff" stroke="#a7c6d0" stroke-width="2"/>
+  <text x="701" y="326" text-anchor="middle" fill="#075b4d" font-family="Segoe UI,Arial" font-size="19" font-weight="750">Thema_Vorname_Nachname.pdf</text>
+  <text x="505" y="408" fill="#38536a" font-family="Segoe UI,Arial" font-size="19">Öffnen Sie die PDF danach nochmals.</text>
+  <text x="505" y="441" fill="#38536a" font-family="Segoe UI,Arial" font-size="19">Prüfen Sie Seitenzahl, Reihenfolge</text>
+  <text x="505" y="474" fill="#38536a" font-family="Segoe UI,Arial" font-size="19">und kleinste Schrift.</text>
+  <text x="505" y="560" fill="#496475" font-family="Segoe UI,Arial" font-size="15">Schematische Darstellung · App-Versionen können abweichen</text>
+</svg>

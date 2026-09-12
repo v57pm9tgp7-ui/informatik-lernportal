@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img" aria-labelledby="title desc">
+  <title id="title">Ein Dokument gerade aufnehmen</title>
+  <desc id="desc">Schematische Kameraansicht mit einem vollständigen Blatt und markierten Ecken.</desc>
+  <rect width="960" height="640" rx="36" fill="#e9f3f4"/>
+  <rect x="54" y="28" width="386" height="584" rx="42" fill="#10263a"/>
+  <rect x="68" y="42" width="358" height="556" rx="31" fill="#20383b"/>
+  <rect x="186" y="51" width="122" height="17" rx="8" fill="#10263a"/>
+  <circle cx="106" cy="104" r="21" fill="#ffffff22"/>
+  <path d="M100 104h12M106 98v12" stroke="#fff" stroke-width="3"/>
+  <circle cx="389" cy="104" r="21" fill="#ffffff22"/>
+  <path d="M383 99l12 10M395 99l-12 10" stroke="#fff" stroke-width="3"/>
+  <rect x="114" y="145" width="266" height="326" rx="8" fill="#fffef7" transform="rotate(-1 247 308)"/>
+  <text x="149" y="196" fill="#243b4d" font-family="Segoe UI,Arial" font-size="22" font-weight="750">Tagesausflug</text>
+  <path d="M149 226h186M149 252h168M149 278h178M149 304h152M149 330h183M149 356h164M149 382h175" stroke="#8295a0" stroke-width="7" stroke-linecap="round"/>
+  <g fill="none" stroke="#46d3c0" stroke-width="7" stroke-linecap="round">
+    <path d="M107 178v-38h38M348 140h38v38M107 437v38h38M348 475h38v-38"/>
+  </g>
+  <rect x="105" y="493" width="96" height="34" rx="17" fill="#087a69"/>
+  <text x="153" y="516" text-anchor="middle" fill="#fff" font-family="Segoe UI,Arial" font-size="15" font-weight="750">Dokument</text>
+  <circle cx="247" cy="545" r="34" fill="none" stroke="#fff" stroke-width="6"/>
+  <circle cx="247" cy="545" r="25" fill="#fff"/>
+  <text x="505" y="151" fill="#10263a" font-family="Segoe UI,Arial" font-size="31" font-weight="750">Blatt vollständig zeigen</text>
+  <g font-family="Segoe UI,Arial" font-size="20" fill="#38536a">
+    <text x="505" y="205">• Modus «Dokument» wählen</text>
+    <text x="505" y="244">• Smartphone parallel halten</text>
+    <text x="505" y="283">• alle vier Ränder sichtbar lassen</text>
+    <text x="505" y="322">• beide Hände ruhig halten</text>
+  </g>
+  <rect x="505" y="370" width="392" height="125" rx="20" fill="#fff4d7" stroke="#d6ad61"/>
+  <text x="529" y="408" fill="#7a4d00" font-family="Segoe UI,Arial" font-size="18" font-weight="750">Bei Schatten oder Spiegelung</text>
+  <text x="529" y="443" fill="#654c25" font-family="Segoe UI,Arial" font-size="17">Wechseln Sie den Platz. Ein Filter kann</text>
+  <text x="529" y="472" fill="#654c25" font-family="Segoe UI,Arial" font-size="17">schlechtes Licht nicht vollständig retten.</text>
+  <circle cx="877" cy="102" r="26" fill="#087ea4"/>
+  <text x="877" y="111" text-anchor="middle" fill="#fff" font-family="Segoe UI,Arial" font-size="22" font-weight="800">4</text>
+  <text x="505" y="560" fill="#496475" font-family="Segoe UI,Arial" font-size="15">Schematische Darstellung · App-Versionen können abweichen</text>
+</svg>

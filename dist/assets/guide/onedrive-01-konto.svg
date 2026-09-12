@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img" aria-labelledby="title desc">
+  <title id="title">In OneDrive das Schulkonto prüfen</title>
+  <desc id="desc">Schematische OneDrive-Ansicht mit markiertem Profilbild und der Schul-E-Mail-Adresse.</desc>
+  <rect width="960" height="640" rx="36" fill="#eef7f5"/>
+  <rect x="54" y="28" width="386" height="584" rx="42" fill="#10263a"/>
+  <rect x="68" y="42" width="358" height="556" rx="31" fill="#ffffff"/>
+  <rect x="186" y="51" width="122" height="17" rx="8" fill="#10263a"/>
+  <text x="94" y="113" fill="#10263a" font-family="Segoe UI,Arial" font-size="27" font-weight="700">OneDrive</text>
+  <circle cx="384" cy="104" r="25" fill="#075b4d"/>
+  <text x="384" y="112" text-anchor="middle" fill="#fff" font-family="Segoe UI,Arial" font-size="17" font-weight="700">CM</text>
+  <rect x="93" y="142" width="308" height="108" rx="18" fill="#e6f5f1" stroke="#68ac9d" stroke-width="3"/>
+  <text x="113" y="178" fill="#075b4d" font-family="Segoe UI,Arial" font-size="19" font-weight="700">Schulkonto</text>
+  <text x="113" y="210" fill="#263e50" font-family="Segoe UI,Arial" font-size="16">vorname.nachname@bffbern.ch</text>
+  <text x="113" y="235" fill="#496475" font-family="Segoe UI,Arial" font-size="14">OneDrive – BFF Bern</text>
+  <rect x="93" y="276" width="308" height="62" rx="13" fill="#f3f7f8"/>
+  <text x="118" y="315" fill="#10263a" font-family="Segoe UI,Arial" font-size="18" font-weight="600">Dateien</text>
+  <rect x="93" y="350" width="308" height="62" rx="13" fill="#f3f7f8"/>
+  <text x="118" y="389" fill="#10263a" font-family="Segoe UI,Arial" font-size="18" font-weight="600">Freigegeben</text>
+  <rect x="93" y="424" width="308" height="62" rx="13" fill="#f3f7f8"/>
+  <text x="118" y="463" fill="#10263a" font-family="Segoe UI,Arial" font-size="18" font-weight="600">Offline</text>
+  <path d="M422 104C496 104 494 156 525 156" fill="none" stroke="#087ea4" stroke-width="7" stroke-linecap="round"/>
+  <path d="M513 143l16 13-18 9" fill="none" stroke="#087ea4" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="555" cy="157" r="26" fill="#087ea4"/>
+  <text x="555" y="166" text-anchor="middle" fill="#fff" font-family="Segoe UI,Arial" font-size="22" font-weight="800">1</text>
+  <text x="505" y="225" fill="#10263a" font-family="Segoe UI,Arial" font-size="31" font-weight="750">Richtiges Konto?</text>
+  <text x="505" y="270" fill="#38536a" font-family="Segoe UI,Arial" font-size="21">Tippen Sie auf Ihr Profilbild.</text>
+  <text x="505" y="308" fill="#38536a" font-family="Segoe UI,Arial" font-size="21">Die Schul-E-Mail-Adresse muss</text>
+  <text x="505" y="340" fill="#38536a" font-family="Segoe UI,Arial" font-size="21">sichtbar sein.</text>
+  <rect x="505" y="384" width="392" height="116" rx="20" fill="#fff4d7" stroke="#d6ad61"/>
+  <text x="529" y="420" fill="#7a4d00" font-family="Segoe UI,Arial" font-size="18" font-weight="750">Nicht das private Konto verwenden</text>
+  <text x="529" y="454" fill="#654c25" font-family="Segoe UI,Arial" font-size="17">Sonst erscheint die PDF später nicht</text>
+  <text x="529" y="482" fill="#654c25" font-family="Segoe UI,Arial" font-size="17">im Schul-OneDrive am Notebook.</text>
+  <text x="505" y="560" fill="#496475" font-family="Segoe UI,Arial" font-size="15">Schematische Darstellung · App-Versionen können abweichen</text>
+</svg>

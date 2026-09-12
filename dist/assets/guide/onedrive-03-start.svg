@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img" aria-labelledby="title desc">
+  <title id="title">Scannen in der OneDrive-App starten</title>
+  <desc id="desc">Schematische OneDrive-Ansicht mit geöffnetem Plusmenü und hervorgehobener Auswahl Scannen.</desc>
+  <rect width="960" height="640" rx="36" fill="#eef7f5"/>
+  <rect x="54" y="28" width="386" height="584" rx="42" fill="#10263a"/>
+  <rect x="68" y="42" width="358" height="556" rx="31" fill="#fff"/>
+  <rect x="186" y="51" width="122" height="17" rx="8" fill="#10263a"/>
+  <text x="94" y="111" fill="#10263a" font-family="Segoe UI,Arial" font-size="24" font-weight="750">Scannen</text>
+  <text x="94" y="145" fill="#587181" font-family="Segoe UI,Arial" font-size="14">Informatik  ›  Scannen</text>
+  <rect x="86" y="177" width="322" height="286" rx="18" fill="#f4f8f9"/>
+  <path d="M112 209h34l8 9h45v50h-87z" fill="#e8b94d"/>
+  <text x="216" y="241" fill="#10263a" font-family="Segoe UI,Arial" font-size="17" font-weight="650">Zusatzauftraege</text>
+  <rect x="86" y="478" width="322" height="99" rx="17" fill="#fff" stroke="#bcd0d8"/>
+  <g transform="translate(113 502)">
+    <circle cx="22" cy="22" r="21" fill="#e7f4f7"/>
+    <path d="M13 16h18v14H13zM17 12h10l3 4H14z" fill="none" stroke="#087ea4" stroke-width="2.8"/>
+    <text x="57" y="29" fill="#10263a" font-family="Segoe UI,Arial" font-size="19" font-weight="750">Scannen</text>
+  </g>
+  <circle cx="370" cy="439" r="34" fill="#087a69"/>
+  <path d="M370 422v34M353 439h34" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+  <path d="M422 439C493 439 493 362 527 362" fill="none" stroke="#087ea4" stroke-width="7" stroke-linecap="round"/>
+  <path d="M514 349l17 13-18 10" fill="none" stroke="#087ea4" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="557" cy="363" r="26" fill="#087ea4"/>
+  <text x="557" y="372" text-anchor="middle" fill="#fff" font-family="Segoe UI,Arial" font-size="22" font-weight="800">3</text>
+  <text x="505" y="236" fill="#10263a" font-family="Segoe UI,Arial" font-size="31" font-weight="750">Scanner öffnen</text>
+  <text x="505" y="284" fill="#38536a" font-family="Segoe UI,Arial" font-size="21">Je nach App sehen Sie direkt ein</text>
+  <text x="505" y="318" fill="#38536a" font-family="Segoe UI,Arial" font-size="21">Kamerasymbol oder zuerst ein +.</text>
+  <rect x="505" y="410" width="392" height="102" rx="20" fill="#e6f5f1" stroke="#78b8aa"/>
+  <text x="529" y="447" fill="#075b4d" font-family="Segoe UI,Arial" font-size="18" font-weight="750">Wichtig</text>
+  <text x="529" y="479" fill="#264f49" font-family="Segoe UI,Arial" font-size="17">Wählen Sie «Scannen», nicht «Foto».</text>
+  <text x="505" y="560" fill="#496475" font-family="Segoe UI,Arial" font-size="15">Schematische Darstellung · App-Versionen können abweichen</text>
+</svg>

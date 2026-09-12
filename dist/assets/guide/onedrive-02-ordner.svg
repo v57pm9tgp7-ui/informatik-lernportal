@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img" aria-labelledby="title desc">
+  <title id="title">Den Scanordner in OneDrive öffnen</title>
+  <desc id="desc">Schematische Dateiansicht mit dem Pfad OneDrive, Informatik, Scannen.</desc>
+  <rect width="960" height="640" rx="36" fill="#eef7f5"/>
+  <rect x="54" y="28" width="386" height="584" rx="42" fill="#10263a"/>
+  <rect x="68" y="42" width="358" height="556" rx="31" fill="#fff"/>
+  <rect x="186" y="51" width="122" height="17" rx="8" fill="#10263a"/>
+  <text x="94" y="111" fill="#10263a" font-family="Segoe UI,Arial" font-size="25" font-weight="750">Dateien</text>
+  <text x="94" y="151" fill="#587181" font-family="Segoe UI,Arial" font-size="15">OneDrive – BFF Bern</text>
+  <rect x="92" y="177" width="310" height="44" rx="11" fill="#e7f4f7"/>
+  <text x="109" y="205" fill="#0b5e79" font-family="Segoe UI,Arial" font-size="15" font-weight="650">OneDrive  ›  Informatik  ›  Scannen</text>
+  <g transform="translate(94 256)">
+    <path d="M4 10h37l8 10h51v60H4z" fill="#e8b94d"/>
+    <text x="119" y="47" fill="#10263a" font-family="Segoe UI,Arial" font-size="19" font-weight="700">Zusatzauftraege</text>
+  </g>
+  <line x1="94" y1="357" x2="402" y2="357" stroke="#d2dfe4"/>
+  <g transform="translate(94 382)">
+    <rect x="5" y="2" width="66" height="80" rx="5" fill="#e7f4f7" stroke="#55a19a"/>
+    <path d="M19 24h38M19 38h38M19 52h28" stroke="#075b4d" stroke-width="4" stroke-linecap="round"/>
+    <text x="90" y="37" fill="#10263a" font-family="Segoe UI,Arial" font-size="17" font-weight="700">EineSeite_Mia_Muster.pdf</text>
+    <text x="90" y="65" fill="#587181" font-family="Segoe UI,Arial" font-size="14">PDF · eben gespeichert</text>
+  </g>
+  <circle cx="370" cy="537" r="34" fill="#087a69"/>
+  <path d="M370 520v34M353 537h34" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+  <path d="M423 199C495 199 491 179 526 179" fill="none" stroke="#087ea4" stroke-width="7" stroke-linecap="round"/>
+  <path d="M513 166l17 13-18 10" fill="none" stroke="#087ea4" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="556" cy="180" r="26" fill="#087ea4"/>
+  <text x="556" y="189" text-anchor="middle" fill="#fff" font-family="Segoe UI,Arial" font-size="22" font-weight="800">2</text>
+  <text x="505" y="248" fill="#10263a" font-family="Segoe UI,Arial" font-size="31" font-weight="750">Zielordner öffnen</text>
+  <text x="505" y="295" fill="#38536a" font-family="Segoe UI,Arial" font-size="21">Öffnen Sie nacheinander:</text>
+  <rect x="505" y="327" width="382" height="74" rx="16" fill="#fff" stroke="#a7c6d0" stroke-width="2"/>
+  <text x="696" y="374" text-anchor="middle" fill="#075b4d" font-family="Segoe UI,Arial" font-size="21" font-weight="750">Informatik  ›  Scannen</text>
+  <text x="505" y="446" fill="#38536a" font-family="Segoe UI,Arial" font-size="19">Der geöffnete Ordner bestimmt,</text>
+  <text x="505" y="479" fill="#38536a" font-family="Segoe UI,Arial" font-size="19">wo Ihre PDF gespeichert wird.</text>
+  <text x="505" y="560" fill="#496475" font-family="Segoe UI,Arial" font-size="15">Schematische Darstellung · App-Versionen können abweichen</text>
+</svg>

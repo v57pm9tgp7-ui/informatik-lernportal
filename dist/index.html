@@ -21,13 +21,14 @@
       <nav class="desktop-nav" aria-label="Hauptnavigation">
         <a class="nav-link" href="#start" data-nav="start">Start</a>
         <a class="nav-link" href="#wochen" data-nav="wochen">Wochen</a>
+        <a class="nav-link" href="#scan-guide" data-nav="scan-guide">Scan-Guide</a>
         <a class="nav-link" href="#training" data-nav="training">Training</a>
         <a class="nav-link" href="#fortschritt" data-nav="fortschritt">Fortschritt</a>
       </nav>
       <details class="mobile-nav">
         <summary>Menü</summary>
         <div class="mobile-menu">
-          <a href="#start" data-nav="start">Start</a><a href="#wochen" data-nav="wochen">Wochen</a><a href="#training" data-nav="training">Training</a><a href="#fortschritt" data-nav="fortschritt">Fortschritt</a>
+          <a href="#start" data-nav="start">Start</a><a href="#wochen" data-nav="wochen">Wochen</a><a href="#scan-guide" data-nav="scan-guide">Scan-Guide</a><a href="#training" data-nav="training">Training</a><a href="#fortschritt" data-nav="fortschritt">Fortschritt</a>
         </div>
       </details>
       <button class="font-button" type="button" data-font-toggle aria-pressed="false" title="Schrift deutlich vergrössern">A+</button>
@@ -61,7 +62,7 @@
           <div class="card-top"><span class="module-icon" aria-hidden="true">▣</span><span class="status" data-status>Offen</span></div>
           <h3>Sauber scannen</h3><p>Mit OneDrive lesbare PDFs erstellen, prüfen, benennen und weiterverwenden.</p>
           <div class="meta-row"><span>90 Minuten</span><span>5 Pflicht</span><span>4 Zusatzaufträge</span></div>
-          <div class="card-progress"><div class="progress-label"><span data-progress-copy>0 von 5 erledigt</span><span>Woche 38</span></div><div class="progress-track"><span data-progress-bar></span></div><a class="card-action" href="scannen.html#auftrag-1" data-module-link data-module-open="scan">Einheit öffnen</a></div>
+          <div class="card-progress"><div class="progress-label"><span data-progress-copy>0 von 5 erledigt</span><span>Woche 38</span></div><div class="progress-track"><span data-progress-bar></span></div><a class="card-action" href="scannen.html#auftrag-1" data-module-link data-module-open="scan">Einheit öffnen</a><a class="card-secondary" href="#scan-guide">Zuerst den Scan-Guide ansehen</a></div>
         </article>
         </div>
         <p class="storage-note"><span aria-hidden="true">✓</span> Häkchen und Notizen werden nach jeder Änderung automatisch in diesem Browser gespeichert.</p>
@@ -98,9 +99,118 @@
       <section class="week-banner"><div><p class="page-kicker">Woche 38</p><h1 class="page-title" id="week38-title">Digital arbeiten</h1><p class="page-lead">Wählen Sie die Einheit, an der Sie heute arbeiten. Die andere Einheit bleibt jederzeit erreichbar.</p></div><div class="week-progress-box"><strong data-week-percent>0%</strong><span data-week-progress>0 von 10 Pflichtaufträgen</span></div></section>
       <div class="module-grid">
         <article class="module-card pen" data-module="digipen"><div class="card-top"><span class="module-icon">✎</span><span class="status" data-status>Offen</span></div><h3>Arbeiten mit dem DigiPen</h3><p>Stift, Marker, Radierer und Lasso ausprobieren und für eigene Pläne nutzen.</p><div class="meta-row"><span>90 Minuten</span><span>5 Pflicht</span><span>4 Zusatzaufträge</span></div><div class="card-progress"><div class="progress-label"><span data-progress-copy>0 von 5 erledigt</span></div><div class="progress-track"><span data-progress-bar></span></div><a class="card-action" href="digipen.html#uebersicht" data-module-link data-module-open="digipen">DigiPen öffnen</a></div></article>
-        <article class="module-card scan" data-module="scan"><div class="card-top"><span class="module-icon">▣</span><span class="status" data-status>Offen</span></div><h3>Scannen mit OneDrive</h3><p>Papier sauber als PDF speichern, wiederfinden und am Notebook weiterverwenden.</p><div class="meta-row"><span>90 Minuten</span><span>5 Pflicht</span><span>4 Zusatzaufträge</span></div><div class="card-progress"><div class="progress-label"><span data-progress-copy>0 von 5 erledigt</span></div><div class="progress-track"><span data-progress-bar></span></div><a class="card-action" href="scannen.html#uebersicht" data-module-link data-module-open="scan">Scannen öffnen</a></div></article>
+        <article class="module-card scan" data-module="scan"><div class="card-top"><span class="module-icon">▣</span><span class="status" data-status>Offen</span></div><h3>Scannen mit OneDrive</h3><p>Papier sauber als PDF speichern, wiederfinden und am Notebook weiterverwenden.</p><div class="meta-row"><span>90 Minuten</span><span>5 Pflicht</span><span>4 Zusatzaufträge</span></div><div class="card-progress"><div class="progress-label"><span data-progress-copy>0 von 5 erledigt</span></div><div class="progress-track"><span data-progress-bar></span></div><a class="card-action" href="scannen.html#uebersicht" data-module-link data-module-open="scan">Scannen öffnen</a><a class="card-secondary" href="#scan-guide">Scan-Guide öffnen</a></div></article>
       </div>
       <p class="storage-note"><span aria-hidden="true">✓</span> Die Webseite speichert Häkchen und Notizen automatisch. PDF-Dateien bleiben in OneDrive.</p>
+    </section>
+
+    <section class="view guide-view" data-view="scan-guide" hidden aria-labelledby="scan-guide-title">
+      <a class="back-link" href="#woche-38">← Zur Woche 38</a>
+      <section class="guide-hero">
+        <div class="guide-hero-copy">
+          <p class="page-kicker">Anleitung · OneDrive-App</p>
+          <h1 id="scan-guide-title">Mit dem Smartphone sauber scannen</h1>
+          <p>Hier sehen Sie den ganzen Weg: vom richtigen Schulkonto bis zur kontrollierten PDF am Notebook. Arbeiten Sie die Schritte der Reihe nach durch.</p>
+          <div class="guide-hero-actions"><button class="button primary" type="button" data-guide-jump="guide-vorbereiten">Bei Schritt 1 beginnen</button><a class="button button-link" href="scannen.html#auftrag-1" data-module-open="scan">Zum Scan-Workshop</a></div>
+        </div>
+        <figure class="guide-hero-figure"><img src="assets/guide/onedrive-04-aufnahme.svg" alt="Schematische OneDrive-Kameraansicht mit vollständig sichtbarem Blatt"><figcaption>Die Bilder zeigen die wichtigen Bedienelemente schematisch. Je nach Smartphone und App-Version können Namen oder Positionen leicht abweichen.</figcaption></figure>
+      </section>
+
+      <nav class="guide-jumps" aria-label="Abschnitte des Scan-Guides">
+        <button type="button" data-guide-jump="guide-vorbereiten"><span>1</span>Vorbereiten</button>
+        <button type="button" data-guide-jump="guide-scannen"><span>2</span>Scannen</button>
+        <button type="button" data-guide-jump="guide-speichern"><span>3</span>Speichern</button>
+        <button type="button" data-guide-jump="guide-probleme"><span>4</span>Probleme lösen</button>
+        <button type="button" data-guide-jump="guide-video"><span>5</span>Video</button>
+      </nav>
+
+      <section class="guide-start panel" id="guide-vorbereiten" aria-labelledby="guide-start-title">
+        <div class="section-head"><div><p class="page-kicker">Bevor Sie beginnen</p><h2 id="guide-start-title">Drei Dinge kurz prüfen</h2></div><span class="guide-time">ca. 2 Minuten</span></div>
+        <div class="check-grid">
+          <article><span aria-hidden="true">1</span><h3>OneDrive-App</h3><p>Öffnen Sie auf dem Smartphone die <strong>OneDrive-App</strong>, nicht die normale Kamera-App.</p></article>
+          <article><span aria-hidden="true">2</span><h3>Schulkonto</h3><p>Prüfen Sie beim Profilbild, ob Ihre <strong>BFF-Schul-E-Mail-Adresse</strong> aktiv ist.</p></article>
+          <article><span aria-hidden="true">3</span><h3>Material</h3><p>Legen Sie Blatt und Smartphone bereit. Das Blatt enthält keine unnötigen persönlichen Angaben.</p></article>
+        </div>
+        <div class="guide-note"><strong>Beim ersten Start fragt OneDrive nach Kamerazugriff.</strong><p>Wählen Sie «Beim Verwenden der App erlauben». Ohne diese Berechtigung kann OneDrive nicht scannen. Wenn Sie früher abgelehnt haben, öffnen Sie die Einstellungen des Smartphones → Apps → OneDrive → Berechtigungen → Kamera.</p></div>
+      </section>
+
+      <section class="guide-section" id="guide-scannen" aria-labelledby="guide-scan-title">
+        <div class="section-head"><div><p class="page-kicker">Schritt für Schritt</p><h2 id="guide-scan-title">Vom Ordner bis zur Vorschau</h2><p>Tippen Sie ein Bild an, um es auf der Seite zu vergrössern.</p></div></div>
+        <div class="guide-steps">
+          <article class="guide-step">
+            <div class="guide-step-copy"><span class="guide-step-number">1</span><div><h3>Schulkonto prüfen</h3><p>Tippen Sie oben auf Ihr Profilbild. Wählen Sie das Konto der BFF Bern. Nur dann erscheint der Scan später im Schul-OneDrive am Notebook.</p><p class="guide-done"><strong>Weiter, wenn:</strong> Ihre Schul-E-Mail-Adresse sichtbar ist.</p></div></div>
+            <button class="guide-image-button" type="button" data-guide-image="assets/guide/onedrive-01-konto.svg" aria-label="Abbildung Schulkonto vergrössern"><img src="assets/guide/onedrive-01-konto.svg" alt="OneDrive mit markiertem Schulkonto"></button>
+          </article>
+          <article class="guide-step">
+            <div class="guide-step-copy"><span class="guide-step-number">2</span><div><h3>Zielordner öffnen</h3><p>Öffnen Sie unten <strong>Dateien</strong> und danach <strong>Informatik → Scannen</strong>. Fehlt ein Ordner, wählen Sie <strong>+ → Ordner</strong> und erstellen ihn.</p><p class="guide-done"><strong>Weiter, wenn:</strong> oben der Ordner «Scannen» geöffnet ist.</p></div></div>
+            <button class="guide-image-button" type="button" data-guide-image="assets/guide/onedrive-02-ordner.svg" aria-label="Abbildung Zielordner vergrössern"><img src="assets/guide/onedrive-02-ordner.svg" alt="OneDrive mit geöffnetem Ordner Informatik und Scannen"></button>
+          </article>
+          <article class="guide-step">
+            <div class="guide-step-copy"><span class="guide-step-number">3</span><div><h3>Scanner starten</h3><p>Tippen Sie auf das <strong>Kamerasymbol</strong>. Falls es nicht sichtbar ist: Tippen Sie auf <strong>+</strong> oder <strong>Hinzufügen</strong> und danach auf <strong>Scannen</strong>.</p><p class="guide-done"><strong>Weiter, wenn:</strong> Sie das Kamerabild in OneDrive sehen.</p></div></div>
+            <button class="guide-image-button" type="button" data-guide-image="assets/guide/onedrive-03-start.svg" aria-label="Abbildung Scanner starten vergrössern"><img src="assets/guide/onedrive-03-start.svg" alt="OneDrive mit Plusmenü und Auswahl Scannen"></button>
+          </article>
+          <article class="guide-step">
+            <div class="guide-step-copy"><span class="guide-step-number">4</span><div><h3>Blatt aufnehmen</h3><p>Wählen Sie <strong>Dokument</strong>. Halten Sie das Smartphone möglichst parallel über das Blatt. Lassen Sie rund um alle vier Ränder etwas Untergrund sichtbar und lösen Sie erst aus, wenn das Bild scharf ist.</p><p class="guide-done"><strong>Weiter, wenn:</strong> das ganze Blatt ohne Finger und Schatten sichtbar ist.</p></div></div>
+            <button class="guide-image-button" type="button" data-guide-image="assets/guide/onedrive-04-aufnahme.svg" aria-label="Abbildung Aufnahme vergrössern"><img src="assets/guide/onedrive-04-aufnahme.svg" alt="OneDrive-Kamera mit vollständig erfasstem Dokument"></button>
+          </article>
+          <article class="guide-step">
+            <div class="guide-step-copy"><span class="guide-step-number">5</span><div><h3>Vorschau verbessern</h3><p>Ziehen Sie die vier Ecken genau an die Blattränder. Drehen Sie die Seite bei Bedarf. Verwenden Sie einen Filter nur, wenn kleine Schrift dadurch wirklich besser lesbar wird.</p><p class="guide-done"><strong>Mehrere Seiten?</strong> Tippen Sie vor dem Speichern auf <strong>+ Seite</strong>, <strong>Hinzufügen</strong> oder das Blatt-mit-Plus-Symbol.</p></div></div>
+            <button class="guide-image-button" type="button" data-guide-image="assets/guide/onedrive-05-bearbeiten.svg" aria-label="Abbildung Vorschau vergrössern"><img src="assets/guide/onedrive-05-bearbeiten.svg" alt="OneDrive-Vorschau mit Werkzeugen für Zuschnitt, Drehung und Filter"></button>
+          </article>
+        </div>
+      </section>
+
+      <section class="guide-section" id="guide-speichern" aria-labelledby="guide-save-title">
+        <div class="section-head"><div><p class="page-kicker">Fertigstellen</p><h2 id="guide-save-title">Benennen, speichern, kontrollieren</h2></div></div>
+        <article class="guide-step guide-step-final">
+          <div class="guide-step-copy"><span class="guide-step-number">6</span><div><h3>Als PDF speichern</h3><p>Tippen Sie auf <strong>Fertig</strong>. Geben Sie den verlangten Dateinamen ein, zum Beispiel <strong>EineSeite_Mia_Muster.pdf</strong>. Kontrollieren Sie den Speicherort <strong>OneDrive/Informatik/Scannen</strong> und wählen Sie <strong>Speichern</strong>.</p><p class="guide-done"><strong>Fertig, wenn:</strong> Sie die gespeicherte PDF nochmals geöffnet und die kleinste Schrift kontrolliert haben.</p></div></div>
+          <button class="guide-image-button" type="button" data-guide-image="assets/guide/onedrive-06-speichern.svg" aria-label="Abbildung Speichern vergrössern"><img src="assets/guide/onedrive-06-speichern.svg" alt="OneDrive-Speicherdialog mit Dateiname und Zielordner"></button>
+        </article>
+        <div class="storage-map" aria-labelledby="storage-map-title">
+          <div><p class="page-kicker">Nicht verwechseln</p><h3 id="storage-map-title">Was wird wo gespeichert?</h3></div>
+          <dl>
+            <div><dt>PDF-Datei</dt><dd><strong>OneDrive/Informatik/Scannen</strong></dd></div>
+            <div><dt>Häkchen und Notizen</dt><dd>automatisch in dieser Webseite und in diesem Browser</dd></div>
+            <div><dt>OneNote</dt><dd>nur verwenden, wenn ein Auftrag dies ausdrücklich verlangt</dd></div>
+            <div><dt>Teams</dt><dd>nur dort abgeben, wenn Herr Marti einen Teams-Auftrag erstellt</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="guide-section" id="guide-probleme" aria-labelledby="guide-problems-title">
+        <div class="section-head"><div><p class="page-kicker">Wenn etwas nicht klappt</p><h2 id="guide-problems-title">Schnelle Lösungen</h2><p>Öffnen Sie nur das Problem, das Sie gerade haben.</p></div></div>
+        <div class="guide-troubleshooting">
+          <details><summary>Ich finde «Scannen» nicht</summary><div><ol><li>Prüfen Sie, ob wirklich die OneDrive-App geöffnet ist.</li><li>Öffnen Sie unten <strong>Dateien</strong>.</li><li>Tippen Sie auf das Kamerasymbol. Fehlt es, wählen Sie <strong>+</strong> oder <strong>Hinzufügen → Scannen</strong>.</li><li>Aktualisieren Sie die OneDrive-App, wenn keine dieser Möglichkeiten erscheint.</li></ol></div></details>
+          <details><summary>Die Kamera bleibt schwarz oder öffnet sich nicht</summary><div><ol><li>Schliessen Sie OneDrive vollständig und öffnen Sie die App neu.</li><li>Öffnen Sie die Smartphone-Einstellungen → Apps → OneDrive → Berechtigungen.</li><li>Erlauben Sie den Zugriff auf die Kamera beim Verwenden der App.</li><li>Starten Sie das Smartphone neu, wenn das Bild weiterhin schwarz bleibt.</li></ol></div></details>
+          <details><summary>OneDrive erkennt die Ränder falsch</summary><div><ol><li>Legen Sie das Blatt auf einen Untergrund mit deutlichem Farbunterschied.</li><li>Lassen Sie rund um das Blatt etwas Platz sichtbar.</li><li>Halten Sie das Smartphone höher und möglichst parallel.</li><li>Ziehen Sie in der Vorschau jede Ecke einzeln an den richtigen Blattrand.</li></ol></div></details>
+          <details><summary>Der Scan ist unscharf, dunkel oder hat Schatten</summary><div><ol><li>Reinigen Sie die Kameralinse.</li><li>Nutzen Sie helles, gleichmässiges Licht und vermeiden Sie direktes Gegenlicht.</li><li>Halten Sie das Smartphone mit beiden Händen still.</li><li>Nehmen Sie neu auf. Ein Filter ersetzt keine scharfe Aufnahme.</li></ol></div></details>
+          <details><summary>Die PDF ist im falschen Konto oder Ordner</summary><div><ol><li>Öffnen Sie den Scan und wählen Sie <strong>Verschieben</strong>, falls diese Funktion angeboten wird.</li><li>Wählen Sie das Schul-OneDrive und <strong>Informatik → Scannen</strong>.</li><li>Falls ein Verschieben zwischen Konten nicht möglich ist, scannen Sie die Seite im Schulkonto nochmals.</li><li>Löschen Sie die falsche Kopie erst, nachdem die richtige PDF geprüft wurde.</li></ol></div></details>
+          <details><summary>Die PDF erscheint am Notebook nicht</summary><div><ol><li>Vergleichen Sie die Schul-E-Mail-Adresse auf Smartphone und Notebook.</li><li>Prüfen Sie, ob der Upload auf dem Smartphone abgeschlossen ist.</li><li>Aktualisieren Sie den OneDrive-Ordner und warten Sie ein bis zwei Minuten.</li><li>Öffnen Sie OneDrive im Browser. Ist die PDF dort sichtbar, liegt das Problem bei der Synchronisation am Notebook.</li></ol></div></details>
+          <details><summary>Eine Seite in der mehrseitigen PDF ist falsch</summary><div><ol><li>Öffnen Sie in der Vorschau die Miniatur der falschen Seite.</li><li>Wählen Sie <strong>Neu aufnehmen</strong> oder löschen Sie nur diese Seite.</li><li>Fügen Sie die Seite nochmals an der richtigen Stelle hinzu.</li><li>Kontrollieren Sie die Reihenfolge vor dem Speichern.</li></ol></div></details>
+          <details><summary>Ich habe versehentlich die normale Kamera benutzt</summary><div><p>Das Foto ist noch keine sauber zugeschnittene PDF. Öffnen Sie OneDrive und starten Sie dort <strong>Scannen</strong>. Nehmen Sie das Blatt nochmals auf. So erhalten Sie Zuschnitt, Mehrseitenfunktion und PDF-Speicherung in einem Ablauf.</p></div></details>
+        </div>
+      </section>
+
+      <section class="guide-section video-section" id="guide-video" aria-labelledby="guide-video-title">
+        <div class="section-head"><div><p class="page-kicker">Freiwillige Videohilfe</p><h2 id="guide-video-title">Der Ablauf als Video</h2><p>Das deutschsprachige Video zeigt das Scanprinzip in OneDrive. Es stammt aus dem Jahr 2021; einzelne Schaltflächen können in Ihrer aktuellen App anders aussehen.</p></div><span class="guide-time">7:15 Minuten</span></div>
+        <div class="video-card" data-video-card>
+          <div class="video-placeholder">
+            <span class="video-play" aria-hidden="true">▶</span>
+            <div><strong>OneDrive – Scanfunktion</strong><p>Externe Videohilfe von nteam GmbH auf YouTube. Das Video wird erst nach Ihrem Klick geladen.</p></div>
+            <button class="button primary" type="button" data-load-video="rVngXdqdRf8">Video laden</button>
+          </div>
+        </div>
+        <div class="video-watch"><strong>Achten Sie im Video auf diese vier Punkte:</strong><ol><li>Wo der Scan gestartet wird</li><li>wie die Ränder zugeschnitten werden</li><li>wie mehrere Seiten hinzugefügt werden</li><li>wo die PDF gespeichert wird</li></ol></div>
+      </section>
+
+      <section class="guide-sources panel" aria-labelledby="guide-sources-title">
+        <div><p class="page-kicker">Grundlage des Guides</p><h2 id="guide-sources-title">Quellen und Stand</h2><p>Geprüft im September 2026. Die Anleitung folgt der aktuellen OneDrive-Scanlogik. Microsoft kann Bezeichnungen und Positionen in der App verändern.</p></div>
+        <ul><li><a href="https://www.microsoft.com/de-de/microsoft-365/onedrive/document-scanning" target="_blank" rel="noopener noreferrer">Microsoft: Dokumente mit OneDrive scannen und ablegen</a></li><li><a href="https://support.microsoft.com/en-us/office/scan-a-whiteboard-document-business-card-or-photo-in-onedrive-for-android-991b20ea-3187-46c0-9916-cc7b24a7c6e8" target="_blank" rel="noopener noreferrer">Microsoft Support: OneDrive-Scanner für Android</a> <span>(englische Detailanleitung)</span></li><li><a href="https://www.youtube.com/watch?v=rVngXdqdRf8" target="_blank" rel="noopener noreferrer">nteam GmbH: OneDrive – Scanfunktion</a> <span>(deutschsprachiges Praxisvideo, 2021)</span></li></ul>
+      </section>
+
+      <section class="guide-finish">
+        <div><p class="page-kicker">Jetzt anwenden</p><h2>Bereit für den ersten Scan?</h2><p>Starten Sie bei Auftrag 1. Der Guide bleibt über die Hauptnavigation jederzeit erreichbar.</p></div><a class="button primary button-link" href="scannen.html#auftrag-1" data-module-open="scan">Scan-Workshop starten →</a>
+      </section>
     </section>
 
     <section class="view" data-view="training" hidden aria-labelledby="training-title">
@@ -127,6 +237,7 @@
     </section>
   </main>
   <footer class="site-footer">BFF Bern · GS1 · Informatik · Schuljahr 2026/27</footer>
+  <div class="guide-lightbox" id="guideLightbox" role="dialog" aria-modal="true" aria-labelledby="guideLightboxTitle" hidden><div class="guide-lightbox-bar"><button type="button" data-guide-lightbox-close>← Zurück zum Guide</button><strong id="guideLightboxTitle">Abbildung</strong></div><div class="guide-lightbox-stage"><img alt=""></div></div>
   <div class="toast" id="portalToast" role="status" aria-live="polite" hidden></div>
 </body>
 </html>

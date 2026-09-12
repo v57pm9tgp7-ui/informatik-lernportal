@@ -4,7 +4,7 @@
   const map=page.includes('onenote')?{id:'onenote',name:'OneNote',area:'Woche 37',route:'woche-37',nav:'wochen',week:'37'}:page.includes('scannen')?{id:'scan',name:'Scannen mit OneDrive',area:'Woche 38',route:'woche-38',nav:'wochen',week:'38'}:{id:'digipen',name:'DigiPen',area:'Woche 38',route:'woche-38',nav:'wochen',week:'38'};
   const read=()=>{try{return JSON.parse(localStorage.getItem(UI_KEY)||'{}')}catch{return {}}};
   const save=p=>{try{localStorage.setItem(UI_KEY,JSON.stringify({...read(),...p,version:1,updatedAt:new Date().toISOString()}))}catch{}};
-  const links=[['start','Start'],['wochen','Wochen'],['training','Training'],['fortschritt','Fortschritt']];
+  const links=[['start','Start'],['wochen','Wochen'],['scan-guide','Scan-Guide'],['training','Training'],['fortschritt','Fortschritt']];
   const maxTask=map.id==='onenote'?12:9;
   function markup(){const nav=links.map(([id,label])=>`<a href="index.html#${id}" ${id===map.nav?'aria-current="page"':''}>${label}</a>`).join('');return `<a class="portal-shell-skip" href="#workshop-main">Zum Inhalt springen</a><header class="portal-shell-header"><div class="portal-shell-inner"><a class="portal-shell-brand" href="index.html#start"><span class="portal-shell-mark">IT</span><span>Informatik<small>Unterricht bei Herrn Marti</small></span></a><nav class="portal-shell-nav" aria-label="Hauptnavigation">${nav}</nav><details class="portal-shell-menu"><summary>Menü</summary><div>${nav}</div></details><button class="portal-shell-font" type="button" data-portal-font aria-pressed="false" title="Schrift deutlich vergrössern">A+</button></div></header>`}
   function routeKey(){return location.pathname+location.hash}

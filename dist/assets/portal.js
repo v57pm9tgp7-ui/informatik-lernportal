@@ -1,7 +1,7 @@
 (function(){'use strict';
   const UI_KEY='informatikPortal_ui_v1';
   const KEYS={onenote:'onenoteWorkshopGS1_student_v3',digipen:'digitalArbeiten_digipen_v1',scan:'digitalArbeiten_scannen_v1'};
-  const views=['start','wochen','woche-37','woche-38','training','fortschritt'];
+  const views=['start','wochen','woche-37','woche-38','scan-guide','training','fortschritt'];
   const $=(s,r=document)=>r.querySelector(s);const $$=(s,r=document)=>[...r.querySelectorAll(s)];
   function read(key){try{return JSON.parse(localStorage.getItem(key)||'{}')}catch{return {}}}
   function write(key,value){try{localStorage.setItem(key,JSON.stringify(value));return true}catch{return false}}
@@ -48,7 +48,7 @@
   function showView(){
     const view=currentView();$$('[data-view]').forEach(el=>{const active=el.dataset.view===view;el.hidden=!active;el.classList.toggle('is-active',active)});
     const navView=view.startsWith('woche-')?'wochen':view;$$('[data-nav]').forEach(a=>a.setAttribute('aria-current',a.dataset.nav===navView?'page':'false'));
-    document.title=(view==='start'?'Informatik · Herr Marti':({wochen:'Wochen','woche-37':'Woche 37','woche-38':'Woche 38',training:'Training',fortschritt:'Fortschritt'}[view]+' · Informatik'));
+    document.title=(view==='start'?'Informatik · Herr Marti':({wochen:'Wochen','woche-37':'Woche 37','woche-38':'Woche 38','scan-guide':'Scan-Guide',training:'Training',fortschritt:'Fortschritt'}[view]+' · Informatik'));
     const y=Number(sessionStorage.getItem('portalScroll:'+view)||0);requestAnimationFrame(()=>scrollTo(0,y));
     const menu=$('.mobile-nav');if(menu)menu.open=false;
   }
@@ -72,6 +72,14 @@
       updateDashboard();toast(`OneNote-Stand übernommen: ${merged.doneTasks.length} von 12 Aufträgen erledigt.`);
     }catch{toast('Diese OneNote-Sicherung kann nicht gelesen werden.')}};reader.readAsText(file)
   }
+  function setupGuide(){
+    $$('[data-guide-jump]').forEach(button=>button.addEventListener('click',()=>document.getElementById(button.dataset.guideJump)?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})));
+    $$('[data-load-video]').forEach(button=>button.addEventListener('click',()=>{const card=button.closest('[data-video-card]'),id=button.dataset.loadVideo;if(!card||!id)return;card.innerHTML=`<div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?rel=0" title="OneDrive – Scanfunktion: deutschsprachige Videohilfe" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>`;toast('Video geladen')}));
+    const box=$('#guideLightbox'),image=box?.querySelector('img'),title=$('#guideLightboxTitle'),closeButton=box?.querySelector('[data-guide-lightbox-close]');let returnFocus=null;
+    function close(){if(!box||box.hidden)return;box.hidden=true;document.body.classList.remove('guide-modal-open');image?.removeAttribute('src');returnFocus?.focus();returnFocus=null}
+    function open(button){const source=button.dataset.guideImage,alt=$('img',button)?.alt||'Vergrösserte Abbildung';if(!box||!image||!source)return;returnFocus=button;image.src=source;image.alt=alt;if(title)title.textContent=alt;box.hidden=false;document.body.classList.add('guide-modal-open');closeButton?.focus()}
+    $$('[data-guide-image]').forEach(button=>button.addEventListener('click',()=>open(button)));closeButton?.addEventListener('click',close);box?.addEventListener('click',event=>{if(event.target===box||event.target.classList.contains('guide-lightbox-stage'))close()});document.addEventListener('keydown',event=>{if(box?.hidden)return;if(event.key==='Escape')close();if(event.key==='Tab'){event.preventDefault();closeButton?.focus()}});window.addEventListener('hashchange',close);
+  }
   document.addEventListener('click',e=>{const open=e.target.closest('[data-module-open]');if(open){saveUi({lastModule:open.dataset.moduleOpen,lastRoute:open.getAttribute('href')})}});
   window.addEventListener('scroll',()=>{clearTimeout(window.__portalScrollTimer);window.__portalScrollTimer=setTimeout(()=>sessionStorage.setItem('portalScroll:'+currentView(),String(scrollY)),100)},{passive:true});
   window.addEventListener('hashchange',showView);
@@ -80,5 +88,6 @@
     $$('[data-font-toggle]').forEach(b=>b.addEventListener('click',()=>setLarge(!document.documentElement.classList.contains('portal-large'))));
     $('#exportAll')?.addEventListener('click',exportAll);$('#importAllButton')?.addEventListener('click',()=>$('#importAll')?.click());$('#importAll')?.addEventListener('change',e=>{const f=e.target.files?.[0];if(f)importAll(f);e.target.value=''});
     $('#importOneNoteButton')?.addEventListener('click',()=>$('#importOneNote')?.click());$('#importOneNote')?.addEventListener('change',e=>{const f=e.target.files?.[0];if(f)importOneNote(f);e.target.value=''});
+    setupGuide();
   });
 })();

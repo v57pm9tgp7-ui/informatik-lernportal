@@ -1,6 +1,6 @@
 # Informatik-Lernportal
 
-Version 1.5.0 · Startseite, Wochenansichten und überarbeitete Workshops · Schuljahr 2026/27
+Version 1.6.0 · OneDrive-Scan-Guide, Wochenansichten und überarbeitete Workshops · Schuljahr 2026/27
 
 Statische Lernumgebung für den Informatikunterricht der GS1 an der BFF Bern. Die visuelle Leitidee lautet **«Ruhiger digitaler Arbeitsplatz»**: eine professionelle Arbeitsoberfläche mit klaren Wegen zu Wochen, Training und Fortschritt.
 
@@ -11,6 +11,10 @@ Statische Lernumgebung für den Informatikunterricht der GS1 an der BFF Bern. Di
 - Wochenübersicht mit Woche 37 und Woche 38
 - Unterrichtseinheit «DigiPen sinnvoll nutzen»
 - Unterrichtseinheit «Scannen mit OneDrive»
+- eigener OneDrive-Scan-Guide vom Schulkonto bis zur kontrollierten PDF
+- sechs vergrösserbare, eigens erstellte Schrittgrafiken für die aktuelle Scanlogik
+- deutschsprachige Videohilfe, die erst nach einem bewussten Klick geladen wird
+- genaue Fehlerhilfe für Kamera, Randerkennung, Licht, Speicherort und Synchronisation
 - je fünf Pflicht- und vier freiwillige Zusatzaufträge für DigiPen und Scannen
 - gestufte Hilfe zu jedem Auftrag mit Startweg, Problemlösungen und Ersatzwegen
 - OneNote Workshop ausschliesslich in Woche 37
@@ -74,7 +78,19 @@ npm test
 
 Der Test kontrolliert Einstiegspunkte, lokale Verknüpfungen, eindeutige IDs, JavaScript-Syntax, Navigation, Speicherschlüssel, Fortschrittszählung, Rückkehrzustand, Schriftvergrösserung und offensichtliche Zugangsdaten.
 
-Die Tests prüfen zusätzlich die getrennten Wochenansichten, den OneNote-Import, alle Hilfen, die DigiPen-Abschlussübersicht, die Screenshot-Vergrösserung und die eindeutigen Scan-Speicherorte.
+Die Tests prüfen zusätzlich die getrennten Wochenansichten, den OneNote-Import, alle Hilfen, die DigiPen-Abschlussübersicht, die Screenshot-Vergrösserung, den Scan-Guide, seine sechs lokalen Grafiken, die verzögerte Videoladung und die eindeutigen Scan-Speicherorte.
+
+## Änderungen in Version 1.6.0
+
+- Scan-Guide als eigener, frei erreichbarer Bereich in der Hauptnavigation ergänzt
+- vollständigen Ablauf vom richtigen Schulkonto über Ordner, Aufnahme und Bearbeitung bis zur kontrollierten PDF erklärt
+- sechs ruhige und einheitliche Schrittgrafiken mit vergrösserbarer Ansicht und zuverlässiger Rückkehr eingebaut
+- Speicherwege für PDF, Webseitendaten, OneNote und Teams klar voneinander abgegrenzt
+- acht konkrete Problemlösungen für typische Fehler ergänzt
+- deutschsprachiges OneDrive-Praxisvideo datensparsam als freiwillige Hilfe eingebunden
+- Guide aus Woche 38, Scan-Workshop und jeder Auftragshilfe direkt erreichbar gemacht
+- mobile Navigation und Scan-Kopfzeile für kleine Bildschirme angepasst
+- deutsche Microsoft-Seite und Microsoft-Support als fachliche Grundlage im Guide ausgewiesen
 
 ## Änderungen in Version 1.5.0
 
