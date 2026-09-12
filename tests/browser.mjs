@@ -31,6 +31,10 @@ assert.equal(await page.locator('[data-home-task-list="digipen"] .home-task-row'
 assert.equal(await page.locator('[data-home-task-list="scan"] .home-task-row').count(),8);
 assert.match(await page.locator('[data-home-summary="onenote"]').textContent(),/2 von 10 Grundaufträgen/);
 assert.match(await page.locator('[data-home-task-list="onenote"] .home-task-row').nth(2).textContent(),/In Arbeit/);
+assert.ok(await page.locator('[data-home-task-list="onenote"] .home-task-row').first().evaluate(element=>element.classList.contains('is-required')));
+assert.match(await page.locator('[data-home-task-list="onenote"] .home-task-row').first().textContent(),/Pflicht/);
+assert.ok(await page.locator('[data-home-task-list="onenote"] .home-task-row').nth(10).evaluate(element=>element.classList.contains('is-optional')));
+assert.match(await page.locator('[data-home-task-list="onenote"] .home-task-row').nth(10).textContent(),/Zusatz/);
 assert.ok(await page.locator('[data-home-transition="digipen"]').evaluate(element=>element.classList.contains('is-ready')));
 assert.equal(await page.locator('[data-transition-state="digipen"]').textContent(),'Wechsel möglich');
 assert.equal(await page.locator('[data-transition-link="digipen"]').getAttribute('href'),'scannen.html#auftrag-1');

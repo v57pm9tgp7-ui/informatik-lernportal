@@ -54,12 +54,18 @@
           <div>
             <p class="page-kicker">Ihr Arbeitsstand</p>
             <h2 id="home-progress-title">Was ist schon erledigt?</h2>
-            <p>Öffnen Sie einen Auftrag direkt. Grün bedeutet erledigt, Gelb bedeutet begonnen.</p>
+            <p>Öffnen Sie einen Auftrag direkt. Die Farbe zeigt die Auftragsart, der Status steht jeweils rechts.</p>
           </div>
-          <div class="home-progress-legend" aria-label="Bedeutung der Statusanzeigen">
-            <span><i class="legend-dot open" aria-hidden="true"></i>Offen</span>
-            <span><i class="legend-dot working" aria-hidden="true"></i>In Arbeit</span>
-            <span><i class="legend-dot done" aria-hidden="true">✓</i>Erledigt</span>
+          <div class="home-progress-keys">
+            <div class="home-kind-legend" aria-label="Bedeutung der Auftragsfarben">
+              <span class="legend-kind required">Pflichtauftrag</span>
+              <span class="legend-kind optional">Zusatzauftrag</span>
+            </div>
+            <div class="home-progress-legend" aria-label="Bedeutung der Statusanzeigen">
+              <span><i class="legend-dot open" aria-hidden="true"></i>Offen</span>
+              <span><i class="legend-dot working" aria-hidden="true"></i>In Arbeit</span>
+              <span><i class="legend-dot done" aria-hidden="true">✓</i>Erledigt</span>
+            </div>
           </div>
         </div>
 

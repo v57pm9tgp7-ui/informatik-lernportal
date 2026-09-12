@@ -1,6 +1,6 @@
 # Informatik-Lernportal
 
-Version 1.8.0 · Dreispaltige Kurzübersicht auf der Startseite · Schuljahr 2026/27
+Version 1.9.0 · Deutliche Kennzeichnung von Pflicht und Zusatz · Schuljahr 2026/27
 
 Statische Lernumgebung für den Informatikunterricht der GS1 an der BFF Bern. Die visuelle Leitidee lautet **«Ruhiger digitaler Arbeitsplatz»**: eine professionelle Arbeitsoberfläche mit klaren Wegen zu Wochen, Training und Fortschritt.
 
@@ -87,6 +87,14 @@ Für die browsergestützten Prüfungen muss Playwright mit Chromium installiert 
 ```bash
 npm run test:browser
 ```
+
+## Änderungen in Version 1.9.0
+
+- Pflichtaufträge in der Kurzübersicht deutlich hellblau hinterlegt und mit «Pflicht» beschriftet
+- Zusatzaufträge deutlich violett hinterlegt und mit «Zusatz» beschriftet
+- farbige Legende für beide Auftragsarten direkt über der Übersicht ergänzt
+- Bearbeitungsstatus weiterhin separat als «Offen», «In Arbeit» oder «Erledigt» dargestellt
+- Kennzeichnung für Smartphone, grosse Schrift und Tastaturbedienung geprüft
 
 ## Änderungen in Version 1.8.0
 

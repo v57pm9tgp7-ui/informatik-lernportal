@@ -49,8 +49,8 @@
       const summary=$(`[data-home-summary="${track}"]`);if(summary)summary.textContent=`${requiredDone} von ${config.required.length} ${config.summaryWord} erledigt · ${optionalDone} von ${config.optional.length} Zusatzaufträgen`;
       const bar=$(`[data-home-bar="${track}"]`);if(bar)bar.style.width=Math.round(requiredDone/config.required.length*100)+'%';
       const list=$(`[data-home-task-list="${track}"]`);if(list)list.innerHTML=config.tasks.map(([id,title,number=id])=>{
-        const status=homeTaskState(track,id,raw),statusText=status==='done'?'Erledigt':status==='working'?'In Arbeit':'Offen',extra=optional.has(id)?'<small>Zusatz</small>':'';
-        return `<li><a class="home-task-row is-${status}" href="${taskHref(track,id)}" data-module-open="${track}"><span class="home-task-number">${number}</span><span class="home-task-name">${title}${extra}</span><span class="home-task-state">${statusText}</span></a></li>`;
+        const status=homeTaskState(track,id,raw),statusText=status==='done'?'Erledigt':status==='working'?'In Arbeit':'Offen',kind=optional.has(id)?'optional':'required',kindText=kind==='optional'?'Zusatz':'Pflicht';
+        return `<li><a class="home-task-row is-${kind} is-${status}" href="${taskHref(track,id)}" data-module-open="${track}" data-task-kind="${kind}"><span class="home-task-number">${number}</span><span class="home-task-name"><span>${title}</span><small class="home-task-kind ${kind}">${kindText}</small></span><span class="home-task-state">${statusText}</span></a></li>`;
       }).join('');
       const transition=$(`[data-home-transition="${track}"]`),transitionState=$(`[data-transition-state="${track}"]`),transitionLink=$(`[data-transition-link="${track}"]`);
       transition?.classList.toggle('is-ready',ready);if(transitionState)transitionState.textContent=ready?'Wechsel möglich':`${config.required.length-requiredDone} offen`;
