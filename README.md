@@ -1,16 +1,18 @@
 # Informatik-Lernportal
 
-Version 1.0.0 · Grundstruktur für das Schuljahr 2026/27
+Version 1.3.0 · Ausgefülltes OneNote-Demo · Schuljahr 2026/27
 
 Statische Lernumgebung für den Informatikunterricht der GS1 an der BFF Bern. Die visuelle Leitidee lautet **«Digitales Werkstattbuch»**: eine ruhige, professionelle Arbeitsoberfläche mit klaren Wegen zu Woche, Grundlagen, Training und Fortschritt.
 
 ## Enthalten
 
 - Startseite mit direktem Wiedereinstieg
-- Wochenübersicht mit Woche 38
+- Wochenübersicht mit Woche 37 und Woche 38
 - Unterrichtseinheit «DigiPen sinnvoll nutzen»
 - Unterrichtseinheit «Scannen mit OneDrive»
-- Grundlagen-Workshop «OneNote clever nutzen»
+- OneNote Workshop in Woche 37 und weiterhin als Grundlage erreichbar
+- sicherer Import des bisherigen OneNote-Arbeitsstands aus einer JSON-Sicherung
+- echte Screenshots aus dem anonymen OneNote-Demo-Notizbuch als vergrösserbare Orientierungshilfen
 - kompakter Trainingsbereich mit vorhandenen Wiederholungsaufträgen
 - gemeinsame Fortschrittsansicht mit Sicherung und Wiederherstellung
 - freie Navigation, Browser-Zurück und Rückkehr zum zuletzt bearbeiteten Auftrag
@@ -71,6 +73,27 @@ Der Test kontrolliert Einstiegspunkte, lokale Verknüpfungen, eindeutige IDs, Ja
 
 Zusätzlich wurde die Website in einem echten Browser auf Navigation, Eingabespeicherung, Browser-Zurück, Auftragswechsel, grosse Schrift und die gemeinsamen Workshop-Kopfzeilen geprüft.
 
+## Änderungen in Version 1.3.0
+
+- anonymes Demo-Notizbuch mit Abschnitt «Workshop» und fünf realistischen Seiten eingerichtet
+- Beispielprodukte für eine Startseite, einen Stift-Test sowie eine Link- und To-do-Seite erstellt
+- bisherige leere Ansichten durch aussagekräftige Screenshots der ausgefüllten Demoseiten ersetzt
+- zusätzliche Orientierungshilfen bei den Aufträgen 3 und 7 ergänzt
+
+## Änderungen in Version 1.2.0
+
+- echte Screenshots der aktuellen OneNote-Weboberfläche bei den Aufträgen 1, 2, 5, 6 und 9 ergänzt
+- Bilder für Notizbuchnavigation, «Einfügen» und «Zeichnen» zugeschnitten und vergrösserbar eingebunden
+- Unterschiede zwischen Webversion und installierter OneNote-App dort kenntlich gemacht, wo sie den Auftrag beeinflussen können
+
+## Änderungen in Version 1.1.0
+
+- OneNote Workshop der Woche 37 zugeordnet und zusätzlich unter «Grundlagen» belassen
+- Auftrag 1 an das bereits vorbereitete Notizbuch `OneNote Workshop [Vorname] [Nachname]` angepasst
+- Import einer bisherigen OneNote-JSON-Sicherung ergänzt
+- Import führt alte und vorhandene Angaben zusammen, ohne bestehende Notizen und Häkchen zu überschreiben
+- automatische Prüfungen für Woche 37, Notizbuchname und OneNote-Import ergänzt
+
 ## Änderungen in Version 1.0.0
 
 - bisherige Einzeldateien zu einer gemeinsamen Lernumgebung verbunden
@@ -81,4 +104,3 @@ Zusätzlich wurde die Website in einem echten Browser auf Navigation, Eingabespe
 - bestehende Speichermechanismen unverändert weiterverwendet
 - gemeinsame Sicherung aller drei Lernbereiche ergänzt
 - Lesbarkeit, Tastaturbedienung, responsive Darstellung und Druckansicht verbessert
-

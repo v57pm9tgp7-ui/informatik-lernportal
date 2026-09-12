@@ -42,6 +42,7 @@
     if(continueText)continueText.textContent=next.done>=next.total?'Die Pflichtaufträge sind abgeschlossen. Wählen Sie eine freiwillige Vertiefung.':`Weiter mit Auftrag ${next.last}. Ihr bisheriger Arbeitsstand bleibt erhalten.`;
     if(continueLink){continueLink.href=moduleHref(id,next);continueLink.dataset.moduleOpen=id}
     const weekDone=s.digipen.done+s.scan.done,weekTotal=10;$$('[data-week-progress]').forEach(el=>el.textContent=`${weekDone} von ${weekTotal} Pflichtaufträgen`);$$('[data-week-percent]').forEach(el=>el.textContent=Math.round(weekDone/weekTotal*100)+'%');
+    $$('[data-week37-progress]').forEach(el=>el.textContent=`${s.onenote.done} von ${s.onenote.total} Aufträgen`);$$('[data-week37-percent]').forEach(el=>el.textContent=percent(s.onenote)+'%');
   }
   function currentView(){const hash=location.hash.replace('#','');return views.includes(hash)?hash:'start'}
   function showView(){
@@ -54,6 +55,22 @@
   function setLarge(on){document.documentElement.classList.toggle('portal-large',on);$$('[data-font-toggle]').forEach(b=>{b.setAttribute('aria-pressed',String(on));b.title=on?'Normale Schrift verwenden':'Schrift deutlich vergrössern';b.textContent=on?'A−':'A+'});saveUi({largeText:on});toast(on?'Grosse Schrift eingeschaltet':'Normale Schrift eingeschaltet')}
   function exportAll(){const payload={type:'informatik-lernportal-backup',version:1,createdAt:new Date().toISOString(),stores:{}};Object.values(KEYS).forEach(k=>payload.stores[k]=read(k));payload.stores[UI_KEY]=ui();const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));a.download='Informatik-Lernportal-Fortschritt.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast('Sicherung erstellt')}
   function importAll(file){const reader=new FileReader();reader.onload=()=>{try{const p=JSON.parse(reader.result);if(p.type!=='informatik-lernportal-backup'||!p.stores)throw new Error();for(const key of [...Object.values(KEYS),UI_KEY])if(Object.prototype.hasOwnProperty.call(p.stores,key)&&typeof p.stores[key]==='object')write(key,p.stores[key]);updateDashboard();setLarge(Boolean(ui().largeText));toast('Sicherung geladen')}catch{toast('Diese Sicherung kann nicht gelesen werden.')}};reader.readAsText(file)}
+  function importOneNote(file){
+    const reader=new FileReader();reader.onload=()=>{try{
+      const incoming=JSON.parse(reader.result);
+      const recognisable=incoming&&typeof incoming==='object'&&!incoming.stores&&(incoming.workshop==='OneNote Workshop GS1'||Array.isArray(incoming.doneTasks))&&incoming.checks&&typeof incoming.checks==='object'&&incoming.notes&&typeof incoming.notes==='object';
+      if(!recognisable)throw new Error();
+      const current=read(KEYS.onenote);
+      const cleanDone=list=>[...new Set((Array.isArray(list)?list:[]).map(Number).filter(n=>Number.isInteger(n)&&n>=1&&n<=12))].sort((a,b)=>a-b);
+      const importedChecks=Object.fromEntries(Object.entries(incoming.checks).filter(([,v])=>typeof v==='boolean'));
+      const currentChecks=current.checks&&typeof current.checks==='object'?current.checks:{};
+      const importedNotes=Object.fromEntries(Object.entries(incoming.notes).filter(([,v])=>typeof v==='string'));
+      const currentNotes=current.notes&&typeof current.notes==='object'?current.notes:{};
+      const merged={version:3,doneTasks:cleanDone([...(incoming.doneTasks||[]),...(current.doneTasks||[])]),checks:{...importedChecks,...currentChecks},notes:{...importedNotes,...currentNotes},lastTask:Number(current.lastTask)||Number(incoming.lastTask)||1,updatedAt:new Date().toISOString()};
+      if(!write(KEYS.onenote,merged))throw new Error();
+      updateDashboard();toast(`OneNote-Stand übernommen: ${merged.doneTasks.length} von 12 Aufträgen erledigt.`);
+    }catch{toast('Diese OneNote-Sicherung kann nicht gelesen werden.')}};reader.readAsText(file)
+  }
   document.addEventListener('click',e=>{const open=e.target.closest('[data-module-open]');if(open){saveUi({lastModule:open.dataset.moduleOpen,lastRoute:open.getAttribute('href')})}});
   window.addEventListener('scroll',()=>{clearTimeout(window.__portalScrollTimer);window.__portalScrollTimer=setTimeout(()=>sessionStorage.setItem('portalScroll:'+currentView(),String(scrollY)),100)},{passive:true});
   window.addEventListener('hashchange',showView);
@@ -61,5 +78,6 @@
     updateDashboard();showView();setLarge(Boolean(ui().largeText));
     $$('[data-font-toggle]').forEach(b=>b.addEventListener('click',()=>setLarge(!document.documentElement.classList.contains('portal-large'))));
     $('#exportAll')?.addEventListener('click',exportAll);$('#importAllButton')?.addEventListener('click',()=>$('#importAll')?.click());$('#importAll')?.addEventListener('change',e=>{const f=e.target.files?.[0];if(f)importAll(f);e.target.value=''});
+    $('#importOneNoteButton')?.addEventListener('click',()=>$('#importOneNote')?.click());$('#importOneNote')?.addEventListener('change',e=>{const f=e.target.files?.[0];if(f)importOneNote(f);e.target.value=''});
   });
 })();

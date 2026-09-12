@@ -347,6 +347,13 @@
   .side-card li{margin:5px 0}
   .help-card{background:linear-gradient(160deg,var(--purple-soft),#fff);border-color:#d2badc}
   .help-card button{width:100%;margin-top:12px}
+  .ui-shot{margin:0}
+  .ui-shot-link{display:block;overflow:hidden;border:1px solid var(--line);border-radius:12px;background:#fff}
+  .ui-shot-link:focus-visible{outline:3px solid var(--purple);outline-offset:3px}
+  .ui-shot img{display:block;width:100%;height:auto}
+  .ui-shot figcaption{margin-top:9px;color:var(--ink-soft);font-size:14px;line-height:1.45}
+  .ui-shot figcaption strong{display:block;color:var(--ink);font-size:15px}
+  .ui-shot figcaption span{display:block;margin-top:4px;font-weight:800;color:var(--purple)}
   .note-label{display:block;margin-bottom:8px;font-size:15px;font-weight:900}
   .task-note{width:100%;min-height:118px;resize:vertical;border:1px solid var(--line-strong);border-radius:12px;background:#fff;padding:12px 13px;color:var(--ink);line-height:1.45}
   .note-hint{display:block;margin-top:7px;color:var(--ink-soft);font-size:12px;font-weight:700}
@@ -467,7 +474,7 @@
     .task-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
     .task-content{grid-template-columns:1fr}
     .task-side{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
-    .task-side .help-card{grid-column:1/-1}
+    .task-side .help-card,.task-side .ui-shot-card{grid-column:1/-1}
   }
   @media(max-width:700px){
     body{font-size:17px}
@@ -576,7 +583,7 @@
     </div>
 
     <div class="task-grid" id="taskGrid">
-      <button class="overview-task" type="button" data-open-task="1" data-task-card="1"><div class="overview-task-top"><span class="overview-number">1</span><span class="status-pill">Offen</span></div><h3>Workshop-Notizbuch</h3><p>Ein eigenes Notizbuch erstellen und sicher wiederfinden.</p><div class="overview-card-bottom"><div class="mini-progress"><span></span></div><div class="progress-caption"><span data-card-progress>0 von 5 Schritten</span><span class="card-arrow">→</span></div></div></button>
+      <button class="overview-task" type="button" data-open-task="1" data-task-card="1"><div class="overview-task-top"><span class="overview-number">1</span><span class="status-pill">Offen</span></div><h3>Workshop-Notizbuch öffnen</h3><p>Das vorbereitete Notizbuch öffnen und sicher wiederfinden.</p><div class="overview-card-bottom"><div class="mini-progress"><span></span></div><div class="progress-caption"><span data-card-progress>0 von 5 Schritten</span><span class="card-arrow">→</span></div></div></button>
       <button class="overview-task" type="button" data-open-task="2" data-task-card="2"><div class="overview-task-top"><span class="overview-number">2</span><span class="status-pill">Offen</span></div><h3>Abschnitte und Seiten</h3><p>Die Grundstruktur von OneNote verstehen und aufbauen.</p><div class="overview-card-bottom"><div class="mini-progress"><span></span></div><div class="progress-caption"><span data-card-progress>0 von 5 Schritten</span><span class="card-arrow">→</span></div></div></button>
       <button class="overview-task" type="button" data-open-task="3" data-task-card="3"><div class="overview-task-top"><span class="overview-number">3</span><span class="status-pill">Offen</span></div><h3>Text gestalten</h3><p>Schreiben, formatieren und frei auf der Seite anordnen.</p><div class="overview-card-bottom"><div class="mini-progress"><span></span></div><div class="progress-caption"><span data-card-progress>0 von 6 Schritten</span><span class="card-arrow">→</span></div></div></button>
       <button class="overview-task" type="button" data-open-task="4" data-task-card="4"><div class="overview-task-top"><span class="overview-number">4</span><span class="status-pill">Offen</span></div><h3>Text strukturieren</h3><p>Aus einem Text eine übersichtliche Lernseite machen.</p><div class="overview-card-bottom"><div class="mini-progress"><span></span></div><div class="progress-caption"><span data-card-progress>0 von 5 Schritten</span><span class="card-arrow">→</span></div></div></button>
@@ -596,21 +603,22 @@
     <div class="task-shell">
       <div class="task-topline"><button class="back-btn" type="button" data-go-overview>← Übersicht</button><span class="task-position">Auftrag 1 von 12</span></div>
       <article class="task-card">
-        <header class="task-banner"><div class="task-number">1</div><div><h1 id="task-title-1">Ihr Workshop-Notizbuch</h1><p>Ein neues Notizbuch anlegen und sicher wiederfinden.</p></div><span class="task-state-badge" data-task-state>Offen</span></header>
+        <header class="task-banner"><div class="task-number">1</div><div><h1 id="task-title-1">Ihr Workshop-Notizbuch öffnen</h1><p>Das bereits erstellte Notizbuch prüfen und sicher wiederfinden.</p></div><span class="task-state-badge" data-task-state>Offen</span></header>
         <div class="task-content">
           <section class="task-main">
-            <div class="goal-box"><div class="box-label">🎯 Ziel</div><p>Sie erstellen ein eigenes Notizbuch für diesen Workshop. Das Testnotizbuch aus der gemeinsamen Einführung dürfen Sie behalten.</p></div>
+            <div class="goal-box"><div class="box-label">🎯 Ziel</div><p>Sie öffnen das bereits vorbereitete Notizbuch und prüfen, ob Sie mit dem richtigen Schulkonto angemeldet sind.</p></div>
             <h2>So gehen Sie vor</h2>
             <div class="step-list">
               <label class="step"><input type="checkbox" data-check="t1-s1"><span class="checkmark">✓</span><span class="step-copy"><span class="step-title">Öffnen Sie die OneNote-Übersicht.</span><span class="step-detail">Bleiben Sie mit Ihrem Schulkonto angemeldet. Öffnen Sie bei Bedarf über office.com die App OneNote.</span></span></label>
-              <label class="step"><input type="checkbox" data-check="t1-s2"><span class="checkmark">✓</span><span class="step-copy"><span class="step-title">Erstellen Sie ein neues Notizbuch.</span><span class="step-detail">Suchen Sie nach «Neues Notizbuch», «Notizbuch hinzufügen» oder einem Pluszeichen.</span></span></label>
-              <label class="step"><input type="checkbox" data-check="t1-s3"><span class="checkmark">✓</span><span class="step-copy"><span class="step-title">Geben Sie einen eindeutigen Namen ein.</span><span class="step-detail">Verwenden Sie: <strong>OneNote Workshop – Vorname Nachname</strong>.</span></span></label>
-              <label class="step"><input type="checkbox" data-check="t1-s4"><span class="checkmark">✓</span><span class="step-copy"><span class="step-title">Öffnen Sie das neue Notizbuch.</span><span class="step-detail">Warten Sie, bis die leere OneNote-Arbeitsfläche sichtbar ist.</span></span></label>
+              <label class="step"><input type="checkbox" data-check="t1-s2"><span class="checkmark">✓</span><span class="step-copy"><span class="step-title">Öffnen Sie die Liste Ihrer Notizbücher.</span><span class="step-detail">Suchen Sie je nach Ansicht nach «Notizbücher», «Weitere Notizbücher» oder dem Namen des aktuell geöffneten Notizbuchs.</span></span></label>
+              <label class="step"><input type="checkbox" data-check="t1-s3"><span class="checkmark">✓</span><span class="step-copy"><span class="step-title">Wählen Sie Ihr Workshop-Notizbuch.</span><span class="step-detail">Der Name lautet: <strong>OneNote Workshop [Vorname] [Nachname]</strong>. Anstelle der Klammern stehen Ihre eigenen Namen.</span></span></label>
+              <label class="step"><input type="checkbox" data-check="t1-s4"><span class="checkmark">✓</span><span class="step-copy"><span class="step-title">Prüfen Sie Name und Konto.</span><span class="step-detail">Kontrollieren Sie, ob Ihr Vorname und Nachname stimmen und ob oben rechts Ihr Schulkonto angezeigt wird.</span></span></label>
               <label class="step"><input type="checkbox" data-check="t1-s5"><span class="checkmark">✓</span><span class="step-copy"><span class="step-title">Schliessen und öffnen Sie es einmal erneut.</span><span class="step-detail">So prüfen Sie, ob Sie wissen, wo Ihr Notizbuch gespeichert ist und wie Sie es wiederfinden.</span></span></label>
             </div>
           </section>
           <aside class="task-side">
-            <div class="side-card"><h3>Fertig, wenn …</h3><p>das Notizbuch <strong>OneNote Workshop – Vorname Nachname</strong> geöffnet ist und Sie es nach dem Schliessen wiederfinden.</p></div>
+            <div class="side-card"><h3>Fertig, wenn …</h3><p>Ihr Notizbuch <strong>OneNote Workshop [Vorname] [Nachname]</strong> geöffnet ist und Sie es nach dem Schliessen wiederfinden.</p></div>
+            <div class="side-card ui-shot-card"><figure class="ui-shot"><a class="ui-shot-link" href="assets/screenshots/onenote-workshop-beispiel.jpg" target="_blank" rel="noopener" aria-label="Screenshot des eingerichteten OneNote-Workshops vergrössern"><img src="assets/screenshots/onenote-workshop-beispiel.jpg" alt="Eingerichtetes OneNote-Demo-Notizbuch mit Abschnitt Workshop, mehreren Seiten und einer ausgefüllten Startseite"></a><figcaption><strong>So kann Ihr Workshop aussehen</strong>Links sehen Sie den Abschnitt «Workshop» und die Seiten. Rechts ist die Seite «Start» geöffnet.<span>Zum Vergrössern anklicken</span></figcaption></figure></div>
             <div class="side-card help-card"><h3>Sie finden die Schaltfläche nicht?</h3><p>Microsoft kann die Oberfläche leicht unterschiedlich anzeigen. Die Hilfe nennt Ihnen mehrere mögliche Wege.</p><button class="secondary-btn" type="button" data-open-help>Hilfe zu Auftrag 1</button></div>
             <div class="side-card"><label class="note-label" for="note-1">Meine Notiz zu diesem Auftrag</label><textarea class="task-note" id="note-1" data-note="1" placeholder="Zum Beispiel: Wo finde ich mein Notizbuch wieder?"></textarea><span class="note-hint">Wird automatisch gespeichert.</span></div>
           </aside>
@@ -636,6 +644,7 @@
         </div>
       </section><aside class="task-side">
         <div class="side-card"><h3>Fertig, wenn …</h3><p>Sie in Ihrem Notizbuch den Abschnitt <strong>Workshop</strong> und die drei korrekt benannten Seiten sehen.</p></div>
+        <div class="side-card ui-shot-card"><figure class="ui-shot"><a class="ui-shot-link" href="assets/screenshots/onenote-navigation.jpg" target="_blank" rel="noopener" aria-label="Screenshot der OneNote-Navigation vergrössern"><img src="assets/screenshots/onenote-navigation.jpg" alt="Linker Bereich von OneNote mit den Schaltflächen Abschnitt hinzufügen und Seite hinzufügen"></a><figcaption><strong>Abschnitt oder Seite?</strong>Erstellen Sie zuerst den Abschnitt und danach die Seiten.<span>Zum Vergrössern anklicken</span></figcaption></figure></div>
         <div class="side-card help-card"><h3>Orientierung verloren?</h3><p>Öffnen Sie die Hilfe. Dort finden Sie eine einfache Erklärung der drei Ebenen.</p><button class="secondary-btn" type="button" data-open-help>Hilfe zu Auftrag 2</button></div>
         <div class="side-card"><label class="note-label" for="note-2">Meine Notiz</label><textarea class="task-note" id="note-2" data-note="2" placeholder="Was ist der Unterschied zwischen Abschnitt und Seite?"></textarea><span class="note-hint">Wird automatisch gespeichert.</span></div>
       </aside></div>
@@ -658,6 +667,7 @@
       </div>
     </section><aside class="task-side">
       <div class="side-card"><h3>Fertig, wenn …</h3><p>Ihre Seite eine klare Überschrift, eine Liste, zwei Hervorhebungen und zwei getrennte Textfelder enthält.</p></div>
+      <div class="side-card ui-shot-card"><figure class="ui-shot"><a class="ui-shot-link" href="assets/screenshots/onenote-workshop-beispiel.jpg" target="_blank" rel="noopener" aria-label="Screenshot einer ausgefüllten OneNote-Seite vergrössern"><img src="assets/screenshots/onenote-workshop-beispiel.jpg" alt="OneNote-Seite mit Überschrift, Liste und Merksatz"></a><figcaption><strong>Beispiel einer einfachen Lernseite</strong>Die Überschrift, die Liste und der Merksatz sind schnell erfassbar. Erstellen Sie trotzdem Ihren eigenen Inhalt.<span>Zum Vergrössern anklicken</span></figcaption></figure></div>
       <div class="side-card help-card"><h3>Textfeld lässt sich nicht verschieben?</h3><p>In der Hilfe sehen Sie, wo Sie das Textfeld anfassen müssen.</p><button class="secondary-btn" type="button" data-open-help>Hilfe zu Auftrag 3</button></div>
       <div class="side-card"><label class="note-label" for="note-3">Meine Notiz</label><textarea class="task-note" id="note-3" data-note="3" placeholder="Welche Formatierung war neu für mich?"></textarea><span class="note-hint">Wird automatisch gespeichert.</span></div>
     </aside></div>
@@ -700,6 +710,7 @@
       <div class="warning-box"><div class="box-label">Achten Sie darauf</div><p>Die Seite soll ruhig und übersichtlich wirken. Nicht jedes Bild muss gleich gross sein – die Anordnung soll aber bewusst aussehen.</p></div>
     </section><aside class="task-side">
       <div class="side-card"><h3>Fertig, wenn …</h3><p>fünf Bilder sichtbar sind, sinnvoll angeordnet wurden und alle eine kurze Bildunterschrift besitzen.</p></div>
+      <div class="side-card ui-shot-card"><figure class="ui-shot"><a class="ui-shot-link" href="assets/screenshots/onenote-einfuegen.jpg" target="_blank" rel="noopener" aria-label="Screenshot der Registerkarte Einfügen vergrössern"><img src="assets/screenshots/onenote-einfuegen.jpg" alt="OneNote-Registerkarte Einfügen mit den Werkzeugen Tabelle, Ordner, Bild und Link einfügen"></a><figcaption><strong>Registerkarte «Einfügen»</strong>Wählen Sie «Bild», um eine Bilddatei einzufügen.<span>Zum Vergrössern anklicken</span></figcaption></figure></div>
       <div class="side-card help-card"><h3>Bild lässt sich nicht gut platzieren?</h3><p>Öffnen Sie die Hilfe für Tipps zu Grösse, Position und Bildunterschriften.</p><button class="secondary-btn" type="button" data-open-help>Hilfe zu Auftrag 5</button></div>
       <div class="side-card"><label class="note-label" for="note-5">Meine Notiz</label><textarea class="task-note" id="note-5" data-note="5" placeholder="Mein Thema oder meine Bildidee …"></textarea><span class="note-hint">Wird automatisch gespeichert.</span></div>
     </aside></div>
@@ -722,6 +733,7 @@
       <div class="warning-box"><div class="box-label">Wichtig</div><p>Eine <strong>angehängte Datei</strong> und ein <strong>Dateiausdruck</strong> sind nicht dasselbe. Für Notizen direkt auf dem Inhalt brauchen Sie den Ausdruck.</p></div>
     </section><aside class="task-side">
       <div class="side-card"><h3>Fertig, wenn …</h3><p>die einzelnen PDF-Seiten sichtbar sind und mindestens drei eigene Notizen enthalten.</p></div>
+      <div class="side-card ui-shot-card"><figure class="ui-shot"><a class="ui-shot-link" href="assets/screenshots/onenote-einfuegen.jpg" target="_blank" rel="noopener" aria-label="Screenshot der Registerkarte Einfügen vergrössern"><img src="assets/screenshots/onenote-einfuegen.jpg" alt="OneNote-Registerkarte Einfügen mit den Werkzeugen Tabelle, Ordner, Bild und Link einfügen"></a><figcaption><strong>Registerkarte «Einfügen»</strong>In der Webversion kann ein benötigtes Werkzeug fehlen. Öffnen Sie das Notizbuch dann in der OneNote-App.<span>Zum Vergrössern anklicken</span></figcaption></figure></div>
       <div class="side-card help-card"><h3>Sie sehen nur ein PDF-Symbol?</h3><p>Die Hilfe zeigt Ihnen, wie Sie statt der Anlage einen Ausdruck einfügen.</p><button class="secondary-btn" type="button" data-open-help>Hilfe zu Auftrag 6</button></div>
       <div class="side-card"><label class="note-label" for="note-6">Meine Notiz</label><textarea class="task-note" id="note-6" data-note="6" placeholder="Wo habe ich das PDF gespeichert?"></textarea><span class="note-hint">Wird automatisch gespeichert.</span></div>
     </aside></div>
@@ -743,6 +755,7 @@
       </div>
     </section><aside class="task-side">
       <div class="side-card"><h3>Fertig, wenn …</h3><p>drei Links funktionieren, vier To-dos sichtbar sind und eine Information deutlich markiert ist.</p></div>
+      <div class="side-card ui-shot-card"><figure class="ui-shot"><a class="ui-shot-link" href="assets/screenshots/onenote-links-beispiel.jpg" target="_blank" rel="noopener" aria-label="Screenshot einer Link- und To-do-Seite vergrössern"><img src="assets/screenshots/onenote-links-beispiel.jpg" alt="OneNote-Seite Nützliche Links mit drei Einträgen, Kontrollkästchen und einem wichtigen Hinweis"></a><figcaption><strong>Beispiel für eine übersichtliche Startseite</strong>Die Einträge sind kurz beschriftet und die Kontrollkästchen stehen direkt davor.<span>Zum Vergrössern anklicken</span></figcaption></figure></div>
       <div class="side-card help-card"><h3>Link oder Kontrollkästchen funktioniert nicht?</h3><p>Die Hilfe zeigt zwei einfache Wege.</p><button class="secondary-btn" type="button" data-open-help>Hilfe zu Auftrag 7</button></div>
       <div class="side-card"><label class="note-label" for="note-7">Meine Notiz</label><textarea class="task-note" id="note-7" data-note="7" placeholder="Welche drei Webseiten habe ich gewählt?"></textarea><span class="note-hint">Wird automatisch gespeichert.</span></div>
     </aside></div>
@@ -795,6 +808,7 @@
       <div class="success-box"><div class="box-label">Stopp-Regel</div><p>Verändern Sie nicht viele Einstellungen gleichzeitig. Arbeiten Sie die Hilfen der Reihe nach ab. Wenn der Stift nach Neustart, Ladekontrolle und einem Test in OneNote gar nicht reagiert, holen Sie die Lehrperson.</p></div>
     </section><aside class="task-side">
       <div class="side-card"><h3>Fertig, wenn …</h3><p>Ihre Testseite Handschrift, eine kleine Skizze und zwei unterschiedliche Stiftarten oder Strichstärken enthält.</p></div>
+      <div class="side-card ui-shot-card"><figure class="ui-shot"><a class="ui-shot-link" href="assets/screenshots/onenote-stift-test.jpg" target="_blank" rel="noopener" aria-label="Screenshot der ausgefüllten Seite Stift-Test vergrössern"><img src="assets/screenshots/onenote-stift-test.jpg" alt="OneNote-Seite Stift-Test mit gezeichneten Linien, Formen und der geöffneten Registerkarte Zeichnen"></a><figcaption><strong>Beispiel «Stift-Test»</strong>Oben stehen Lassoauswahl, Radierer, Stifte und Textmarker bereit. Testen Sie selbst verschiedene Farben und Stricharten.<span>Zum Vergrössern anklicken</span></figcaption></figure></div>
       <div class="side-card help-card"><h3>Stiftproblem noch nicht gelöst?</h3><p>Die kontextbezogene Hilfe fasst den Diagnoseweg nochmals kurz zusammen.</p><button class="secondary-btn" type="button" data-open-help>Hilfe zu Auftrag 9</button></div>
       <div class="side-card"><label class="note-label" for="note-9">Mein Stift-Test</label><textarea class="task-note" id="note-9" data-note="9" placeholder="Was funktioniert? Was funktioniert nicht? Welche LED sehe ich?"></textarea><span class="note-hint">Eine genaue Notiz hilft der Lehrperson.</span></div>
     </aside></div>
@@ -927,7 +941,7 @@
 
   const helpData = {
     0:{title:'Hilfe zur Übersicht',html:'<p>Die Übersicht zeigt alle zwölf Aufträge. <strong>Grau</strong> bedeutet offen, <strong>gelb</strong> bedeutet begonnen und <strong>grün</strong> bedeutet abgeschlossen.</p><div class="help-steps"><div class="help-step"><strong>Klicken Sie auf Auftrag 1.</strong><br>Arbeiten Sie danach mit «Weiter» von Auftrag zu Auftrag.</div><div class="help-step"><strong>Haken Sie jeden ausgeführten Schritt ab.</strong><br>So sehen Sie jederzeit, wo Sie stehen.</div><div class="help-step"><strong>Markieren Sie am Ende den ganzen Auftrag als erledigt.</strong><br>Die Übersicht aktualisiert sich automatisch.</div></div>'},
-    1:{title:'Hilfe zu Auftrag 1',html:'<p>Suchen Sie in OneNote nach einer Übersicht der Notizbücher. Je nach Ansicht heisst die Schaltfläche <strong>«Neues Notizbuch»</strong>, <strong>«Notizbuch hinzufügen»</strong> oder zeigt nur ein <strong>Pluszeichen</strong>.</p><div class="help-steps"><div class="help-step">Prüfen Sie, ob oben rechts Ihr Schulkonto angezeigt wird.</div><div class="help-step">Öffnen Sie die Liste Ihrer Notizbücher.</div><div class="help-step">Suchen Sie das Pluszeichen oder «Neu».</div><div class="help-step">Falls kein neues Notizbuch möglich ist, öffnen Sie office.com in einem neuen Browser-Tab und starten Sie OneNote erneut.</div></div>'},
+    1:{title:'Hilfe zu Auftrag 1',html:'<p>Suchen Sie in OneNote nach der Liste Ihrer Notizbücher. Je nach Ansicht öffnen Sie diese über <strong>«Notizbücher»</strong>, <strong>«Weitere Notizbücher»</strong> oder den Namen des aktuell geöffneten Notizbuchs.</p><div class="help-steps"><div class="help-step">Prüfen Sie zuerst, ob oben rechts Ihr Schulkonto angezeigt wird.</div><div class="help-step">Öffnen Sie die Liste Ihrer Notizbücher.</div><div class="help-step">Suchen Sie nach <strong>OneNote Workshop</strong> und Ihrem Namen.</div><div class="help-step">Fehlt das Notizbuch, öffnen Sie OneNote über Microsoft 365 im Browser und prüfen Sie die Liste erneut. Fragen Sie danach die Lehrperson.</div></div>'},
     2:{title:'Hilfe zu Auftrag 2',html:'<p><strong>Notizbuch</strong> ist der grosse Ordner. <strong>Abschnitt</strong> ist ein Register darin. <strong>Seite</strong> ist das einzelne Blatt, auf dem Sie schreiben.</p><p>Zum Verschieben ziehen Sie den Seitennamen mit gedrückter Maustaste an eine neue Position.</p>'},
     3:{title:'Hilfe zu Auftrag 3',html:'<p>OneNote setzt Text in frei bewegliche Textcontainer. Um einen Container zu verschieben, fahren Sie mit der Maus an seinen oberen Rand, bis ein Griff oder Rahmen sichtbar wird. Ziehen Sie dann den ganzen Container.</p><p>Falls Sie nur einzelne Wörter verschieben, haben Sie Text markiert statt den Container angefasst.</p>'},
     4:{title:'Hilfe zu Auftrag 4',html:'<p>Wenn kopierter Text unerwünschte Schriftarten oder Farben enthält, markieren Sie ihn in OneNote und verwenden Sie «Formatierung löschen» oder weisen Sie eine einheitliche Standardschrift zu.</p><p>Gliedern Sie zuerst in zwei Sinnabschnitte. Formatieren Sie erst danach Überschrift, Zwischenüberschrift und Liste.</p>'},
