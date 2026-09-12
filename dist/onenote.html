@@ -427,8 +427,8 @@
   .help-drawer.is-open{transform:none}
   .help-header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 22px;border-bottom:1px solid var(--line);background:var(--purple-deep);color:#fff}
   .help-header h2{margin:0;font-size:25px}
-  .help-close{width:42px;height:42px;border:1px solid rgba(255,255,255,.36);border-radius:12px;background:rgba(255,255,255,.09);color:#fff;font-size:25px;cursor:pointer}
-  .help-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:12px;border-bottom:1px solid var(--line);background:#fbfafc}
+  .help-close{width:auto;min-width:94px;height:42px;padding:0 12px;border:1px solid rgba(255,255,255,.36);border-radius:12px;background:rgba(255,255,255,.09);color:#fff;font-size:14px;font-weight:900;cursor:pointer}
+  .help-tabs{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;padding:12px;border-bottom:1px solid var(--line);background:#fbfafc}
   .help-tab{border:1px solid var(--line);border-radius:10px;background:#fff;padding:9px 7px;font-size:14px;font-weight:900;cursor:pointer}
   .help-tab.is-active{border-color:var(--purple);background:var(--purple-soft);color:var(--purple-dark)}
   .help-body{overflow:auto;padding:22px}
@@ -896,11 +896,10 @@
 
 <div class="help-overlay" id="helpOverlay" hidden></div>
 <aside class="help-drawer" id="helpDrawer" aria-hidden="true" aria-labelledby="helpTitle">
-  <header class="help-header"><h2 id="helpTitle">Hilfe</h2><button class="help-close" id="helpClose" type="button" aria-label="Hilfe schliessen">×</button></header>
+  <header class="help-header"><h2 id="helpTitle">Hilfe</h2><button class="help-close" id="helpClose" type="button">← Zurück</button></header>
   <nav class="help-tabs" aria-label="Hilfebereiche">
     <button class="help-tab is-active" type="button" data-help-tab="context">Dieser Auftrag</button>
     <button class="help-tab" type="button" data-help-tab="general">Allgemein</button>
-    <button class="help-tab" type="button" data-help-tab="save">Speichern</button>
   </nav>
   <div class="help-body">
     <section class="help-panel is-active" data-help-panel="context"><h3 id="contextHelpHeading">Hilfe zur Übersicht</h3><div id="contextHelpBody"></div></section>
@@ -912,18 +911,6 @@
       <details class="help-detail"><summary>Wo werden meine Notizen gespeichert?</summary><div class="detail-body">OneNote speichert Notizbücher normalerweise automatisch im Microsoft-Konto. Warten Sie bei langsamer Verbindung kurz und achten Sie auf mögliche Synchronisationshinweise.</div></details>
       <details class="help-detail"><summary>Darf ich zum nächsten Auftrag weitergehen?</summary><div class="detail-body">Arbeiten Sie die Aufträge 1–10 der Reihe nach. Markieren Sie einen Auftrag erst als erledigt, wenn die Bedingung «Fertig, wenn …» erfüllt ist.</div></details>
       <details class="help-detail"><summary>Wie komme ich zurück zur Übersicht?</summary><div class="detail-body">Klicken Sie oben links auf «Übersicht» oder auf das OneNote-Symbol in der Kopfzeile. Ihre Arbeit bleibt gespeichert.</div></details>
-    </section>
-    <section class="help-panel" data-help-panel="save">
-      <h3>Fortschritt und Notizen sichern</h3>
-      <p>Die Seite speichert Ihre Häkchen, abgeschlossenen Aufträge und Notizen automatisch im aktuellen Browser. Verwenden Sie für einen anderen Computer eine Sicherungsdatei.</p>
-      <div class="file-actions">
-        <button class="file-btn" id="exportProgress" type="button">Fortschritt als Datei sichern</button>
-        <label class="file-btn" for="importProgress">Gesicherte Datei laden</label>
-        <input type="file" id="importProgress" accept="application/json,.json" hidden>
-        <button class="danger-btn" id="resetProgress" type="button">Alle gespeicherten Angaben zurücksetzen</button>
-      </div>
-      <h4>Wichtig</h4>
-      <p>Wenn Browserdaten gelöscht werden, die HTML-Datei umbenannt/verschoben wird oder Sie einen anderen Browser benutzen, kann die automatische lokale Speicherung verloren gehen. Die Sicherungsdatei schützt davor.</p>
     </section>
   </div>
 </aside>
@@ -1138,40 +1125,6 @@
     updateOverview();
   }
 
-  function exportProgress(){
-    const payload={...state,exportedAt:new Date().toISOString(),workshop:'OneNote Workshop GS1'};
-    const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
-    const url=URL.createObjectURL(blob);
-    const a=document.createElement('a');
-    const date=new Date().toISOString().slice(0,10);
-    a.href=url;a.download=`OneNote_Workshop_GS1_Fortschritt_${date}.json`;
-    document.body.appendChild(a);a.click();a.remove();
-    setTimeout(()=>URL.revokeObjectURL(url),1000);
-    showToast('Sicherungsdatei wurde erstellt.');
-  }
-
-  function importProgress(file){
-    if(!file) return;
-    const reader=new FileReader();
-    reader.onload=()=>{
-      try{
-        const parsed=JSON.parse(String(reader.result));
-        if(!parsed || typeof parsed!=='object') throw new Error('invalid');
-        state={...cloneDefault(),...parsed,doneTasks:Array.isArray(parsed.doneTasks)?parsed.doneTasks.filter(n=>n>=1&&n<=12):[],checks:{...(parsed.checks||{})},notes:{...(parsed.notes||{})}};
-        applyStateToControls();persist();updateOverview();showToast('Gesicherter Fortschritt wurde geladen.');
-      }catch(error){ alert('Diese Datei konnte nicht als Workshop-Fortschritt gelesen werden.'); }
-      $('#importProgress').value='';
-    };
-    reader.readAsText(file);
-  }
-
-  function resetProgress(){
-    const ok=confirm('Wirklich alle Häkchen, abgeschlossenen Aufträge und Notizen löschen? Dieser Schritt kann nicht rückgängig gemacht werden.');
-    if(!ok) return;
-    state=cloneDefault();
-    applyStateToControls();persist();updateOverview();showScreen('overview');showToast('Alle gespeicherten Angaben wurden zurückgesetzt.');
-  }
-
   document.addEventListener('change',event=>{
     const input=event.target.closest('[data-check]');
     if(input){
@@ -1214,10 +1167,6 @@
   });
   window.addEventListener('popstate',routeFromHash);
   window.addEventListener('hashchange',routeFromHash);
-  $('#exportProgress').addEventListener('click',exportProgress);
-  $('#importProgress').addEventListener('change',event=>importProgress(event.target.files?.[0]));
-  $('#resetProgress').addEventListener('click',resetProgress);
-
   let touchStartX=0;
   document.addEventListener('touchstart',e=>{ if(e.touches.length===1) touchStartX=e.touches[0].clientX; },{passive:true});
   document.addEventListener('touchend',e=>{

@@ -1,7 +1,7 @@
 (function(){'use strict';
   const UI_KEY='informatikPortal_ui_v1';
   const KEYS={onenote:'onenoteWorkshopGS1_student_v3',digipen:'digitalArbeiten_digipen_v1',scan:'digitalArbeiten_scannen_v1'};
-  const views=['start','wochen','grundlagen','training','fortschritt'];
+  const views=['start','wochen','woche-37','woche-38','training','fortschritt'];
   const $=(s,r=document)=>r.querySelector(s);const $$=(s,r=document)=>[...r.querySelectorAll(s)];
   function read(key){try{return JSON.parse(localStorage.getItem(key)||'{}')}catch{return {}}}
   function write(key,value){try{localStorage.setItem(key,JSON.stringify(value));return true}catch{return false}}
@@ -46,8 +46,9 @@
   }
   function currentView(){const hash=location.hash.replace('#','');return views.includes(hash)?hash:'start'}
   function showView(){
-    const view=currentView();$$('[data-view]').forEach(el=>{const active=el.dataset.view===view;el.hidden=!active;el.classList.toggle('is-active',active)});$$('[data-nav]').forEach(a=>a.setAttribute('aria-current',a.dataset.nav===view?'page':'false'));
-    document.title=(view==='start'?'Digital arbeiten':({wochen:'Wochen',grundlagen:'Grundlagen',training:'Training',fortschritt:'Fortschritt'}[view]+' · Digital arbeiten'));
+    const view=currentView();$$('[data-view]').forEach(el=>{const active=el.dataset.view===view;el.hidden=!active;el.classList.toggle('is-active',active)});
+    const navView=view.startsWith('woche-')?'wochen':view;$$('[data-nav]').forEach(a=>a.setAttribute('aria-current',a.dataset.nav===navView?'page':'false'));
+    document.title=(view==='start'?'Informatik · Herr Marti':({wochen:'Wochen','woche-37':'Woche 37','woche-38':'Woche 38',training:'Training',fortschritt:'Fortschritt'}[view]+' · Informatik'));
     const y=Number(sessionStorage.getItem('portalScroll:'+view)||0);requestAnimationFrame(()=>scrollTo(0,y));
     const menu=$('.mobile-nav');if(menu)menu.open=false;
   }

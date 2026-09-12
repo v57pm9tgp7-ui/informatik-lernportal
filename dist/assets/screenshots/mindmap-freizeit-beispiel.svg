@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Beispiel einer Mindmap zum Thema Freizeit</title>
+  <desc id="desc">In der Mitte steht Freizeit. Vier farbige Äste führen zu Musik, Freunde, Sport und Entspannen. Jeder Ast enthält zwei konkrete Beispiele.</desc>
+  <rect width="1200" height="760" rx="32" fill="#f7fbfd"/>
+  <path d="M600 380 C470 310 365 215 250 160" fill="none" stroke="#087ea4" stroke-width="12" stroke-linecap="round"/>
+  <path d="M600 380 C730 305 845 215 960 160" fill="none" stroke="#6c3a8d" stroke-width="12" stroke-linecap="round"/>
+  <path d="M600 380 C450 445 350 535 245 605" fill="none" stroke="#087a69" stroke-width="12" stroke-linecap="round"/>
+  <path d="M600 380 C740 445 845 535 960 605" fill="none" stroke="#c26b13" stroke-width="12" stroke-linecap="round"/>
+  <rect x="455" y="305" width="290" height="150" rx="38" fill="#08243d"/>
+  <text x="600" y="395" text-anchor="middle" fill="#fff" font-family="Segoe UI,Arial,sans-serif" font-size="48" font-weight="800">FREIZEIT</text>
+  <g font-family="Segoe UI,Arial,sans-serif">
+    <rect x="90" y="70" width="330" height="180" rx="28" fill="#e4f3f8" stroke="#087ea4" stroke-width="4"/>
+    <text x="255" y="125" text-anchor="middle" fill="#075d78" font-size="35" font-weight="800">MUSIK</text>
+    <text x="125" y="178" fill="#10263a" font-size="27">• Playlist erstellen</text><text x="125" y="218" fill="#10263a" font-size="27">• Konzert besuchen</text>
+    <rect x="780" y="70" width="330" height="180" rx="28" fill="#f1eaf6" stroke="#6c3a8d" stroke-width="4"/>
+    <text x="945" y="125" text-anchor="middle" fill="#5d3179" font-size="35" font-weight="800">FREUNDE</text>
+    <text x="815" y="178" fill="#10263a" font-size="27">• Gemeinsam kochen</text><text x="815" y="218" fill="#10263a" font-size="27">• In die Stadt gehen</text>
+    <rect x="85" y="520" width="340" height="180" rx="28" fill="#e4f4f0" stroke="#087a69" stroke-width="4"/>
+    <text x="255" y="575" text-anchor="middle" fill="#087a69" font-size="35" font-weight="800">SPORT</text>
+    <text x="120" y="628" fill="#10263a" font-size="27">• Fussball</text><text x="120" y="668" fill="#10263a" font-size="27">• Fitness</text>
+    <rect x="775" y="520" width="340" height="180" rx="28" fill="#fff2d2" stroke="#c26b13" stroke-width="4"/>
+    <text x="945" y="575" text-anchor="middle" fill="#9a520b" font-size="35" font-weight="800">ENTSPANNEN</text>
+    <text x="810" y="628" fill="#10263a" font-size="27">• Serie schauen</text><text x="810" y="668" fill="#10263a" font-size="27">• Ausschlafen</text>
+  </g>
+</svg>

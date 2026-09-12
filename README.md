@@ -1,20 +1,21 @@
 # Informatik-Lernportal
 
-Version 1.4.0 · Selbstständige Workshop-Hilfen · Schuljahr 2026/27
+Version 1.5.0 · Startseite, Wochenansichten und überarbeitete Workshops · Schuljahr 2026/27
 
-Statische Lernumgebung für den Informatikunterricht der GS1 an der BFF Bern. Die visuelle Leitidee lautet **«Digitales Werkstattbuch»**: eine ruhige, professionelle Arbeitsoberfläche mit klaren Wegen zu Woche, Grundlagen, Training und Fortschritt.
+Statische Lernumgebung für den Informatikunterricht der GS1 an der BFF Bern. Die visuelle Leitidee lautet **«Ruhiger digitaler Arbeitsplatz»**: eine professionelle Arbeitsoberfläche mit klaren Wegen zu Wochen, Training und Fortschritt.
 
 ## Enthalten
 
-- Startseite mit direktem Wiedereinstieg
+- eigenständige Startseite als Arbeitsgrundlage für den Informatikunterricht bei Herrn Marti
+- direkter Einstieg in die aktuelle Woche 38
 - Wochenübersicht mit Woche 37 und Woche 38
 - Unterrichtseinheit «DigiPen sinnvoll nutzen»
 - Unterrichtseinheit «Scannen mit OneDrive»
 - je fünf Pflicht- und vier freiwillige Zusatzaufträge für DigiPen und Scannen
 - gestufte Hilfe zu jedem Auftrag mit Startweg, Problemlösungen und Ersatzwegen
-- OneNote Workshop in Woche 37 und weiterhin als Grundlage erreichbar
+- OneNote Workshop ausschliesslich in Woche 37
 - sicherer Import des bisherigen OneNote-Arbeitsstands aus einer JSON-Sicherung
-- echte Screenshots aus dem anonymen OneNote-Demo-Notizbuch als vergrösserbare Orientierungshilfen
+- echte Screenshots aus dem anonymen OneNote-Demo-Notizbuch als vergrösserbare Orientierungshilfen im Seitendialog
 - kompakter Trainingsbereich mit vorhandenen Wiederholungsaufträgen
 - gemeinsame Fortschrittsansicht mit Sicherung und Wiederherstellung
 - freie Navigation, Browser-Zurück und Rückkehr zum zuletzt bearbeiteten Auftrag
@@ -73,7 +74,24 @@ npm test
 
 Der Test kontrolliert Einstiegspunkte, lokale Verknüpfungen, eindeutige IDs, JavaScript-Syntax, Navigation, Speicherschlüssel, Fortschrittszählung, Rückkehrzustand, Schriftvergrösserung und offensichtliche Zugangsdaten.
 
-Zusätzlich wurde die Website in einem echten Browser auf Navigation, Eingabespeicherung, Browser-Zurück, Auftragswechsel, grosse Schrift und die gemeinsamen Workshop-Kopfzeilen geprüft.
+Die Tests prüfen zusätzlich die getrennten Wochenansichten, den OneNote-Import, alle Hilfen, die DigiPen-Abschlussübersicht, die Screenshot-Vergrösserung und die eindeutigen Scan-Speicherorte.
+
+## Änderungen in Version 1.5.0
+
+- professionelle Startseite mit direktem Menü für Woche 38 neu gestaltet
+- Woche 37 und Woche 38 als vollständig getrennte Ansichten umgesetzt
+- genauen Importweg aus der bisherigen OneNote-HTML-Datei im Ordner `Dokumente` ergänzt
+- Screenshot-Vergrösserung in einen Dialog auf derselben Seite verlegt; Rückkehr und Fokus bleiben erhalten
+- redundante Sicherungs- und Reset-Schaltflächen aus den einzelnen Workshops entfernt
+- DigiPen-Aufträge sprachlich vereinfacht und konsequent an Freizeit und Alltag ausgerichtet
+- genaue OneNote-Vorbereitung vor jedem DigiPen-Auftrag ergänzt
+- grafische Erklärung der Tastenkombination für Bildschirmfotos eingebaut
+- konkretes Mindmap-Beispiel sowie echte OneNote-Screenshots ergänzt
+- Abschlussübersicht nach DigiPen-Auftrag 9 mit direkten Wegen zu offenen Aufträgen ergänzt
+- Scan-Aufträge mit eindeutigen OneDrive-Speicherorten und klarer Abgrenzung zu OneNote, Teams und Webseite versehen
+- wenig ergiebigen Qualitätsvergleich durch eine handgeschriebene Packliste ersetzt
+- neue Zusatzaufträge: Tafelbild, Papier-Rätsel, Mini-Comic und Scan-Duell
+- Hilfen und Ersatzwege für alle Aufträge in allen drei Workshops geprüft
 
 ## Änderungen in Version 1.4.0
 
