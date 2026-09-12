@@ -1,6 +1,6 @@
 # Informatik-Lernportal
 
-Version 1.3.0 · Ausgefülltes OneNote-Demo · Schuljahr 2026/27
+Version 1.4.0 · Selbstständige Workshop-Hilfen · Schuljahr 2026/27
 
 Statische Lernumgebung für den Informatikunterricht der GS1 an der BFF Bern. Die visuelle Leitidee lautet **«Digitales Werkstattbuch»**: eine ruhige, professionelle Arbeitsoberfläche mit klaren Wegen zu Woche, Grundlagen, Training und Fortschritt.
 
@@ -10,6 +10,8 @@ Statische Lernumgebung für den Informatikunterricht der GS1 an der BFF Bern. Di
 - Wochenübersicht mit Woche 37 und Woche 38
 - Unterrichtseinheit «DigiPen sinnvoll nutzen»
 - Unterrichtseinheit «Scannen mit OneDrive»
+- je fünf Pflicht- und vier freiwillige Zusatzaufträge für DigiPen und Scannen
+- gestufte Hilfe zu jedem Auftrag mit Startweg, Problemlösungen und Ersatzwegen
 - OneNote Workshop in Woche 37 und weiterhin als Grundlage erreichbar
 - sicherer Import des bisherigen OneNote-Arbeitsstands aus einer JSON-Sicherung
 - echte Screenshots aus dem anonymen OneNote-Demo-Notizbuch als vergrösserbare Orientierungshilfen
@@ -72,6 +74,17 @@ npm test
 Der Test kontrolliert Einstiegspunkte, lokale Verknüpfungen, eindeutige IDs, JavaScript-Syntax, Navigation, Speicherschlüssel, Fortschrittszählung, Rückkehrzustand, Schriftvergrösserung und offensichtliche Zugangsdaten.
 
 Zusätzlich wurde die Website in einem echten Browser auf Navigation, Eingabespeicherung, Browser-Zurück, Auftragswechsel, grosse Schrift und die gemeinsamen Workshop-Kopfzeilen geprüft.
+
+## Änderungen in Version 1.4.0
+
+- DigiPen- und Scan-Aufträge fachlich und didaktisch überarbeitet
+- realistische Bearbeitungszeiten und eindeutige Kriterien «Fertig, wenn» ergänzt
+- vorhandenes Notizbuch «OneNote Workshop [Vorname] [Nachname]» konsequent eingebunden
+- Hilfen zu allen 18 Aufträgen als einblendbare, gestufte Problemlösung aufgebaut
+- echte OneNote-Screenshots in den DigiPen- und Transferhilfen ergänzt
+- vier freiwillige Zusatzaufträge je Workshop ergänzt; Pflichtfortschritt bleibt bei fünf Aufträgen
+- Ersatzwege für fehlende OneNote-, OCR- und Mathematikfunktionen ergänzt
+- Datenschutz, sichere Freigaben und Scanqualität stärker berücksichtigt
 
 ## Änderungen in Version 1.3.0
 

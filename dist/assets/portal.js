@@ -19,7 +19,7 @@
   function state(s){return s.done===0?'open':s.done>=s.total?'done':'working'}
   function stateText(s){return state(s)==='open'?'Offen':state(s)==='done'?'Erledigt':'In Arbeit'}
   function percent(s){return Math.round(s.done/s.total*100)}
-  function moduleHref(id,s){if(id==='onenote')return `onenote.html#auftrag-${Math.min(s.last,12)}`;return `${id==='scan'?'scannen':'digipen'}.html#auftrag-${Math.min(s.last,7)}`}
+  function moduleHref(id,s){if(id==='onenote')return `onenote.html#auftrag-${Math.min(s.last,12)}`;return `${id==='scan'?'scannen':'digipen'}.html#auftrag-${Math.min(s.last,9)}`}
   function updateModule(id,s){
     $$(`[data-module="${id}"]`).forEach(card=>{
       const label=$('[data-status]',card),bar=$('[data-progress-bar]',card),copy=$('[data-progress-copy]',card),link=$('[data-module-link]',card);
@@ -38,8 +38,8 @@
     if(!id)id=s.digipen.done<s.digipen.total?'digipen':s.scan.done<s.scan.total?'scan':s.onenote.done<s.onenote.total?'onenote':'digipen';
     const names={digipen:'DigiPen',scan:'Scannen mit OneDrive',onenote:'OneNote'};const next=s[id];
     const continueTitle=$('[data-continue-title]'),continueText=$('[data-continue-text]'),continueLink=$('[data-continue-link]');
-    if(continueTitle)continueTitle.textContent=next.done>=next.total?'Vertiefung auswählen':`${names[id]} weiterbearbeiten`;
-    if(continueText)continueText.textContent=next.done>=next.total?'Die Pflichtaufträge sind abgeschlossen. Wählen Sie eine freiwillige Vertiefung.':`Weiter mit Auftrag ${next.last}. Ihr bisheriger Arbeitsstand bleibt erhalten.`;
+    if(continueTitle)continueTitle.textContent=next.done>=next.total?'Zusatzauftrag auswählen':`${names[id]} weiterbearbeiten`;
+    if(continueText)continueText.textContent=next.done>=next.total?'Die Pflichtaufträge sind abgeschlossen. Wählen Sie freiwillig einen Zusatzauftrag.':`Weiter mit Auftrag ${next.last}. Ihr bisheriger Arbeitsstand bleibt erhalten.`;
     if(continueLink){continueLink.href=moduleHref(id,next);continueLink.dataset.moduleOpen=id}
     const weekDone=s.digipen.done+s.scan.done,weekTotal=10;$$('[data-week-progress]').forEach(el=>el.textContent=`${weekDone} von ${weekTotal} Pflichtaufträgen`);$$('[data-week-percent]').forEach(el=>el.textContent=Math.round(weekDone/weekTotal*100)+'%');
     $$('[data-week37-progress]').forEach(el=>el.textContent=`${s.onenote.done} von ${s.onenote.total} Aufträgen`);$$('[data-week37-percent]').forEach(el=>el.textContent=percent(s.onenote)+'%');

@@ -51,9 +51,12 @@ check('echte OneNote-Orientierungsbilder sind eingebunden',()=>{for(const name o
 check('OneNote-Fortschritt zählt alle 12 Aufgaben',()=>assert.match(portalJs,/onenote:\{done:count\(one\.doneTasks,1,12\),total:12/));
 check('alle bestehenden Aufträge bleiben vorhanden',()=>{
   assert.equal((oneNote.match(/class="screen task-screen"/g)||[]).length,12);
-  assert.equal((digiPen.match(/\{id:\d+,required:/g)||[]).length,7);
-  assert.equal((scan.match(/\{id:\d+,required:/g)||[]).length,7);
+  assert.equal((digiPen.match(/\{id:\d+,required:/g)||[]).length,9);
+  assert.equal((scan.match(/\{id:\d+,required:/g)||[]).length,9);
 });
+check('DigiPen und Scannen bieten Materialangaben und gestufte Hilfe zu jedem Auftrag',()=>{for(const source of [digiPen,scan]){assert.equal((source.match(/need:'<strong>Das brauchen Sie/g)||[]).length,9);assert.equal((source.match(/help:`<div class="help-stage">/g)||[]).length,9);assert.match(source,/Hilfe zu diesem Auftrag einblenden/);assert.match(source,/class="help-detail"/)}});
+check('neue Zusatzaufträge zählen nicht zum Pflichtfortschritt',()=>{for(const source of [digiPen,scan]){assert.equal((source.match(/required:true/g)||[]).length,5);assert.equal((source.match(/required:false/g)||[]).length,4)}});
+check('Schnellnavigation berücksichtigt alle neun Workshop-Aufträge',()=>{assert.match(shellJs,/const maxTask=map\.id==='onenote'\?12:9/);assert.match(portalJs,/Math\.min\(s\.last,9\)/)});
 check('bestehende Speicherschlüssel bleiben erhalten',()=>{for(const key of ['onenoteWorkshopGS1_student_v3','digitalArbeiten_digipen_v1','digitalArbeiten_scannen_v1'])assert.ok(portalJs.includes(key))});
 check('freie Navigation bleibt erhalten',()=>assert.doesNotMatch(portalJs,/locked|gesperrt|prerequisite/i));
 check('Rückkehrzustand berücksichtigt Scrollposition und Fokus',()=>{assert.match(shellJs,/portalScroll/);assert.match(shellJs,/portalFocus/);assert.match(shellJs,/selectionStart/)});
