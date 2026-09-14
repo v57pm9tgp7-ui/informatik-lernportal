@@ -1,6 +1,6 @@
 # MedienInfoLab – Informatik-Lernportal
 
-## Version 1.15 – Klassenlisten & Lehrpersonenzugang
+## Version 1.16 – Klassenlisten & Lehrpersonenzugang
 
 - 18 Lernende der **GS1B** und 19 Lernende der **GS1D** fest hinterlegt.
 - Bekannte Schulmailadressen werden automatisch der richtigen Klasse zugeordnet.
@@ -261,3 +261,8 @@ Das D1-Binding ist in `wrangler.toml` bereits vollständig eingetragen:
 - Datenbank: `mediainfolab`
 - Database ID: `4b3129c5-09a0-46e6-bc4a-8f952142af59`
 Beim Deployment über Wrangler/GitHub muss das Binding deshalb nicht zusätzlich im Dashboard angelegt werden.
+
+
+## Version 1.16 – Auftragssteuerung
+
+Im geschützten Lehrpersonenbereich lassen sich die Aufträge pro Klasse (GS1B / GS1D) als **Pflichtauftrag**, **Zusatzauftrag**, **Verborgen** oder **Abgeschlossen** steuern. Die Einstellungen werden in D1 gespeichert und von den Lernenden-Seiten automatisch übernommen. Die Pflichtfortschritte und Prozentanzeigen passen sich an die aktuelle Steuerung an. Die Tabelle `assignment_settings` wird bei Bedarf automatisch erstellt.

@@ -42,6 +42,59 @@ const ROSTER=[
 ];
 const ROSTER_BY_EMAIL=new Map(ROSTER.map(item=>[item.email,item]));
 
+const DEFAULT_ASSIGNMENTS={
+  onenote:{required:[1,2,3,4,5,6,7,8,9,10],optional:[11,12]},
+  digipen:{required:[1,2,3,4,5],optional:[6,7,8,9]},
+  scan:{required:[1,2,3,4,5,7],optional:[6,8]}
+};
+const ASSIGNMENT_STATUSES=new Set(['required','optional','hidden','completed']);
+const TRACKS=new Set(Object.keys(DEFAULT_ASSIGNMENTS));
+function defaultAssignmentStatus(track,id){
+  const d=DEFAULT_ASSIGNMENTS[track];
+  if(!d)return 'hidden';
+  return d.required.includes(Number(id))?'required':d.optional.includes(Number(id))?'optional':'hidden';
+}
+async function ensureAssignmentTable(env){
+  await env.DB.prepare(`CREATE TABLE IF NOT EXISTS assignment_settings (
+    class_name TEXT NOT NULL,
+    track TEXT NOT NULL,
+    task_id INTEGER NOT NULL,
+    status TEXT NOT NULL,
+    updated_at TEXT NOT NULL,
+    PRIMARY KEY (class_name, track, task_id)
+  )`).run();
+}
+async function assignmentMapForClass(env,className){
+  const out={};
+  for(const [track,d] of Object.entries(DEFAULT_ASSIGNMENTS)){
+    out[track]={};
+    for(const id of [...d.required,...d.optional])out[track][id]=defaultAssignmentStatus(track,id);
+  }
+  if(!env.DB||!CLASSES.has(className))return out;
+  await ensureAssignmentTable(env);
+  const result=await env.DB.prepare('SELECT track,task_id,status FROM assignment_settings WHERE class_name=?').bind(className).all();
+  for(const row of result.results||[]){
+    if(TRACKS.has(row.track)&&ASSIGNMENT_STATUSES.has(row.status))out[row.track][Number(row.task_id)]=row.status;
+  }
+  return out;
+}
+function doneIdsForTrack(progressTrack){
+  return new Set([...(progressTrack?.requiredDone||[]),...(progressTrack?.optionalDone||[])] .map(Number));
+}
+function recalcProgress(progress,settings){
+  const result={modules:{},totalDone:0,totalPossible:0};
+  for(const track of Object.keys(DEFAULT_ASSIGNMENTS)){
+    const done=doneIdsForTrack(progress?.[track]);
+    const entries=Object.entries(settings?.[track]||{});
+    const required=entries.filter(([,status])=>status==='required').map(([id])=>Number(id));
+    const completed=entries.filter(([,status])=>status==='completed').map(([id])=>Number(id));
+    const requiredDone=required.filter(id=>done.has(id)).length;
+    result.modules[track]={done:requiredDone,possible:required.length,completed:completed.length};
+    result.totalDone+=requiredDone;result.totalPossible+=required.length;
+  }
+  return result;
+}
+
 function json(data,status=200,headers={}){
   return new Response(JSON.stringify(data),{status,headers:{'content-type':'application/json; charset=utf-8','cache-control':'no-store',...headers}});
 }
@@ -123,29 +176,55 @@ async function listStudents(request,env){
   const statement='SELECT email,class_name,progress_json,onenote_done,digipen_done,scan_done,total_done,first_seen,last_seen,updated_at FROM students';
   const result=await env.DB.prepare(statement).all();
   const rows=new Map((result.results||[]).map(row=>[cleanEmail(row.email),row]));
+  const settingsByClass={GS1B:await assignmentMapForClass(env,'GS1B'),GS1D:await assignmentMapForClass(env,'GS1D')};
   const students=[];
-  for(const roster of ROSTER){
-    const row=rows.get(roster.email);rows.delete(roster.email);
-    let progress=cleanProgress({});
-    if(row){try{progress=JSON.parse(row.progress_json||'{}')}catch{}}
-    students.push({
-      email:roster.email,name:roster.name,class_name:roster.className,roster_locked:true,
-      progress,
-      onenote_done:Number(row?.onenote_done||0),digipen_done:Number(row?.digipen_done||0),scan_done:Number(row?.scan_done||0),total_done:Number(row?.total_done||0),
-      first_seen:row?.first_seen||null,last_seen:row?.last_seen||null,updated_at:row?.updated_at||null,total_possible:21
-    });
-  }
-  for(const row of rows.values()){
-    let progress=cleanProgress({});try{progress=JSON.parse(row.progress_json||'{}')}catch{}
-    students.push({...row,name:friendlyName(row.email),progress,total_possible:21,roster_locked:false});
-  }
-  const filtered=students.filter(student=>{
-    if(CLASSES.has(filter))return student.class_name===filter;
-    if(filter==='UNASSIGNED')return !student.class_name;
-    return true;
-  });
+  const build=(row,email,name,className,rosterLocked)=>{
+    let progress=cleanProgress({});if(row){try{progress=cleanProgress(JSON.parse(row.progress_json||'{}'))}catch{}}
+    const settings=settingsByClass[className]||Object.fromEntries(Object.keys(DEFAULT_ASSIGNMENTS).map(track=>[track,Object.fromEntries([...DEFAULT_ASSIGNMENTS[track].required,...DEFAULT_ASSIGNMENTS[track].optional].map(id=>[id,defaultAssignmentStatus(track,id)]))]));
+    const calc=recalcProgress(progress,settings);
+    return {email,name,class_name:className,roster_locked:rosterLocked,progress,
+      onenote_done:calc.modules.onenote.done,onenote_possible:calc.modules.onenote.possible,
+      digipen_done:calc.modules.digipen.done,digipen_possible:calc.modules.digipen.possible,
+      scan_done:calc.modules.scan.done,scan_possible:calc.modules.scan.possible,
+      total_done:calc.totalDone,total_possible:calc.totalPossible,
+      first_seen:row?.first_seen||null,last_seen:row?.last_seen||null,updated_at:row?.updated_at||null};
+  };
+  for(const roster of ROSTER){const row=rows.get(roster.email);rows.delete(roster.email);students.push(build(row,roster.email,roster.name,roster.className,true));}
+  for(const row of rows.values())students.push(build(row,row.email,friendlyName(row.email),row.class_name||null,false));
+  const filtered=students.filter(student=>CLASSES.has(filter)?student.class_name===filter:filter==='UNASSIGNED'?!student.class_name:true);
   filtered.sort((a,b)=>String(a.class_name||'ZZZ').localeCompare(String(b.class_name||'ZZZ'))||String(a.name).localeCompare(String(b.name),'de'));
   return json({ok:true,classes:[...CLASSES],teacherEmail:TEACHER_EMAIL,students:filtered,rosterCount:ROSTER.length});
+}
+async function publicAssignments(request,env){
+  if(!env.DB)return json({ok:false,error:'D1 ist noch nicht verbunden.'},503);
+  const email=cleanEmail(new URL(request.url).searchParams.get('email'));
+  const roster=ROSTER_BY_EMAIL.get(email);const className=roster?.className||null;
+  const settings=className?await assignmentMapForClass(env,className):await assignmentMapForClass(env,'GS1B');
+  return json({ok:true,className,settings});
+}
+async function teacherAssignments(request,env){
+  if(!env.DB)return json({ok:false,error:'D1 ist noch nicht verbunden.'},503);
+  const className=new URL(request.url).searchParams.get('class');
+  if(!CLASSES.has(className))return json({ok:false,error:'Bitte GS1B oder GS1D wählen.'},400);
+  return json({ok:true,className,settings:await assignmentMapForClass(env,className)});
+}
+async function updateAssignment(request,env){
+  if(!env.DB)return json({ok:false,error:'D1 ist noch nicht verbunden.'},503);
+  let body;try{body=await readJson(request)}catch{return json({ok:false,error:'Ungültige Daten.'},400)}
+  const className=String(body.className||''),track=String(body.track||''),taskId=Number(body.taskId),status=String(body.status||'');
+  if(!CLASSES.has(className)||!TRACKS.has(track)||!Number.isInteger(taskId)||!Object.prototype.hasOwnProperty.call((await assignmentMapForClass(env,className))[track],taskId)||!ASSIGNMENT_STATUSES.has(status))return json({ok:false,error:'Ungültige Auftragsangabe.'},400);
+  await ensureAssignmentTable(env);
+  const now=new Date().toISOString();
+  await env.DB.prepare(`INSERT INTO assignment_settings (class_name,track,task_id,status,updated_at) VALUES (?,?,?,?,?)
+    ON CONFLICT(class_name,track,task_id) DO UPDATE SET status=excluded.status,updated_at=excluded.updated_at`).bind(className,track,taskId,status,now).run();
+  return json({ok:true,className,track,taskId,status,updatedAt:now});
+}
+async function resetAssignments(request,env){
+  if(!env.DB)return json({ok:false,error:'D1 ist noch nicht verbunden.'},503);
+  let body;try{body=await readJson(request)}catch{return json({ok:false,error:'Ungültige Daten.'},400)}
+  const className=String(body.className||'');if(!CLASSES.has(className))return json({ok:false,error:'Unbekannte Klasse.'},400);
+  await ensureAssignmentTable(env);await env.DB.prepare('DELETE FROM assignment_settings WHERE class_name=?').bind(className).run();
+  return json({ok:true,className,settings:await assignmentMapForClass(env,className)});
 }
 async function assignClass(request,env){
   if(!env.DB)return json({ok:false,error:'D1 ist noch nicht verbunden.'},503);
@@ -177,7 +256,11 @@ export default {
   async fetch(request,env){
     const url=new URL(request.url),path=url.pathname;
     if(path==='/api/progress'&&request.method==='POST')return syncStudent(request,env);
+    if(path==='/api/assignments'&&request.method==='GET')return publicAssignments(request,env);
     if(path==='/lehrperson/api/students'&&request.method==='GET')return listStudents(request,env);
+    if(path==='/lehrperson/api/assignments'&&request.method==='GET')return teacherAssignments(request,env);
+    if(path==='/lehrperson/api/assignments'&&request.method==='POST')return updateAssignment(request,env);
+    if(path==='/lehrperson/api/assignments/reset'&&request.method==='POST')return resetAssignments(request,env);
     if(path==='/lehrperson/api/assign'&&request.method==='POST')return assignClass(request,env);
     if(path==='/lehrperson/api/remove'&&request.method==='POST')return removeStudent(request,env);
     if(path==='/lehrperson/api/health'&&request.method==='GET')return health(env);

@@ -39,6 +39,26 @@
       <button type="button" class="class-tab" data-class="ALL">Alle</button>
     </nav>
 
+
+    <section class="assignment-panel" id="assignmentPanel">
+      <div class="panel-head assignment-head">
+        <div>
+          <p class="eyebrow">Aufträge steuern</p>
+          <h2>Was sehen die Lernenden?</h2>
+          <p id="assignmentIntro">Sie steuern die Aufträge separat für GS1B und GS1D. Änderungen werden sofort gespeichert.</p>
+        </div>
+        <button id="resetAssignments" class="button secondary" type="button">Standard wiederherstellen</button>
+      </div>
+      <div class="assignment-status-legend" aria-label="Bedeutung der Auftragsarten">
+        <span><b class="dot-state required"></b><strong>Pflicht</strong> sichtbar und zählt zum Pflichtfortschritt</span>
+        <span><b class="dot-state optional"></b><strong>Zusatz</strong> sichtbar und freiwillig</span>
+        <span><b class="dot-state hidden"></b><strong>Verborgen</strong> für Lernende nicht sichtbar</span>
+        <span><b class="dot-state completed"></b><strong>Abgeschlossen</strong> bleibt sichtbar, zählt aber nicht mehr als offen</span>
+      </div>
+      <div id="assignmentClassNotice" class="assignment-class-notice" hidden>Wählen Sie GS1B oder GS1D, um Aufträge zu steuern.</div>
+      <div id="assignmentModules" class="assignment-modules"></div>
+    </section>
+
     <section class="summary-grid" aria-label="Klassenübersicht">
       <article class="summary-card"><span>Lernende</span><strong id="studentCount">0</strong><small>im gewählten Bereich</small></article>
       <article class="summary-card"><span>Heute aktiv</span><strong id="activeToday">0</strong><small>mit synchronisiertem Stand</small></article>

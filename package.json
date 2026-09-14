@@ -1,8 +1,8 @@
 {
   "name": "informatik-lernportal",
-  "version": "1.15.0",
+  "version": "1.16.0",
   "private": true,
-  "description": "MedienInfoLab mit festen Klassenlisten GS1B/GS1D, automatischer Zuordnung und Lehrpersonen-Cockpit",
+  "description": "MedienInfoLab mit zentraler Auftragssteuerung pro Klasse, festen Klassenlisten und Lehrpersonen-Cockpit",
   "scripts": {
     "dev": "node tests/serve.mjs",
     "test": "node tests/smoke.mjs",

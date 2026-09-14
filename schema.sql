@@ -13,3 +13,15 @@ CREATE TABLE IF NOT EXISTS students (
 
 CREATE INDEX IF NOT EXISTS idx_students_class ON students(class_name);
 CREATE INDEX IF NOT EXISTS idx_students_last_seen ON students(last_seen);
+
+
+CREATE TABLE IF NOT EXISTS assignment_settings (
+  class_name TEXT NOT NULL,
+  track TEXT NOT NULL,
+  task_id INTEGER NOT NULL,
+  status TEXT NOT NULL,
+  updated_at TEXT NOT NULL,
+  PRIMARY KEY (class_name, track, task_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_assignment_settings_class ON assignment_settings(class_name);

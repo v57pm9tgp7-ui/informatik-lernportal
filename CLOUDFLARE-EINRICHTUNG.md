@@ -59,3 +59,8 @@ Das D1-Binding `DB` zur Datenbank `mediainfolab` ist bereits in `wrangler.toml` 
 ## Lehrpersonen-Zugang (Version 1.15)
 
 Für `mediainfolab.com/lehrperson/*` eine Cloudflare-Access-Anwendung verwenden und als Allow-Regel ausschliesslich **christoph.marti@bffbern.ch** zulassen. Die normale Webseite akzeptiert diese Adresse ebenfalls und zeigt dann den Link **Lehrperson** in der Navigation.
+
+
+## Auftragssteuerung (ab Version 1.16)
+
+Es ist kein zusätzlicher manueller Datenbankschritt nötig. Beim ersten Öffnen der Auftragssteuerung legt der Worker die Tabelle `assignment_settings` automatisch an. Die bestehende D1-Bindung `DB` bleibt unverändert.
