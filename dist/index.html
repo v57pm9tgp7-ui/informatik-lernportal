@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="assets/student-access.css">
   <script>document.documentElement.classList.add('student-access-check')</script>
   <script defer src="assets/student-access.js"></script>
+  <script src="assets/cloud-sync.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Direkt zum Inhalt</a>
@@ -140,7 +141,7 @@
           <div class="card-progress"><div class="progress-label"><span data-progress-copy>0 von 6 erledigt</span><span>Woche 38</span></div><div class="progress-track"><span data-progress-bar></span></div><a class="card-action" href="scannen.html#auftrag-1" data-module-link data-module-open="scan">Einheit öffnen</a><a class="card-secondary" href="#scan-guide">Zuerst den Scan-Guide ansehen</a></div>
         </article>
         </div>
-        <p class="storage-note"><span aria-hidden="true">✓</span> Häkchen und Notizen werden nach jeder Änderung automatisch in diesem Browser gespeichert.</p>
+        <p class="storage-note"><span aria-hidden="true">✓</span> Häkchen und Notizen werden nach jeder Änderung in diesem Browser gespeichert. Ihr Auftragsstand wird zusätzlich für die Lehrpersonenübersicht synchronisiert; persönliche Notiztexte bleiben auf Ihrem Gerät.</p>
       </section>
     </section>
 
@@ -166,7 +167,14 @@
       <div class="module-grid one-column">
         <article class="module-card note" data-module="onenote"><div class="card-top"><span class="module-icon">N</span><span class="status" data-status>Offen</span></div><h3>OneNote Workshop</h3><p>Notizbücher ordnen, Inhalte einfügen und wichtige Werkzeuge selbstständig anwenden.</p><div class="meta-row"><span>12 Aufträge</span><span>freie Navigation</span><span>automatisch gespeichert</span></div><div class="card-progress"><div class="progress-label"><span data-progress-copy>0 von 12 erledigt</span></div><div class="progress-track"><span data-progress-bar></span></div><a class="card-action" href="onenote.html#uebersicht" data-module-link data-module-open="onenote">Workshop öffnen</a></div></article>
       </div>
-      <section class="panel import-guide" aria-labelledby="import-title"><div class="import-head"><span class="import-number" aria-hidden="true">↥</span><div><p class="page-kicker">Nur wenn Sie schon begonnen haben</p><h2 id="import-title">Bisherigen Stand übernehmen</h2></div></div><p>Ihre bisherige OneNote-Workshop-Datei liegt im Ordner <strong>Dokumente</strong>. Der Arbeitsstand steckt im Browser und muss zuerst als kleine Sicherungsdatei gespeichert werden.</p><ol class="import-steps"><li><span>1</span><div>Öffnen Sie den <strong>Datei-Explorer</strong> und danach den Ordner <strong>Dokumente</strong>.</div></li><li><span>2</span><div>Öffnen Sie dort Ihre bisherige <strong>OneNote-Workshop-HTML-Datei</strong>.</div></li><li><span>3</span><div>Wählen Sie in dieser Datei <strong>Hilfe → Speichern → Fortschritt als Datei sichern</strong>. Es wird eine JSON-Datei heruntergeladen.</div></li><li><span>4</span><div>Kehren Sie zu dieser Webseite zurück und klicken Sie unten auf <strong>Stand übernehmen</strong>.</div></li><li><span>5</span><div>Wählen Sie die eben gespeicherte JSON-Datei aus dem Ordner <strong>Downloads</strong>. Bereits vorhandene Angaben werden nicht überschrieben.</div></li></ol><div class="data-actions"><button class="button primary" id="importOneNoteButton" type="button">Stand übernehmen</button><input class="file-input" id="importOneNote" type="file" accept=".json,application/json"></div><p class="import-note"><strong>Wichtig:</strong> Wählen Sie hier nicht die HTML-Datei, sondern die daraus exportierte JSON-Datei.</p></section>
+      <section class="panel migration-card" aria-labelledby="import-title">
+        <div class="migration-card-main">
+          <div class="import-head"><span class="import-number" aria-hidden="true">↥</span><div><p class="page-kicker">Wechsel von der alten HTML-Datei</p><h2 id="import-title">Bisherigen Arbeitsstand mitnehmen</h2></div></div>
+          <p>Sie haben schon in der alten OneNote-HTML-Datei gearbeitet? Übertragen Sie Häkchen, erledigte Aufträge und eigene Notizen in wenigen Schritten auf diese Webseite.</p>
+          <div class="migration-benefits" aria-label="Was übernommen wird"><span>✓ erledigte Aufträge</span><span>✓ Häkchen</span><span>✓ eigene Notizen</span></div>
+        </div>
+        <div class="migration-card-action"><span class="migration-time">ca. 2 Minuten</span><button class="button primary migration-start" id="migrationStartButton" type="button">Arbeitsstand übertragen →</button><button class="migration-direct" id="migrationDirectButton" type="button">Ich habe die Sicherungsdatei schon</button></div>
+      </section>
     </section>
 
     <section class="view" data-view="woche-38" hidden aria-labelledby="week38-title">
@@ -299,7 +307,7 @@
     </section>
 
     <section class="view" data-view="fortschritt" hidden aria-labelledby="progress-title">
-      <p class="page-kicker">Ihre Arbeit</p><h1 class="page-title" id="progress-title">Fortschritt</h1><p class="page-lead">Sie sehen den Stand der 23 Kernaufträge und können Ihren lokalen Arbeitsstand sichern. Freiwillige Zusatzaufträge zählen nicht mit.</p>
+      <p class="page-kicker">Ihre Arbeit</p><h1 class="page-title" id="progress-title">Fortschritt</h1><p class="page-lead">Sie sehen Ihren Arbeitsstand und können eine Sicherungsdatei erstellen. Der Auftragsstatus wird zusätzlich für die Lehrpersonenübersicht synchronisiert; persönliche Notiztexte bleiben lokal.</p>
       <div class="panel progress-summary">
         <div class="progress-big" data-progress-ring><div><strong data-total-percent>0%</strong><span><span data-total-progress>0 von 23</span> Aufträgen</span></div></div>
         <div class="progress-list">
@@ -308,11 +316,52 @@
           <div class="progress-item" data-module="scan"><div><strong>Scannen</strong><small data-progress-copy>0 von 6 erledigt</small></div><a href="scannen.html#uebersicht" data-module-link data-module-open="scan">Öffnen</a></div>
         </div>
       </div>
-      <div class="panel"><h2>Gesamten Arbeitsstand sichern</h2><p>Der Fortschritt wird nur in diesem Browser gespeichert. Erstellen Sie eine Sicherungsdatei, wenn Sie das Gerät wechseln oder den Browser zurücksetzen.</p><div class="data-actions"><button class="button primary" id="exportAll" type="button">Sicherung herunterladen</button><button class="button" id="importAllButton" type="button">Sicherung laden</button><input class="file-input" id="importAll" type="file" accept=".json,application/json"></div></div>
+      <div class="panel"><h2>Gesamten Arbeitsstand sichern</h2><p>Ihre vollständigen Angaben bleiben in diesem Browser. In die Lehrpersonenübersicht gelangen nur Auftragsstatus und letzte Aktivität. Erstellen Sie zusätzlich eine Sicherungsdatei, wenn Sie das Gerät wechseln oder den Browser zurücksetzen.</p><div class="data-actions"><button class="button primary" id="exportAll" type="button">Sicherung herunterladen</button><button class="button" id="importAllButton" type="button">Sicherung laden</button><input class="file-input" id="importAll" type="file" accept=".json,application/json"></div></div>
     </section>
   </main>
   <footer class="site-footer">BFF Bern · GS1 · Informatik · Schuljahr 2026/27</footer>
   <div class="guide-lightbox" id="guideLightbox" role="dialog" aria-modal="true" aria-labelledby="guideLightboxTitle" hidden><div class="guide-lightbox-bar"><button type="button" data-guide-lightbox-close>← Zurück zum Guide</button><strong id="guideLightboxTitle">Abbildung</strong></div><div class="guide-lightbox-stage"><img alt=""></div></div>
+
+  <div class="migration-modal" id="migrationModal" role="dialog" aria-modal="true" aria-labelledby="migrationTitle" hidden>
+    <div class="migration-dialog">
+      <header class="migration-dialog-head"><div><p class="page-kicker">Arbeitsstand übertragen</p><h2 id="migrationTitle">Von der alten HTML-Datei auf die Webseite</h2></div><button class="migration-close" id="migrationClose" type="button" aria-label="Fenster schliessen">×</button></header>
+      <div class="migration-progress" aria-label="Fortschritt der Übertragung"><span data-migration-dot="1">1</span><i></i><span data-migration-dot="2">2</span><i></i><span data-migration-dot="3">3</span></div>
+      <div class="migration-body">
+        <section class="migration-step" data-migration-step="1">
+          <span class="migration-step-label">Schritt 1 von 3</span><h3>Alte HTML-Datei öffnen</h3>
+          <p>Öffnen Sie auf Ihrem Notebook die bisherige <strong>OneNote-Workshop-HTML-Datei</strong> – meist finden Sie sie im Ordner <strong>Dokumente</strong>. Öffnen Sie sie am besten im gleichen Browser wie bisher.</p>
+          <div class="migration-check-card"><strong>Sehen Sie dort Ihre bisherigen Häkchen und erledigten Aufträge?</strong><p>Dann ist Ihr Arbeitsstand noch vorhanden und kann exportiert werden.</p></div>
+          <div class="migration-actions"><button class="button primary" type="button" data-migration-next="2">Ja, mein Stand ist sichtbar →</button><button class="button" type="button" id="migrationMissingProgress">Nein, ich sehe meinen Stand nicht</button></div>
+          <div class="migration-help" id="migrationMissingHelp" hidden><strong>Dann bitte noch nichts importieren.</strong><p>Prüfen Sie, ob Sie wirklich dieselbe HTML-Datei am selben Speicherort und im gleichen Browser geöffnet haben. Der alte Arbeitsstand liegt im Browser, nicht direkt in der HTML-Datei. Wenn er dort weiterhin fehlt, melden Sie sich bei Herrn Marti.</p></div>
+        </section>
+
+        <section class="migration-step" data-migration-step="2" hidden>
+          <span class="migration-step-label">Schritt 2 von 3</span><h3>Sicherungsdatei erstellen</h3>
+          <p>Öffnen Sie in der alten HTML-Datei die Hilfe und sichern Sie Ihren Arbeitsstand.</p>
+          <div class="migration-path"><span>Hilfe</span><b>→</b><span>Speichern</span><b>→</b><span>Fortschritt als Datei sichern</span></div>
+          <p><strong>Klickweg:</strong> Hilfe → Speichern → Fortschritt als Datei sichern.</p>
+          <p>Danach liegt im Ordner <strong>Downloads</strong> eine kleine Datei mit der Endung <strong>.json</strong>. Die HTML-Datei selbst müssen Sie nicht hochladen.</p>
+          <div class="migration-note"><strong>Keine Schaltfläche «Speichern» vorhanden?</strong><p>Dann verwenden Sie nicht irgendeine andere Datei. Lassen Sie die alte HTML-Datei geöffnet und melden Sie sich bei Herrn Marti, damit Ihr Stand nicht verloren geht.</p></div>
+          <div class="migration-actions"><button class="button" type="button" data-migration-back="1">← Zurück</button><button class="button primary" type="button" data-migration-next="3">Ich habe die JSON-Datei →</button></div>
+        </section>
+
+        <section class="migration-step" data-migration-step="3" hidden>
+          <span class="migration-step-label">Schritt 3 von 3</span><h3>Sicherungsdatei auswählen</h3>
+          <p>Wählen Sie jetzt die eben gespeicherte <strong>.json-Datei</strong>. Wir prüfen zuerst, was darin enthalten ist. Erst danach wird etwas übernommen.</p>
+          <div class="migration-drop" id="migrationDrop" tabindex="0" role="button" aria-describedby="migrationDropHelp"><span class="migration-upload-icon" aria-hidden="true">⇧</span><strong>JSON-Sicherungsdatei hier auswählen</strong><span id="migrationDropHelp">oder hierher ziehen</span><button class="button" id="importOneNoteButton" type="button">Datei auswählen</button><input class="file-input" id="importOneNote" type="file" accept=".json,application/json"></div>
+          <div class="migration-preview" id="migrationPreview" hidden aria-live="polite"><div class="migration-file"><span aria-hidden="true">✓</span><div><strong id="migrationFileName">Sicherung erkannt</strong><small id="migrationFileMeta"></small></div></div><div class="migration-stats"><div><strong id="migrationTasks">0</strong><span>erledigte Aufträge</span></div><div><strong id="migrationChecks">0</strong><span>gesetzte Häkchen</span></div><div><strong id="migrationNotes">0</strong><span>Notizen</span></div></div><p id="migrationMergeInfo">Vorhandene Angaben auf dieser Webseite bleiben erhalten.</p></div>
+          <div class="migration-error" id="migrationError" hidden role="alert"></div>
+          <div class="migration-actions"><button class="button" type="button" data-migration-back="2">← Zurück</button><button class="button primary" id="migrationImportConfirm" type="button" disabled>Arbeitsstand jetzt übernehmen</button></div>
+        </section>
+
+        <section class="migration-step migration-success" data-migration-step="4" hidden>
+          <span class="migration-success-icon" aria-hidden="true">✓</span><p class="page-kicker">Übertragung abgeschlossen</p><h3>Ihr Arbeitsstand ist übernommen</h3><p id="migrationSuccessText">Sie können jetzt genau dort weiterarbeiten, wo Sie aufgehört haben.</p>
+          <div class="migration-success-stats"><strong id="migrationSuccessTasks">0 von 12 Aufträgen erledigt</strong><span id="migrationSuccessDetails"></span></div>
+          <div class="migration-actions migration-actions-center"><button class="button primary" id="migrationFinish" type="button">Jetzt im OneNote-Workshop weiterarbeiten →</button></div>
+        </section>
+      </div>
+    </div>
+  </div>
   <div class="toast" id="portalToast" role="status" aria-live="polite" hidden></div>
 </body>
 </html>

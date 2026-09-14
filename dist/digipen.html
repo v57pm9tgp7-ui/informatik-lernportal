@@ -27,6 +27,7 @@ main{max-width:1180px;margin:auto;padding:28px 18px 70px}.screen{display:none}.s
   <link rel="stylesheet" href="assets/student-access.css">
   <script>document.documentElement.classList.add('student-access-check')</script>
   <script defer src="assets/student-access.js"></script>
+  <script src="assets/cloud-sync.js"></script>
 </head>
 <body>
 <noscript>Diese Datei benötigt JavaScript für Navigation und Fortschritt.</noscript>
@@ -42,7 +43,7 @@ main{max-width:1180px;margin:auto;padding:28px 18px 70px}.screen{display:none}.s
     <div class="taskgrid" id="requiredGrid"></div>
     <div class="sectionhead plus-title"><div><h2>Freiwillige Zusatzaufträge</h2><p>Diese Aufträge sind Reserve und zählen nicht zum Pflichtfortschritt.</p></div></div>
     <div class="taskgrid" id="plusGrid"></div>
-    <p class="footer-note">Häkchen und Notizen werden automatisch in diesem Browser gespeichert.</p>
+    <p class="footer-note">Häkchen und Notizen werden in diesem Browser gespeichert. Für die Lehrpersonenübersicht wird nur der Auftragsstatus synchronisiert.</p>
   </section>
   <section class="screen" id="taskScreen"><div class="task-shell"><div class="task-topline"><button class="back" id="back">← Übersicht</button><span class="position" id="taskPosition"></span></div><article class="task"><header class="taskhead"><span class="label" id="taskLabel"></span><h1 id="taskTitle"></h1><p id="taskGoal"></p><div class="meta" id="taskMeta"></div></header><div class="taskbody"><div class="why" id="taskWhy"></div><div class="need" id="taskNeed"></div><div class="setup" id="taskSetup"></div><div id="taskPractice"></div><div class="task-visual" id="taskVisual"></div><button class="inline-help" id="taskHelpButton" aria-controls="drawer">Hilfe zu diesem Auftrag einblenden</button><div class="steps" id="steps"></div><div class="evidence" id="taskEvidence"></div><div class="notes"><label for="notes">Kurze Notiz für Sie</label><textarea id="notes"></textarea></div><button class="complete" id="complete"></button></div></article><div class="tasknav"><button class="navbtn" id="prev">← Vorheriger Auftrag</button><button class="navbtn" id="next">Nächster Auftrag →</button></div></div></section>
   <section class="screen" id="completionScreen"><div class="finish-screen"><button class="back" id="finishBack">← Zu Auftrag 9</button><article class="finish-card"><header class="finish-head"><span class="eyebrow">DigiPen · Abschluss</span><h1>Ihr Stand im Überblick</h1><p>Öffnen Sie unerledigte Aufträge direkt oder gehen Sie zurück zu Woche 38.</p></header><div class="finish-body"><div class="finish-summary" id="finishSummary"></div><div class="finish-list" id="finishList"></div><div class="finish-actions"><button type="button" id="finishOverview">Workshop-Übersicht</button><a href="index.html#woche-38">Weiter zu Woche 38 →</a></div></div></article></div></section>

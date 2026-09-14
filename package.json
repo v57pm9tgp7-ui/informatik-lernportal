@@ -1,8 +1,8 @@
 {
   "name": "informatik-lernportal",
-  "version": "1.10.0",
+  "version": "1.13.0",
   "private": true,
-  "description": "Statische Lernumgebung für den Informatikunterricht der BFF Bern",
+  "description": "MedienInfoLab mit Lernendenportal, Cloud-Synchronisation und Lehrpersonen-Cockpit für GS1B und GS1D",
   "scripts": {
     "dev": "node tests/serve.mjs",
     "test": "node tests/smoke.mjs",

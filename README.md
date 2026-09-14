@@ -1,3 +1,46 @@
+# MedienInfoLab – Informatik-Lernportal
+
+## Version 1.13 – Lehrpersonenbereich (GS1B / GS1D)
+
+Neu ist ein Cloudflare-Worker mit D1-Anbindung. Der lokale Arbeitsstand der Lernenden bleibt weiterhin im Browser erhalten und wird zusätzlich datensparsam mit der Webseite synchronisiert.
+
+### Lehrpersonenbereich
+
+- erreichbar unter `/lehrperson/`
+- vorgesehen für Schutz mit Cloudflare Access
+- Klassen **GS1B** und **GS1D**
+- neue Lernende erscheinen zunächst unter **Nicht zugeordnet** und können per Dropdown einer Klasse zugewiesen werden
+- Übersicht über OneNote (10 Pflichtaufträge), DigiPen (5 Pflichtaufträge) und Scannen (6 Pflichtaufträge)
+- Klassenkennzahlen: Lernende, heute aktiv, durchschnittlicher Pflichtfortschritt und Unterstützungsbedarf
+- Detailansicht pro Lernender Person mit Status «Offen / Begonnen / Erledigt» je Auftrag
+- Such- und Sortierfunktionen
+- Fehleinträge können entfernt werden
+
+### Datenschutz der Synchronisation
+
+Übertragen werden Schulmailadresse, erledigte/begonnene Aufträge, zuletzt bearbeiteter Auftrag und Zeit der letzten Synchronisation. **Inhalte aus persönlichen Notizfeldern werden nicht an D1 übertragen.**
+
+### Cloudflare-Einrichtung (einmalig)
+
+1. D1-Datenbank mit dem Namen `mediainfolab` erstellen.
+2. `schema.sql` in dieser D1-Datenbank ausführen.
+3. Die D1-Datenbank-ID in `wrangler.toml` bei `database_id` einsetzen.
+4. Das Projekt als Worker deployen; `dist` wird über Workers Static Assets ausgeliefert.
+5. In Cloudflare Access eine Anwendung für `mediainfolab.com/lehrperson/*` erstellen und nur Ihre Lehrpersonen-Anmeldung zulassen. Die API des Cockpits liegt bewusst ebenfalls unter `/lehrperson/api/*` und wird dadurch von derselben Access-Regel geschützt.
+
+> Die Lernenden-Seite selbst bleibt ohne Cloudflare Access. Dort reicht weiterhin die Eingabe einer `@stud.bffbern.ch`-Adresse.
+
+---
+
+
+## Version 1.11 – Arbeitsstand übertragen
+
+- Interaktiver 3-Schritt-Umzugsassistent für den Wechsel von der bisherigen lokalen OneNote-HTML-Datei auf mediainfolab.com.
+- JSON-Sicherungen werden vor dem Import geprüft und mit einer Vorschau zu erledigten Aufträgen, Häkchen und Notizen angezeigt.
+- Vorhandene Daten auf der Webseite werden beim Import nicht überschrieben, sondern sicher mit dem alten Stand zusammengeführt.
+- Drag-and-drop und Dateiauswahl für die Sicherungsdatei.
+- Erfolgsansicht zeigt, was neu übernommen wurde.
+- OneNote-Hilfe enthält neu den Reiter «Speichern» mit «Fortschritt als Datei sichern».
 # Informatik-Lernportal
 
 Version 1.10.0 · Schulmail-Zugang für Lernende · Schuljahr 2026/27
@@ -201,3 +244,11 @@ npm run test:browser
 - bestehende Speichermechanismen unverändert weiterverwendet
 - gemeinsame Sicherung aller drei Lernbereiche ergänzt
 - Lesbarkeit, Tastaturbedienung, responsive Darstellung und Druckansicht verbessert
+
+
+## D1-Binding
+Das D1-Binding ist in `wrangler.toml` bereits vollständig eingetragen:
+- Binding: `DB`
+- Datenbank: `mediainfolab`
+- Database ID: `4b3129c5-09a0-46e6-bc4a-8f952142af59`
+Beim Deployment über Wrangler/GitHub muss das Binding deshalb nicht zusätzlich im Dashboard angelegt werden.

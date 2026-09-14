@@ -84,6 +84,8 @@ check('Guide-Navigation scrollt mit und verdeckt den Inhalt nicht',()=>{assert.d
 check('Workshop-Hilfen enthalten keine redundanten Fortschrittsbuttons',()=>{for(const source of [oneNote,digiPen,scan])assert.doesNotMatch(source,/id="(?:exportProgress|importProgress|resetProgress|exportBtn|importFile|resetBtn)"/)});
 check('Sicherung und Wiederherstellung sind erreichbar',()=>{assert.match(index,/id="exportAll"/);assert.match(index,/id="importAllButton"/);assert.match(portalJs,/informatik-lernportal-backup/)});
 check('alter OneNote-Stand kann sicher zusammengeführt werden',()=>{assert.match(index,/id="importOneNoteButton"/);assert.match(portalJs,/function importOneNote/);assert.match(portalJs,/notes:\{\.\.\.importedNotes,\.\.\.currentNotes\}/)});
+check('Umzugsassistent führt Lernende in drei Schritten durch den Import',()=>{assert.match(index,/id="migrationStartButton"/);assert.match(index,/data-migration-step="1"/);assert.match(index,/data-migration-step="2"/);assert.match(index,/data-migration-step="3"/);assert.match(index,/id="migrationPreview"/);assert.match(index,/id="migrationImportConfirm"/);assert.match(portalJs,/function setupMigration/);assert.match(portalJs,/Sie haben auf dieser Webseite bereits gearbeitet/)});
+check('OneNote kann eine Transferdatei direkt exportieren',()=>{assert.match(oneNote,/data-help-tab="save"/);assert.match(oneNote,/id="saveTransferFile"/);assert.match(oneNote,/OneNote-Workshop-Arbeitsstand\.json/);assert.match(oneNote,/workshop:'OneNote Workshop GS1'/)});
 check('responsive, reduzierte Bewegung und Druckansicht sind definiert',()=>{for(const css of [portalCss,shellCss]){assert.match(css,/@media\(prefers-reduced-motion:reduce\)/);assert.match(css,/@media print/)}assert.match(portalCss,/@media\(max-width:680px\)/)});
 check('Stylesheets besitzen ausgeglichene Blöcke',()=>{for(const [name,css] of [['portal.css',portalCss],['workshop-shell.css',shellCss]])assert.equal((css.match(/\{/g)||[]).length,(css.match(/\}/g)||[]).length,name)});
 check('Schulmail-Zugang ist auf allen Einstiegspunkten aktiv',()=>{
@@ -93,6 +95,18 @@ check('Schulmail-Zugang ist auf allen Einstiegspunkten aktiv',()=>{
   assert.match(accessJs,/Kein Passwort nötig/);
   assert.match(accessJs,/Schulmail wechseln/);
 });
+
+const teacherHtml=fs.readFileSync(path.join(root,'lehrperson','index.html'),'utf8');
+const teacherJs=fs.readFileSync(path.join(root,'assets','teacher.js'),'utf8');
+const syncJs=fs.readFileSync(path.join(root,'assets','cloud-sync.js'),'utf8');
+const workerSource=fs.readFileSync(path.resolve('src','worker.js'),'utf8');
+const schemaSource=fs.readFileSync(path.resolve('schema.sql'),'utf8');
+check('Lehrpersonenbereich für GS1B und GS1D ist vorhanden',()=>{assert.match(teacherHtml,/Lehrpersonenbereich/);assert.match(teacherHtml,/data-class="GS1B"/);assert.match(teacherHtml,/data-class="GS1D"/);assert.match(teacherHtml,/Nicht zugeordnet/);assert.match(teacherJs,/total_possible:21|21/)});
+check('Lehrpersonenbereich zeigt datensparsame Fortschrittsdaten',()=>{assert.match(teacherHtml,/keine persönlichen Notiztexte/i);assert.match(teacherJs,/OneNote/);assert.match(teacherJs,/DigiPen/);assert.match(teacherJs,/Scannen/);assert.match(teacherJs,/requiredDone/)});
+check('Cloud-Synchronisation ist auf den Lernenden-Seiten eingebunden',()=>{for(const name of htmlFiles){const source=fs.readFileSync(path.join(root,name),'utf8');assert.match(source,/assets\/cloud-sync\.js/)}assert.match(syncJs,/\/api\/progress/);assert.match(syncJs,/stud\\.bffbern\\.ch/);assert.doesNotMatch(syncJs,/notes:\s*read|notes\s*:/)});
+check('Worker besitzt D1-API und beide Klassen',()=>{assert.match(workerSource,/GS1B/);assert.match(workerSource,/GS1D/);assert.match(workerSource,/\/api\/progress/);assert.match(workerSource,/\/lehrperson\/api\/students/);assert.match(workerSource,/env\.ASSETS\.fetch/)});
+check('D1-Schema speichert nur Fortschrittsübersicht und Zuordnung',()=>{assert.match(schemaSource,/CREATE TABLE IF NOT EXISTS students/);assert.match(schemaSource,/class_name/);assert.match(schemaSource,/progress_json/);assert.doesNotMatch(schemaSource,/note_text|notes_text|personal_notes/)});
+
 check('keine offensichtlichen Zugangsdaten im Webordner',()=>{
   const all=htmlFiles.map(n=>fs.readFileSync(path.join(root,n),'utf8')).join('\n')+filesBelow(path.join(root,'assets')).filter(n=>/\.(?:css|js|html|txt)$/i.test(n)).map(n=>fs.readFileSync(n,'utf8')).join('\n');
   assert.doesNotMatch(all,/-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|sk-[A-Za-z0-9]{20,}|github_pat_/);

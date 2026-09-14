@@ -39,7 +39,7 @@
           <p class="student-access-error" id="student-access-error" role="alert" aria-live="polite"></p>
           <button class="student-access-submit" type="submit">Weiter zur Webseite</button>
         </form>
-        <p class="student-access-note" id="student-access-note"><span aria-hidden="true">ℹ️</span><span><b>Kein Passwort nötig.</b> Die Adresse wird nur in diesem Browser gespeichert und nicht an einen Server übermittelt.</span></p>
+        <p class="student-access-note" id="student-access-note"><span aria-hidden="true">ℹ️</span><span><b>Kein Passwort nötig.</b> Die Schulmail wird zur Zuordnung Ihres Arbeitsstands verwendet. Übertragen werden nur Auftragsstatus und letzte Aktivität – keine persönlichen Notiztexte.</span></p>
       </div>
     </section>`;
     document.body.appendChild(gate);

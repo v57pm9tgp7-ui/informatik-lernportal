@@ -1,0 +1,12 @@
+name = "informatik-lernportal"
+main = "src/worker.js"
+compatibility_date = "2026-09-14"
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "mediainfolab"
+database_id = "4b3129c5-09a0-46e6-bc4a-8f952142af59"

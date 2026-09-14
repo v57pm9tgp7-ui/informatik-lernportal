@@ -99,21 +99,103 @@
   function setLarge(on){document.documentElement.classList.toggle('portal-large',on);$$('[data-font-toggle]').forEach(b=>{b.setAttribute('aria-pressed',String(on));b.title=on?'Normale Schrift verwenden':'Schrift deutlich vergrössern';b.textContent=on?'A−':'A+'});saveUi({largeText:on});toast(on?'Grosse Schrift eingeschaltet':'Normale Schrift eingeschaltet')}
   function exportAll(){const payload={type:'informatik-lernportal-backup',version:1,createdAt:new Date().toISOString(),stores:{}};Object.values(KEYS).forEach(k=>payload.stores[k]=read(k));payload.stores[UI_KEY]=ui();const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));a.download='Informatik-Lernportal-Fortschritt.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast('Sicherung erstellt')}
   function importAll(file){const reader=new FileReader();reader.onload=()=>{try{const p=JSON.parse(reader.result);if(p.type!=='informatik-lernportal-backup'||!p.stores)throw new Error();for(const key of [...Object.values(KEYS),UI_KEY])if(Object.prototype.hasOwnProperty.call(p.stores,key)&&typeof p.stores[key]==='object')write(key,p.stores[key]);updateDashboard();setLarge(Boolean(ui().largeText));toast('Sicherung geladen')}catch{toast('Diese Sicherung kann nicht gelesen werden.')}};reader.readAsText(file)}
-  function importOneNote(file){
-    const reader=new FileReader();reader.onload=()=>{try{
-      const incoming=JSON.parse(reader.result);
-      const recognisable=incoming&&typeof incoming==='object'&&!incoming.stores&&(incoming.workshop==='OneNote Workshop GS1'||Array.isArray(incoming.doneTasks))&&incoming.checks&&typeof incoming.checks==='object'&&incoming.notes&&typeof incoming.notes==='object';
-      if(!recognisable)throw new Error();
-      const current=read(KEYS.onenote);
-      const cleanDone=list=>[...new Set((Array.isArray(list)?list:[]).map(Number).filter(n=>Number.isInteger(n)&&n>=1&&n<=12))].sort((a,b)=>a-b);
-      const importedChecks=Object.fromEntries(Object.entries(incoming.checks).filter(([,v])=>typeof v==='boolean'));
-      const currentChecks=current.checks&&typeof current.checks==='object'?current.checks:{};
-      const importedNotes=Object.fromEntries(Object.entries(incoming.notes).filter(([,v])=>typeof v==='string'));
-      const currentNotes=current.notes&&typeof current.notes==='object'?current.notes:{};
-      const merged={version:3,doneTasks:cleanDone([...(incoming.doneTasks||[]),...(current.doneTasks||[])]),checks:{...importedChecks,...currentChecks},notes:{...importedNotes,...currentNotes},lastTask:Number(current.lastTask)||Number(incoming.lastTask)||1,updatedAt:new Date().toISOString()};
-      if(!write(KEYS.onenote,merged))throw new Error();
-      updateDashboard();toast(`OneNote-Stand übernommen: ${merged.doneTasks.length} von 12 Aufträgen erledigt.`);
-    }catch{toast('Diese OneNote-Sicherung kann nicht gelesen werden.')}};reader.readAsText(file)
+  const cleanOneNoteDone=list=>[...new Set((Array.isArray(list)?list:[]).map(Number).filter(n=>Number.isInteger(n)&&n>=1&&n<=12))].sort((a,b)=>a-b);
+  function oneNotePayload(raw){
+    const incoming=raw?.type==='informatik-lernportal-backup'&&raw.stores?raw.stores[KEYS.onenote]:raw;
+    const recognisable=incoming&&typeof incoming==='object'&&!Array.isArray(incoming)&&(incoming.workshop==='OneNote Workshop GS1'||Array.isArray(incoming.doneTasks)||(incoming.checks&&typeof incoming.checks==='object'));
+    if(!recognisable)throw new Error('not-onenote');
+    return {
+      ...incoming,
+      doneTasks:cleanOneNoteDone(incoming.doneTasks),
+      checks:incoming.checks&&typeof incoming.checks==='object'?Object.fromEntries(Object.entries(incoming.checks).filter(([,v])=>typeof v==='boolean')):{},
+      notes:incoming.notes&&typeof incoming.notes==='object'?Object.fromEntries(Object.entries(incoming.notes).filter(([,v])=>typeof v==='string')):{},
+      lastTask:Number(incoming.lastTask)||1
+    };
+  }
+  function oneNoteSummary(incoming){
+    return {
+      tasks:cleanOneNoteDone(incoming.doneTasks).length,
+      checks:Object.values(incoming.checks||{}).filter(Boolean).length,
+      notes:Object.values(incoming.notes||{}).filter(value=>String(value).trim().length>0).length
+    };
+  }
+  function mergeOneNote(incoming){
+    const current=read(KEYS.onenote),currentDone=cleanOneNoteDone(current.doneTasks),incomingDone=cleanOneNoteDone(incoming.doneTasks);
+    const currentChecks=current.checks&&typeof current.checks==='object'?current.checks:{};
+    const currentNotes=current.notes&&typeof current.notes==='object'?current.notes:{};
+    const importedChecks=incoming.checks&&typeof incoming.checks==='object'?incoming.checks:{};
+    const importedNotes=incoming.notes&&typeof incoming.notes==='object'?incoming.notes:{};
+    const addedTasks=incomingDone.filter(id=>!currentDone.includes(id)).length;
+    const addedChecks=Object.entries(importedChecks).filter(([key,value])=>value===true&&currentChecks[key]!==true).length;
+    const addedNotes=Object.entries(importedNotes).filter(([key,value])=>String(value).trim()&& !String(currentNotes[key]||'').trim()).length;
+    const merged={version:3,doneTasks:cleanOneNoteDone([...incomingDone,...currentDone]),checks:{...importedChecks,...currentChecks},notes:{...importedNotes,...currentNotes},lastTask:Number(current.lastTask)||Number(incoming.lastTask)||1,updatedAt:new Date().toISOString()};
+    if(!write(KEYS.onenote,merged))throw new Error('storage');
+    updateDashboard();
+    return {merged,addedTasks,addedChecks,addedNotes};
+  }
+  async function readOneNoteFile(file){
+    if(!file)throw new Error('no-file');
+    if(file.size>2_000_000)throw new Error('too-large');
+    const raw=JSON.parse(await file.text());
+    return oneNotePayload(raw);
+  }
+  function setupMigration(){
+    const modal=$('#migrationModal'),closeButton=$('#migrationClose'),input=$('#importOneNote'),drop=$('#migrationDrop'),preview=$('#migrationPreview'),errorBox=$('#migrationError'),confirm=$('#migrationImportConfirm');
+    if(!modal||!input||!drop||!confirm)return;
+    let returnFocus=null,selection=null;
+    function progress(step){
+      $$('[data-migration-dot]',modal).forEach(dot=>{const n=Number(dot.dataset.migrationDot);dot.classList.toggle('is-active',step===n);dot.classList.toggle('is-done',step>n||step===4)});
+      $$('.migration-progress i',modal).forEach((line,index)=>line.classList.toggle('is-done',step>index+1||step===4));
+    }
+    function showStep(step){$$('[data-migration-step]',modal).forEach(section=>section.hidden=Number(section.dataset.migrationStep)!==step);progress(step);modal.querySelector(`[data-migration-step="${step}"] h3, [data-migration-step="${step}"] button`)?.focus({preventScroll:true})}
+    function resetFile(){selection=null;input.value='';preview.hidden=true;errorBox.hidden=true;errorBox.textContent='';confirm.disabled=true;drop.classList.remove('is-dragover')}
+    function open(step=1,source=null){returnFocus=source||document.activeElement;modal.hidden=false;document.body.classList.add('migration-modal-open');resetFile();showStep(step)}
+    function close(){if(modal.hidden)return;modal.hidden=true;document.body.classList.remove('migration-modal-open');returnFocus?.focus();returnFocus=null}
+    function showError(message){selection=null;preview.hidden=true;confirm.disabled=true;errorBox.textContent=message;errorBox.hidden=false}
+    async function selectFile(file){
+      resetFile();
+      if(!file)return;
+      const lower=file.name.toLowerCase();
+      if(!lower.endsWith('.json')){showError('Bitte wählen Sie die JSON-Sicherungsdatei – nicht die alte HTML-Datei.');return}
+      try{
+        const incoming=await readOneNoteFile(file),summary=oneNoteSummary(incoming);selection={file,incoming,summary};
+        $('#migrationFileName').textContent=file.name;$('#migrationFileMeta').textContent=`${Math.max(1,Math.round(file.size/1024))} KB · Sicherung erkannt`;
+        $('#migrationTasks').textContent=String(summary.tasks);$('#migrationChecks').textContent=String(summary.checks);$('#migrationNotes').textContent=String(summary.notes);
+        const current=read(KEYS.onenote),hasCurrent=cleanOneNoteDone(current.doneTasks).length||Object.values(current.checks||{}).some(Boolean)||Object.values(current.notes||{}).some(v=>String(v).trim());
+        $('#migrationMergeInfo').textContent=hasCurrent?'Sie haben auf dieser Webseite bereits gearbeitet. Ihre vorhandenen Angaben bleiben erhalten; fehlende Angaben aus der Sicherung werden ergänzt.':'Die Sicherung ist bereit. Beim Übernehmen wird Ihr OneNote-Arbeitsstand in diesem Browser gespeichert.';
+        preview.hidden=false;errorBox.hidden=true;confirm.disabled=false;
+      }catch(error){showError(error.message==='too-large'?'Diese Datei ist ungewöhnlich gross. Bitte wählen Sie die kleine JSON-Sicherungsdatei aus dem alten OneNote-Workshop.':'Diese Datei enthält keinen erkennbaren OneNote-Arbeitsstand. Bitte wählen Sie die exportierte JSON-Sicherungsdatei.');}
+    }
+    $('#migrationStartButton')?.addEventListener('click',event=>open(1,event.currentTarget));
+    $('#migrationDirectButton')?.addEventListener('click',event=>open(3,event.currentTarget));
+    closeButton.addEventListener('click',close);
+    modal.addEventListener('click',event=>{if(event.target===modal)close()});
+    document.addEventListener('keydown',event=>{if(!modal.hidden&&event.key==='Escape')close()});
+    $$('[data-migration-next]',modal).forEach(button=>button.addEventListener('click',()=>showStep(Number(button.dataset.migrationNext))));
+    $$('[data-migration-back]',modal).forEach(button=>button.addEventListener('click',()=>showStep(Number(button.dataset.migrationBack))));
+    $('#migrationMissingProgress')?.addEventListener('click',()=>{$('#migrationMissingHelp').hidden=false});
+    $('#importOneNoteButton')?.addEventListener('click',event=>{event.stopPropagation();input.click()});
+    input.addEventListener('change',()=>selectFile(input.files?.[0]));
+    drop.addEventListener('click',event=>{if(!event.target.closest('button'))input.click()});
+    drop.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();input.click()}});
+    for(const type of ['dragenter','dragover'])drop.addEventListener(type,event=>{event.preventDefault();drop.classList.add('is-dragover')});
+    for(const type of ['dragleave','drop'])drop.addEventListener(type,event=>{event.preventDefault();drop.classList.remove('is-dragover')});
+    drop.addEventListener('drop',event=>selectFile(event.dataTransfer?.files?.[0]));
+    confirm.addEventListener('click',()=>{
+      if(!selection)return;
+      try{
+        const result=mergeOneNote(selection.incoming),summary=oneNoteSummary(result.merged);
+        $('#migrationSuccessTasks').textContent=`${summary.tasks} von 12 Aufträgen erledigt`;
+        const additions=[];if(result.addedTasks)additions.push(`${result.addedTasks} Auftrag${result.addedTasks===1?'':'e'} neu`);if(result.addedChecks)additions.push(`${result.addedChecks} Häkchen neu`);if(result.addedNotes)additions.push(`${result.addedNotes} Notiz${result.addedNotes===1?'':'en'} neu`);
+        $('#migrationSuccessDetails').textContent=additions.length?`Zusätzlich übernommen: ${additions.join(' · ')}.`:'Ihr vorhandener Stand war bereits gleich oder vollständiger. Es wurde nichts überschrieben.';
+        $('#migrationSuccessText').textContent='Die Übertragung ist abgeschlossen. Ihr alter Stand und bereits vorhandene Angaben auf dieser Webseite wurden sicher zusammengeführt.';
+        showStep(4);toast('OneNote-Arbeitsstand erfolgreich übernommen.');
+      }catch{showError('Der Arbeitsstand konnte nicht gespeichert werden. Bitte prüfen Sie, ob der Browser lokale Speicherung erlaubt.');showStep(3)}
+    });
+    $('#migrationFinish')?.addEventListener('click',()=>{location.href='onenote.html#uebersicht'});
+  }
+  async function importOneNote(file){
+    try{const incoming=await readOneNoteFile(file),result=mergeOneNote(incoming);toast(`OneNote-Stand übernommen: ${result.merged.doneTasks.length} von 12 Aufträgen erledigt.`);return result}catch{toast('Diese OneNote-Sicherung kann nicht gelesen werden.');return null}
   }
   function setupGuide(){
     $$('[data-guide-jump]').forEach(button=>button.addEventListener('click',()=>document.getElementById(button.dataset.guideJump)?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})));
@@ -140,7 +222,6 @@
     addDigiPenGuideLinks();updateDashboard();showView();setLarge(Boolean(ui().largeText));
     $$('[data-font-toggle]').forEach(b=>b.addEventListener('click',()=>setLarge(!document.documentElement.classList.contains('portal-large'))));
     $('#exportAll')?.addEventListener('click',exportAll);$('#importAllButton')?.addEventListener('click',()=>$('#importAll')?.click());$('#importAll')?.addEventListener('change',e=>{const f=e.target.files?.[0];if(f)importAll(f);e.target.value=''});
-    $('#importOneNoteButton')?.addEventListener('click',()=>$('#importOneNote')?.click());$('#importOneNote')?.addEventListener('change',e=>{const f=e.target.files?.[0];if(f)importOneNote(f);e.target.value=''});
-    setupGuide();
+    setupMigration();setupGuide();
   });
 })();

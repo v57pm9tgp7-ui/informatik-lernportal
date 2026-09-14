@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Lehrpersonenbereich · MedienInfoLab</title>
+  <link rel="stylesheet" href="../assets/teacher.css">
+  <script defer src="../assets/teacher.js"></script>
+</head>
+<body>
+  <header class="teacher-topbar">
+    <a class="brand" href="../index.html#start" aria-label="Zur Lernenden-Webseite">
+      <span class="brand-mark">MI</span>
+      <span><strong>MedienInfoLab</strong><small>Lehrpersonenbereich · Herr Marti</small></span>
+    </a>
+    <a class="back-link" href="../index.html#start">Lernendenansicht öffnen ↗</a>
+  </header>
+
+  <main class="teacher-shell">
+    <section class="teacher-hero">
+      <div>
+        <p class="eyebrow">Unterricht steuern</p>
+        <h1>Klassen im Blick</h1>
+        <p>Arbeitsstand von GS1B und GS1D. Angezeigt werden nur Auftragsstatus und letzte Aktivität – keine persönlichen Notiztexte.</p>
+      </div>
+      <button id="refreshButton" class="button secondary" type="button">Aktualisieren</button>
+    </section>
+
+    <section id="setupNotice" class="setup-notice" hidden>
+      <strong>Cloud-Speicherung noch nicht verbunden</strong>
+      <p>Der Lehrpersonenbereich ist bereit, aber die D1-Datenbank muss in Cloudflare noch einmalig verbunden werden. Die Lernenden-Webseite funktioniert weiterhin lokal.</p>
+    </section>
+
+    <nav class="class-tabs" aria-label="Klasse auswählen">
+      <button type="button" class="class-tab is-active" data-class="GS1B">GS1B</button>
+      <button type="button" class="class-tab" data-class="GS1D">GS1D</button>
+      <button type="button" class="class-tab" data-class="UNASSIGNED">Nicht zugeordnet <span data-unassigned-count></span></button>
+      <button type="button" class="class-tab" data-class="ALL">Alle</button>
+    </nav>
+
+    <section class="summary-grid" aria-label="Klassenübersicht">
+      <article class="summary-card"><span>Lernende</span><strong id="studentCount">0</strong><small>im gewählten Bereich</small></article>
+      <article class="summary-card"><span>Heute aktiv</span><strong id="activeToday">0</strong><small>mit synchronisiertem Stand</small></article>
+      <article class="summary-card"><span>Pflichtfortschritt</span><strong id="averageProgress">0%</strong><small>Durchschnitt aus 21 Pflichtaufträgen</small></article>
+      <article class="summary-card attention"><span>Unterstützung</span><strong id="supportCount">0</strong><small>noch wenig begonnen oder länger inaktiv</small></article>
+    </section>
+
+    <section class="control-panel">
+      <div class="panel-head">
+        <div>
+          <p class="eyebrow">Arbeitsstand</p>
+          <h2 id="classTitle">GS1B</h2>
+        </div>
+        <div class="filters">
+          <label class="search"><span class="sr-only">Lernende suchen</span><input id="searchInput" type="search" placeholder="Name oder Schulmail suchen"></label>
+          <select id="sortSelect" aria-label="Sortierung">
+            <option value="support">Unterstützungsbedarf zuerst</option>
+            <option value="progress-asc">Fortschritt: tief zuerst</option>
+            <option value="progress-desc">Fortschritt: hoch zuerst</option>
+            <option value="activity">Letzte Aktivität</option>
+            <option value="name">Name A–Z</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="student-table">
+          <thead>
+            <tr>
+              <th>Lernende/r</th>
+              <th>OneNote</th>
+              <th>DigiPen</th>
+              <th>Scannen</th>
+              <th>Gesamt</th>
+              <th>Letzte Aktivität</th>
+              <th>Klasse</th>
+            </tr>
+          </thead>
+          <tbody id="studentRows"></tbody>
+        </table>
+        <div id="emptyState" class="empty-state" hidden>
+          <strong>Noch keine Lernenden sichtbar</strong>
+          <p>Sobald eine lernende Person die Webseite mit ihrer <code>@stud.bffbern.ch</code>-Adresse öffnet, erscheint sie hier automatisch.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-grid">
+      <article class="info-card">
+        <p class="eyebrow">So funktioniert die Zuordnung</p>
+        <h2>Neue Lernende erscheinen automatisch</h2>
+        <p>Beim ersten Öffnen der Lernenden-Webseite wird die eingegebene Schulmail mit dem Arbeitsstand synchronisiert. Neue Adressen landen zuerst unter <strong>«Nicht zugeordnet»</strong>. Dort ordnen Sie sie einmal GS1B oder GS1D zu.</p>
+      </article>
+      <article class="info-card">
+        <p class="eyebrow">Datensparsam</p>
+        <h2>Keine persönlichen Notizen im Cockpit</h2>
+        <p>Übertragen werden erledigte bzw. begonnene Aufträge, der zuletzt bearbeitete Auftrag und die letzte Aktivität. Texte aus den persönlichen Notizfeldern bleiben auf dem Gerät der Lernenden.</p>
+      </article>
+    </section>
+  </main>
+
+  <dialog id="detailDialog" class="detail-dialog">
+    <form method="dialog" class="dialog-shell">
+      <div class="dialog-head">
+        <div><p class="eyebrow">Lernendenansicht</p><h2 id="detailName">Arbeitsstand</h2><p id="detailEmail"></p></div>
+        <button class="close-button" value="cancel" aria-label="Fenster schliessen">×</button>
+      </div>
+      <div id="detailContent" class="detail-content"></div>
+      <div class="dialog-actions">
+        <button id="removeStudentButton" type="button" class="danger-link">Fehleintrag entfernen</button>
+        <button class="button secondary" value="cancel">Schliessen</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

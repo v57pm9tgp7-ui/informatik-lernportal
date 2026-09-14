@@ -428,7 +428,7 @@
   .help-header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 22px;border-bottom:1px solid var(--line);background:var(--purple-deep);color:#fff}
   .help-header h2{margin:0;font-size:25px}
   .help-close{width:auto;min-width:94px;height:42px;padding:0 12px;border:1px solid rgba(255,255,255,.36);border-radius:12px;background:rgba(255,255,255,.09);color:#fff;font-size:14px;font-weight:900;cursor:pointer}
-  .help-tabs{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;padding:12px;border-bottom:1px solid var(--line);background:#fbfafc}
+  .help-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:12px;border-bottom:1px solid var(--line);background:#fbfafc}
   .help-tab{border:1px solid var(--line);border-radius:10px;background:#fff;padding:9px 7px;font-size:14px;font-weight:900;cursor:pointer}
   .help-tab.is-active{border-color:var(--purple);background:var(--purple-soft);color:var(--purple-dark)}
   .help-body{overflow:auto;padding:22px}
@@ -526,6 +526,7 @@
   <link rel="stylesheet" href="assets/student-access.css">
   <script>document.documentElement.classList.add('student-access-check')</script>
   <script defer src="assets/student-access.js"></script>
+  <script src="assets/cloud-sync.js"></script>
 </head>
 <body>
 <noscript><div class="noscript">Diese Workshop-Datei benötigt JavaScript, damit Navigation, Fortschritt und Speicherung funktionieren. Öffnen Sie die Datei in Microsoft Edge, Chrome oder einem anderen aktuellen Browser.</div></noscript>
@@ -903,6 +904,7 @@
   <nav class="help-tabs" aria-label="Hilfebereiche">
     <button class="help-tab is-active" type="button" data-help-tab="context">Dieser Auftrag</button>
     <button class="help-tab" type="button" data-help-tab="general">Allgemein</button>
+    <button class="help-tab" type="button" data-help-tab="save">Speichern</button>
   </nav>
   <div class="help-body">
     <section class="help-panel is-active" data-help-panel="context"><h3 id="contextHelpHeading">Hilfe zur Übersicht</h3><div id="contextHelpBody"></div></section>
@@ -914,6 +916,13 @@
       <details class="help-detail"><summary>Wo werden meine Notizen gespeichert?</summary><div class="detail-body">OneNote speichert Notizbücher normalerweise automatisch im Microsoft-Konto. Warten Sie bei langsamer Verbindung kurz und achten Sie auf mögliche Synchronisationshinweise.</div></details>
       <details class="help-detail"><summary>Darf ich zum nächsten Auftrag weitergehen?</summary><div class="detail-body">Arbeiten Sie die Aufträge 1–10 der Reihe nach. Markieren Sie einen Auftrag erst als erledigt, wenn die Bedingung «Fertig, wenn …» erfüllt ist.</div></details>
       <details class="help-detail"><summary>Wie komme ich zurück zur Übersicht?</summary><div class="detail-body">Klicken Sie oben links auf «Übersicht» oder auf das OneNote-Symbol in der Kopfzeile. Ihre Arbeit bleibt gespeichert.</div></details>
+    </section>
+    <section class="help-panel" data-help-panel="save">
+      <h3>Arbeitsstand als Datei sichern</h3>
+      <p>Häkchen, erledigte Aufträge und eigene Notizen werden automatisch in diesem Browser gespeichert. Der Auftragsstatus wird zusätzlich für die Lehrpersonenübersicht synchronisiert; Ihre Notiztexte werden nicht übertragen. Für den Wechsel auf einen anderen Computer können Sie zusätzlich eine kleine Sicherungsdatei erstellen.</p>
+      <div class="help-steps"><div class="help-step"><strong>Klicken Sie auf «Fortschritt als Datei sichern».</strong><br>Eine JSON-Datei wird in Ihren Downloads gespeichert.</div><div class="help-step"><strong>Bewahren Sie diese Datei kurz auf.</strong><br>Sie enthält nur den Arbeitsstand dieses Workshops, nicht Ihre OneNote-Dateien.</div><div class="help-step"><strong>Auf mediainfolab.com wählen Sie «Arbeitsstand übertragen».</strong><br>Dort können Sie die JSON-Datei wieder einlesen.</div></div>
+      <button class="secondary-btn" id="saveTransferFile" type="button">Fortschritt als Datei sichern</button>
+      <p style="margin-top:12px"><strong>Wichtig:</strong> Laden Sie für die Übertragung die JSON-Datei hoch, nicht diese HTML-Datei.</p>
     </section>
   </div>
 </aside>
@@ -993,6 +1002,12 @@
         saveTimer = setTimeout(() => setSaveStatus('Automatisch gespeichert'),1300);
       }
     }catch(error){ storageAvailable=false; setSaveStatus('Speichern nicht verfügbar',true); showToast('Die automatische Speicherung ist in diesem Browser nicht verfügbar.'); }
+  }
+
+  function saveTransferFile(){
+    const payload={workshop:'OneNote Workshop GS1',version:3,createdAt:new Date().toISOString(),doneTasks:[...state.doneTasks],checks:{...state.checks},notes:{...state.notes},lastTask:Number(state.lastTask)||1};
+    const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));
+    const link=document.createElement('a');link.href=url;link.download='OneNote-Workshop-Arbeitsstand.json';document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);showToast('Sicherungsdatei erstellt. Sie finden sie in den Downloads.');
   }
 
   function taskChecks(task){ return $$(`[data-check^="t${task}-"]`); }
@@ -1156,6 +1171,7 @@
     const helpTab=event.target.closest('[data-help-tab]'); if(helpTab){activateHelpTab(helpTab.dataset.helpTab);return;}
   });
 
+  $('#saveTransferFile')?.addEventListener('click',saveTransferFile);
   $('#helpClose').addEventListener('click',closeHelp);
   helpOverlay.addEventListener('click',closeHelp);
   document.addEventListener('keydown',event=>{
