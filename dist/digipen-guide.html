@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>DigiPen-Guide · Informatik</title>
+  <meta name="description" content="Schritt-für-Schritt-Anleitung für die beiden HP-DigiPen-Modelle im Informatikunterricht der GS1.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%2308243d'/%3E%3Cpath d='M17 17h30v30H17zM24 25h16M24 32h16M24 39h10' fill='none' stroke='white' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/portal.css">
+  <style>
+    .pen-choice{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:22px 0 36px}
+    .pen-choice a{display:flex;align-items:center;gap:16px;padding:20px;border:2px solid #d7e5ef;border-radius:22px;background:#fff;color:#08243d;text-decoration:none;box-shadow:0 8px 28px rgba(8,36,61,.07)}
+    .pen-choice a:hover,.pen-choice a:focus-visible{border-color:#087fce;transform:translateY(-1px)}
+    .pen-choice .dot{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;flex:0 0 auto;font-size:22px;font-weight:800;background:#e7f5ff;color:#087fce}
+    .pen-choice strong{display:block;font-size:1.08rem}.pen-choice small{display:block;margin-top:4px;color:#526b7e;line-height:1.35}
+    .pen-guide-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:24px;align-items:start}
+    .pen-steps{margin:0;padding:0;list-style:none;display:grid;gap:12px}
+    .pen-steps li{display:grid;grid-template-columns:44px 1fr;gap:13px;align-items:start;padding:14px 16px;border:1px solid #dce8f0;border-radius:16px;background:#fff}
+    .pen-steps .n{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#087fce;color:#fff;font-weight:800}
+    .pen-steps strong{display:block;color:#08243d;margin-bottom:3px}.pen-steps p{margin:0;color:#3d5668;line-height:1.48}
+    .pen-visual{position:sticky;top:92px}.pen-visual button{width:100%;padding:0;border:0;background:transparent;cursor:zoom-in}.pen-visual img{display:block;width:100%;height:auto;border-radius:24px;border:1px solid #d7e5ef;box-shadow:0 10px 32px rgba(8,36,61,.08)}
+    .pen-visual figcaption{margin-top:9px;color:#607789;font-size:.93rem;line-height:1.4}
+    .model-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:18px}.model-head h2{margin:0}.model-tag{white-space:nowrap;padding:7px 11px;border-radius:999px;background:#e7f5ff;color:#075f99;font-weight:800;font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+    .pen-warning{margin:18px 0;padding:16px 18px;border-radius:16px;background:#fff2f2;border:1px solid #f0bcbc;color:#7c1717}.pen-warning strong{color:#b01818}
+    .pen-success{margin:18px 0;padding:16px 18px;border-radius:16px;background:#eef9f3;border:1px solid #b9dfc9;color:#174c30}
+    .trouble-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px}.trouble-list article{padding:18px;border:1px solid #dbe6ee;border-radius:18px;background:#fff}.trouble-list h3{margin:0 0 8px;color:#08243d}.trouble-list p{margin:0;color:#435d70;line-height:1.5}
+    .guide-lightbox[hidden]{display:none}.guide-lightbox{position:fixed;inset:0;z-index:1000;background:rgba(5,20,32,.92);display:grid;grid-template-rows:auto 1fr}.guide-lightbox-bar{display:flex;align-items:center;gap:18px;padding:14px 20px;background:#fff}.guide-lightbox-bar button{border:0;border-radius:12px;padding:10px 14px;background:#e7f5ff;color:#08243d;font-weight:800;cursor:pointer}.guide-lightbox-stage{display:grid;place-items:center;padding:20px;overflow:auto}.guide-lightbox-stage img{max-width:min(1200px,96vw);max-height:84vh;background:#fff;border-radius:18px}.guide-modal-open{overflow:hidden}
+    @media(max-width:840px){.pen-choice,.pen-guide-grid,.trouble-list{grid-template-columns:1fr}.pen-visual{position:static}.model-head{display:block}.model-tag{display:inline-block;margin-top:10px}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Direkt zum Inhalt</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-brand" href="index.html#start" aria-label="Informatik – Startseite">
+        <span class="brand-mark" aria-hidden="true">IT</span>
+        <span class="brand-copy"><strong>Informatik</strong><span>Unterricht bei Herrn Marti · GS1</span></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Hauptnavigation">
+        <a class="nav-link" href="index.html#start">Start</a>
+        <a class="nav-link" href="index.html#wochen">Wochen</a>
+        <a class="nav-link" href="digipen-guide.html" aria-current="page">DigiPen-Guide</a>
+        <a class="nav-link" href="index.html#scan-guide">Scan-Guide</a>
+        <a class="nav-link" href="index.html#training">Training</a>
+        <a class="nav-link" href="index.html#fortschritt">Fortschritt</a>
+      </nav>
+      <details class="mobile-nav">
+        <summary>Menü</summary>
+        <div class="mobile-menu">
+          <a href="index.html#start">Start</a><a href="index.html#wochen">Wochen</a><a href="digipen-guide.html" aria-current="page">DigiPen-Guide</a><a href="index.html#scan-guide">Scan-Guide</a><a href="index.html#training">Training</a><a href="index.html#fortschritt">Fortschritt</a>
+        </div>
+      </details>
+      <button class="font-button" type="button" data-font-toggle aria-pressed="false" title="Schrift deutlich vergrössern">A+</button>
+    </div>
+  </header>
+
+  <main class="site-main" id="main">
+    <section class="guide-view is-active" aria-labelledby="pen-guide-title">
+      <a class="back-link" href="index.html#woche-38">← Zur Woche 38</a>
+      <section class="guide-hero">
+        <div class="guide-hero-copy">
+          <p class="page-kicker">Anleitung · zwei HP-Stiftmodelle</p>
+          <h1 id="pen-guide-title">DigiPen starten – in 2 Minuten</h1>
+          <p>In der Klasse gibt es zwei unterschiedliche HP-Stifte. Wählen Sie zuerst Ihr Modell. Die beiden Stifte werden <strong>nicht auf dieselbe Weise</strong> gestartet.</p>
+          <div class="guide-hero-actions"><a class="button primary button-link" href="#modelle">Mein Modell wählen</a><a class="button button-link" href="digipen.html#auftrag-1">Zum DigiPen-Workshop</a></div>
+        </div>
+        <figure class="guide-hero-figure"><img src="assets/guide/digipen-g3.svg" alt="Silberner HP Rechargeable Active Pen G3 mit beschrifteten Tasten"><figcaption>Silber oder schwarz? Diese Unterscheidung reicht für den richtigen Startweg.</figcaption></figure>
+      </section>
+
+      <section class="guide-start panel" id="modelle" aria-labelledby="model-title">
+        <div class="section-head"><div><p class="page-kicker">Schritt 1</p><h2 id="model-title">Welcher DigiPen ist meiner?</h2><p>Vergleichen Sie Farbe, Form und Tasten mit Ihrem Stift.</p></div><span class="guide-time">10 Sekunden</span></div>
+        <div class="pen-choice">
+          <a href="#g3"><span class="dot">1</span><span><strong>Silberner Stift</strong><small>HP Rechargeable Active Pen G3 · zwei Seitentasten + Taste am Stiftende</small></span></a>
+          <a href="#hp705"><span class="dot">2</span><span><strong>Schlank und schwarz</strong><small>HP 705 Rechargeable Multi Pen · zwei Seitentasten, keine Taste am Stiftende</small></span></a>
+        </div>
+        <div class="guide-note"><strong>Merksatz</strong><p><strong>Silberner G3:</strong> Schreiben zuerst direkt testen; Bluetooth nur für die Taste am Stiftende. <strong>Schwarzer HP 705:</strong> nicht im Bluetooth-Menü suchen.</p></div>
+      </section>
+
+      <section class="guide-section" id="g3" aria-labelledby="g3-title">
+        <div class="model-head"><div><p class="page-kicker">Anleitung 1 · silberner Stift</p><h2 id="g3-title">HP Rechargeable Active Pen G3</h2></div><span class="model-tag">3 Tasten</span></div>
+        <div class="pen-guide-grid">
+          <div>
+            <ol class="pen-steps">
+              <li><span class="n">1</span><div><strong>Stift laden</strong><p>Verbinden Sie den Stift mit einem USB-C-Kabel. Laden Sie ihn mindestens 15 Minuten.</p></div></li>
+              <li><span class="n">2</span><div><strong>Schreiben zuerst testen</strong><p>Öffnen Sie OneNote → <strong>Zeichnen</strong> → wählen Sie einen Stift. Schreiben Sie direkt auf den Bildschirm.</p></div></li>
+              <li><span class="n">3</span><div><strong>Wenn er schreibt: fertig</strong><p>Für das normale Schreiben ist keine Bluetooth-Kopplung nötig. Sie können direkt mit dem Workshop beginnen.</p></div></li>
+              <li><span class="n">4</span><div><strong>Nur die Taste am Stiftende koppeln</strong><p>Wenn Sie diese Taste nutzen möchten: Halten Sie sie gedrückt, bis das Licht blau blinkt.</p></div></li>
+              <li><span class="n">5</span><div><strong>Bluetooth öffnen</strong><p>Windows → <strong>Einstellungen → Bluetooth und Geräte → Gerät hinzufügen → Bluetooth</strong>.</p></div></li>
+              <li><span class="n">6</span><div><strong>HP Active Pen wählen</strong><p>Wählen Sie <strong>HP Active Pen</strong> und danach «Fertig». Testen Sie anschliessend die Tasten in OneNote.</p></div></li>
+            </ol>
+            <div class="pen-success"><strong>Wichtig:</strong> Wenn der Stift schreibt, aber die Taste am hinteren Ende nicht reagiert, fehlt nur die Bluetooth-Kopplung. Das Schreiben funktioniert trotzdem.</div>
+          </div>
+          <figure class="pen-visual"><button type="button" data-guide-image="assets/guide/digipen-g3.svg" aria-label="Abbildung des HP Rechargeable Active Pen G3 vergrössern"><img src="assets/guide/digipen-g3.svg" alt="HP Rechargeable Active Pen G3: silbern, USB-C, zwei Seitentasten und Taste am Stiftende"></button><figcaption>Zum Vergrössern anklicken. Die beiden Seitentasten können je nach Notebook und App unterschiedlich belegt sein.</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="guide-section" id="hp705" aria-labelledby="hp705-title">
+        <div class="model-head"><div><p class="page-kicker">Anleitung 2 · schwarzer Stift</p><h2 id="hp705-title">HP 705 Rechargeable Multi Pen</h2></div><span class="model-tag">2 Tasten</span></div>
+        <div class="pen-guide-grid">
+          <div>
+            <ol class="pen-steps">
+              <li><span class="n">1</span><div><strong>Stift laden</strong><p>Laden Sie den Stift mindestens 15 Minuten mit dem USB-C-Kabel.</p></div></li>
+              <li><span class="n">2</span><div><strong>Kabel abziehen</strong><p>Öffnen Sie OneNote und wählen Sie oben <strong>Zeichnen</strong>.</p></div></li>
+              <li><span class="n">3</span><div><strong>Direkt schreiben</strong><p>Wählen Sie einen Stift und schreiben Sie auf den Bildschirm. Eine Bluetooth-Kopplung ist dafür nicht nötig.</p></div></li>
+              <li><span class="n">4</span><div><strong>Falls nichts erscheint</strong><p>Drücken Sie <strong>beide Seitentasten gleichzeitig während 5 Sekunden</strong>.</p></div></li>
+              <li><span class="n">5</span><div><strong>Loslassen und nochmals testen</strong><p>Warten Sie kurz und schreiben Sie erneut in OneNote.</p></div></li>
+              <li><span class="n">6</span><div><strong>Seitentasten ausprobieren</strong><p>Die Funktion der beiden Tasten kann je nach App und Einstellung unterschiedlich sein.</p></div></li>
+            </ol>
+            <div class="pen-warning"><strong>Nicht im Windows-Bluetooth-Menü suchen.</strong> Beim HP 705 wählen die beiden Seitentasten nach 5 Sekunden das passende Stiftprotokoll neu.</div>
+          </div>
+          <figure class="pen-visual"><button type="button" data-guide-image="assets/guide/digipen-705.svg" aria-label="Abbildung des HP 705 Rechargeable Multi Pen vergrössern"><img src="assets/guide/digipen-705.svg" alt="HP 705 Rechargeable Multi Pen: schlank, schwarz, USB-C und zwei Seitentasten"></button><figcaption>Zum Vergrössern anklicken. Dieses Modell hat keine zusätzliche Taste am Stiftende.</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="guide-section" id="probleme" aria-labelledby="problem-title">
+        <div class="section-head"><div><p class="page-kicker">Wenn es nicht funktioniert</p><h2 id="problem-title">Vier Kontrollen statt langem Herumprobieren</h2><p>Gehen Sie in dieser Reihenfolge vor und ändern Sie nicht gleichzeitig mehrere Einstellungen.</p></div></div>
+        <div class="trouble-list">
+          <article><h3>1 · Nochmals laden</h3><p>USB-C anschliessen und mindestens 15 Minuten laden. Danach Kabel abziehen und erneut testen.</p></article>
+          <article><h3>2 · Bildschirm prüfen</h3><p>Reagiert der Touchscreen auf Ihren Finger? Wenn nein, liegt das Problem nicht nur am Stift.</p></article>
+          <article><h3>3 · OneNote neu öffnen</h3><p>OneNote vollständig schliessen und neu starten. Danach erneut «Zeichnen» wählen.</p></article>
+          <article><h3>4 · Genau melden</h3><p>Nennen Sie Herrn Marti: Stiftmodell, geladen ja/nein, Finger funktioniert ja/nein und ob ein Cursor sichtbar ist.</p></article>
+        </div>
+      </section>
+
+      <section class="guide-finish">
+        <div><p class="page-kicker">Jetzt anwenden</p><h2>Der Stift schreibt?</h2><p>Dann brauchen Sie keine weitere Einrichtung. Starten Sie direkt mit Pflichtauftrag 1.</p></div><a class="button primary button-link" href="digipen.html#auftrag-1">DigiPen-Workshop starten →</a>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">BFF Bern · GS1 · Informatik · Schuljahr 2026/27</footer>
+  <div class="guide-lightbox" id="guideLightbox" role="dialog" aria-modal="true" aria-labelledby="guideLightboxTitle" hidden><div class="guide-lightbox-bar"><button type="button" data-guide-lightbox-close>← Zurück zum Guide</button><strong id="guideLightboxTitle">Abbildung</strong></div><div class="guide-lightbox-stage"><img alt=""></div></div>
+  <script>
+    (()=>{
+      const root=document.documentElement,button=document.querySelector('[data-font-toggle]');
+      const key='informatikPortal_ui_v1';
+      try{const state=JSON.parse(localStorage.getItem(key)||'{}');if(state.largeText)root.classList.add('portal-large')}catch{}
+      const sync=()=>{const on=root.classList.contains('portal-large');button?.setAttribute('aria-pressed',String(on));if(button){button.textContent=on?'A−':'A+';button.title=on?'Normale Schrift verwenden':'Schrift deutlich vergrössern'}};sync();
+      button?.addEventListener('click',()=>{root.classList.toggle('portal-large');sync();try{const old=JSON.parse(localStorage.getItem(key)||'{}');localStorage.setItem(key,JSON.stringify({...old,largeText:root.classList.contains('portal-large'),updatedAt:new Date().toISOString()}))}catch{}});
+      const box=document.getElementById('guideLightbox'),image=box?.querySelector('img'),title=document.getElementById('guideLightboxTitle'),closeButton=box?.querySelector('[data-guide-lightbox-close]');let returnFocus=null;
+      const close=()=>{if(!box||box.hidden)return;box.hidden=true;document.body.classList.remove('guide-modal-open');image?.removeAttribute('src');returnFocus?.focus();returnFocus=null};
+      document.querySelectorAll('[data-guide-image]').forEach(el=>el.addEventListener('click',()=>{const src=el.dataset.guideImage,alt=el.querySelector('img')?.alt||'Vergrösserte Abbildung';if(!box||!image||!src)return;returnFocus=el;image.src=src;image.alt=alt;if(title)title.textContent=alt;box.hidden=false;document.body.classList.add('guide-modal-open');closeButton?.focus()}));
+      closeButton?.addEventListener('click',close);box?.addEventListener('click',e=>{if(e.target===box||e.target.classList.contains('guide-lightbox-stage'))close()});document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+    })();
+  </script>
+</body>
+</html>
