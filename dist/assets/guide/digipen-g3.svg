@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" role="img" aria-labelledby="title desc">
+  <title id="title">HP Rechargeable Active Pen G3 – silberner DigiPen</title>
+  <desc id="desc">Schematische Darstellung des silbernen HP-Stifts mit USB-C-Anschluss, zwei Seitentasten, Taste am Stiftende und Spitze.</desc>
+  <defs>
+    <linearGradient id="body" x1="0" x2="1">
+      <stop offset="0" stop-color="#eef3f7"/>
+      <stop offset="0.5" stop-color="#bcc8d2"/>
+      <stop offset="1" stop-color="#f7fafc"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#08243d" flood-opacity=".18"/>
+    </filter>
+  </defs>
+  <rect width="960" height="560" rx="34" fill="#f5fbff"/>
+  <text x="56" y="70" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#087fce">SILBERNER STIFT</text>
+  <text x="56" y="116" font-family="Arial, sans-serif" font-size="38" font-weight="800" fill="#08243d">HP Rechargeable Active Pen G3</text>
+  <text x="56" y="151" font-family="Arial, sans-serif" font-size="21" fill="#496174">3 Tasten · USB-C · Schreiben ohne Bluetooth</text>
+
+  <g transform="translate(70 245) rotate(7 400 55)" filter="url(#shadow)">
+    <rect x="55" y="22" width="705" height="68" rx="34" fill="url(#body)" stroke="#8798a5" stroke-width="2"/>
+    <path d="M760 22 L855 56 L760 90 Z" fill="url(#body)" stroke="#8798a5" stroke-width="2"/>
+    <path d="M855 56 l35 0" stroke="#08243d" stroke-width="10" stroke-linecap="round"/>
+    <rect x="235" y="35" width="78" height="23" rx="11" fill="#dde5eb" stroke="#667b89" stroke-width="2"/>
+    <rect x="330" y="35" width="78" height="23" rx="11" fill="#dde5eb" stroke="#667b89" stroke-width="2"/>
+    <rect x="30" y="31" width="52" height="49" rx="19" fill="#cbd5dc" stroke="#667b89" stroke-width="2"/>
+    <rect x="53" y="44" width="31" height="18" rx="7" fill="#151f27"/>
+    <rect x="4" y="38" width="39" height="36" rx="16" fill="#e4ebf0" stroke="#667b89" stroke-width="2"/>
+  </g>
+
+  <g font-family="Arial, sans-serif">
+    <path d="M149 217 C140 185 141 174 141 159" fill="none" stroke="#087fce" stroke-width="4"/>
+    <circle cx="141" cy="158" r="7" fill="#087fce"/>
+    <text x="70" y="192" font-size="22" font-weight="700" fill="#08243d">USB-C</text>
+    <text x="70" y="218" font-size="18" fill="#496174">zum Laden</text>
+
+    <path d="M432 274 C439 222 452 203 459 187" fill="none" stroke="#087fce" stroke-width="4"/>
+    <circle cx="459" cy="187" r="7" fill="#087fce"/>
+    <text x="403" y="181" font-size="22" font-weight="700" fill="#08243d">2 Seitentasten</text>
+    <text x="403" y="207" font-size="18" fill="#496174">Funktion je nach App</text>
+
+    <path d="M113 307 C85 341 75 360 70 383" fill="none" stroke="#087fce" stroke-width="4"/>
+    <circle cx="70" cy="384" r="7" fill="#087fce"/>
+    <text x="56" y="425" font-size="22" font-weight="700" fill="#08243d">Taste am Stiftende</text>
+    <text x="56" y="451" font-size="18" fill="#496174">nur dafür Bluetooth koppeln</text>
+
+    <path d="M836 336 C884 350 897 371 899 389" fill="none" stroke="#087fce" stroke-width="4"/>
+    <circle cx="899" cy="390" r="7" fill="#087fce"/>
+    <text x="744" y="430" font-size="22" font-weight="700" fill="#08243d">Spitze</text>
+    <text x="744" y="456" font-size="18" fill="#496174">direkt in OneNote testen</text>
+  </g>
+
+  <rect x="505" y="466" width="399" height="58" rx="18" fill="#e7f5ff" stroke="#aad8f7"/>
+  <text x="529" y="501" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#08243d">Wichtig: Schreiben funktioniert ohne Bluetooth.</text>
+</svg>
