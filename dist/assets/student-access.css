@@ -28,3 +28,5 @@
 @media(max-width:560px){.student-access-gate{padding:14px}.student-access-card{border-radius:18px}.student-access-top{padding:22px 20px 18px}.student-access-body{padding:22px 20px 24px}.student-access-brand{margin-bottom:19px}.student-access-intro{font-size:16px}.student-access-input,.student-access-submit{font-size:16px}}
 @media(prefers-reduced-motion:reduce){.student-access-input{transition:none}}
 @media print{.student-access-gate,.student-access-logout{display:none!important}.student-access-check body>:not(.student-access-gate){visibility:visible!important}}
+
+.teacher-nav-link{background:#eef6fa;color:#073b57!important}.teacher-nav-link::before{content:'LP';display:inline-grid;place-items:center;width:25px;height:25px;margin-right:6px;border-radius:8px;background:#073b57;color:#fff;font-size:10px;font-weight:900}

@@ -1,5 +1,14 @@
 # MedienInfoLab – Informatik-Lernportal
 
+## Version 1.15 – Klassenlisten & Lehrpersonenzugang
+
+- 18 Lernende der **GS1B** und 19 Lernende der **GS1D** fest hinterlegt.
+- Bekannte Schulmailadressen werden automatisch der richtigen Klasse zugeordnet.
+- Auch noch nicht gestartete Lernende erscheinen in der Klassenübersicht mit **Noch nicht gestartet**.
+- Die Startseite akzeptiert zusätzlich **christoph.marti@bffbern.ch**.
+- Nur bei dieser Lehrpersonenadresse erscheint der Navigationslink **Lehrperson**.
+- `/lehrperson/*` bleibt für Cloudflare Access vorgesehen; dort soll ausschliesslich `christoph.marti@bffbern.ch` erlaubt werden.
+
 ## Version 1.14 – Lehrpersonenbereich (GS1B / GS1D)
 
 Neu ist ein Cloudflare-Worker mit D1-Anbindung. Der lokale Arbeitsstand der Lernenden bleibt weiterhin im Browser erhalten und wird zusätzlich datensparsam mit der Webseite synchronisiert.

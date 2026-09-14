@@ -107,6 +107,10 @@ check('Cloud-Synchronisation ist auf den Lernenden-Seiten eingebunden',()=>{for(
 check('Worker besitzt D1-API und beide Klassen',()=>{assert.match(workerSource,/GS1B/);assert.match(workerSource,/GS1D/);assert.match(workerSource,/\/api\/progress/);assert.match(workerSource,/\/lehrperson\/api\/students/);assert.match(workerSource,/env\.ASSETS\.fetch/)});
 check('D1-Schema speichert nur Fortschrittsübersicht und Zuordnung',()=>{assert.match(schemaSource,/CREATE TABLE IF NOT EXISTS students/);assert.match(schemaSource,/class_name/);assert.match(schemaSource,/progress_json/);assert.doesNotMatch(schemaSource,/note_text|notes_text|personal_notes/)});
 
+check('Klassenlisten GS1B und GS1D sind fest hinterlegt',()=>{assert.match(workerSource,/Raghad AlAbbar/);assert.match(workerSource,/Retaj Al Salloumi/);assert.match(workerSource,/robinsean\.klaus@stud\.bffbern\.ch/);assert.match(workerSource,/jael\.wuethrich@stud\.bffbern\.ch/);assert.match(workerSource,/ROSTER_BY_EMAIL/);});
+check('bekannte Lernende werden automatisch ihrer Klasse zugeordnet',()=>{assert.match(workerSource,/class_name=COALESCE\(excluded\.class_name, students\.class_name\)/);assert.match(workerSource,/roster\?\.className/);assert.match(teacherJs,/Noch nicht gestartet/);assert.match(teacherHtml,/radarNotStarted/);});
+check('Lehrpersonenadresse ist freigeschaltet und Link bleibt exklusiv',()=>{const accessJs=fs.readFileSync(path.join(root,'assets','student-access.js'),'utf8');assert.match(accessJs,/christoph\.marti@bffbern\.ch/);assert.match(accessJs,/function addTeacherLink/);assert.match(accessJs,/dataset\.teacherLink/);assert.match(accessJs,/href='\/lehrperson\/'/);});
+
 check('keine offensichtlichen Zugangsdaten im Webordner',()=>{
   const all=htmlFiles.map(n=>fs.readFileSync(path.join(root,n),'utf8')).join('\n')+filesBelow(path.join(root,'assets')).filter(n=>/\.(?:css|js|html|txt)$/i.test(n)).map(n=>fs.readFileSync(n,'utf8')).join('\n');
   assert.doesNotMatch(all,/-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|sk-[A-Za-z0-9]{20,}|github_pat_/);

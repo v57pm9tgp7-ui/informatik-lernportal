@@ -16,9 +16,11 @@
     const main=same?'Heute':yesterday.toDateString()===d.toDateString()?'Gestern':d.toLocaleDateString('de-CH',{day:'2-digit',month:'2-digit'});
     return {main,sub:d.toLocaleTimeString('de-CH',{hour:'2-digit',minute:'2-digit'})};
   }
-  function ageDays(value){const t=new Date(value).getTime();return Number.isFinite(t)?Math.max(0,(Date.now()-t)/86400000):999}
+  function ageDays(value){if(!value)return 999;const t=new Date(value).getTime();return Number.isFinite(t)?Math.max(0,(Date.now()-t)/86400000):999}
   function statusInfo(s){
-    const done=Number(s.total_done||0),progress=pct(done,21),inactive=ageDays(s.last_seen),known=ageDays(s.first_seen);
+    const done=Number(s.total_done||0);
+    if(!s.first_seen||!s.last_seen)return {key:'notstarted',rank:1,label:'Noch nicht gestartet',reason:'Noch kein Arbeitsstand synchronisiert',tone:'gray'};
+    const progress=pct(done,21),inactive=ageDays(s.last_seen),known=ageDays(s.first_seen);
     if(done>=21)return {key:'done',rank:0,label:'Fertig',reason:'Alle 21 Pflichtaufträge erledigt',tone:'green'};
     if(known<1)return {key:'new',rank:1,label:'Neu',reason:done?`${done} Pflichtaufträge bereits erledigt`:'Heute erstmals synchronisiert',tone:'blue'};
     if(inactive>7)return {key:'urgent',rank:5,label:'Dringend',reason:`Seit ${Math.floor(inactive)} Tagen nicht aktiv`,tone:'red'};
@@ -41,7 +43,7 @@
       <td>${meter(Number(s.scan_done||0),6)}</td>
       <td><span class="overall ${p===100?'done':p<30?'low':''}">${p}%</span><small> ${total}/21</small></td>
       <td><div class="activity"><strong>${activity.main}</strong><small>${activity.sub}</small></div></td>
-      <td><select class="class-select" data-assign="${esc(s.email)}" aria-label="Klasse von ${esc(s.name||s.email)}"><option value="" ${!s.class_name?'selected':''}>Nicht zugeordnet</option><option value="GS1B" ${s.class_name==='GS1B'?'selected':''}>GS1B</option><option value="GS1D" ${s.class_name==='GS1D'?'selected':''}>GS1D</option></select></td>
+      <td>${s.roster_locked?`<span class="class-badge" title="Automatisch aus der Klassenliste zugeordnet">${esc(s.class_name)}</span>`:`<select class="class-select" data-assign="${esc(s.email)}" aria-label="Klasse von ${esc(s.name||s.email)}"><option value="" ${!s.class_name?'selected':''}>Nicht zugeordnet</option><option value="GS1B" ${s.class_name==='GS1B'?'selected':''}>GS1B</option><option value="GS1D" ${s.class_name==='GS1D'?'selected':''}>GS1D</option></select>`}</td>
     </tr>`;
   }
   function filtered(){
@@ -55,8 +57,8 @@
     return list;
   }
   function renderRadar(){
-    const counts={done:0,course:0,new:0,watch:0,urgent:0};students.forEach(s=>counts[statusInfo(s).key]++);
-    $('#radarDone').textContent=counts.done;$('#radarCourse').textContent=counts.course+counts.new;$('#radarWatch').textContent=counts.watch;$('#radarUrgent').textContent=counts.urgent;
+    const counts={done:0,course:0,new:0,notstarted:0,watch:0,urgent:0};students.forEach(s=>counts[statusInfo(s).key]++);
+    $('#radarDone').textContent=counts.done;$('#radarCourse').textContent=counts.course+counts.new;$('#radarNotStarted').textContent=counts.notstarted;$('#radarWatch').textContent=counts.watch;$('#radarUrgent').textContent=counts.urgent;
     const attention=students.filter(s=>['urgent','watch'].includes(statusInfo(s).key)).sort((a,b)=>statusInfo(b).rank-statusInfo(a).rank||a.total_done-b.total_done).slice(0,6);
     const box=$('#attentionList');
     if(!attention.length){box.innerHTML='<div class="all-clear"><strong>Aktuell kein besonderer Unterstützungsbedarf</strong><span>Die vorhandenen Lernstände wirken unauffällig.</span></div>';return}
