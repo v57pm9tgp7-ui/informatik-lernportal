@@ -18,6 +18,7 @@ page.on('pageerror',error=>errors.push(`pageerror: ${error.message}`));
 
 await page.goto('http://127.0.0.1:4173/index.html#start');
 await page.evaluate(()=>{
+  localStorage.setItem('mediainfolab_student_access_v1',JSON.stringify({email:'test@stud.bffbern.ch',acceptedAt:new Date().toISOString()}));
   localStorage.setItem('onenoteWorkshopGS1_student_v3',JSON.stringify({version:3,doneTasks:[1,2],checks:{'t3-1':true},notes:{},lastTask:3}));
   localStorage.setItem('digitalArbeiten_digipen_v1',JSON.stringify({version:1,done:[1,2,3,4,5],checks:{},notes:{},last:5}));
   localStorage.setItem('digitalArbeiten_scannen_v1',JSON.stringify({version:1,done:[1,2,3,4,5],checks:{},notes:{},last:5}));

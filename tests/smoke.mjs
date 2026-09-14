@@ -86,6 +86,13 @@ check('Sicherung und Wiederherstellung sind erreichbar',()=>{assert.match(index,
 check('alter OneNote-Stand kann sicher zusammengeführt werden',()=>{assert.match(index,/id="importOneNoteButton"/);assert.match(portalJs,/function importOneNote/);assert.match(portalJs,/notes:\{\.\.\.importedNotes,\.\.\.currentNotes\}/)});
 check('responsive, reduzierte Bewegung und Druckansicht sind definiert',()=>{for(const css of [portalCss,shellCss]){assert.match(css,/@media\(prefers-reduced-motion:reduce\)/);assert.match(css,/@media print/)}assert.match(portalCss,/@media\(max-width:680px\)/)});
 check('Stylesheets besitzen ausgeglichene Blöcke',()=>{for(const [name,css] of [['portal.css',portalCss],['workshop-shell.css',shellCss]])assert.equal((css.match(/\{/g)||[]).length,(css.match(/\}/g)||[]).length,name)});
+check('Schulmail-Zugang ist auf allen Einstiegspunkten aktiv',()=>{
+  for(const name of htmlFiles){const source=fs.readFileSync(path.join(root,name),'utf8');assert.match(source,/assets\/student-access\.css/);assert.match(source,/assets\/student-access\.js/);assert.match(source,/student-access-check/)}
+  const accessJs=fs.readFileSync(path.join(root,'assets','student-access.js'),'utf8');
+  assert.match(accessJs,/stud\\.bffbern\\.ch/);
+  assert.match(accessJs,/Kein Passwort nötig/);
+  assert.match(accessJs,/Schulmail wechseln/);
+});
 check('keine offensichtlichen Zugangsdaten im Webordner',()=>{
   const all=htmlFiles.map(n=>fs.readFileSync(path.join(root,n),'utf8')).join('\n')+filesBelow(path.join(root,'assets')).filter(n=>/\.(?:css|js|html|txt)$/i.test(n)).map(n=>fs.readFileSync(n,'utf8')).join('\n');
   assert.doesNotMatch(all,/-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|sk-[A-Za-z0-9]{20,}|github_pat_/);

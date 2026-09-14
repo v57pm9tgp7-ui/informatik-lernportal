@@ -1,6 +1,6 @@
 # Informatik-Lernportal
 
-Version 1.9.0 · Deutliche Kennzeichnung von Pflicht und Zusatz · Schuljahr 2026/27
+Version 1.10.0 · Schulmail-Zugang für Lernende · Schuljahr 2026/27
 
 Statische Lernumgebung für den Informatikunterricht der GS1 an der BFF Bern. Die visuelle Leitidee lautet **«Ruhiger digitaler Arbeitsplatz»**: eine professionelle Arbeitsoberfläche mit klaren Wegen zu Wochen, Training und Fortschritt.
 
@@ -27,6 +27,7 @@ Statische Lernumgebung für den Informatikunterricht der GS1 an der BFF Bern. Di
 - freie Navigation, Browser-Zurück und Rückkehr zum zuletzt bearbeiteten Auftrag
 - lokale Speicherung der bisherigen Häkchen und Notizen
 - deutlich vergrösserbare Schrift, Tastaturfokus, reduzierte Bewegung und Druckansicht
+- vorgeschalteter Schulmail-Zugang für Lernende mit der Endung `@stud.bffbern.ch` ohne Passwort
 
 Die Unterrichtspräsentationen sind separate Unterrichtsmaterialien und nicht Teil dieser Website-ZIP.
 
@@ -70,7 +71,7 @@ Die Website verwendet weiterhin die bestehenden Browser-Speicherstände:
 - `digitalArbeiten_digipen_v1`
 - `digitalArbeiten_scannen_v1`
 
-Die neue Portaloberfläche ergänzt nur `informatikPortal_ui_v1`. Bestehende Antworten und Fortschritte werden nicht umbenannt oder gelöscht. Ohne Cloud-Anmeldung bleiben die Daten an den verwendeten Browser und das Gerät gebunden. Über «Fortschritt» lässt sich eine gemeinsame JSON-Sicherung erstellen und wieder laden.
+Die neue Portaloberfläche ergänzt `informatikPortal_ui_v1`. Der Schulmail-Zugang speichert zusätzlich `mediainfolab_student_access_v1` lokal im Browser. Die eingegebene Adresse wird nicht an einen Server gesendet. Bestehende Antworten und Fortschritte werden nicht umbenannt oder gelöscht. Ohne Cloud-Anmeldung bleiben die Daten an den verwendeten Browser und das Gerät gebunden. Über «Fortschritt» lässt sich eine gemeinsame JSON-Sicherung erstellen und wieder laden.
 
 ## Prüfen
 
@@ -87,6 +88,16 @@ Für die browsergestützten Prüfungen muss Playwright mit Chromium installiert 
 ```bash
 npm run test:browser
 ```
+
+## Änderungen in Version 1.10.0
+
+- vorgeschaltete Schulmail-Abfrage auf allen fünf HTML-Einstiegspunkten ergänzt
+- nur Adressen mit der Endung `@stud.bffbern.ch` werden akzeptiert
+- kein Passwort und kein One-Time-PIN erforderlich
+- Anmeldung wird lokal im verwendeten Browser gespeichert und gilt über Seitenwechsel hinweg
+- kleine Funktion «Schulmail wechseln» ergänzt; Lernfortschritte bleiben dabei erhalten
+- Hinweis zur lokalen Speicherung und zur fehlenden Serverübermittlung direkt im Anmeldefenster ergänzt
+- bestehende Fortschritts- und Navigationslogik unverändert beibehalten
 
 ## Änderungen in Version 1.9.0
 
