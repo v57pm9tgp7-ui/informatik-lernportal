@@ -123,6 +123,13 @@
     function open(button){const source=button.dataset.guideImage,alt=$('img',button)?.alt||'Vergrösserte Abbildung';if(!box||!image||!source)return;returnFocus=button;image.src=source;image.alt=alt;if(title)title.textContent=alt;box.hidden=false;document.body.classList.add('guide-modal-open');closeButton?.focus()}
     $$('[data-guide-image]').forEach(button=>button.addEventListener('click',()=>open(button)));closeButton?.addEventListener('click',close);box?.addEventListener('click',event=>{if(event.target===box||event.target.classList.contains('guide-lightbox-stage'))close()});document.addEventListener('keydown',event=>{if(box?.hidden)return;if(event.key==='Escape')close();if(event.key==='Tab'){event.preventDefault();closeButton?.focus()}});window.addEventListener('hashchange',close);
   }
+  function addDigiPenGuideLinks(){
+    const desktopScan=$('.desktop-nav [data-nav="scan-guide"]');
+    if(desktopScan&&!$('.desktop-nav [data-pen-guide-link]')){const a=document.createElement('a');a.className='nav-link';a.href='digipen-guide.html';a.textContent='DigiPen-Guide';a.dataset.penGuideLink='';desktopScan.before(a)}
+    const mobileScan=$('.mobile-menu [data-nav="scan-guide"]');
+    if(mobileScan&&!$('.mobile-menu [data-pen-guide-link]')){const a=document.createElement('a');a.href='digipen-guide.html';a.textContent='DigiPen-Guide';a.dataset.penGuideLink='';mobileScan.before(a)}
+    $$('.module-card.pen .card-progress').forEach(area=>{if(area.querySelector('[data-pen-guide-card]'))return;const a=document.createElement('a');a.className='card-secondary';a.href='digipen-guide.html';a.textContent='DigiPen-Guide öffnen';a.dataset.penGuideCard='';area.append(a)});
+  }
   document.addEventListener('click',e=>{const open=e.target.closest('[data-module-open]');if(open){saveUi({lastModule:open.dataset.moduleOpen,lastRoute:open.getAttribute('href')})}});
   window.addEventListener('scroll',()=>{clearTimeout(window.__portalScrollTimer);window.__portalScrollTimer=setTimeout(()=>sessionStorage.setItem('portalScroll:'+currentView(),String(scrollY)),100)},{passive:true});
   window.addEventListener('hashchange',showView);
@@ -130,7 +137,7 @@
   window.addEventListener('storage',updateDashboard);
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)updateDashboard()});
   document.addEventListener('DOMContentLoaded',()=>{
-    updateDashboard();showView();setLarge(Boolean(ui().largeText));
+    addDigiPenGuideLinks();updateDashboard();showView();setLarge(Boolean(ui().largeText));
     $$('[data-font-toggle]').forEach(b=>b.addEventListener('click',()=>setLarge(!document.documentElement.classList.contains('portal-large'))));
     $('#exportAll')?.addEventListener('click',exportAll);$('#importAllButton')?.addEventListener('click',()=>$('#importAll')?.click());$('#importAll')?.addEventListener('change',e=>{const f=e.target.files?.[0];if(f)importAll(f);e.target.value=''});
     $('#importOneNoteButton')?.addEventListener('click',()=>$('#importOneNote')?.click());$('#importOneNote')?.addEventListener('change',e=>{const f=e.target.files?.[0];if(f)importOneNote(f);e.target.value=''});
