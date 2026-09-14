@@ -16,15 +16,26 @@
     const main=same?'Heute':yesterday.toDateString()===d.toDateString()?'Gestern':d.toLocaleDateString('de-CH',{day:'2-digit',month:'2-digit'});
     return {main,sub:d.toLocaleTimeString('de-CH',{hour:'2-digit',minute:'2-digit'})};
   }
-  function ageDays(value){const t=new Date(value).getTime();return Number.isFinite(t)?(Date.now()-t)/86400000:999}
-  function needsSupport(s){return Number(s.total_done||0)<5||ageDays(s.last_seen)>7}
+  function ageDays(value){const t=new Date(value).getTime();return Number.isFinite(t)?Math.max(0,(Date.now()-t)/86400000):999}
+  function statusInfo(s){
+    const done=Number(s.total_done||0),progress=pct(done,21),inactive=ageDays(s.last_seen),known=ageDays(s.first_seen);
+    if(done>=21)return {key:'done',rank:0,label:'Fertig',reason:'Alle 21 Pflichtaufträge erledigt',tone:'green'};
+    if(known<1)return {key:'new',rank:1,label:'Neu',reason:done?`${done} Pflichtaufträge bereits erledigt`:'Heute erstmals synchronisiert',tone:'blue'};
+    if(inactive>7)return {key:'urgent',rank:5,label:'Dringend',reason:`Seit ${Math.floor(inactive)} Tagen nicht aktiv`,tone:'red'};
+    if(known>3&&progress<20)return {key:'urgent',rank:5,label:'Dringend',reason:`Erst ${done} von 21 Pflichtaufträgen erledigt`,tone:'red'};
+    if(inactive>3)return {key:'watch',rank:4,label:'Beobachten',reason:`Seit ${Math.floor(inactive)} Tagen nicht aktiv`,tone:'amber'};
+    if(known>2&&progress<50)return {key:'watch',rank:3,label:'Beobachten',reason:`Fortschritt aktuell bei ${progress}%`,tone:'amber'};
+    return {key:'course',rank:2,label:'Auf Kurs',reason:`${done} von 21 Pflichtaufträgen erledigt`,tone:'green'};
+  }
   function toast(text){const el=$('#toast');el.textContent=text;el.hidden=false;clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.hidden=true,2600)}
   async function api(path,options={}){const r=await fetch(path,{...options,headers:{'content-type':'application/json',...(options.headers||{})}});const data=await r.json().catch(()=>({}));if(!r.ok)throw new Error(data.error||'Anfrage fehlgeschlagen');return data}
   function meter(done,total){const p=pct(done,total),cl=done>=total?'done':done===0?'none':'';return `<div class="meter ${cl}"><div class="meter-line"><span style="width:${p}%"></span></div><small>${done} / ${total}</small></div>`}
+  function statusBadge(s){const st=statusInfo(s);return `<span class="status-badge ${st.tone}">${st.label}</span><small class="status-reason">${esc(st.reason)}</small>`}
   function row(s){
-    const activity=when(s.last_seen),total=Number(s.total_done||0),p=pct(total,21),support=needsSupport(s);
-    return `<tr class="student-row" data-email="${esc(s.email)}" tabindex="0">
-      <td><div class="person"><strong>${esc(s.name||s.email)}</strong><small>${esc(s.email)}</small>${support?'<span class="support-pill">im Blick behalten</span>':''}</div></td>
+    const activity=when(s.last_seen),total=Number(s.total_done||0),p=pct(total,21),st=statusInfo(s);
+    return `<tr class="student-row status-${st.tone}" data-email="${esc(s.email)}" tabindex="0">
+      <td><div class="person"><strong>${esc(s.name||s.email)}</strong><small>${esc(s.email)}</small></div></td>
+      <td><div class="priority-cell">${statusBadge(s)}</div></td>
       <td>${meter(Number(s.onenote_done||0),10)}</td>
       <td>${meter(Number(s.digipen_done||0),5)}</td>
       <td>${meter(Number(s.scan_done||0),6)}</td>
@@ -35,20 +46,29 @@
   }
   function filtered(){
     const q=$('#searchInput').value.trim().toLowerCase();let list=students.filter(s=>!q||String(s.name).toLowerCase().includes(q)||s.email.toLowerCase().includes(q));
-    const sort=$('#sortSelect').value;
-    const byName=(a,b)=>String(a.name).localeCompare(String(b.name),'de');
+    const sort=$('#sortSelect').value;const byName=(a,b)=>String(a.name).localeCompare(String(b.name),'de');
     if(sort==='progress-asc')list.sort((a,b)=>a.total_done-b.total_done||byName(a,b));
     else if(sort==='progress-desc')list.sort((a,b)=>b.total_done-a.total_done||byName(a,b));
     else if(sort==='activity')list.sort((a,b)=>new Date(b.last_seen)-new Date(a.last_seen));
     else if(sort==='name')list.sort(byName);
-    else list.sort((a,b)=>Number(needsSupport(b))-Number(needsSupport(a))||a.total_done-b.total_done||byName(a,b));
+    else list.sort((a,b)=>statusInfo(b).rank-statusInfo(a).rank||a.total_done-b.total_done||byName(a,b));
     return list;
+  }
+  function renderRadar(){
+    const counts={done:0,course:0,new:0,watch:0,urgent:0};students.forEach(s=>counts[statusInfo(s).key]++);
+    $('#radarDone').textContent=counts.done;$('#radarCourse').textContent=counts.course+counts.new;$('#radarWatch').textContent=counts.watch;$('#radarUrgent').textContent=counts.urgent;
+    const attention=students.filter(s=>['urgent','watch'].includes(statusInfo(s).key)).sort((a,b)=>statusInfo(b).rank-statusInfo(a).rank||a.total_done-b.total_done).slice(0,6);
+    const box=$('#attentionList');
+    if(!attention.length){box.innerHTML='<div class="all-clear"><strong>Aktuell kein besonderer Unterstützungsbedarf</strong><span>Die vorhandenen Lernstände wirken unauffällig.</span></div>';return}
+    box.innerHTML=attention.map(s=>{const st=statusInfo(s);return `<button class="attention-item ${st.tone}" type="button" data-open-email="${esc(s.email)}"><span><strong>${esc(s.name||s.email)}</strong><small>${esc(st.reason)}</small></span><span class="attention-progress">${s.total_done}/21</span></button>`}).join('');
+    $$('[data-open-email]',box).forEach(btn=>btn.addEventListener('click',()=>openDetail(btn.dataset.openEmail)));
   }
   function render(){
     const list=filtered(),rows=$('#studentRows');rows.innerHTML=list.map(row).join('');$('#emptyState').hidden=list.length>0;
     $('#studentCount').textContent=students.length;$('#activeToday').textContent=students.filter(s=>ageDays(s.last_seen)<1&&new Date(s.last_seen).toDateString()===new Date().toDateString()).length;
     $('#averageProgress').textContent=(students.length?Math.round(students.reduce((sum,s)=>sum+Number(s.total_done||0),0)/(students.length*21)*100):0)+'%';
-    $('#supportCount').textContent=students.filter(needsSupport).length;$('#classTitle').textContent=classes[currentClass];
+    $('#supportCount').textContent=students.filter(s=>['urgent','watch'].includes(statusInfo(s).key)).length;$('#classTitle').textContent=classes[currentClass];
+    renderRadar();
     $$('[data-assign]').forEach(select=>select.addEventListener('change',async event=>{event.stopPropagation();const email=select.dataset.assign;try{await api('/lehrperson/api/assign',{method:'POST',body:JSON.stringify({email,className:select.value||null})});toast(`Klasse gespeichert: ${select.value||'nicht zugeordnet'}`);await load()}catch(error){toast(error.message)}}));
     $$('.student-row').forEach(tr=>{tr.addEventListener('click',event=>{if(event.target.closest('select'))return;openDetail(tr.dataset.email)});tr.addEventListener('keydown',event=>{if((event.key==='Enter'||event.key===' ')&&!event.target.closest('select')){event.preventDefault();openDetail(tr.dataset.email)}})});
   }
@@ -61,8 +81,8 @@
   }
   function openDetail(email){
     const s=students.find(item=>item.email===email);if(!s)return;selected=s;$('#detailName').textContent=s.name||s.email;$('#detailEmail').textContent=s.email;
-    const progress=s.progress||{};
-    $('#detailContent').innerHTML=`<div class="detail-summary">${Object.entries(defs).map(([key,d])=>`<div class="detail-module"><h3>${d.label}</h3><strong>${(progress[key]?.requiredDone||[]).length} / ${d.required.length}</strong><p>Pflichtaufträge erledigt</p></div>`).join('')}</div>${Object.entries(defs).map(([key,d])=>`<section><h3>${d.label}</h3><div class="task-status-list">${taskList(key,progress[key])}</div></section>`).join('')}`;
+    const progress=s.progress||{},st=statusInfo(s),activity=when(s.last_seen);
+    $('#detailContent').innerHTML=`<div class="detail-status ${st.tone}"><div><span class="status-badge ${st.tone}">${st.label}</span><strong>${esc(st.reason)}</strong></div><div><span>Letzte Aktivität</span><strong>${activity.main}${activity.sub?`, ${activity.sub}`:''}</strong></div></div><div class="detail-summary">${Object.entries(defs).map(([key,d])=>`<div class="detail-module"><h3>${d.label}</h3><strong>${(progress[key]?.requiredDone||[]).length} / ${d.required.length}</strong><p>Pflichtaufträge erledigt</p></div>`).join('')}</div>${Object.entries(defs).map(([key,d])=>`<section><h3>${d.label}</h3><div class="task-status-list">${taskList(key,progress[key])}</div></section>`).join('')}`;
     $('#detailDialog').showModal();
   }
   async function load(){

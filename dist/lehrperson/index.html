@@ -43,7 +43,24 @@
       <article class="summary-card"><span>Lernende</span><strong id="studentCount">0</strong><small>im gewählten Bereich</small></article>
       <article class="summary-card"><span>Heute aktiv</span><strong id="activeToday">0</strong><small>mit synchronisiertem Stand</small></article>
       <article class="summary-card"><span>Pflichtfortschritt</span><strong id="averageProgress">0%</strong><small>Durchschnitt aus 21 Pflichtaufträgen</small></article>
-      <article class="summary-card attention"><span>Unterstützung</span><strong id="supportCount">0</strong><small>noch wenig begonnen oder länger inaktiv</small></article>
+      <article class="summary-card attention"><span>Im Blick behalten</span><strong id="supportCount">0</strong><small>Beobachten oder dringend unterstützen</small></article>
+    </section>
+
+    <section class="radar-panel" aria-label="Unterrichtsradar">
+      <div class="radar-head">
+        <div>
+          <p class="eyebrow">Unterrichtsradar</p>
+          <h2>Wer braucht heute Aufmerksamkeit?</h2>
+          <p>Die Einstufung berücksichtigt Fortschritt, letzte Aktivität und wie lange der Lernstand bereits bekannt ist. Neue Lernende werden nicht vorschnell als kritisch markiert.</p>
+        </div>
+        <div class="radar-legend" aria-label="Statusübersicht">
+          <span class="legend-item green"><strong id="radarDone">0</strong> Fertig</span>
+          <span class="legend-item blue"><strong id="radarCourse">0</strong> Auf Kurs / Neu</span>
+          <span class="legend-item amber"><strong id="radarWatch">0</strong> Beobachten</span>
+          <span class="legend-item red"><strong id="radarUrgent">0</strong> Dringend</span>
+        </div>
+      </div>
+      <div id="attentionList" class="attention-list"></div>
     </section>
 
     <section class="control-panel">
@@ -69,6 +86,7 @@
           <thead>
             <tr>
               <th>Lernende/r</th>
+              <th>Status</th>
               <th>OneNote</th>
               <th>DigiPen</th>
               <th>Scannen</th>

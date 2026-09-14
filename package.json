@@ -1,8 +1,8 @@
 {
   "name": "informatik-lernportal",
-  "version": "1.13.0",
+  "version": "1.14.0",
   "private": true,
-  "description": "MedienInfoLab mit Lernendenportal, Cloud-Synchronisation und Lehrpersonen-Cockpit für GS1B und GS1D",
+  "description": "MedienInfoLab mit Lernendenportal, D1-Synchronisation und Lehrpersonen-Cockpit mit Unterrichtsradar für GS1B und GS1D",
   "scripts": {
     "dev": "node tests/serve.mjs",
     "test": "node tests/smoke.mjs",

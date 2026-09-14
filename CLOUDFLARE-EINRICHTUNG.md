@@ -52,5 +52,5 @@ In D1 werden gespeichert:
 Nicht in D1 gespeichert werden die Inhalte der persönlichen Notizfelder.
 
 
-### Bereits erledigt in Version 1.13
+### Bereits erledigt in Version 1.14
 Das D1-Binding `DB` zur Datenbank `mediainfolab` ist bereits in `wrangler.toml` hinterlegt. Wenn das Projekt über diese Wrangler-Konfiguration deployt wird, ist kein manuelles Binding im Cloudflare-Dashboard nötig.

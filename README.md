@@ -1,6 +1,6 @@
 # MedienInfoLab – Informatik-Lernportal
 
-## Version 1.13 – Lehrpersonenbereich (GS1B / GS1D)
+## Version 1.14 – Lehrpersonenbereich (GS1B / GS1D)
 
 Neu ist ein Cloudflare-Worker mit D1-Anbindung. Der lokale Arbeitsstand der Lernenden bleibt weiterhin im Browser erhalten und wird zusätzlich datensparsam mit der Webseite synchronisiert.
 
