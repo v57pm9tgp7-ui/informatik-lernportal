@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="820" viewBox="0 0 1440 820" role="img" aria-labelledby="title desc">
+<title id="title">OneNote Online: Modus-Menü öffnen</title>
+<desc id="desc">Beispielansicht von OneNote im Browser. Oben rechts ist das Menü Bearbeiten markiert.</desc>
+<defs>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#2f153d" flood-opacity=".18"/></filter>
+  <style>
+    .ui{font-family:'Segoe UI',Arial,sans-serif;fill:#18151d}.small{font-size:20px}.tab{font-size:24px;font-weight:600}.body{font-size:24px}.muted{fill:#5b5660}.call{font-size:28px;font-weight:700;fill:#fff}.num{font-size:34px;font-weight:800;fill:#fff}
+  </style>
+</defs>
+<rect width="1440" height="820" fill="#f5f3f7"/>
+<rect x="44" y="42" width="1352" height="736" rx="24" fill="#fff" filter="url(#shadow)"/>
+<!-- browser chrome -->
+<rect x="44" y="42" width="1352" height="66" rx="24" fill="#f1eef3"/>
+<circle cx="78" cy="75" r="9" fill="#d14c4c"/><circle cx="108" cy="75" r="9" fill="#d7a730"/><circle cx="138" cy="75" r="9" fill="#54a969"/>
+<rect x="210" y="58" width="850" height="34" rx="17" fill="#fff" stroke="#d7d2da"/>
+<text x="236" y="82" class="ui small muted">https://www.onenote.com/...</text>
+<!-- OneNote title bar -->
+<rect x="44" y="108" width="1352" height="66" fill="#5b2b82"/>
+<rect x="70" y="119" width="44" height="44" rx="8" fill="#fff" opacity=".98"/>
+<text x="83" y="151" class="ui" font-size="28" font-weight="800" fill="#5b2b82">N</text>
+<text x="132" y="150" font-family="Segoe UI,Arial" font-size="25" font-weight="700" fill="#fff">OneNote Workshop</text>
+<text x="1110" y="149" font-family="Segoe UI,Arial" font-size="20" fill="#fff">Gespeichert</text>
+<circle cx="1337" cy="141" r="20" fill="#fff" opacity=".2"/><text x="1328" y="149" font-family="Segoe UI,Arial" font-size="19" fill="#fff">CM</text>
+<!-- ribbon tabs -->
+<rect x="44" y="174" width="1352" height="90" fill="#fff"/>
+<text x="78" y="220" class="ui tab">Start</text><text x="170" y="220" class="ui tab">Einfügen</text><text x="296" y="220" class="ui tab">Zeichnen</text><text x="424" y="220" class="ui tab">Ansicht</text><text x="540" y="220" class="ui tab">Hilfe</text>
+<line x1="75" y1="245" x2="560" y2="245" stroke="#ebe7ee" stroke-width="2"/>
+<!-- mode menu highlighted -->
+<rect x="1120" y="188" width="222" height="50" rx="12" fill="#fff" stroke="#6f2c91" stroke-width="4"/>
+<text x="1150" y="221" class="ui tab" font-size="22">Bearbeiten</text><path d="M1305 207 l10 10 10-10" fill="none" stroke="#6f2c91" stroke-width="4" stroke-linecap="round"/>
+<circle cx="1344" cy="186" r="28" fill="#d54a4a"/><text x="1334" y="198" class="num">1</text>
+<!-- left nav -->
+<rect x="44" y="264" width="300" height="514" fill="#faf9fb"/>
+<text x="78" y="312" class="ui body" font-weight="700">Workshop</text>
+<rect x="66" y="334" width="250" height="48" rx="10" fill="#eee6f4"/><text x="84" y="366" class="ui small" font-weight="700">Stift-Test</text>
+<text x="84" y="426" class="ui small muted">Start</text><text x="84" y="472" class="ui small muted">Übungen</text><text x="84" y="518" class="ui small muted">Ideen</text>
+<!-- page -->
+<text x="392" y="330" class="ui" font-size="40" font-weight="700">Stift-Test</text>
+<line x1="392" y1="350" x2="1320" y2="350" stroke="#e5e0e8" stroke-width="2"/>
+<text x="392" y="414" class="ui body">Hier steht Ihre handschriftliche Notiz.</text>
+<path d="M405 500 C470 445,540 560,610 492 S760 530,830 476" fill="none" stroke="#355bb8" stroke-width="6" stroke-linecap="round"/>
+<path d="M415 560 C485 515,560 610,640 548 S795 595,900 530" fill="none" stroke="#355bb8" stroke-width="6" stroke-linecap="round"/>
+<!-- callout -->
+<rect x="742" y="600" width="570" height="114" rx="22" fill="#6f2c91"/>
+<text x="780" y="646" class="call">1. Öffnen Sie oben rechts das</text><text x="780" y="684" class="call">Menü «Bearbeiten» (Modus).</text>
+<path d="M1120 603 C1190 555,1230 500,1230 245" fill="none" stroke="#6f2c91" stroke-width="7" stroke-linecap="round"/>
+<path d="M1213 266 l17-28 17 28" fill="#6f2c91"/>
+<text x="72" y="754" class="ui small muted">Beispielansicht – Microsoft kann die Oberfläche leicht unterschiedlich darstellen.</text>
+</svg>
