@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="820" viewBox="0 0 1440 820" role="img" aria-labelledby="title desc">
+<title id="title">OneNote Online: In Desktop-App öffnen</title>
+<desc id="desc">Beispielansicht von OneNote im Browser mit geöffnetem Modus-Menü. Der Eintrag In Desktop-App öffnen ist markiert.</desc>
+<defs>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#2f153d" flood-opacity=".18"/></filter>
+  <style>.ui{font-family:'Segoe UI',Arial,sans-serif;fill:#18151d}.small{font-size:20px}.tab{font-size:24px;font-weight:600}.body{font-size:24px}.muted{fill:#5b5660}.call{font-size:28px;font-weight:700;fill:#fff}.num{font-size:34px;font-weight:800;fill:#fff}</style>
+</defs>
+<rect width="1440" height="820" fill="#f5f3f7"/>
+<rect x="44" y="42" width="1352" height="736" rx="24" fill="#fff" filter="url(#shadow)"/>
+<rect x="44" y="42" width="1352" height="66" rx="24" fill="#f1eef3"/>
+<circle cx="78" cy="75" r="9" fill="#d14c4c"/><circle cx="108" cy="75" r="9" fill="#d7a730"/><circle cx="138" cy="75" r="9" fill="#54a969"/>
+<rect x="210" y="58" width="850" height="34" rx="17" fill="#fff" stroke="#d7d2da"/>
+<text x="236" y="82" class="ui small muted">https://www.onenote.com/...</text>
+<rect x="44" y="108" width="1352" height="66" fill="#5b2b82"/>
+<rect x="70" y="119" width="44" height="44" rx="8" fill="#fff"/><text x="83" y="151" class="ui" font-size="28" font-weight="800" fill="#5b2b82">N</text>
+<text x="132" y="150" font-family="Segoe UI,Arial" font-size="25" font-weight="700" fill="#fff">OneNote Workshop</text>
+<rect x="44" y="174" width="1352" height="90" fill="#fff"/>
+<text x="78" y="220" class="ui tab">Start</text><text x="170" y="220" class="ui tab">Einfügen</text><text x="296" y="220" class="ui tab">Zeichnen</text><text x="424" y="220" class="ui tab">Ansicht</text><text x="540" y="220" class="ui tab">Hilfe</text>
+<rect x="1120" y="188" width="222" height="50" rx="12" fill="#faf7fc" stroke="#6f2c91" stroke-width="3"/>
+<text x="1150" y="221" class="ui tab" font-size="22">Bearbeiten</text><path d="M1305 207 l10 10 10-10" fill="none" stroke="#6f2c91" stroke-width="4"/>
+<!-- dropdown -->
+<rect x="1012" y="246" width="330" height="205" rx="16" fill="#fff" stroke="#d7d0dd" filter="url(#shadow)"/>
+<text x="1044" y="292" class="ui body" font-weight="650">Bearbeiten</text>
+<text x="1044" y="344" class="ui body">Anzeigen</text>
+<rect x="1028" y="365" width="298" height="66" rx="12" fill="#efe4f5" stroke="#6f2c91" stroke-width="3"/>
+<rect x="1050" y="382" width="34" height="34" rx="7" fill="#6f2c91"/><text x="1060" y="407" font-family="Segoe UI,Arial" font-size="22" font-weight="800" fill="#fff">N</text>
+<text x="1100" y="406" class="ui body" font-weight="750">In Desktop-App öffnen</text>
+<circle cx="1339" cy="397" r="28" fill="#d54a4a"/><text x="1329" y="409" class="num">2</text>
+<!-- page and nav -->
+<rect x="44" y="264" width="300" height="514" fill="#faf9fb"/>
+<text x="78" y="312" class="ui body" font-weight="700">Workshop</text><rect x="66" y="334" width="250" height="48" rx="10" fill="#eee6f4"/><text x="84" y="366" class="ui small" font-weight="700">Stift-Test</text>
+<text x="392" y="330" class="ui" font-size="40" font-weight="700">Stift-Test</text><line x1="392" y1="350" x2="955" y2="350" stroke="#e5e0e8" stroke-width="2"/>
+<text x="392" y="414" class="ui body">Ihre Notizen bleiben im gleichen Notizbuch.</text>
+<path d="M405 500 C470 445,540 560,610 492 S760 530,830 476" fill="none" stroke="#355bb8" stroke-width="6" stroke-linecap="round"/>
+<rect x="520" y="602" width="670" height="104" rx="22" fill="#6f2c91"/>
+<text x="558" y="646" class="call">2. Wählen Sie «In Desktop-App öffnen».</text><text x="558" y="684" class="call">OneNote startet danach auf Ihrem Computer.</text>
+<path d="M1070 602 C1090 555,1118 505,1160 438" fill="none" stroke="#6f2c91" stroke-width="7" stroke-linecap="round"/><path d="M1143 455 l20-27 9 33" fill="#6f2c91"/>
+<text x="72" y="754" class="ui small muted">Beispielansicht – die Bezeichnung kann je nach Microsoft-Ansicht leicht abweichen.</text>
+</svg>
