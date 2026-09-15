@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="820" viewBox="0 0 1440 820" role="img" aria-labelledby="title desc">
+<title id="title">Browser-Rückfrage zum Öffnen von OneNote</title>
+<desc id="desc">Beispielansicht einer Browser-Rückfrage. Die Schaltfläche Öffnen ist markiert.</desc>
+<defs>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#2f153d" flood-opacity=".18"/></filter>
+  <style>.ui{font-family:'Segoe UI',Arial,sans-serif;fill:#18151d}.small{font-size:20px}.body{font-size:24px}.muted{fill:#5b5660}.call{font-size:28px;font-weight:700;fill:#fff}.num{font-size:34px;font-weight:800;fill:#fff}</style>
+</defs>
+<rect width="1440" height="820" fill="#f5f3f7"/>
+<rect x="44" y="42" width="1352" height="736" rx="24" fill="#fff" filter="url(#shadow)"/>
+<rect x="44" y="42" width="1352" height="66" rx="24" fill="#f1eef3"/>
+<circle cx="78" cy="75" r="9" fill="#d14c4c"/><circle cx="108" cy="75" r="9" fill="#d7a730"/><circle cx="138" cy="75" r="9" fill="#54a969"/>
+<rect x="210" y="58" width="850" height="34" rx="17" fill="#fff" stroke="#d7d2da"/><text x="236" y="82" class="ui small muted">https://www.onenote.com/...</text>
+<rect x="44" y="108" width="1352" height="66" fill="#5b2b82"/><text x="84" y="150" font-family="Segoe UI,Arial" font-size="25" font-weight="700" fill="#fff">OneNote Workshop</text>
+<rect x="44" y="174" width="1352" height="604" fill="#f8f7f9"/>
+<!-- dimmed page -->
+<rect x="82" y="220" width="260" height="500" fill="#fff"/><rect x="372" y="220" width="970" height="500" fill="#fff"/>
+<text x="410" y="286" class="ui" font-size="38" font-weight="700">Stift-Test</text><path d="M420 400 C505 340,585 460,675 390 S835 440,930 372" fill="none" stroke="#355bb8" stroke-width="6" opacity=".4"/>
+<rect x="44" y="174" width="1352" height="604" fill="#2b2231" opacity=".26"/>
+<!-- browser permission dialog -->
+<rect x="365" y="235" width="710" height="360" rx="22" fill="#fff" filter="url(#shadow)"/>
+<rect x="405" y="275" width="54" height="54" rx="10" fill="#6f2c91"/><text x="422" y="314" font-family="Segoe UI,Arial" font-size="33" font-weight="800" fill="#fff">N</text>
+<text x="486" y="310" class="ui" font-size="31" font-weight="750">OneNote öffnen?</text>
+<text x="405" y="380" class="ui body">Diese Website versucht, die OneNote-App</text><text x="405" y="416" class="ui body">auf Ihrem Computer zu öffnen.</text>
+<rect x="705" y="493" width="142" height="58" rx="12" fill="#fff" stroke="#bbb5bf" stroke-width="2"/><text x="727" y="531" class="ui body">Abbrechen</text>
+<rect x="867" y="493" width="160" height="58" rx="12" fill="#6f2c91" stroke="#6f2c91" stroke-width="3"/><text x="908" y="531" font-family="Segoe UI,Arial" font-size="24" font-weight="750" fill="#fff">Öffnen</text>
+<circle cx="1031" cy="491" r="28" fill="#d54a4a"/><text x="1021" y="503" class="num">3</text>
+<!-- callout -->
+<rect x="455" y="638" width="585" height="94" rx="22" fill="#6f2c91"/><text x="493" y="694" class="call">3. Bestätigen Sie mit «Öffnen».</text>
+<path d="M900 638 C920 605,944 580,949 553" fill="none" stroke="#6f2c91" stroke-width="7" stroke-linecap="round"/><path d="M932 570 l18-28 15 31" fill="#6f2c91"/>
+<text x="72" y="754" class="ui small muted">Je nach Browser kann die Rückfrage etwas anders aussehen.</text>
+</svg>
