@@ -312,6 +312,65 @@ async function health(env){
   try{await env.DB.prepare('SELECT 1 AS ok').first();return json({ok:true,d1:true})}catch{return json({ok:false,d1:false},503)}
 }
 
+const ONENOTE_DESKTOP_GUIDE_STYLE=`
+<style id="onenote-desktop-guide-style">
+  .desktop-guide{margin:30px 0 6px;padding:24px;border:2px solid var(--purple);border-radius:20px;background:linear-gradient(180deg,#fff,var(--purple-pale));box-shadow:var(--shadow-soft)}
+  .desktop-guide-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px}
+  .desktop-guide-icon{flex:0 0 auto;width:46px;height:46px;border-radius:13px;display:grid;place-items:center;background:var(--purple);color:#fff;font-size:24px;font-weight:900}
+  .desktop-guide h2{margin:0 0 6px;font-size:27px;line-height:1.2;letter-spacing:-.02em}
+  .desktop-guide-head p{margin:0;color:var(--ink-soft);font-size:17px;line-height:1.5}
+  .desktop-guide-alert{margin:0 0 20px;padding:14px 16px;border-left:5px solid var(--purple);border-radius:0 12px 12px 0;background:#f1e8f6;font-size:17px;line-height:1.5}
+  .desktop-guide-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+  .desktop-guide-shot{margin:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 8px 18px rgba(28,16,38,.07)}
+  .desktop-guide-shot a{display:block;background:#fff}
+  .desktop-guide-shot img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+  .desktop-guide-shot figcaption{padding:13px 14px 15px;font-size:15px;line-height:1.45;color:var(--ink-soft)}
+  .desktop-guide-shot figcaption strong{display:block;margin-bottom:4px;color:var(--ink);font-size:16px}
+  .desktop-guide-after{margin-top:20px;padding:17px 18px;border:1px solid #b7ddca;border-radius:14px;background:var(--green-soft)}
+  .desktop-guide-after strong{display:block;margin-bottom:7px;color:var(--green-dark);font-size:18px}
+  .desktop-guide-after ol{margin:0;padding-left:24px}
+  .desktop-guide-after li{margin:5px 0}
+  .desktop-guide-note{margin:14px 0 0;font-size:14px;color:var(--ink-soft)}
+  @media(max-width:900px){.desktop-guide-grid{grid-template-columns:1fr}.desktop-guide{padding:18px}.desktop-guide h2{font-size:24px}}
+</style>`;
+
+const ONENOTE_DESKTOP_GUIDE_HTML=`
+<section class="desktop-guide" aria-labelledby="desktop-guide-title">
+  <div class="desktop-guide-head">
+    <div class="desktop-guide-icon" aria-hidden="true">N</div>
+    <div><h2 id="desktop-guide-title">Freihand in Text umwandeln: Desktop-App öffnen</h2><p>Dieser Schritt funktioniert nicht in OneNote Online. Öffnen Sie dasselbe Notizbuch deshalb kurz in der installierten OneNote-App.</p></div>
+  </div>
+  <div class="desktop-guide-alert"><strong>Wichtig:</strong> Ihre Notizen bleiben im gleichen Notizbuch. Sie wechseln nur vom Browser in die Desktop-App.</div>
+  <div class="desktop-guide-grid">
+    <figure class="desktop-guide-shot"><a href="assets/screenshots/onenote-online-desktop-1.svg" target="_blank" rel="noopener"><img src="assets/screenshots/onenote-online-desktop-1.svg" alt="OneNote Online mit markiertem Menü Bearbeiten oben rechts"></a><figcaption><strong>1 · Modus-Menü öffnen</strong>Öffnen Sie oben rechts das Menü <b>«Bearbeiten»</b>. Es wird auch als Modus-Menü bezeichnet.</figcaption></figure>
+    <figure class="desktop-guide-shot"><a href="assets/screenshots/onenote-online-desktop-2.svg" target="_blank" rel="noopener"><img src="assets/screenshots/onenote-online-desktop-2.svg" alt="Geöffnetes Modus-Menü mit markiertem Eintrag In Desktop-App öffnen"></a><figcaption><strong>2 · Desktop-App wählen</strong>Klicken Sie auf <b>«In Desktop-App öffnen»</b>.</figcaption></figure>
+    <figure class="desktop-guide-shot"><a href="assets/screenshots/onenote-online-desktop-3.svg" target="_blank" rel="noopener"><img src="assets/screenshots/onenote-online-desktop-3.svg" alt="Browser-Rückfrage zum Öffnen von OneNote mit markierter Schaltfläche Öffnen"></a><figcaption><strong>3 · Öffnen bestätigen</strong>Falls der Browser nachfragt, bestätigen Sie mit <b>«Öffnen»</b>.</figcaption></figure>
+  </div>
+  <div class="desktop-guide-after"><strong>Danach in der OneNote-Desktop-App</strong><ol><li>Öffnen Sie die Registerkarte <b>Zeichnen</b>.</li><li>Wählen Sie <b>Lassoauswahl</b>.</li><li>Markieren Sie Ihre handschriftliche Notiz.</li><li>Wählen Sie <b>Freihand in Text</b>.</li></ol></div>
+  <p class="desktop-guide-note">Die Microsoft-Oberfläche kann je nach Version leicht anders aussehen. Entscheidend ist der Weg über das Modus-Menü zur Desktop-App.</p>
+</section>`;
+
+class OneNoteGuideHeadHandler{
+  element(element){element.append(ONENOTE_DESKTOP_GUIDE_STYLE,{html:true});}
+}
+class OneNoteGuideStepsHandler{
+  element(element){
+    element.append(`<label class="step"><input type="checkbox" data-check="t9-s9"><span class="checkmark">✓</span><span class="step-copy"><span class="step-title">Freihand in Text umwandeln.</span><span class="step-detail">Öffnen Sie dafür zuerst die Desktop-App. Die Bildanleitung direkt darunter zeigt den Weg aus OneNote Online.</span></span></label>`,{html:true});
+    element.after(ONENOTE_DESKTOP_GUIDE_HTML,{html:true});
+  }
+}
+async function serveAsset(request,env,path){
+  const response=await env.ASSETS.fetch(request);
+  const type=response.headers.get('content-type')||'';
+  if((path==='/onenote.html'||path==='/onenote')&&type.includes('text/html')){
+    return new HTMLRewriter()
+      .on('head',new OneNoteGuideHeadHandler())
+      .on('#auftrag-9 .step-list',new OneNoteGuideStepsHandler())
+      .transform(response);
+  }
+  return response;
+}
+
 export default {
   async fetch(request,env){
     const url=new URL(request.url),path=url.pathname;
@@ -328,6 +387,6 @@ export default {
     if(path==='/lehrperson/api/remove'&&request.method==='POST')return removeStudent(request,env);
     if(path==='/lehrperson/api/health'&&request.method==='GET')return health(env);
     if(path==='/lehrperson')return Response.redirect(new URL('/lehrperson/',url),302);
-    return env.ASSETS.fetch(request);
+    return serveAsset(request,env,path);
   }
 };
