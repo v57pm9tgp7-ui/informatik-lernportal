@@ -14,69 +14,89 @@
       <span class="brand-mark">MI</span>
       <span><strong>MedienInfoLab</strong><small>Lehrpersonenbereich · Herr Marti</small></span>
     </a>
-    <a class="back-link" href="../index.html#start">Lernendenansicht öffnen ↗</a>
+    <nav class="teacher-actions" aria-label="Schnellaktionen">
+      <button id="refreshButton" class="top-action" type="button">↻ Aktualisieren</button>
+      <a class="back-link" href="../index.html#start">Lernendenansicht ↗</a>
+    </nav>
   </header>
 
   <main class="teacher-shell">
     <section class="teacher-hero">
       <div>
-        <p class="eyebrow">Unterricht steuern</p>
-        <h1>Klassen im Blick</h1>
-        <p>Arbeitsstand von GS1B und GS1D. Die Klassenlisten sind hinterlegt; Lernstände werden automatisch der richtigen Klasse zugeordnet. Angezeigt werden nur Auftragsstatus und letzte Aktivität – keine persönlichen Notiztexte.</p>
+        <p class="eyebrow">Lehrpersonen-Cockpit</p>
+        <h1>Unterricht steuern.<br>Fortschritt sehen.</h1>
+        <p>GS1B und GS1D auf einer Seite: heutiger Fokus, Arbeitsstand, Unterstützungsbedarf und Auftragssteuerung. Es werden keine persönlichen Notiztexte der Lernenden angezeigt.</p>
       </div>
-      <button id="refreshButton" class="button secondary" type="button">Aktualisieren</button>
+      <div class="hero-actions">
+        <button id="exportButton" class="button secondary" type="button">CSV exportieren</button>
+        <button id="printButton" class="button secondary" type="button">Drucken</button>
+      </div>
     </section>
 
     <section id="setupNotice" class="setup-notice" hidden>
-      <strong>Cloud-Speicherung noch nicht verbunden</strong>
-      <p>Der Lehrpersonenbereich ist bereit, aber die D1-Datenbank muss in Cloudflare noch einmalig verbunden werden. Die Lernenden-Webseite funktioniert weiterhin lokal.</p>
+      <strong>Cloud-Speicherung nicht erreichbar</strong>
+      <p>Der Lehrpersonenbereich kann D1 gerade nicht erreichen. Die Lernenden-Webseite speichert lokal weiter; prüfen Sie Deployment und D1-Binding.</p>
     </section>
 
     <nav class="class-tabs" aria-label="Klasse auswählen">
-      <button type="button" class="class-tab is-active" data-class="GS1B">GS1B</button>
-      <button type="button" class="class-tab" data-class="GS1D">GS1D</button>
-      <button type="button" class="class-tab" data-class="UNASSIGNED">Nicht zugeordnet <span data-unassigned-count></span></button>
-      <button type="button" class="class-tab" data-class="ALL">Alle</button>
+      <button type="button" class="class-tab is-active" data-class="GS1B">GS1B <span data-class-count="GS1B"></span></button>
+      <button type="button" class="class-tab" data-class="GS1D">GS1D <span data-class-count="GS1D"></span></button>
+      <button type="button" class="class-tab" data-class="UNASSIGNED">Nicht zugeordnet <span data-class-count="UNASSIGNED"></span></button>
+      <button type="button" class="class-tab" data-class="ALL">Alle <span data-class-count="ALL"></span></button>
     </nav>
 
-
-    <section class="assignment-panel" id="assignmentPanel">
-      <div class="panel-head assignment-head">
-        <div>
-          <p class="eyebrow">Aufträge steuern</p>
-          <h2>Was sehen die Lernenden?</h2>
-          <p id="assignmentIntro">Sie steuern die Aufträge separat für GS1B und GS1D. Änderungen werden sofort gespeichert.</p>
-        </div>
-        <button id="resetAssignments" class="button secondary" type="button">Standard wiederherstellen</button>
-      </div>
-      <div class="assignment-status-legend" aria-label="Bedeutung der Auftragsarten">
-        <span><b class="dot-state required"></b><strong>Pflicht</strong> sichtbar und zählt zum Pflichtfortschritt</span>
-        <span><b class="dot-state optional"></b><strong>Zusatz</strong> sichtbar und freiwillig</span>
-        <span><b class="dot-state hidden"></b><strong>Verborgen</strong> für Lernende nicht sichtbar</span>
-        <span><b class="dot-state completed"></b><strong>Abgeschlossen</strong> bleibt sichtbar, zählt aber nicht mehr als offen</span>
-      </div>
-      <div id="assignmentClassNotice" class="assignment-class-notice" hidden>Wählen Sie GS1B oder GS1D, um Aufträge zu steuern.</div>
-      <div id="assignmentModules" class="assignment-modules"></div>
+    <section class="summary-grid" aria-label="Klassenübersicht">
+      <article class="summary-card"><span>Lernende</span><strong id="studentCount">0</strong><small id="studentCountSub">in der gewählten Klasse</small></article>
+      <article class="summary-card"><span>Heute aktiv</span><strong id="activeToday">0</strong><small>mit synchronisiertem Arbeitsstand</small></article>
+      <article class="summary-card"><span>Pflichtfortschritt</span><strong id="averageProgress">0%</strong><small>Durchschnitt der Klasse</small></article>
+      <article class="summary-card attention"><span>Im Blick behalten</span><strong id="supportCount">0</strong><small>Beobachten oder dringend</small></article>
     </section>
 
-    <section class="summary-grid" aria-label="Klassenübersicht">
-      <article class="summary-card"><span>Lernende</span><strong id="studentCount">0</strong><small>im gewählten Bereich</small></article>
-      <article class="summary-card"><span>Heute aktiv</span><strong id="activeToday">0</strong><small>mit synchronisiertem Stand</small></article>
-      <article class="summary-card"><span>Pflichtfortschritt</span><strong id="averageProgress">0%</strong><small>Durchschnitt aus 21 Pflichtaufträgen</small></article>
-      <article class="summary-card attention"><span>Im Blick behalten</span><strong id="supportCount">0</strong><small>Beobachten oder dringend unterstützen</small></article>
+    <section class="today-panel" id="todayPanel">
+      <div class="panel-head today-head">
+        <div>
+          <p class="eyebrow">Unterricht heute</p>
+          <h2 id="todayHeading">Was ist heute wichtig?</h2>
+          <p id="todayIntro">Wählen Sie die Aufträge, die für die aktuelle Lektion im Zentrum stehen. Die Lernenden sehen diese Auswahl prominent auf der Startseite.</p>
+        </div>
+        <span id="todaySaveState" class="save-state">Noch nicht verändert</span>
+      </div>
+      <div id="todayClassNotice" class="assignment-class-notice" hidden>Wählen Sie GS1B oder GS1D, um den heutigen Fokus zu bearbeiten.</div>
+      <div id="todayEditor" class="today-editor">
+        <div class="today-form">
+          <label class="switch-row"><input id="todayActive" type="checkbox" checked><span><strong>«Heute wichtig» bei den Lernenden anzeigen</strong><small>Kann jederzeit wieder ausgeblendet werden.</small></span></label>
+          <label class="field"><span>Überschrift</span><input id="todayTitle" type="text" maxlength="70" value="Heute wichtig" placeholder="Heute wichtig"></label>
+          <label class="field"><span>Kurzer Hinweis an die Klasse</span><textarea id="todayMessage" rows="3" maxlength="280" placeholder="Zum Beispiel: Arbeiten Sie zuerst OneNote Auftrag 8–10 fertig. Danach beginnen Sie mit dem DigiPen."></textarea><small><span id="todayMessageCount">0</span>/280 Zeichen</small></label>
+          <div class="today-buttons">
+            <button id="saveTodayButton" class="button primary" type="button">Heutigen Fokus speichern</button>
+            <button id="clearTodayButton" class="button secondary" type="button">Ausblenden</button>
+            <button id="copyTodayButton" class="button secondary" type="button">Auf andere Klasse kopieren</button>
+          </div>
+        </div>
+        <div class="today-tasks-wrap">
+          <div class="today-tasks-head"><strong>Aufträge für heute</strong><span>max. 8 auswählen</span></div>
+          <div id="todayTasks" class="today-task-groups"></div>
+        </div>
+      </div>
+      <div class="today-class-status" id="todayClassStatus">
+        <article><span>Heute fertig</span><strong id="todayDoneCount">0</strong><small>alle Fokus-Aufträge erledigt</small></article>
+        <article><span>In Arbeit</span><strong id="todayWorkingCount">0</strong><small>mindestens begonnen</small></article>
+        <article><span>Noch nicht begonnen</span><strong id="todayOpenCount">0</strong><small>bei den Fokus-Aufträgen</small></article>
+        <article class="focus-total"><span>Fokus</span><strong id="todayTaskCount">0</strong><small>ausgewählte Aufträge</small></article>
+      </div>
     </section>
 
     <section class="radar-panel" aria-label="Unterrichtsradar">
       <div class="radar-head">
         <div>
           <p class="eyebrow">Unterrichtsradar</p>
-          <h2>Wer braucht heute Aufmerksamkeit?</h2>
-          <p>Die Einstufung berücksichtigt Fortschritt, letzte Aktivität und wie lange der Lernstand bereits bekannt ist. Neue Lernende werden nicht vorschnell als kritisch markiert.</p>
+          <h2>Wer braucht Aufmerksamkeit?</h2>
+          <p>Die Einstufung berücksichtigt Fortschritt, letzte Aktivität und wie lange ein Arbeitsstand bereits bekannt ist. «Noch nicht gestartet» wird separat ausgewiesen.</p>
         </div>
         <div class="radar-legend" aria-label="Statusübersicht">
           <span class="legend-item green"><strong id="radarDone">0</strong> Fertig</span>
           <span class="legend-item blue"><strong id="radarCourse">0</strong> Auf Kurs / Neu</span>
-          <span class="legend-item gray"><strong id="radarNotStarted">0</strong> Noch nicht gestartet</span>
+          <span class="legend-item gray"><strong id="radarNotStarted">0</strong> Nicht gestartet</span>
           <span class="legend-item amber"><strong id="radarWatch">0</strong> Beobachten</span>
           <span class="legend-item red"><strong id="radarUrgent">0</strong> Dringend</span>
         </div>
@@ -87,8 +107,9 @@
     <section class="control-panel">
       <div class="panel-head">
         <div>
-          <p class="eyebrow">Arbeitsstand</p>
+          <p class="eyebrow">Klassenübersicht</p>
           <h2 id="classTitle">GS1B</h2>
+          <p class="panel-sub" id="lastRefresh">Noch nicht aktualisiert</p>
         </div>
         <div class="filters">
           <label class="search"><span class="sr-only">Lernende suchen</span><input id="searchInput" type="search" placeholder="Name oder Schulmail suchen"></label>
@@ -101,55 +122,59 @@
           </select>
         </div>
       </div>
-
+      <div class="status-filters" id="statusFilters" aria-label="Status filtern">
+        <button class="status-filter is-active" data-status-filter="ALL" type="button">Alle</button>
+        <button class="status-filter urgent" data-status-filter="urgent" type="button">Dringend</button>
+        <button class="status-filter watch" data-status-filter="watch" type="button">Beobachten</button>
+        <button class="status-filter gray" data-status-filter="notstarted" type="button">Nicht gestartet</button>
+        <button class="status-filter course" data-status-filter="course" type="button">Auf Kurs</button>
+        <button class="status-filter done" data-status-filter="done" type="button">Fertig</button>
+        <button class="status-filter focus" data-status-filter="today-open" type="button">Heute noch offen</button>
+      </div>
       <div class="table-wrap">
         <table class="student-table">
-          <thead>
-            <tr>
-              <th>Lernende/r</th>
-              <th>Status</th>
-              <th>OneNote</th>
-              <th>DigiPen</th>
-              <th>Scannen</th>
-              <th>Gesamt</th>
-              <th>Letzte Aktivität</th>
-              <th>Klasse</th>
-            </tr>
-          </thead>
+          <thead><tr><th>Lernende/r</th><th>Status</th><th>OneNote</th><th>DigiPen</th><th>Scannen</th><th>Gesamt</th><th>Letzte Aktivität</th><th>Klasse</th></tr></thead>
           <tbody id="studentRows"></tbody>
         </table>
-        <div id="emptyState" class="empty-state" hidden>
-          <strong>Noch keine Lernenden sichtbar</strong>
-          <p>Sobald eine lernende Person die Webseite mit ihrer <code>@stud.bffbern.ch</code>-Adresse öffnet, erscheint sie hier automatisch.</p>
-        </div>
+        <div id="emptyState" class="empty-state" hidden><strong>Keine Lernenden in dieser Auswahl</strong><p>Ändern Sie Filter oder Suche. Neue Schulmailadressen ausserhalb der Klassenlisten erscheinen unter «Nicht zugeordnet».</p></div>
       </div>
     </section>
 
+    <section class="matrix-panel" id="matrixPanel">
+      <div class="panel-head">
+        <div><p class="eyebrow">Heute auf einen Blick</p><h2>Fokus-Matrix</h2><p class="panel-sub">Ein Haken bedeutet erledigt, ein Punkt bedeutet begonnen. So sehen Sie während der Lektion sofort, wer bei welchem Fokus-Auftrag steht.</p></div>
+      </div>
+      <div id="matrixEmpty" class="assignment-class-notice">Wählen und speichern Sie oben mindestens einen Fokus-Auftrag.</div>
+      <div class="matrix-wrap" id="matrixWrap" hidden><table class="focus-matrix"><thead id="matrixHead"></thead><tbody id="matrixBody"></tbody></table></div>
+    </section>
+
+    <details class="assignment-panel" id="assignmentPanel">
+      <summary class="assignment-summary"><span><span class="eyebrow">Aufträge steuern</span><strong>Pflicht, Zusatz, verborgen oder abgeschlossen</strong></span><span>Öffnen ▾</span></summary>
+      <div class="panel-head assignment-head">
+        <div><h2>Was sehen die Lernenden?</h2><p id="assignmentIntro">Sie steuern die Aufträge separat für GS1B und GS1D. Änderungen werden sofort gespeichert.</p></div>
+        <button id="resetAssignments" class="button secondary" type="button">Standard wiederherstellen</button>
+      </div>
+      <div class="assignment-status-legend" aria-label="Bedeutung der Auftragsarten">
+        <span><b class="dot-state required"></b><strong>Pflicht</strong> sichtbar und zählt zum Pflichtfortschritt</span>
+        <span><b class="dot-state optional"></b><strong>Zusatz</strong> sichtbar und freiwillig</span>
+        <span><b class="dot-state hidden"></b><strong>Verborgen</strong> für Lernende nicht sichtbar</span>
+        <span><b class="dot-state completed"></b><strong>Abgeschlossen</strong> sichtbar, aber nicht mehr offen</span>
+      </div>
+      <div id="assignmentClassNotice" class="assignment-class-notice" hidden>Wählen Sie GS1B oder GS1D, um Aufträge zu steuern.</div>
+      <div id="assignmentModules" class="assignment-modules"></div>
+    </details>
+
     <section class="info-grid">
-      <article class="info-card">
-        <p class="eyebrow">So funktioniert die Zuordnung</p>
-        <h2>Neue Lernende erscheinen automatisch</h2>
-        <p>Beim ersten Öffnen der Lernenden-Webseite wird die eingegebene Schulmail mit dem Arbeitsstand synchronisiert. Neue Adressen landen zuerst unter <strong>«Nicht zugeordnet»</strong>. Dort ordnen Sie sie einmal GS1B oder GS1D zu.</p>
-      </article>
-      <article class="info-card">
-        <p class="eyebrow">Datensparsam</p>
-        <h2>Keine persönlichen Notizen im Cockpit</h2>
-        <p>Übertragen werden erledigte bzw. begonnene Aufträge, der zuletzt bearbeitete Auftrag und die letzte Aktivität. Texte aus den persönlichen Notizfeldern bleiben auf dem Gerät der Lernenden.</p>
-      </article>
+      <article class="info-card"><p class="eyebrow">Klassenlisten</p><h2>37 Lernende fest hinterlegt</h2><p>Bekannte Schulmailadressen werden automatisch GS1B oder GS1D zugeordnet. Unbekannte <code>@stud.bffbern.ch</code>-Adressen erscheinen separat und können manuell zugeordnet werden.</p></article>
+      <article class="info-card"><p class="eyebrow">Datensparsam</p><h2>Nur das Nötige im Cockpit</h2><p>Synchronisiert werden Schulmail, Auftragsstatus und Aktivitätszeit. Persönliche Notiztexte sowie Dateien der Lernenden bleiben ausserhalb des Lehrpersonenbereichs.</p></article>
     </section>
   </main>
 
   <dialog id="detailDialog" class="detail-dialog">
     <form method="dialog" class="dialog-shell">
-      <div class="dialog-head">
-        <div><p class="eyebrow">Lernendenansicht</p><h2 id="detailName">Arbeitsstand</h2><p id="detailEmail"></p></div>
-        <button class="close-button" value="cancel" aria-label="Fenster schliessen">×</button>
-      </div>
+      <div class="dialog-head"><div><p class="eyebrow">Lernendenansicht</p><h2 id="detailName">Arbeitsstand</h2><p id="detailEmail"></p></div><button class="close-button" value="cancel" aria-label="Fenster schliessen">×</button></div>
       <div id="detailContent" class="detail-content"></div>
-      <div class="dialog-actions">
-        <button id="removeStudentButton" type="button" class="danger-link">Fehleintrag entfernen</button>
-        <button class="button secondary" value="cancel">Schliessen</button>
-      </div>
+      <div class="dialog-actions"><button id="removeStudentButton" type="button" class="danger-link">Fehleintrag entfernen</button><button class="button secondary" value="cancel">Schliessen</button></div>
     </form>
   </dialog>
 

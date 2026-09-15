@@ -111,6 +111,11 @@ check('Klassenlisten GS1B und GS1D sind fest hinterlegt',()=>{assert.match(worke
 check('bekannte Lernende werden automatisch ihrer Klasse zugeordnet',()=>{assert.match(workerSource,/class_name=COALESCE\(excluded\.class_name, students\.class_name\)/);assert.match(workerSource,/roster\?\.className/);assert.match(teacherJs,/Noch nicht gestartet/);assert.match(teacherHtml,/radarNotStarted/);});
 check('Lehrpersonenadresse ist freigeschaltet und Link bleibt exklusiv',()=>{const accessJs=fs.readFileSync(path.join(root,'assets','student-access.js'),'utf8');assert.match(accessJs,/christoph\.marti@bffbern\.ch/);assert.match(accessJs,/function addTeacherLink/);assert.match(accessJs,/dataset\.teacherLink/);assert.match(accessJs,/href='\/lehrperson\/'/);});
 
+
+check('Unterricht-heute-Fokus ist im Lehrpersonenbereich vollständig vorhanden',()=>{assert.match(teacherHtml,/id="todayPanel"/);assert.match(teacherHtml,/id="saveTodayButton"/);assert.match(teacherHtml,/Fokus-Matrix/);assert.match(teacherJs,/focusFromForm/);assert.match(teacherJs,/today-open/);assert.match(teacherJs,/CSV exportiert/);});
+check('Unterricht-heute-Fokus erscheint auf der Lernenden-Startseite',()=>{const todayJs=fs.readFileSync(path.join(root,'assets','today.js'),'utf8');assert.match(index,/id="studentTodayPanel"/);assert.match(index,/assets\/today\.js/);assert.match(todayJs,/\/api\/today/);assert.match(todayJs,/Offen/);assert.match(todayJs,/In Arbeit/);assert.match(todayJs,/Erledigt/);});
+check('Worker speichert und liefert den Unterrichtsfokus',()=>{assert.match(workerSource,/CREATE TABLE IF NOT EXISTS class_today/);assert.match(workerSource,/function cleanTodayTasks/);assert.match(workerSource,/\/api\/today/);assert.match(workerSource,/\/lehrperson\/api\/today/);assert.match(schemaSource,/CREATE TABLE IF NOT EXISTS class_today/);});
+
 check('keine offensichtlichen Zugangsdaten im Webordner',()=>{
   const all=htmlFiles.map(n=>fs.readFileSync(path.join(root,n),'utf8')).join('\n')+filesBelow(path.join(root,'assets')).filter(n=>/\.(?:css|js|html|txt)$/i.test(n)).map(n=>fs.readFileSync(n,'utf8')).join('\n');
   assert.doesNotMatch(all,/-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|sk-[A-Za-z0-9]{20,}|github_pat_/);

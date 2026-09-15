@@ -1,8 +1,8 @@
 {
   "name": "informatik-lernportal",
-  "version": "1.16.0",
+  "version": "1.17.0",
   "private": true,
-  "description": "MedienInfoLab mit zentraler Auftragssteuerung pro Klasse, festen Klassenlisten und Lehrpersonen-Cockpit",
+  "description": "MedienInfoLab mit vollständigem Lehrpersonen-Cockpit, Unterricht-heute-Fokus, Auftragssteuerung und D1-Synchronisation",
   "scripts": {
     "dev": "node tests/serve.mjs",
     "test": "node tests/smoke.mjs",

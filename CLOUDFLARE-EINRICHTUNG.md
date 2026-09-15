@@ -64,3 +64,15 @@ Für `mediainfolab.com/lehrperson/*` eine Cloudflare-Access-Anwendung verwenden 
 ## Auftragssteuerung (ab Version 1.16)
 
 Es ist kein zusätzlicher manueller Datenbankschritt nötig. Beim ersten Öffnen der Auftragssteuerung legt der Worker die Tabelle `assignment_settings` automatisch an. Die bestehende D1-Bindung `DB` bleibt unverändert.
+
+## Version 1.17 – Unterricht heute / fertiges Cockpit
+
+Für diese Version ist kein weiterer manueller D1-Schritt notwendig. Der Worker legt die zusätzliche Tabelle `class_today` beim ersten Speichern des Unterrichtsfokus automatisch an.
+
+Nach dem Deployment testen:
+
+1. `/lehrperson/` öffnen und GS1B wählen.
+2. Unter **Unterricht heute** 1–3 Fokus-Aufträge auswählen und speichern.
+3. Die normale Startseite mit einer GS1B-Schulmail öffnen.
+4. Der Bereich **Unterricht heute** muss erscheinen und die gewählten Aufträge anzeigen.
+5. Einen Fokus-Auftrag bearbeiten bzw. erledigen; danach im Lehrpersonenbereich aktualisieren und Fokus-Matrix prüfen.

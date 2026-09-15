@@ -14,6 +14,7 @@
   <script defer src="assets/student-access.js"></script>
   <script src="assets/cloud-sync.js"></script>
   <script defer src="assets/assignment-control.js"></script>
+  <script defer src="assets/today.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Direkt zum Inhalt</a>
@@ -52,6 +53,14 @@
         <aside class="hero-week" aria-label="Aktuelle Woche 38">
           <span class="hero-week-label">Aktuelle Woche</span><strong>38</strong><p>DigiPen und Scannen</p><a href="#woche-38">Woche 38 öffnen →</a>
         </aside>
+      </section>
+
+      <section class="student-today-panel" id="studentTodayPanel" hidden aria-labelledby="studentTodayTitle">
+        <div class="student-today-head">
+          <div><p class="page-kicker"><span id="studentTodayClass"></span> · Unterricht heute</p><h2 id="studentTodayTitle">Heute wichtig</h2><p id="studentTodayMessage" hidden></p></div>
+          <div class="student-today-progress"><strong id="studentTodayProgress">0 Fokus-Aufträge</strong><div class="student-today-progressbar"><span id="studentTodayBar"></span></div></div>
+        </div>
+        <div class="student-today-tasks" id="studentTodayTasks"></div>
       </section>
 
       <section class="home-progress-overview" aria-labelledby="home-progress-title">

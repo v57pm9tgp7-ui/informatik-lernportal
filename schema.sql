@@ -25,3 +25,12 @@ CREATE TABLE IF NOT EXISTS assignment_settings (
 );
 
 CREATE INDEX IF NOT EXISTS idx_assignment_settings_class ON assignment_settings(class_name);
+
+CREATE TABLE IF NOT EXISTS class_today (
+  class_name TEXT PRIMARY KEY,
+  active INTEGER NOT NULL DEFAULT 0,
+  title TEXT NOT NULL DEFAULT 'Heute wichtig',
+  message TEXT NOT NULL DEFAULT '',
+  tasks_json TEXT NOT NULL DEFAULT '[]',
+  updated_at TEXT NOT NULL
+);

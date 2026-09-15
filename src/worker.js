@@ -191,9 +191,10 @@ async function listStudents(request,env){
   };
   for(const roster of ROSTER){const row=rows.get(roster.email);rows.delete(roster.email);students.push(build(row,roster.email,roster.name,roster.className,true));}
   for(const row of rows.values())students.push(build(row,row.email,friendlyName(row.email),row.class_name||null,false));
+  const counts={GS1B:students.filter(student=>student.class_name==='GS1B').length,GS1D:students.filter(student=>student.class_name==='GS1D').length,UNASSIGNED:students.filter(student=>!student.class_name).length,ALL:students.length};
   const filtered=students.filter(student=>CLASSES.has(filter)?student.class_name===filter:filter==='UNASSIGNED'?!student.class_name:true);
   filtered.sort((a,b)=>String(a.class_name||'ZZZ').localeCompare(String(b.class_name||'ZZZ'))||String(a.name).localeCompare(String(b.name),'de'));
-  return json({ok:true,classes:[...CLASSES],teacherEmail:TEACHER_EMAIL,students:filtered,rosterCount:ROSTER.length});
+  return json({ok:true,classes:[...CLASSES],teacherEmail:TEACHER_EMAIL,students:filtered,rosterCount:ROSTER.length,counts});
 }
 async function publicAssignments(request,env){
   if(!env.DB)return json({ok:false,error:'D1 ist noch nicht verbunden.'},503);
@@ -247,6 +248,65 @@ async function removeStudent(request,env){
   await env.DB.prepare('DELETE FROM students WHERE email=?').bind(email).run();
   return json({ok:true});
 }
+
+async function ensureTodayTable(env){
+  await env.DB.prepare(`CREATE TABLE IF NOT EXISTS class_today (
+    class_name TEXT PRIMARY KEY,
+    active INTEGER NOT NULL DEFAULT 0,
+    title TEXT NOT NULL DEFAULT 'Heute wichtig',
+    message TEXT NOT NULL DEFAULT '',
+    tasks_json TEXT NOT NULL DEFAULT '[]',
+    updated_at TEXT NOT NULL
+  )`).run();
+}
+function cleanTodayTasks(value){
+  const seen=new Set(),tasks=[];
+  for(const item of Array.isArray(value)?value:[]){
+    const track=String(item?.track||''),taskId=Number(item?.taskId);
+    if(!TRACKS.has(track)||!Number.isInteger(taskId))continue;
+    const allowed=[...DEFAULT_ASSIGNMENTS[track].required,...DEFAULT_ASSIGNMENTS[track].optional];
+    if(!allowed.includes(taskId))continue;
+    const key=`${track}:${taskId}`;if(seen.has(key))continue;seen.add(key);tasks.push({track,taskId});
+    if(tasks.length>=8)break;
+  }
+  return tasks;
+}
+async function todayForClass(env,className){
+  if(!CLASSES.has(className))return {active:false,title:'Heute wichtig',message:'',tasks:[],updatedAt:null};
+  await ensureTodayTable(env);
+  const row=await env.DB.prepare('SELECT active,title,message,tasks_json,updated_at FROM class_today WHERE class_name=?').bind(className).first();
+  if(!row)return {active:false,title:'Heute wichtig',message:'',tasks:[],updatedAt:null};
+  let tasks=[];try{tasks=cleanTodayTasks(JSON.parse(row.tasks_json||'[]'))}catch{}
+  const settings=await assignmentMapForClass(env,className);
+  tasks=tasks.filter(task=>settings?.[task.track]?.[task.taskId]!=='hidden');
+  return {active:Boolean(row.active),title:String(row.title||'Heute wichtig').slice(0,70),message:String(row.message||'').slice(0,280),tasks,updatedAt:row.updated_at||null};
+}
+async function publicToday(request,env){
+  if(!env.DB)return json({ok:false,error:'D1 ist noch nicht verbunden.'},503);
+  const email=cleanEmail(new URL(request.url).searchParams.get('email'));
+  const roster=ROSTER_BY_EMAIL.get(email);
+  if(!roster)return json({ok:true,className:null,focus:{active:false,title:'Heute wichtig',message:'',tasks:[],updatedAt:null}});
+  return json({ok:true,className:roster.className,focus:await todayForClass(env,roster.className)});
+}
+async function teacherToday(request,env){
+  if(!env.DB)return json({ok:false,error:'D1 ist noch nicht verbunden.'},503);
+  const className=new URL(request.url).searchParams.get('class');
+  if(!CLASSES.has(className))return json({ok:false,error:'Bitte GS1B oder GS1D wählen.'},400);
+  return json({ok:true,className,focus:await todayForClass(env,className)});
+}
+async function updateToday(request,env){
+  if(!env.DB)return json({ok:false,error:'D1 ist noch nicht verbunden.'},503);
+  let body;try{body=await readJson(request)}catch{return json({ok:false,error:'Ungültige Daten.'},400)}
+  const className=String(body.className||'');
+  if(!CLASSES.has(className))return json({ok:false,error:'Unbekannte Klasse.'},400);
+  const active=body.active?1:0,title=String(body.title||'Heute wichtig').trim().slice(0,70)||'Heute wichtig',message=String(body.message||'').trim().slice(0,280),tasks=cleanTodayTasks(body.tasks),now=new Date().toISOString();
+  await ensureTodayTable(env);
+  await env.DB.prepare(`INSERT INTO class_today (class_name,active,title,message,tasks_json,updated_at) VALUES (?,?,?,?,?,?)
+    ON CONFLICT(class_name) DO UPDATE SET active=excluded.active,title=excluded.title,message=excluded.message,tasks_json=excluded.tasks_json,updated_at=excluded.updated_at`)
+    .bind(className,active,title,message,JSON.stringify(tasks),now).run();
+  return json({ok:true,className,focus:await todayForClass(env,className)});
+}
+
 async function health(env){
   if(!env.DB)return json({ok:false,d1:false},503);
   try{await env.DB.prepare('SELECT 1 AS ok').first();return json({ok:true,d1:true})}catch{return json({ok:false,d1:false},503)}
@@ -257,7 +317,10 @@ export default {
     const url=new URL(request.url),path=url.pathname;
     if(path==='/api/progress'&&request.method==='POST')return syncStudent(request,env);
     if(path==='/api/assignments'&&request.method==='GET')return publicAssignments(request,env);
+    if(path==='/api/today'&&request.method==='GET')return publicToday(request,env);
     if(path==='/lehrperson/api/students'&&request.method==='GET')return listStudents(request,env);
+    if(path==='/lehrperson/api/today'&&request.method==='GET')return teacherToday(request,env);
+    if(path==='/lehrperson/api/today'&&request.method==='POST')return updateToday(request,env);
     if(path==='/lehrperson/api/assignments'&&request.method==='GET')return teacherAssignments(request,env);
     if(path==='/lehrperson/api/assignments'&&request.method==='POST')return updateAssignment(request,env);
     if(path==='/lehrperson/api/assignments/reset'&&request.method==='POST')return resetAssignments(request,env);
