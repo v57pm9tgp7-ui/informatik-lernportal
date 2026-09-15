@@ -1,3 +1,9 @@
+# MedienInfoLab – Version 1.18
+
+## Persönlicher Link zum Lehrpersonenbereich
+
+Auf der normalen Webseite erscheint der Link **Lehrpersonenbereich** ausschliesslich dann, wenn lokal exakt `christoph.marti@bffbern.ch` als BFF-Adresse verwendet wird. Auf der Startseite erscheint zusätzlich ein persönlicher Lehrpersonen-Kasten. Für Lernende mit `@stud.bffbern.ch` werden weder Navigationslink noch Kasten erzeugt. Der eigentliche Pfad `/lehrperson/` bleibt zusätzlich durch Cloudflare Access geschützt und erlaubt nur `christoph.marti@bffbern.ch`.
+
 # MedienInfoLab – Informatik-Lernportal
 
 ## Version 1.17 – Lehrpersonenbereich fertig ausgebaut

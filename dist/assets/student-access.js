@@ -19,11 +19,36 @@
   function isTeacher(email){return cleanEmail(email)===TEACHER_EMAIL}
   function reveal(){root.classList.remove('student-access-check')}
   function addTeacherLink(email){
-    if(!isTeacher(email)||document.querySelector('[data-teacher-link]'))return;
+    if(!isTeacher(email))return;
     const desktop=document.querySelector('.desktop-nav');
-    if(desktop){const a=document.createElement('a');a.className='nav-link teacher-nav-link';a.href='/lehrperson/';a.textContent='Lehrperson';a.dataset.teacherLink='';desktop.appendChild(a)}
+    if(desktop&&!desktop.querySelector('[data-teacher-link]')){
+      const a=document.createElement('a');
+      a.className='nav-link teacher-nav-link';
+      a.href='/lehrperson/';
+      a.textContent='Lehrpersonenbereich';
+      a.setAttribute('aria-label','Geschützten Lehrpersonenbereich öffnen');
+      a.dataset.teacherLink='';
+      desktop.appendChild(a);
+    }
     const mobile=document.querySelector('.mobile-menu');
-    if(mobile){const a=document.createElement('a');a.href='/lehrperson/';a.textContent='Lehrpersonenbereich';a.dataset.teacherLink='';mobile.appendChild(a)}
+    if(mobile&&!mobile.querySelector('[data-teacher-link]')){
+      const a=document.createElement('a');
+      a.href='/lehrperson/';
+      a.className='teacher-mobile-link';
+      a.textContent='LP · Lehrpersonenbereich';
+      a.dataset.teacherLink='';
+      mobile.appendChild(a);
+    }
+    if(document.querySelector('[data-view="start"]')&&!document.querySelector('.teacher-home-shortcut')){
+      const hero=document.querySelector('.portal-hero');
+      if(hero){
+        const box=document.createElement('aside');
+        box.className='teacher-home-shortcut';
+        box.setAttribute('aria-label','Persönlicher Lehrpersonen-Zugang');
+        box.innerHTML='<div class="teacher-home-icon" aria-hidden="true">LP</div><div class="teacher-home-copy"><span>Nur für Christoph Marti</span><strong>Lehrpersonenbereich</strong><p>GS1B und GS1D · Fortschritt, Unterricht heute und Auftragssteuerung</p></div><a href="/lehrperson/">Bereich öffnen →</a>';
+        hero.insertAdjacentElement('afterend',box);
+      }
+    }
   }
   function addLogout(){
     if(document.querySelector('.student-access-logout'))return;
