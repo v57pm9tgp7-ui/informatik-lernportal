@@ -79,7 +79,7 @@ async function assignmentMapForClass(env,className){
   return out;
 }
 function doneIdsForTrack(progressTrack){
-  return new Set([...(progressTrack?.requiredDone||[]),...(progressTrack?.optionalDone||[])] .map(Number));
+  return new Set([...(progressTrack?.requiredDone||[]),...(progressTrack?.optionalDone||[])].map(Number));
 }
 function recalcProgress(progress,settings){
   const result={modules:{},totalDone:0,totalPossible:0};
@@ -165,8 +165,6 @@ async function syncStudent(request,env){
 }
 
 function requireTeacherPath(request){
-  // The real protection is Cloudflare Access on /lehrperson/*.
-  // Keeping teacher APIs under the same path ensures the same Access policy covers them.
   return new URL(request.url).pathname.startsWith('/lehrperson/');
 }
 async function listStudents(request,env){
@@ -350,6 +348,46 @@ const ONENOTE_DESKTOP_GUIDE_HTML=`
   <p class="desktop-guide-note">Die Microsoft-Oberfläche kann je nach Version leicht anders aussehen. Entscheidend ist der Weg über das Modus-Menü zur Desktop-App.</p>
 </section>`;
 
+const DIGIPEN_QR_GUIDE_STYLE=`
+<style id="digipen-qr-guide-style">
+  .app-qr-guide{margin:30px 0 8px;padding:24px;border:2px solid #3bc5bb;border-radius:20px;background:linear-gradient(180deg,#fff,#f4fffe);box-shadow:0 8px 24px rgba(17,19,24,.08)}
+  .app-qr-guide-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px}
+  .app-qr-guide-icon{flex:0 0 auto;width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#24c5bc,#5ed9c5);color:#fff;font-size:24px;font-weight:900}
+  .app-qr-guide-head h2{margin:0 0 6px;font-size:27px;line-height:1.2;letter-spacing:-.02em}
+  .app-qr-guide-head p{margin:0;color:#41556b;font-size:17px;line-height:1.5}
+  .app-qr-guide-alert{margin:0 0 20px;padding:14px 16px;border-left:5px solid #24c5bc;border-radius:0 12px 12px 0;background:#eafcf9;font-size:17px;line-height:1.5}
+  .app-qr-preview{margin:0 0 18px;border:1px solid #d7e3ea;border-radius:16px;overflow:hidden;background:#fff}
+  .app-qr-preview img{display:block;width:100%;height:auto}
+  .app-qr-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .app-qr-card{margin:0;border:1px solid #d7e3ea;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 8px 18px rgba(17,19,24,.06)}
+  .app-qr-card a{display:block;background:#fff}
+  .app-qr-card img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+  .app-qr-card figcaption{padding:13px 14px 15px;font-size:15px;line-height:1.45;color:#41556b}
+  .app-qr-card figcaption strong{display:block;margin-bottom:4px;color:#0d2340;font-size:16px}
+  .app-qr-steps{margin-top:20px;padding:17px 18px;border:1px solid #cfe7de;border-radius:14px;background:#f3fbf7}
+  .app-qr-steps strong{display:block;margin-bottom:7px;color:#0f7a4b;font-size:18px}
+  .app-qr-steps ol{margin:0;padding-left:24px}
+  .app-qr-steps li{margin:5px 0}
+  .app-qr-note{margin:14px 0 0;font-size:14px;color:#41556b}
+  @media(max-width:900px){.app-qr-cards{grid-template-columns:1fr}.app-qr-guide{padding:18px}.app-qr-guide-head h2{font-size:24px}}
+</style>`;
+
+const DIGIPEN_QR_GUIDE_HTML=`
+<section class="app-qr-guide" aria-labelledby="digipen-qr-guide-title">
+  <div class="app-qr-guide-head">
+    <div class="app-qr-guide-icon" aria-hidden="true">⇩</div>
+    <div><h2 id="digipen-qr-guide-title">OneDrive App auf dem Smartphone installieren</h2><p>Für das Scannen mit dem Smartphone brauchen Sie die OneDrive App. Wählen Sie unten den passenden QR-Code für Ihr Gerät.</p></div>
+  </div>
+  <div class="app-qr-alert"><strong>Wichtig:</strong> Scannen Sie den QR-Code mit der Kamera-App Ihres Smartphones. Öffnen Sie danach den Link zum App Store oder Google Play Store und installieren Sie die OneDrive App.</div>
+  <figure class="app-qr-preview"><a href="assets/screenshots/onedrive-app-qr-slide.png" target="_blank" rel="noopener"><img src="assets/screenshots/onedrive-app-qr-slide.png" alt="Übersicht mit OneDrive-QR-Codes für iPhone und Android"></a></figure>
+  <div class="app-qr-cards">
+    <figure class="app-qr-card"><a href="assets/screenshots/onedrive-qr-iphone.png" target="_blank" rel="noopener"><img src="assets/screenshots/onedrive-qr-iphone.png" alt="QR-Code für die OneDrive App auf dem iPhone"></a><figcaption><strong>iPhone</strong>Scannen Sie diesen QR-Code, wenn Sie ein iPhone verwenden. Tippen Sie danach auf den eingeblendeten Link zum <b>App Store</b>.</figcaption></figure>
+    <figure class="app-qr-card"><a href="assets/screenshots/onedrive-qr-android.png" target="_blank" rel="noopener"><img src="assets/screenshots/onedrive-qr-android.png" alt="QR-Code für die OneDrive App auf Android"></a><figcaption><strong>Android</strong>Scannen Sie diesen QR-Code, wenn Sie ein Android-Smartphone verwenden. Tippen Sie danach auf den eingeblendeten Link zum <b>Google Play Store</b>.</figcaption></figure>
+  </div>
+  <div class="app-qr-steps"><strong>So gehen Sie vor</strong><ol><li>Nehmen Sie Ihr Smartphone zur Hand.</li><li>Öffnen Sie die Kamera-App und richten Sie sie auf den passenden QR-Code.</li><li>Tippen Sie auf den eingeblendeten Link.</li><li>Installieren Sie die <b>OneDrive App</b>.</li><li>Öffnen Sie die App und melden Sie sich – falls gefordert – mit Ihrem Schulkonto an.</li><li>Kehren Sie danach zum Digipen- oder Scan-Auftrag zurück und arbeiten Sie weiter.</li></ol></div>
+  <p class="app-qr-note">Falls der QR-Code nicht reagiert: Halten Sie die Kamera etwas ruhiger, gehen Sie leicht näher oder weiter weg, oder fragen Sie die Lehrperson um Hilfe.</p>
+</section>`;
+
 class OneNoteGuideHeadHandler{
   element(element){element.append(ONENOTE_DESKTOP_GUIDE_STYLE,{html:true});}
 }
@@ -359,6 +397,18 @@ class OneNoteGuideStepsHandler{
     element.after(ONENOTE_DESKTOP_GUIDE_HTML,{html:true});
   }
 }
+class DigipenGuideHeadHandler{
+  element(element){element.append(DIGIPEN_QR_GUIDE_STYLE,{html:true});}
+}
+class DigipenTaskSixHandler{
+  element(element){
+    element.append(`<label class="step"><input type="checkbox" data-check="t6-s90"><span class="checkmark">✓</span><span class="step-copy"><span class="step-title">Installieren Sie die OneDrive App auf Ihrem Smartphone.</span><span class="step-detail">Scannen Sie dazu unten den passenden QR-Code für iPhone oder Android und laden Sie die App aus dem passenden Store herunter.</span></span></label>`,{html:true});
+    element.after(DIGIPEN_QR_GUIDE_HTML,{html:true});
+  }
+}
+class DigipenPageAppendHandler{
+  element(element){element.append(DIGIPEN_QR_GUIDE_HTML,{html:true});}
+}
 async function serveAsset(request,env,path){
   const response=await env.ASSETS.fetch(request);
   const type=response.headers.get('content-type')||'';
@@ -366,6 +416,18 @@ async function serveAsset(request,env,path){
     return new HTMLRewriter()
       .on('head',new OneNoteGuideHeadHandler())
       .on('#auftrag-9 .step-list',new OneNoteGuideStepsHandler())
+      .transform(response);
+  }
+  if((path==='/digipen.html'||path==='/digipen')&&type.includes('text/html')){
+    return new HTMLRewriter()
+      .on('head',new DigipenGuideHeadHandler())
+      .on('#auftrag-6 .step-list',new DigipenTaskSixHandler())
+      .transform(response);
+  }
+  if((path==='/digipen-guide.html'||path==='/digipen-guide')&&type.includes('text/html')){
+    return new HTMLRewriter()
+      .on('head',new DigipenGuideHeadHandler())
+      .on('body',new DigipenPageAppendHandler())
       .transform(response);
   }
   return response;
