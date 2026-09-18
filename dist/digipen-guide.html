@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="color-scheme" content="light">
   <title>DigiPen-Guide · Informatik</title>
-  <meta name="description" content="DigiPen starten – in 2 Minuten. Schnellstart für HP Rechargeable Active Pen G3 und HP 705 Rechargeable Multi Pen.">
+  <meta name="description" content="DigiPen starten – in 2 Minuten. Schnellstart für HP Rechargeable Active Pen G3, HP 705 Rechargeable Multi Pen und HP Slim Rechargeable Pen mit Ladestation.">
   <link rel="stylesheet" href="assets/portal.css">
   <style>
     :root{--navy:#08245c;--blue:#0d8fe8;--light:#e8f6ff;--red:#e51d1d;--ink:#12346d;--purple:#8b31c8}
@@ -13,7 +13,7 @@
     .pen-intro{display:flex;align-items:end;justify-content:space-between;gap:24px;margin:18px 0 28px}
     .pen-intro h1{margin:0;color:var(--navy);font-size:clamp(2.2rem,5vw,4.3rem);line-height:.98;letter-spacing:-.04em}
     .pen-intro p{max-width:720px;margin:14px 0 0;font-size:1.12rem;line-height:1.55;color:#29496f}
-    .model-picker{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:26px 0 40px}
+    .model-picker{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:26px 0 40px}
     .model-picker a{display:flex;gap:14px;align-items:center;padding:18px 20px;border:2px solid #d5e9f7;border-radius:18px;background:white;text-decoration:none;color:var(--navy);box-shadow:0 8px 26px rgba(8,36,92,.07)}
     .model-picker a:hover,.model-picker a:focus-visible{border-color:var(--blue)}
     .model-picker b{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:linear-gradient(145deg,#067bcf,#10a0ef);color:white;font-size:1.35rem;flex:0 0 auto}
@@ -39,6 +39,7 @@
     .name-pad{display:grid;grid-template-columns:70px 1fr;align-items:center;padding:10px 15px}.one-icon{width:46px;height:46px;border-radius:6px;background:#8b2bd2;color:white;display:grid;place-items:center;font-size:1.5rem;font-weight:900}.handwrite{font-size:2rem;color:#0874c7;font-style:italic;text-align:center;border-bottom:4px solid #0874c7;padding-bottom:4px;transform:rotate(-3deg)}
     .bt-window{padding:14px 16px;color:#1c3450}.bt-title{font-weight:800;margin-bottom:12px}.device-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px;border:1px solid #d6e2eb;border-radius:9px}.connect{background:#0b8ff0;color:white;padding:9px 13px;border-radius:7px;font-weight:800}.big-ban{position:absolute;right:18px;top:16px;width:92px;height:92px;border:10px solid var(--red);border-radius:50%}.big-ban:after{content:"";position:absolute;left:0;top:36px;width:92px;height:10px;border-radius:5px;background:var(--red);transform:rotate(45deg)}
     .button-demo{background:linear-gradient(#3b3e40,#111315,#292c2e);height:62px;position:absolute;left:0;right:0;top:22px}.side-btn{position:absolute;top:34px;width:90px;height:28px;border-radius:12px;background:#17191b;border:2px solid #050607}.side-btn.a{left:130px}.side-btn.b{left:225px}.finger{position:absolute;top:50px;width:62px;height:95px;border-radius:34px;background:linear-gradient(#f6c0a0,#eca27a);border:1px solid #d98b64}.finger.a{left:144px;transform:rotate(-17deg)}.finger.b{left:254px;transform:rotate(17deg)}.timer{position:absolute;left:50%;bottom:7px;transform:translateX(-50%);color:var(--navy);font-weight:900}.timer:before{content:"◴";display:block;font-size:2.1rem;text-align:center}
+    .dock-vis{display:flex;align-items:center;justify-content:center;padding:15px}.dock-body{position:relative;width:min(360px,78%);height:74px;border-radius:20px;background:linear-gradient(145deg,#11171b,#364149,#0a0e11);box-shadow:0 8px 18px rgba(8,36,92,.2)}.dock-slot{position:absolute;left:14px;right:14px;top:14px;height:46px;border-radius:15px;background:#090d10;border:1px solid #52616a}.dock-pen{position:absolute;left:54px;right:44px;top:25px;height:23px;border-radius:13px;background:linear-gradient(90deg,#343a3f,#68747b,#272d31)}.dock-pen:after{content:"";position:absolute;right:-25px;top:0;border-left:27px solid #343a3f;border-top:12px solid transparent;border-bottom:11px solid transparent}.pogo{position:absolute;right:25px;top:31px;display:flex;gap:7px}.pogo i{width:7px;height:7px;border-radius:50%;background:#d4a72c}.usb-a{position:absolute;left:16px;bottom:12px;width:63px;height:36px;border:2px solid #424d55;border-radius:5px;background:#c8ced2}.usb-a:before,.usb-a:after{content:"";position:absolute;top:8px;width:10px;height:17px;background:#555}.usb-a:before{left:13px}.usb-a:after{left:36px}.charge-note{position:absolute;right:18px;bottom:12px;color:#0c5329;font-weight:900;background:#c8f3d6;border-radius:999px;padding:7px 11px}
     .poster-bottom{display:grid;grid-template-columns:1.15fr .95fr;gap:16px;margin-top:16px}.bottom-box{display:grid;grid-template-columns:82px 1fr;gap:15px;align-items:start;padding:18px;border-radius:18px;background:linear-gradient(145deg,#eaf8ff,#dff3ff)}.round-icon{width:70px;height:70px;border-radius:50%;display:grid;place-items:center;background:#bce9ff;color:#075795;font-size:2.4rem}.bottom-box h3{margin:1px 0 7px;color:var(--navy);font-size:1.45rem}.bottom-box p,.bottom-box ul{margin:0;color:var(--ink);line-height:1.4}.bottom-box ul{padding-left:20px}.success{margin:20px 0 0;text-align:right;color:#1797ef;font-size:1.55rem;font-style:italic;transform:rotate(-4deg)}
     .poster-actions{display:flex;justify-content:flex-end;gap:12px;margin-top:24px}.poster-actions a{display:inline-flex;align-items:center;justify-content:center;padding:12px 17px;border-radius:11px;text-decoration:none;font-weight:800}.primary-action{background:#087fce;color:white}.secondary-action{background:#eef6fb;color:var(--navy)}
     html.portal-large .poster{font-size:1.1em}
@@ -65,11 +66,12 @@
   <main id="main" class="pen-page">
     <a class="back-link" href="index.html#woche-38">← Zur Woche 38</a>
     <section class="pen-intro">
-      <div><p class="page-kicker">Schnellstart · Woche 38</p><h1>DigiPen starten</h1><p>In der Klasse gibt es zwei HP-Stiftmodelle. Vergleichen Sie Ihren Stift mit den Bildern und öffnen Sie die passende Anleitung. Die Darstellung und die vier Schritte entsprechen den beiden Schnellstart-Grafiken.</p></div>
+      <div><p class="page-kicker">Schnellstart · Woche 38</p><h1>DigiPen starten</h1><p>In der Klasse gibt es drei HP-Stiftmodelle. Vergleichen Sie Form, Farbe und Ladeart mit den Bildern und öffnen Sie die passende Anleitung. Wichtig: Die Modelle werden unterschiedlich geladen.</p></div>
     </section>
     <nav class="model-picker" aria-label="DigiPen-Modell wählen">
-      <a href="#g3"><b>1</b><span><strong>HP Rechargeable Active Pen G3</strong><small>Silber · 3 Tasten · Schreiben ohne Bluetooth möglich</small></span></a>
-      <a href="#hp705"><b>2</b><span><strong>HP 705 Rechargeable Multi Pen</strong><small>Schwarz · 2 Seitentasten · nicht über Bluetooth verbinden</small></span></a>
+      <a href="#g3"><b>1</b><span><strong>HP Rechargeable Active Pen G3</strong><small>Silber · 3 Tasten · direkt am Stift mit USB-C laden</small></span></a>
+      <a href="#hp705"><b>2</b><span><strong>HP 705 Rechargeable Multi Pen</strong><small>Schwarz · 2 Seitentasten · direkt am Stift mit USB-C laden</small></span></a>
+      <a href="#slim"><b>3</b><span><strong>HP Slim Rechargeable Pen</strong><small>Schlank, grau/schwarz · 2 Tasten · in der USB-Ladestation laden</small></span></a>
     </nav>
 
     <section class="poster" id="g3" aria-labelledby="g3-title">
@@ -103,7 +105,25 @@
         <article class="step"><span class="step-num">4</span><h3>Falls er nicht schreibt</h3><p>Drücken Sie beide Seitentasten gleichzeitig 5 Sekunden. Danach nochmals testen.</p><div class="visual"><div class="button-demo"></div><span class="side-btn a"></span><span class="side-btn b"></span><span class="finger a"></span><span class="finger b"></span><span class="timer">5 Sekunden</span></div></article>
       </div>
       <div class="poster-bottom"><article class="bottom-box"><span class="round-icon" aria-hidden="true">⚙</span><div><h3>Wenn es nicht funktioniert</h3><ul><li>Stift nochmals laden</li><li>OneNote erneut öffnen</li><li>Notebook neu starten</li><li>Lehrperson informieren</li></ul></div></article><article class="bottom-box"><span class="round-icon" aria-hidden="true">💡</span><div><h3>Tipp:</h3><p>Die Seitentasten können je nach Gerät unterschiedlich eingestellt sein.</p></div></article></div>
-      <div class="success">Viel Erfolg!</div><div class="poster-actions"><a class="secondary-action" href="#g3">Zum silbernen Stift ↑</a><a class="primary-action" href="digipen.html#auftrag-1">DigiPen-Workshop starten →</a></div>
+      <div class="success">Viel Erfolg!</div><div class="poster-actions"><a class="secondary-action" href="#slim">Zum Slim Pen ↓</a><a class="primary-action" href="digipen.html#auftrag-1">DigiPen-Workshop starten →</a></div>
+    </section>
+
+    <section class="poster" id="slim" aria-labelledby="slim-title">
+      <h2 class="poster-title" id="slim-title">DigiPen starten – in 2 Minuten</h2>
+      <p class="poster-subtitle">HP Slim Rechargeable Pen · 630W7AA</p><div class="scribble">In die<br>Ladestation!</div>
+      <div class="poster-top">
+        <figure class="pen-figure"><img src="assets/guide/digipen-slim.svg" alt="HP Slim Rechargeable Pen mit schwarzer USB-Ladestation, Pogo-Pin-Kontakten und zwei Seitentasten"></figure>
+        <aside class="warning"><div class="no-bt" aria-hidden="true">C</div><div><h3>Wichtig:</h3><strong>Nicht direkt mit USB-C laden!</strong><p>Dieser Stift wird über die Kontakte in der schwarzen HP-Ladestation geladen.</p></div></aside>
+      </div>
+      <div class="steps">
+        <article class="step"><span class="step-num">1</span><h3>Ladestation anschliessen</h3><p>Stecken Sie den USB-A-Stecker der schwarzen Ladestation in das Notebook.</p><div class="visual"><span class="usb-a"></span><span class="charge-note">USB-A → Notebook</span></div></article>
+        <article class="step"><span class="step-num">2</span><h3>Stift einlegen</h3><p>Legen Sie den Slim Pen in die Ladestation. Die Kontakte richten sich automatisch an den Pogo-Pins aus. Der Stift darf in beiden Richtungen eingelegt werden.</p><div class="visual dock-vis"><span class="dock-body"><span class="dock-slot"></span><span class="dock-pen"></span><span class="pogo"><i></i><i></i></span></span></div></article>
+        <article class="step"><span class="step-num">3</span><h3>Kurz laden</h3><p>Bei leerem Stift zuerst kurz laden. Laut HP reichen bereits 20 Sekunden Laden für bis zu 70 Minuten Schreiben.</p><div class="visual"><div class="battery" style="left:50%;right:auto;bottom:48px;transform:translateX(-50%)"></div><div class="timer" style="bottom:8px">20 Sekunden</div></div></article>
+        <article class="step"><span class="step-num">4</span><h3>In OneNote testen</h3><p>Öffnen Sie OneNote → «Zeichnen» und schreiben Sie Ihren Namen. Zum Schreiben ist keine Bluetooth-Kopplung nötig. Testen Sie die zwei Seitentasten danach einzeln.</p><div class="visual onenote"><div class="onenote-head">▣ &nbsp; OneNote</div><div class="tabs"><span>Start</span><span>Einfügen</span><b>Zeichnen</b><span>Ansicht</span></div><div class="pens"><span class="pen-tool"></span><span class="pen-tool red"></span><span class="pen-tool blue"></span><span class="pen-tool yellow"></span></div></div></article>
+      </div>
+      <div class="poster-bottom"><article class="bottom-box"><span class="round-icon" aria-hidden="true">⚙</span><div><h3>Wenn es nicht funktioniert</h3><ul><li>Ladestation wirklich am USB-A-Anschluss einstecken</li><li>Stift nochmals einlegen oder umdrehen</li><li>Kontakte trocken und sauber halten</li><li>OneNote bzw. Notebook neu starten</li></ul></div></article><article class="bottom-box"><span class="round-icon" aria-hidden="true">💡</span><div><h3>So erkennen Sie dieses Modell</h3><p>Sehr schlanker Stift, zwei Seitentasten und eine lange schwarze Ladestation mit festem USB-Kabel. HP-Modell 630W7AA, Ladestation 4X491AA.</p></div></article></div>
+      <p style="margin:18px 0 0;color:#5d7189;font-size:.93rem"><strong>Technik:</strong> AES 1.0 · 4096 Druckstufen · Superkondensator · Pogo-Pin-Ladung.</p>
+      <div class="success">Bereit zum Schreiben!</div><div class="poster-actions"><a class="secondary-action" href="#g3">Zur Modellauswahl ↑</a><a class="primary-action" href="digipen.html#auftrag-1">DigiPen-Workshop starten →</a></div>
     </section>
   </main>
   <footer class="site-footer">BFF Bern · GS1 · Informatik · Schuljahr 2026/27</footer>
