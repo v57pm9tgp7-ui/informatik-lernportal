@@ -1,0 +1,37 @@
+name: Export MedienInfoLab ZIP
+
+on:
+  push:
+    branches:
+      - update/digipen-slim-2026-09-18
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Node einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Strukturtests ausführen
+        run: npm test
+
+      - name: Git-Metadaten entfernen
+        run: rm -rf .git
+
+      - name: Vollständige Projekt-ZIP als Artefakt bereitstellen
+        uses: actions/upload-artifact@v4
+        with:
+          name: mediainfolab-v1.19-digipen-slim
+          path: .
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7
