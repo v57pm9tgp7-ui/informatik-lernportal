@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" role="img" aria-labelledby="title desc">
+  <title id="title">HP Slim Rechargeable Pen mit USB-Ladestation</title>
+  <desc id="desc">Schematische Darstellung des schlanken grauen HP Slim Rechargeable Pen 630W7AA und der schwarzen kabelgebundenen Ladestation 4X491AA mit Pogo-Pin-Kontakten.</desc>
+  <defs>
+    <linearGradient id="penBody" x1="0" x2="1">
+      <stop offset="0" stop-color="#343a3f"/>
+      <stop offset="0.5" stop-color="#59636a"/>
+      <stop offset="1" stop-color="#252b30"/>
+    </linearGradient>
+    <linearGradient id="dockBody" x1="0" x2="1">
+      <stop offset="0" stop-color="#11171b"/>
+      <stop offset="0.55" stop-color="#2f383e"/>
+      <stop offset="1" stop-color="#090d10"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#08243d" flood-opacity=".18"/>
+    </filter>
+  </defs>
+  <rect width="960" height="560" rx="34" fill="#f5fbff"/>
+  <text x="56" y="68" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#087fce">SLIM PEN MIT LADESTATION</text>
+  <text x="56" y="114" font-family="Arial, sans-serif" font-size="38" font-weight="800" fill="#08243d">HP Slim Rechargeable Pen</text>
+  <text x="56" y="149" font-family="Arial, sans-serif" font-size="20" fill="#496174">630W7AA · 2 Tasten · AES 1.0 · Laden über Pogo-Pins</text>
+
+  <g transform="translate(72 222)" filter="url(#shadow)">
+    <path d="M35 240 C5 265 6 311 36 335" fill="none" stroke="#242a2e" stroke-width="14" stroke-linecap="round"/>
+    <path d="M36 335 C78 364 102 385 118 419" fill="none" stroke="#242a2e" stroke-width="14" stroke-linecap="round"/>
+    <g transform="translate(98 394)">
+      <rect x="0" y="0" width="58" height="36" rx="5" fill="#c5cbd0" stroke="#4a565d" stroke-width="2"/>
+      <rect x="58" y="6" width="32" height="24" rx="4" fill="#20272b"/>
+      <rect x="12" y="8" width="11" height="20" fill="#444"/>
+      <rect x="30" y="8" width="11" height="20" fill="#444"/>
+    </g>
+
+    <g transform="translate(120 95) rotate(-5 300 80)">
+      <rect x="0" y="0" width="650" height="120" rx="28" fill="url(#dockBody)" stroke="#06090b" stroke-width="2"/>
+      <rect x="24" y="20" width="602" height="80" rx="20" fill="#0c1114" stroke="#47535b" stroke-width="2"/>
+      <rect x="530" y="33" width="74" height="54" rx="12" fill="#161d21"/>
+      <circle cx="560" cy="60" r="6" fill="#d7a928"/>
+      <circle cx="580" cy="60" r="6" fill="#d7a928"/>
+      <rect x="147" y="35" width="376" height="50" rx="25" fill="url(#penBody)" stroke="#1b2226" stroke-width="2"/>
+      <path d="M523 35 L580 60 L523 85 Z" fill="url(#penBody)" stroke="#1b2226" stroke-width="2"/>
+      <path d="M580 60 l29 0" stroke="#172026" stroke-width="8" stroke-linecap="round"/>
+      <rect x="292" y="47" width="74" height="16" rx="8" fill="#808d95"/>
+      <rect x="377" y="47" width="74" height="16" rx="8" fill="#808d95"/>
+      <path d="M0 46 C-22 48 -32 55 -39 70 C-30 86 -17 92 0 93 Z" fill="#0c1114"/>
+    </g>
+  </g>
+
+  <g font-family="Arial, sans-serif">
+    <path d="M205 222 C188 190 178 180 161 169" fill="none" stroke="#087fce" stroke-width="4"/>
+    <circle cx="160" cy="168" r="7" fill="#087fce"/>
+    <text x="63" y="190" font-size="22" font-weight="700" fill="#08243d">USB-Ladestation</text>
+    <text x="63" y="216" font-size="18" fill="#496174">USB-A am Notebook anschliessen</text>
+
+    <path d="M656 286 C695 241 716 220 735 205" fill="none" stroke="#087fce" stroke-width="4"/>
+    <circle cx="736" cy="204" r="7" fill="#087fce"/>
+    <text x="681" y="188" font-size="22" font-weight="700" fill="#08243d">Pogo-Pins</text>
+    <text x="681" y="214" font-size="18" fill="#496174">Stift einlegen – Kontakte richten sich aus</text>
+
+    <path d="M510 338 C520 386 535 402 552 417" fill="none" stroke="#087fce" stroke-width="4"/>
+    <circle cx="552" cy="418" r="7" fill="#087fce"/>
+    <text x="420" y="452" font-size="22" font-weight="700" fill="#08243d">2 Seitentasten</text>
+    <text x="420" y="478" font-size="18" fill="#496174">Funktion je nach Gerät und App</text>
+  </g>
+
+  <rect x="56" y="493" width="848" height="48" rx="16" fill="#e7f5ff" stroke="#aad8f7"/>
+  <text x="79" y="523" font-family="Arial, sans-serif" font-size="19" font-weight="700" fill="#08243d">20 Sekunden Laden reichen laut HP für bis zu 70 Minuten Schreiben.</text>
+</svg>
