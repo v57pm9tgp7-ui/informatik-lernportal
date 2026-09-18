@@ -1,8 +1,8 @@
 {
   "name": "informatik-lernportal",
-  "version": "1.18.0",
+  "version": "1.19.0",
   "private": true,
-  "description": "MedienInfoLab mit vollständigem Lehrpersonen-Cockpit, exklusivem Lehrpersonen-Link, Unterricht-heute-Fokus, Auftragssteuerung und D1-Synchronisation",
+  "description": "MedienInfoLab mit drei HP-DigiPen-Modellen inklusive HP Slim Rechargeable Pen, Lehrpersonen-Cockpit und D1-Synchronisation",
   "scripts": {
     "dev": "node tests/serve.mjs",
     "test": "node tests/smoke.mjs",
