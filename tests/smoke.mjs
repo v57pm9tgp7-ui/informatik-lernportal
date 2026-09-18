@@ -121,5 +121,23 @@ check('keine offensichtlichen Zugangsdaten im Webordner',()=>{
   assert.doesNotMatch(all,/-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|sk-[A-Za-z0-9]{20,}|github_pat_/);
 });
 
+const digiPenGuide=fs.readFileSync(path.join(root,'digipen-guide.html'),'utf8');
+check('DigiPen-Guide enthält alle drei HP-Stiftmodelle',()=>{
+  assert.ok(digiPenGuide.includes('HP Rechargeable Active Pen G3'));
+  assert.ok(digiPenGuide.includes('HP 705 Rechargeable Multi Pen'));
+  assert.ok(digiPenGuide.includes('HP Slim Rechargeable Pen'));
+  assert.ok(digiPenGuide.includes('In der Klasse gibt es drei HP-Stiftmodelle'));
+  assert.ok(digiPenGuide.includes('630W7AA'));
+  assert.ok(digiPenGuide.includes('4X491AA'));
+});
+check('HP Slim Rechargeable Pen besitzt eigene lokale Guide-Grafik',()=>{
+  assert.match(digiPenGuide,/assets\/guide\/digipen-slim\.svg/);
+  assert.ok(fs.existsSync(path.join(root,'assets','guide','digipen-slim.svg')));
+});
+check('DigiPen-Hilfen unterscheiden USB-C und Slim-Ladestation',()=>{
+  assert.ok(digiPen.includes('USB-C-Kabel oder HP Slim-Ladestation'));
+  assert.ok(digiPen.includes('HP Slim Rechargeable Pen wird in der schwarzen Ladestation geladen'));
+  assert.ok(oneNote.includes('HP Slim Rechargeable Pen: schwarze USB-Ladestation verwenden'));
+});
 if(failures.length){console.error(`\n${failures.length} Prüfung(en) fehlgeschlagen:\n${failures.join('\n')}`);process.exit(1)}
 console.log(`\n${htmlFiles.length} HTML-Dateien geprüft. Alle Strukturtests bestanden.`);

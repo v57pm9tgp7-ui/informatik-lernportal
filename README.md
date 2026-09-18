@@ -1,3 +1,16 @@
+# MedienInfoLab – Version 1.19
+
+## HP Slim Rechargeable Pen ergänzt
+
+Der DigiPen-Guide enthält neu **drei** in der Klasse verwendete HP-Stiftmodelle. Neu hinzugekommen ist der **HP Slim Rechargeable Pen (630W7AA)** mit der kabelgebundenen **HP Slim Rechargeable Pen Charger-Ladestation (4X491AA)**.
+
+- eigenes Modellbild im Stil der bisherigen DigiPen-Grafiken
+- klare Unterscheidung der Ladearten
+- Slim Pen: Laden über Pogo-Pins in der USB-A-Ladestation
+- Hinweis: 20 Sekunden Laden reichen laut HP für bis zu 70 Minuten Schreiben
+- OneNote- und DigiPen-Hilfen wurden so angepasst, dass sie nicht mehr pauschal ein USB-C-Kabel verlangen
+- die zwei bisherigen Modelle und alle bestehenden Aufträge bleiben erhalten
+
 # MedienInfoLab – Version 1.18
 
 ## Persönlicher Link zum Lehrpersonenbereich
