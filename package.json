@@ -1,11 +1,12 @@
 {
   "name": "informatik-lernportal",
-  "version": "1.19.0",
+  "version": "1.20.0",
   "private": true,
-  "description": "MedienInfoLab mit drei HP-DigiPen-Modellen inklusive HP Slim Rechargeable Pen, Lehrpersonen-Cockpit und D1-Synchronisation",
+  "description": "MedienInfoLab mit dauerhaftem Projektbereich: fünf selbstständige Lernprojekte, Vorlagen und lokale Projektsicherungen",
   "scripts": {
     "dev": "node tests/serve.mjs",
     "test": "node tests/smoke.mjs",
-    "test:browser": "node tests/browser.mjs"
+    "test:browser": "node tests/browser.mjs",
+    "test:projects": "node tests/projects.mjs"
   }
 }

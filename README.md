@@ -1,3 +1,37 @@
+# MedienInfoLab – Version 1.20
+
+## Neuer dauerhafter Bereich «Projekte»
+
+`projekte.html` bietet fünf vollständige Zusatzprojekte, unabhängig von Unterrichtswochen:
+
+1. **Erklär’s besser:** Bildanleitung oder Mini-Tutorial als Video.
+2. **Mein digitales Cockpit:** eine funktionierende OneNote-Startseite.
+3. **Alles in einer PDF:** ein geprüftes Dossier aus drei Seiten; Übungs-PDF und Seitenbilder sind enthalten.
+4. **Echt oder Fake?:** ein Faktencheck mit zwei Quellen, konkreten Belegen und begründetem Urteil.
+5. **Fünf Tricks, die bleiben:** fünf selbst getestete, nachvollziehbar erklärte Digitaltipps.
+
+Jedes Projekt beginnt mit einer Kurzübersicht. Es folgen sechs einzeln aufrufbare Schritte mit Beispielen, Hilfen, einem Kontrollpunkt und freiwilligen Notizen. Vorlagen, sinnvolle Zwischenstände für wenig Zeit, Qualitätslisten, Druckfassungen und zwei Vertiefungen sind vorhanden. Ein neuer Navigationseintrag und ein Kasten auf der Startseite führen dorthin.
+
+### Speicherung und Abgabe
+
+Projekt-Häkchen und Notizen bleiben im lokalen Browser, getrennt nach der eingegebenen Schulmail. Der neue Bereich verändert die bestehende D1-Synchronisation der Workshops nicht. Für Projekte gibt es **keine automatische Gerätesynchronisation, keine automatische Übermittlung an den Lehrpersonenbereich und keine automatische Abgabe**. Die Oberfläche erklärt das ausdrücklich. Lernende können eine JSON-Sicherung exportieren und nach Bestätigung mit derselben Schulmail importieren. Produktdateien bleiben in den verwendeten Schulprogrammen beziehungsweise im schulischen OneDrive.
+
+Die Schulmail-Eingabe ist keine Authentifizierung. Für persönliche Arbeit sind eigene Geräte oder Browserprofile sinnvoll. Die vorhandene Cloudflare-Absicherung des Lehrpersonenbereichs bleibt unverändert.
+
+### Weitere Projekte ergänzen
+
+Die Projektinhalte stehen zentral in `dist/assets/projects-data.js`. Ein weiteres Objekt im `projects`-Array ergänzt automatisch Katalog, Schrittnavigation, Vorlage und Druckansicht. Bestehende Projekt-IDs müssen erhalten bleiben, weil Arbeitsstände daran gebunden sind. Neue IDs dürfen nur Kleinbuchstaben, Ziffern und Bindestriche enthalten. Jedes Objekt braucht dieselben Pflichtfelder und mindestens ein Hilfsangebot je Schritt. Neue Themenfarben beziehungsweise Illustrationen können in `projects.css` und `projects.js` ergänzt werden. Die Datei- und Backup-Version nur bei einer bewusst migrierten Formatänderung erhöhen.
+
+`projects-core.js` kapselt Routen, Validierung, Sicherungsformat und Abschlusslogik. `projects.js` stellt Ansichten und Interaktionen bereit. Die Übungsdateien für das PDF-Projekt liegen in `dist/assets/projects/`.
+
+### Geprüft
+
+- bestehende Struktur- und Syntaxprüfungen: `npm test`
+- 14 Projektprüfungen: `npm run test:projects` – darunter alle 41 Bildschirmansichten und 5 Druckfassungen als erzeugtes HTML, Sicherungsrundlauf, Kontotrennung, echte Eingabe- und Abschluss-Ereignisse sowie Verhalten bei blockierter Speicherung
+- Übungs-PDF: drei Seiten gerendert und visuell kontrolliert
+
+Die Website wurde in dieser Arbeitsumgebung nicht in einem echten Browser visuell geprüft. Die verfügbaren Tests verwenden Node und eine minimale DOM-Testumgebung; sie ersetzen keine Prüfung im produktiven Schulbrowser.
+
 # MedienInfoLab – Version 1.19
 
 ## HP Slim Rechargeable Pen ergänzt

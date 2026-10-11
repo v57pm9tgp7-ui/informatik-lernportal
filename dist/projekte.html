@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Projekte · MedienInfoLab</title>
+  <meta name="description" content="Fünf selbstständige Projekte für den Informatikunterricht: eigene Tutorials, ein OneNote-Cockpit, PDF-Dossiers, Faktenchecks und Digitaltipps.">
+  <link rel="stylesheet" href="assets/portal.css">
+  <link rel="stylesheet" href="assets/student-access.css">
+  <link rel="stylesheet" href="assets/projects.css?v=1">
+  <script>document.documentElement.classList.add('student-access-check')</script>
+  <script defer src="assets/student-access.js"></script>
+  <script src="assets/cloud-sync.js"></script>
+  <script defer src="assets/projects-data.js?v=1"></script>
+  <script defer src="assets/projects-core.js?v=1"></script>
+  <script defer src="assets/projects.js?v=1"></script>
+</head>
+<body class="projects-page">
+  <a class="skip-link" href="#main">Direkt zum Inhalt</a>
+  <header class="site-header"><div class="header-inner">
+    <a class="site-brand" href="index.html#start"><span class="brand-mark" aria-hidden="true">IT</span><span class="brand-copy"><strong>Informatik</strong><span>Unterricht bei Herrn Marti · GS1</span></span></a>
+    <nav class="desktop-nav" aria-label="Hauptnavigation">
+      <a class="nav-link" href="index.html#start">Start</a><a class="nav-link" href="index.html#wochen">Wochen</a><a class="nav-link" href="projekte.html" aria-current="page">Projekte</a><a class="nav-link" href="digipen-guide.html">DigiPen-Guide</a><a class="nav-link" href="index.html#scan-guide">Scan-Guide</a><a class="nav-link" href="index.html#fortschritt">Fortschritt</a>
+    </nav>
+    <details class="mobile-nav"><summary>Menü</summary><div class="mobile-menu"><a href="index.html#start">Start</a><a href="index.html#wochen">Wochen</a><a href="projekte.html" aria-current="page">Projekte</a><a href="digipen-guide.html">DigiPen-Guide</a><a href="index.html#scan-guide">Scan-Guide</a><a href="index.html#fortschritt">Fortschritt</a></div></details>
+    <button class="font-button" type="button" id="projectFont" aria-pressed="false" title="Schrift vergrössern">A+</button>
+  </div></header>
+  <div class="project-tools"><div><a href="projekte.html">Alle Projekte</a><span id="saveStatus" role="status" aria-live="polite">Arbeitsstand: lokal in diesem Browser</span></div><div><button type="button" data-action="backup">Arbeitsstand sichern</button><button type="button" data-action="import">Sicherung laden</button><button type="button" data-action="storage-help" aria-label="Hilfe zur Speicherung">?</button></div></div>
+  <p id="storageWarning" class="storage-warning" role="alert" hidden></p>
+  <main class="site-main projects-main" id="main" tabindex="-1">
+    <h1>Projekte</h1><p>Wählen Sie ein Projekt und entwickeln Sie etwas Eigenes. Die Projektübersicht wird geladen.</p>
+  </main>
+  <noscript><p class="storage-warning">Bitte aktivieren Sie JavaScript, um die Projekte und ihre Schritte anzuzeigen.</p></noscript>
+  <div id="printProject"></div>
+  <footer class="site-footer">MedienInfoLab · Informatik bei Herrn Marti · BFF Bern<br>Projektaufträge und Beispiele · Stand Oktober 2026</footer>
+  <dialog id="projectDialog" aria-labelledby="dialogTitle"><div class="dialog-head"><h2 id="dialogTitle"></h2><button type="button" data-action="close-dialog" aria-label="Dialog schliessen">✕</button></div><div id="dialogBody"></div></dialog>
+  <input type="file" id="importProjectFile" accept="application/json,.json" hidden>
+  <p id="projectToast" role="status" aria-live="polite" hidden></p>
+</body>
+</html>
