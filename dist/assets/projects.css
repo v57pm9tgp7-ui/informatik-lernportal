@@ -196,6 +196,10 @@
 .visual-detail>summary{padding:.85rem 1rem;font-weight:750;min-height:48px;color:#31536a}
 .visual-detail>p,.visual-detail>ul,.visual-detail>.idea-list{margin:0 1rem 1rem}.visual-detail>.learning-figure{margin:.3rem 1rem 1rem}
 .example-video video{width:100%;height:auto;aspect-ratio:16/9;display:block;background:#102e44;border-radius:12px;margin:1rem 0;border:1px solid #9db4c6}
+.example-video video::cue{color:#fff;background:#102e44;font-family:Arial,sans-serif}
+.spoken-commentary{margin:0 1rem 1rem;padding:1rem 1.2rem;border-left:3px solid #3f7e95;background:#eef5f8;border-radius:0 8px 8px 0;max-width:76ch}
+.spoken-commentary h3{font-size:1rem;margin:0 0 .7rem;color:#254b60}
+.spoken-commentary p{line-height:1.65;margin:.6rem 0}
 .video-chapters{display:grid;gap:.4rem;grid-template-columns:1fr 1fr;margin:1rem 0}
 .video-chapters button{text-align:left;display:flex;gap:.6rem;border:1px solid #cedce6;background:#f4f8fb;border-radius:8px;padding:.65rem;color:#284d65;font-size:.96rem;min-height:48px}
 .video-chapters span{font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums}

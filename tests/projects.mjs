@@ -31,7 +31,7 @@ test('all 56 screen views and 5 print views render with unique IDs and valid lab
     const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);assert.equal(new Set(ids).size,ids.length,`duplicate IDs in ${name}`);
     for(const [,label] of html.matchAll(/\bfor="([^"]+)"/g))assert.ok(ids.includes(label),`missing ${label} in ${name}`);
     for(const [,ref] of html.matchAll(/href="(#[^"]+)"/g)){assert.ok(C.route(ref,projects).project,ref);}
-    for(const [,ref] of html.matchAll(/href="([^"#]+)"/g)){if(!ref.startsWith('http'))assert.ok(fs.existsSync(path.join('dist',ref.split('#')[0])),ref);}
+    for(const [,ref] of html.matchAll(/href="([^"#]+)"/g)){if(!ref.startsWith('http'))assert.ok(fs.existsSync(path.join('dist',ref.split(/[?#]/)[0])),ref);}
   }
 });
 
@@ -247,8 +247,32 @@ test('switching accounts clears pending import, template selection and undo stat
 test('all five example films have local illustrations, complete timed captions and corresponding chapter buttons',()=>{
   const media=context.MediaInfoProjectMedia;
   for(const p of projects){const m=media[p.id];assert.ok(m.duration>=90);assert.ok(m.chapters.length>=7);let end=0;
-    for(const chapter of m.chapters){assert.equal(chapter.start,end);end+=chapter.seconds;assert.ok(fs.existsSync('dist/assets/projects/media/'+chapter.image));assert.ok(chapter.caption.length>80);}
-    assert.equal(m.duration,end);for(const ext of ['mp4','vtt'])assert.ok(fs.statSync(`dist/assets/projects/media/${p.id}.${ext}`).size>1000);
+    for(const chapter of m.chapters){assert.ok(Math.abs(chapter.start-end)<.001);end+=chapter.seconds;assert.ok(fs.existsSync('dist/assets/projects/media/'+chapter.image));assert.ok(chapter.caption.length>80);}
+    assert.ok(Math.abs(m.duration-end)<.001);for(const ext of ['mp4','vtt'])assert.ok(fs.statSync(`dist/assets/projects/media/${p.id}.${ext}`).size>1000);
     assert.equal((V.media(p).match(/data-action="video-chapter"/g)||[]).length,m.chapters.length);assert.match(V.media(p),/preload="none"/);assert.doesNotMatch(V.media(p),/autoplay/);
+  }
+});
+
+test('spoken captions reproduce every script word, stay synchronized and have an accessible transcript',()=>{
+  const scripts=JSON.parse(fs.readFileSync('tools/project-narration.json','utf8'));
+  const seconds=s=>s.split(':').map(Number).reduce((n,x)=>n*60+x,0);
+  const normalize=s=>s.replace(/\s+/g,' ').trim();
+  for(const p of projects){
+    const m=context.MediaInfoProjectMedia[p.id],html=V.media(p);
+    assert.equal(m.narration.gender,'female');assert.equal(m.narration.synthetic,true);
+    assert.match(html,/KI-generierter Sprecherinnenstimme/);assert.doesNotMatch(html,/ohne Sprecherstimme|\d:\d+\.\d/);
+    const blocks=fs.readFileSync(`dist/assets/projects/media/${p.id}.vtt`,'utf8').trim().split(/\n\n/).slice(1);
+    let end=0;const spoken=[];
+    for(const block of blocks){
+      const [time,...lines]=block.split('\n');const match=time.match(/^(\d\d:\d\d:\d\d\.\d{3}) --> (\d\d:\d\d:\d\d\.\d{3}) /);
+      assert.ok(match,p.id+' invalid VTT');const start=seconds(match[1]),stop=seconds(match[2]);
+      assert.ok(start>=end-.001&&stop>start&&stop<=m.duration+.001,p.id+' caption timing');
+      assert.ok(lines.length<=2,p.id+' subtitle too dense');end=stop;spoken.push(lines.join(' '));
+    }
+    const script=scripts.projects[p.id].scenes.flatMap(s=>s.segments.map(s=>s.text));
+    assert.equal(normalize(spoken.join(' ')),normalize(script.join(' ')),p.id+' complete spoken subtitles');
+    assert.deepEqual(clean(m.chapters.flatMap(c=>c.narration)),script);
+    const transcript=fs.readFileSync(`dist/assets/projects/media/${p.id}-sprechtext.txt`,'utf8');
+    for(const text of script){assert.ok(transcript.includes(text));assert.ok(html.includes(C.escape(text)),p.id+' visible transcript');}
   }
 });

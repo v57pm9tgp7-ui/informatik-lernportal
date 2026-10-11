@@ -1,3 +1,32 @@
+# MedienInfoLab – Version 1.22
+
+## Alle fünf Beispielvideos mit Sprecherinnenstimme
+
+Die fünf Projektfilme enthalten jetzt eine fest eingebaute deutsche AAC-Tonspur mit derselben weiblichen neuronalen Stimme (Seraphina). Das redaktionelle Stimmprofil ist eine sympathische junge erwachsene Lernbegleiterin. Die Kommentare erklären Entscheidungen, lenken den Blick, benennen typische Schwierigkeiten und führen zu einem konkreten eigenen Versuch. Sie sind für alle 36 Szenen eigens geschrieben und lesen die Bildschirmkarten nicht einfach vor.
+
+- Die tatsächlich erzeugte Sprechdauer bestimmt Szenenlänge und Kapitelmarken. Hervorhebungen folgen den gesprochenen Abschnitten; Denkpausen bleiben erhalten.
+- Deutsche VTT-Untertitel enthalten den vollständigen gesprochenen Text. Ihre Zeitmarken stammen aus den Wortzeiten der Sprachsynthese. Im Video bleibt unterhalb der Beispiele Platz für zwei Untertitelzeilen.
+- Die ganze Erklärung steht zusätzlich bei jeder Grafik und als herunterladbare Textdatei zur Verfügung. Zeitangaben bleiben auch bei Sekundenbruchteilen lesbar.
+- Die Filme bleiben lokal bereitgestellte MP4-Dateien ohne Autoplay. Zum Abspielen wird kein Sprachdienst aufgerufen. Die Website kennzeichnet die KI-generierte Stimme.
+- Alle Tonspuren werden in zwei Durchgängen auf vergleichbare Lautheit gebracht: Ziel −16 LUFS, maximale True Peaks −1,5 dBTP, keine Hintergrundmusik.
+
+### Reproduzierbare Erstellung
+
+`tools/project-narration.json` enthält das Stimmbriefing und die vollständigen Kommentare mit Bildfokus und Denkpausen. `tools/build-project-audio.py` erzeugt daraus Audio und Wortzeiten mit `edge-tts==7.2.8` (Microsoft Online Speech). Dabei werden nur die öffentlichen Unterrichtstexte übertragen, keine Daten von Lernenden. Die Synthese setzt Zugang zum Sprachdienst voraus. Zwischenstände werden nach Text und Stimme gehasht; unveränderte Passagen werden wiederverwendet.
+
+```sh
+python tools/build-project-audio.py --output /absoluter/pfad/audio-cache
+python tools/build-project-media.py --audio-manifest /absoluter/pfad/audio-cache/manifest.json
+```
+
+Voraussetzungen: Python, Pillow, edge-tts und ffmpeg mit libx264/AAC. Der Audio-Cache liegt ausserhalb des Repositorys. Die endgültigen Filme, Untertitel, Sprechtexte, Grafiken und Kapitelmetadaten werden gemeinsam versioniert. Der Mediengenerator akzeptiert keine stummen neuen Filme und lehnt Tonspuren ab, deren Textgrundlage nicht mehr aktuell ist. `--stills-only` benötigt ebenfalls das passende Audiomanifest, damit Laufzeiten und Transkripte konsistent bleiben.
+
+### Prüfung
+
+`npm test` und `npm run test:projects` prüfen die Website und die vollständige Übereinstimmung von Sprechtexten, Untertiteln und sichtbaren Transkripten. Zusätzlich werden Audio-/Videostreams, Decodierung, Laufzeit, Lautheit und Spitzenpegel mit ffmpeg/ffprobe überprüft. Eine Hörabnahme und die visuelle Prüfung im produktiven Schulbrowser sind durch diese technischen Prüfungen nicht ersetzt.
+
+---
+
 # MedienInfoLab – Version 1.21
 
 ## Projekte mit Cockpit, Werkbank und Beispielvideos

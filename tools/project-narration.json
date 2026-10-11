@@ -1,0 +1,234 @@
+{
+  "version": 1,
+  "language": "de-CH",
+  "status": "script-ready",
+  "voiceBrief": {
+    "character": "Eine sympathische junge erwachsene Frau, warm, aufmerksam und kompetent. Eine Lernbegleiterin, die neben der lernenden Person sitzt.",
+    "language": "Gut verständliches Standarddeutsch, Schweizer Schreibweise im Transkript. Lernende konsequent mit Sie ansprechen.",
+    "delivery": "Natürlich und zugewandt, mit hörbarem Interesse. Ruhige Satzenden, lebendige, zurückhaltende Betonung. Fragen einladend stellen. Kein Werbeton, keine Babysprache, keine künstlich hochgestellte Stimme.",
+    "pace": "Etwa 140 bis 155 Wörter pro Minute als Orientierung. Verständlichkeit geht vor Ziellänge. Denkpausen und Zeit zum Betrachten ausdrücklich stehen lassen.",
+    "consistency": "Dieselbe Stimme und vergleichbare Lautheit in allen fünf Filmen. Keine Hintergrundmusik unter der Erklärung.",
+    "pronunciation": "OneNote und OneDrive natürlich als Produktnamen aussprechen. PDF buchstabieren. Tastenkombinationen langsam und deutlich; Strg als Steuerung sprechen. Zahlen und Uhrzeiten sind im Sprechtext ausgeschrieben.",
+    "editorialRule": "Nicht die Karten vorlesen. Den Blick führen, eine Entscheidung begründen, eine typische Schwierigkeit erklären und einen machbaren nächsten Schritt anbieten.",
+    "disclosure": "Die fertige Website kennzeichnet eine synthetisch erzeugte Stimme als KI-generiert. Erst nach tatsächlich erzeugter und geprüfter Tonspur als vertont ausweisen."
+  },
+  "timing": {
+    "sceneLeadSeconds": 0.45,
+    "sceneTailSeconds": 0.7,
+    "defaultPauseSeconds": 0.35,
+    "policy": "Die gemessene Audiodauer bestimmt die Bilddauer. focus bezeichnet den nullbasierten Bildbereich in der bestehenden Szene. Ein Segment bleibt während der gesamten gesprochenen Erklärung hervorgehoben. Untertitel müssen dem gesprochenen Text entsprechen."
+  },
+  "projects": {
+    "tutorial": {
+      "learningGoal": "Eine verständliche Anleitung an der entscheidenden Stelle verbessern und mit einer anderen Person prüfen.",
+      "scenes": [
+        {"segments": [
+          {"focus": 0, "text": "Kennen Sie das? Eine Anleitung sieht ordentlich aus, und trotzdem weiss man nicht, wo man klicken soll. Ihr Projekt löst genau dieses Problem."},
+          {"focus": 1, "text": "Die drei Felder zeigen den roten Faden: eine kleine Aufgabe, eine verständliche Handlung und ein Ergebnis, das man erkennen kann."},
+          {"focus": 2, "text": "Wählen Sie deshalb eine einzige Funktion. Eine kurze Anleitung, die wirklich hilft, ist mehr wert als zehn nur angedeutete Tipps."}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Schauen Sie links: Die Schaltfläche ist vorhanden, geht aber zwischen den vielen anderen Elementen unter. Wer die Oberfläche nicht kennt, muss raten."},
+          {"focus": 1, "text": "Rechts fällt die Entscheidung leichter. Der Ausschnitt zeigt genug Zusammenhang, und die wichtige Stelle ist deutlich grösser. Genau diese Verbindung von Bild und Handlung hilft beim Nachmachen."},
+          {"focus": 2, "text": "Prüfen Sie Ihren eigenen Screenshot: Findet eine andere Person die gemeinte Stelle, ohne dass Sie mit dem Finger darauf zeigen?", "pauseAfter": 1.1}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Beim Speichern endet die Anleitung oft einen Schritt zu früh. Ein erfolgreicher Klick sagt noch nicht, ob die Datei später wiedergefunden wird."},
+          {"focus": 1, "text": "Der konkrete Ordner und der erkennbare Dateiname geben Ihrer Testperson zwei Anhaltspunkte. Passen Sie beides an Ihren eigenen Speicherort an."},
+          {"focus": 2, "text": "Entscheidend ist der letzte Test: Datei schliessen und von diesem Ordner aus erneut öffnen. Erst jetzt ist der ganze Weg geprüft."}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Auch ein Link kann eine unnötige Frage auslösen. Bei der linken Beschriftung ist unklar, was nach dem Klick wartet."},
+          {"focus": 1, "text": "Die rechte Variante benennt das Ziel. So kann die Person schon vor dem Öffnen entscheiden, ob dieser Link weiterhilft."},
+          {"focus": 2, "text": "Testen Sie den Link mit dem vorgesehenen Konto. Ein guter Name hilft wenig, wenn das Ziel falsch ist oder der Zugriff fehlt."}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Wenn Sie selbst ein Video erstellen, hilft diese Zeitaufteilung. Gemeint ist hier Ihr eigenes Lernprodukt. Zu Beginn reicht ein kurzer Blick auf das Ziel."},
+          {"focus": 1, "text": "Der grösste Teil gehört der sichtbaren Arbeit. Bewegen Sie den Mauszeiger bewusst und lassen Sie nach einem wichtigen Klick kurz Zeit zum Hinschauen."},
+          {"focus": 2, "text": "Reservieren Sie den Schluss für die Kontrolle. Das Beispiel plant fünfundsiebzig Sekunden; Ihr Auftrag erlaubt sechzig bis neunzig. Machen Sie zuerst eine kurze Probeaufnahme."}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Beim Test möchten Sie wahrscheinlich sofort helfen. Warten Sie einen Moment: Das Zögern zeigt Ihnen gerade, welche Information in Ihrer Anleitung fehlt.", "pauseAfter": 0.7},
+          {"focus": 1, "text": "Hier ist das Symbol nicht eindeutig. Ein genauerer Ausschnitt und sein Name lösen dieses konkrete Problem. Mehr Text allein würde nicht unbedingt helfen."},
+          {"focus": 2, "text": "Lassen Sie dieselbe Stelle nochmals ausprobieren. Gelingt sie nun ohne Hinweis, können Sie die Verbesserung auch begründen."}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Jetzt haben Sie genug Ideen für einen eigenen Start. Wählen Sie in der Werkbank eine Vorlage oder formulieren Sie Ihr eigenes kleines Problem."},
+          {"focus": 1, "text": "Für die Bildanleitung planen Sie mindestens fünf sinnvolle Schritte mit eigenen Bildern. Beim Video zeigen Sie den Ablauf selbst. Die Beispiele hier dienen Ihnen als Orientierung."},
+          {"focus": 2, "text": "Ihr erster Handgriff: Schreiben Sie einen Satz dazu, was eine andere Person am Schluss selbstständig können soll. Danach planen Sie im Cockpit Ihre nächste Arbeitsetappe."}
+        ]}
+      ]
+    },
+    "cockpit": {
+      "learningGoal": "Eine persönliche OneNote-Startseite so gestalten, dass nächste Handlung, Termin, Arbeitsort und Ziel schnell auffindbar sind.",
+      "scenes": [
+        {"segments": [
+          {"focus": 0, "text": "Die Lektion beginnt. Wissen Sie sofort, womit Sie weiterarbeiten? Ihr persönliches Cockpit soll Ihnen genau diese Entscheidung erleichtern."},
+          {"focus": 1, "text": "Die Termine zeigen, was näher rückt. Sie ersetzen aber noch keine konkrete Aufgabe: Vor einem Abgabetermin braucht es Zeit zum Prüfen."},
+          {"focus": 2, "text": "Passende Links verkürzen den Weg zur Arbeit."},
+          {"focus": 3, "text": "Und ein erreichbares Ziel gibt der Woche eine Richtung. Jeder Bereich hat damit eine eigene Aufgabe."}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Im Schulbeispiel fällt ein Eintrag zuerst auf. Das ist Absicht: Drei gleich wichtige Aufgaben würden die Entscheidung wieder an Sie zurückgeben."},
+          {"focus": 1, "text": "Der Zwischentest liegt vor der Abgabe. So bleibt noch Zeit, etwas zu verbessern. Die dargestellten Termine sind erfunden; verwenden Sie später Ihre tatsächlichen Angaben."},
+          {"focus": 2, "text": "Benennen Sie Links nach dem Arbeitsziel."},
+          {"focus": 3, "text": "Das Wochenziel beschreibt ein überprüfbares Ergebnis. Daran erkennen Sie, ob Ihre Arbeit geholfen hat."}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Die gleiche Ordnung funktioniert auch vor einer Schnupperlehre. Hier werden aus dem grossen Vorhaben kleine Vorbereitungen, die Sie einzeln erledigen können."},
+          {"focus": 1, "text": "Besonders hilfreich ist die Kontrolle am Vortag. Eine fehlende Unterlage lässt sich dann meist noch beschaffen."},
+          {"focus": 2, "text": "Die Schnellzugriffe führen direkt zu dem, was Sie brauchen."},
+          {"focus": 3, "text": "Übernehmen Sie also die Struktur, aber füllen Sie sie mit Ihrem Alltag. Auch diese Angaben sind nur ein Übungsbeispiel."}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Bei einer Lernwoche ist die Gefahr gross, einfach nur Lernen einzutragen. Hier sehen Sie stattdessen kleine Tätigkeiten, mit denen man wirklich anfangen kann."},
+          {"focus": 1, "text": "Ein Selbsttest vor dem nächsten Unterricht macht offene Fragen sichtbar."},
+          {"focus": 2, "text": "Die verlinkten Notizen halten das Material griffbereit."},
+          {"focus": 3, "text": "Das Ziel geht einen Schritt weiter als Lesen: Die Begriffe sollen ohne Nachschlagen erklärt werden. So prüfen Sie Ihr Verständnis statt nur Ihre Arbeitszeit."}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Vergleichen Sie diese Einträge. Der linke klingt nach Arbeit, lässt aber offen, wo sie beginnt und wann sie fertig ist."},
+          {"focus": 1, "text": "Die mittlere Fassung nennt eine Handlung und einen begrenzten Umfang. Das ist besonders nützlich, wenn nur noch wenige Minuten bleiben."},
+          {"focus": 2, "text": "Rechts steht bereits der erste Handgriff. Pausieren Sie kurz und formulieren Sie einen eigenen unklaren Eintrag genauso konkret um.", "pauseAfter": 1.3}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Ob das Cockpit gut gestaltet ist, zeigt sich beim Wiederöffnen. Finden Sie die nächste Aufgabe, ohne die ganze Seite lesen zu müssen?"},
+          {"focus": 1, "text": "Suchen Sie danach den nächsten Termin. Rund zehn Sekunden je Frage sind eine Orientierung, keine Geschwindigkeitsnote."},
+          {"focus": 2, "text": "Öffnen Sie schliesslich den benötigten Link. Wo Sie suchen oder nachdenken mussten, vereinfachen Sie die Seite. Zusätzliche Dekoration ist dafür oft gar nicht nötig."}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "In der Werkbank entwerfen Sie zunächst den Inhalt. Wählen Sie eine passende Vorlage und ersetzen Sie die Beispiele durch Ihre eigenen Angaben."},
+          {"focus": 1, "text": "Anschliessend übertragen Sie den Entwurf nach OneNote. Dort setzen Sie echte Aufgabenmarkierungen und Links und prüfen, ob sie funktionieren."},
+          {"focus": 2, "text": "Ihr persönliches OneNote-Cockpit ist das Produkt dieses Projekts. Das Cockpit auf der Projektwebsite hilft Ihnen zusätzlich, die verfügbare Lektionszeit zu planen. Nutzen Sie beide bewusst für ihren jeweiligen Zweck."}
+        ]}
+      ]
+    },
+    "dokumente": {
+      "learningGoal": "Drei zusammengehörige Seiten zu einer sinnvoll geordneten und tatsächlich geprüften PDF verbinden.",
+      "scenes": [
+        {"segments": [
+          {"focus": 0, "text": "Stellen Sie sich vor, Sie erhalten diese Datei kurz vor einem Anlass. Was müssten Sie als Erstes wissen? Mit dieser Frage beginnt ein gutes Dossier."},
+          {"focus": 1, "text": "Drei Seiten einfach zusammenzufügen reicht noch nicht. Die Informationen sollen in einer Reihenfolge stehen, die der nutzenden Person weiterhilft."},
+          {"focus": 2, "text": "Die letzte Seite kann dann die nächste Handlung erleichtern. Ihre PDF wird so zu einem brauchbaren Begleiter."}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Beim erfundenen Open-Air beginnt die Datei mit der Tagesinfo. Erst wenn Sie den Anlass kennen, ergeben die weiteren Angaben einen Zusammenhang."},
+          {"focus": 1, "text": "Danach folgt die Anreise. Die geplante Ankunft um dreizehn Uhr zweiundzwanzig lässt sich nun mit dem Beginn um vierzehn Uhr vergleichen."},
+          {"focus": 2, "text": "Die Packliste schliesst mit einer Handlung ab. Deshalb wird das bereitgestellte Material hier in der Reihenfolge B, C, A verwendet. Die Buchstaben bestimmen also nicht automatisch die richtige Ordnung."}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Bei Lernunterlagen funktioniert ein ähnlicher Gedanke: Zuerst hilft ein Überblick, das Thema einzuordnen."},
+          {"focus": 1, "text": "Das anschliessende Beispiel macht sichtbar, wie die Idee angewendet wird. Es sollte deshalb zum gleichen Thema gehören und gut lesbar sein."},
+          {"focus": 2, "text": "Eine passende Übung lässt Sie das Verständnis prüfen. Fragen Sie bei jeder Seite: Was kann die Person damit tun, was vorher noch nicht möglich war?", "pauseAfter": 0.8}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Auch ein Vereinsdossier kann so aufgebaut sein. Das Programm erklärt zunächst, was geplant ist. Es geht hier um ein erfundenes Beispiel."},
+          {"focus": 1, "text": "Die Ortsangaben helfen anschliessend, tatsächlich dort anzukommen. Eine abgeschnittene Adresse wäre deshalb mehr als ein Schönheitsfehler."},
+          {"focus": 2, "text": "Die Materialliste unterstützt die Vorbereitung. Die drei Beispiele zeigen Ihnen verschiedene Themen, aber dieselbe wichtige Frage: Passt die Ordnung zum späteren Gebrauch?"}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Hier sieht man einen typischen Fehler: Wenn beim Aufnehmen ein Rand fehlt, kann auch eine wichtige Angabe verschwinden. Das lässt sich durch Zusammenfügen nicht reparieren."},
+          {"focus": 1, "text": "Legen Sie das Blatt flach hin und sorgen Sie für gleichmässiges Licht. Kontrollieren Sie alle Ränder, bevor Sie weitergehen."},
+          {"focus": 2, "text": "Zoomen Sie danach auf eine kleine Angabe. Ist sie unleserlich, nehmen Sie die Seite nochmals auf. Dieser kurze Check spart Ihnen eine spätere Reparaturrunde."}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Prüfen Sie jetzt die exportierte Datei selbst. Eine gute Vorschau im Scanprogramm beweist noch nicht, dass die fertige PDF vollständig ist."},
+          {"focus": 1, "text": "Suchen Sie drei konkrete Informationen. Im Open-Air-Beispiel sind das Beginn, Ankunft und Regenjacke. So testen Sie gleichzeitig Inhalt und Nutzbarkeit."},
+          {"focus": 2, "text": "Kontrollieren Sie auch den Dateinamen und notieren Sie die Dateigrösse. Grösser ist nicht automatisch besser; entscheidend sind vollständige Seiten und lesbare Angaben."}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Wählen Sie nun Ihren Arbeitsweg: mit Papier scannen oder mit den bereitgestellten Bildern arbeiten. Begründen Sie zuerst Ihre Seitenreihenfolge."},
+          {"focus": 1, "text": "Erstellen Sie danach eine gemeinsame PDF mit drei Seiten. Der ausgefüllte Plan in der Werkbank begleitet diese Arbeit; die PDF müssen Sie zusätzlich erzeugen."},
+          {"focus": 2, "text": "Zum Schluss öffnen Sie die Datei vom tatsächlichen Speicherort. Halten Sie Ihr Prüfergebnis fest. Für den nächsten Start gehört dieser Speicherort auch in Ihren Lektionsabschluss."}
+        ]}
+      ]
+    },
+    "faktencheck": {
+      "learningGoal": "Eine überprüfbare Behauptung mit zwei passenden Quellen prüfen und ein Urteil formulieren, das nicht weiter geht als die Belege.",
+      "scenes": [
+        {"segments": [
+          {"focus": 0, "text": "Eine Behauptung klingt überzeugend. Aber welche Frage müssten Sie beantworten, um sie wirklich zu prüfen? Beginnen Sie mit einem genauen Satz."},
+          {"focus": 1, "text": "Zwei Suchtreffer allein genügen nicht. Entscheidend ist, ob die Quellen genau zu dieser Aussage etwas belegen. Lesen Sie dafür die passenden Stellen selbst."},
+          {"focus": 2, "text": "Erst danach folgt Ihr Urteil. Es darf auch offenbleiben, wenn die Belege noch nicht reichen."}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Die Aussage über den Inkognitomodus vermischt zwei Dinge: Spuren auf dem eigenen Gerät und Sichtbarkeit im Internet. Genau diese Unterscheidung ist entscheidend."},
+          {"focus": 1, "text": "Die Hilfeseiten von Google und Mozilla erläutern unterschiedliche Browser. Beide widersprechen aber der Vorstellung, privates Surfen mache Sie im Internet anonym."},
+          {"focus": 2, "text": "Das Urteil rechts ist deshalb begründet. Verknüpfen Sie Ihre Schlussfolgerung ausdrücklich mit den gelesenen Belegen, statt nur ein rotes Falsch darüberzusetzen."}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Achten Sie bei der nächsten Behauptung auf das Wort alles. Solche absoluten Wörter verlangen besonders genaue Belege."},
+          {"focus": 1, "text": "Die heruntergeladene Datei ist hier das entscheidende Gegenbeispiel. Laut den genannten Hilfeseiten bleibt sie auch nach dem Schliessen der privaten Sitzung auf dem Gerät."},
+          {"focus": 2, "text": "Damit lässt sich die pauschale Aussage widerlegen. Daraus folgt jedoch nicht, dass alle Browser jede Art von Daten genau gleich behandeln. Bleiben Sie bei dem, was Ihre Quellen tatsächlich erklären."}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Dieser Bildfall ist erfunden. Ein Post behauptet, ein Foto stamme von heute. Wie würden Sie das überprüfen?", "pauseAfter": 1.2},
+          {"focus": 1, "text": "Ein älterer Archiveintrag mit demselben Motiv ist ein Grund, genauer hinzusehen. Er beweist allein noch nicht, dass es exakt dieselbe Aufnahme ist."},
+          {"focus": 2, "text": "Deshalb bleibt das aktuelle Datum zunächst unbewiesen. Ein vorsichtiges Urteil ist hier eine Stärke. Ein konkreter nächster Prüfschritt wäre, den Ursprung der Aufnahme zu klären."}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Eine andere Person soll Ihren Gedankengang nachprüfen können. Ein Link auf eine lange Hilfeseite reicht dafür oft nicht. Notieren Sie auch den passenden Abschnitt und das Abrufdatum."},
+          {"focus": 1, "text": "Fassen Sie anschliessend den entscheidenden Beleg in eigenen Worten zusammen. Daran merken Sie auch, ob Sie ihn verstanden haben."},
+          {"focus": 2, "text": "Die Grenze daneben verhindert eine zu grosse Schlussfolgerung. Eine Erklärung zu Chrome gilt nicht automatisch für jedes andere Programm."}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Ihre Faktencheck-Karte soll den Prüfweg sichtbar machen. Die Behauptung steht deshalb getrennt von Ihrer eigenen Bewertung."},
+          {"focus": 1, "text": "Stellen Sie die zwei Belege so gegenüber, dass Gemeinsamkeiten oder Unterschiede auffallen."},
+          {"focus": 2, "text": "Formulieren Sie dann das Urteil samt wichtiger Einschränkung. Auch teilweise richtig oder offen können passende Ergebnisse sein."},
+          {"focus": 3, "text": "Die Quellen bleiben auffindbar. Kürzen Sie die Gestaltung nicht gerade an der Stelle, an der die Überprüfbarkeit beginnt."}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Wählen Sie jetzt eine Vorlage und grenzen Sie Ihre eigene Prüffrage ein. Je genauer sie ist, desto leichter erkennen Sie passende Belege."},
+          {"focus": 1, "text": "Lesen Sie die verlinkten Originalquellen selbst, auch wenn Sie das Beispiel gerade gesehen haben. Zwei Organisationen bieten unterschiedliche Bezugspunkte; entscheidend bleibt der Inhalt."},
+          {"focus": 2, "text": "Schreiben Sie zum Schluss, was Sie belegen können und was noch offen ist. Ihr erster Schritt heute ist eine klare Prüffrage, nicht schon das fertige Urteil."}
+        ]}
+      ]
+    },
+    "lifehacks": {
+      "learningGoal": "Fünf hilfreiche Digitaltipps mit eigenem Test, sichtbarem Ergebnis und nachvollziehbarer Grenze erklären.",
+      "scenes": [
+        {"segments": [
+          {"focus": 0, "text": "Ein guter Digitaltipp löst eine Situation, die Sie wirklich kennen. Beginnen Sie deshalb nicht mit einem Tastenkürzel, sondern mit der Frage: Wann hilft mir das?"},
+          {"focus": 1, "text": "Erklären Sie den Handgriff so knapp, dass eine andere Person ihn ausprobieren kann. Nennen Sie auch das verwendete Programm."},
+          {"focus": 2, "text": "Ihr eigener Test macht daraus einen verlässlichen Tipp. Dazu gehört ebenso eine Grenze: Wann funktioniert er nicht wie erwartet?"}
+        ]},
+        {"focusNote": "Die beiden Bereiche zeigen Suchfeld und gefundenen Treffer; der dritte Bereich erklärt die Grenze.", "segments": [
+          {"focus": 0, "text": "Hier wird in Chrome unter Windows auf einer geöffneten Seite gesucht. Mit Steuerung und F erscheint das Suchfeld. Verwenden Sie einen Begriff, der tatsächlich auf der Seite steht."},
+          {"focus": 1, "text": "Die Markierung zeigt den Erfolg Ihres Tests. Für die Tippkarte sind deshalb Suchbegriff und Treffer gemeinsam wichtig."},
+          {"focus": 2, "text": "Diese Suche durchsucht die aktuelle Seite. Wer stattdessen Informationen im ganzen Internet sucht, braucht einen anderen Weg. Genau solche Grenzen machen Ihre Erklärung nützlich."}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Ein Tab wurde versehentlich geschlossen. Für Ihren Versuch nehmen Sie bewusst eine harmlose Seite ohne ungespeicherte Arbeit."},
+          {"focus": 1, "text": "In Chrome unter Windows können Sie mit Steuerung, Umschalt und T einen kürzlich geschlossenen Tab wieder öffnen. Der zurückgekehrte Tab ist Ihr sichtbarer Beleg."},
+          {"focus": 2, "text": "Das ist keine allgemeine Rettungsfunktion für verlorene Eingaben. Privat geschlossene Tabs werden auf diesem Weg ebenfalls nicht wiederhergestellt. Beschreiben Sie also genau, was Sie getestet haben."}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Für eine Anleitung ist oft nur ein kleiner Teil des Bildschirms wichtig. Die Tastenkombination Windows, Umschalt und S öffnet unter Windows die Auswahl für einen Screenshot."},
+          {"focus": 1, "text": "Der gewählte Ausschnitt soll die entscheidende Stelle zeigen, aber noch verständlich bleiben. Ein enger Ausschnitt ist nur dann besser, wenn der nötige Zusammenhang erhalten bleibt."},
+          {"focus": 2, "text": "Prüfen Sie das eingefügte Bild auf Lesbarkeit und private Angaben. Ein sauberer eigener Screenshot ist zugleich der Nachweis Ihres Versuchs."}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Auch eine einfache Checkliste kann ein guter Tipp sein. Entscheidend ist der Inhalt: Die Aufgabe beschreibt hier ein Ergebnis, das Sie wirklich kontrollieren können."},
+          {"focus": 1, "text": "Der kleine erste Schritt erleichtert den Einstieg."},
+          {"focus": 2, "text": "In OneNote setzen Sie eine echte Aufgabenmarkierung. Erst nach der Kontrolle wird sie abgehakt. Ein Häkchen soll etwas bedeuten."},
+          {"focus": 3, "text": "Es erzeugt allerdings nicht automatisch eine Erinnerung. Halten Sie diese Grenze auch in Ihrer Tippkarte fest."}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Dieser Tipp wirkt unspektakulär, verhindert aber unangenehme Überraschungen. Öffnen Sie die exportierte PDF als eigene Datei und zählen Sie die Seiten."},
+          {"focus": 1, "text": "Vergrössern Sie eine kleine Angabe. Prüfen Sie auch, ob am Rand etwas fehlt. Die ursprüngliche Arbeitsdatei kann korrekt aussehen, obwohl beim Export etwas schiefging."},
+          {"focus": 2, "text": "Suchen Sie abschliessend eine wichtige Information. So untersuchen Sie das Produkt, das später tatsächlich jemand erhält."}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Vergleichen Sie diese beiden Nutzenversprechen. Das linke klingt begeistert, sagt aber wenig darüber, was der Tipp konkret verbessert."},
+          {"focus": 1, "text": "Rechts steht eine beobachtbare Wirkung. Dafür müssen Sie weder eine Zeitersparnis erfinden noch behaupten, der Trick helfe immer."},
+          {"focus": 2, "text": "Geben Sie eine Karte jemand anderem. Funktioniert der Versuch ohne Ihre mündlichen Ergänzungen? Wenn nicht, haben Sie den besten Hinweis für Ihre nächste Verbesserung.", "pauseAfter": 1.0}
+        ]},
+        {"segments": [
+          {"focus": 0, "text": "Wählen Sie nun fünf unterschiedliche Tricks, die in Ihren Alltag passen. Mindestens zwei sollen für Sie noch keine Routine sein. Es geht auch darum, selbst etwas Neues zu lernen."},
+          {"focus": 1, "text": "Testen Sie jeden Tipp im angegebenen Programm und dokumentieren Sie Ihr eigenes Ergebnis. Die Werkbank hilft Ihnen beim einheitlichen Aufbau der Karten."},
+          {"focus": 2, "text": "Beginnen Sie heute mit einer einzigen vollständigen Karte. Lassen Sie diese ausprobieren, bevor Sie die restlichen gestalten. So nehmen Sie die erste Verbesserung gleich in Ihre ganze Sammlung mit."}
+        ]}
+      ]
+    }
+  }
+}

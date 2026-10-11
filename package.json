@@ -1,6 +1,6 @@
 {
   "name": "informatik-lernportal",
-  "version": "1.21.0",
+  "version": "1.22.0",
   "private": true,
   "description": "MedienInfoLab mit dauerhaftem Projektbereich: Lektions-Cockpit, bearbeitbare Vorlagen, 36 Grafiken und fünf Beispielvideos",
   "scripts": {
