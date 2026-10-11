@@ -10,7 +10,7 @@
       summary: 'Zeigen Sie eine kleine digitale Fähigkeit so klar, dass eine andere Person sie ohne Ihre Hilfe nachmachen kann. Sie wählen zwischen einer Bildanleitung und einem kurzen Video.',
       product: 'Eine Bildanleitung mit mindestens 5 Schritten oder ein Erklärvideo von 60–90 Sekunden.',
       duration: '45–65 Min.', work: 'Alleine; kurzer Test zu zweit, wenn möglich.',
-      needs: ['Notebook und eine Funktion, die Sie selbst ausprobieren können.', 'Für Bilder: OneNote oder PowerPoint. Für Video: ein vorhandenes Aufnahmeprogramm; Kopfhörer sind hilfreich.', 'Kein eigenes Gesicht, kein Social-Media-Konto und kein neues Programm nötig.'],
+      needs: ['Notebook und eine Funktion, die Sie selbst ausprobieren können.', 'Für Bilder: die Werkbank hier auf der Webseite, OneNote oder PowerPoint. Für Video: ein vorhandenes Aufnahmeprogramm; Kopfhörer sind hilfreich.', 'Kein eigenes Gesicht, kein Social-Media-Konto und kein neues Programm nötig.'],
       learn: 'Sie zerlegen einen Ablauf in verständliche Schritte und prüfen Ihre Erklärung mit einem echten Anwendungstest.',
       start: 'Öffnen Sie eine Funktion, die Sie gut kennen. Führen Sie sie einmal selbst aus, bevor Sie eine Anleitung dazu planen.',
       ideas: [
@@ -30,7 +30,7 @@
       exampleItems: ['Bildschirm vorbereiten: Nur das benötigte Fenster zeigen.', 'Ausschnitt aufnehmen: Windows + Umschalt + S drücken und den Bereich markieren.', 'In OneNote einfügen: Auf die Zielseite klicken und Strg + V drücken.'],
       steps: [
         step('Eine Frage auswählen', '5 Min.', 'Am Ende wissen Sie genau, welches Problem Ihre Anleitung löst.', [
-          'Wählen Sie oben eine Idee oder ein eigenes Thema. Grenzen Sie es auf eine einzige Funktion ein: «Eine PDF in OneNote einfügen» ist passend; «Alles über OneNote» ist zu gross.',
+          'Wählen Sie eine Idee aus der Kurzübersicht oder ein eigenes Thema. Grenzen Sie es auf eine einzige Funktion ein: «Eine PDF in OneNote einfügen» ist passend; «Alles über OneNote» ist zu gross.',
           'Führen Sie den Ablauf einmal vollständig selbst aus. Verwenden Sie eine Übungsdatei ohne private Angaben.',
           'Schreiben Sie als Titel eine konkrete Frage oder ein konkretes Ziel. Ergänzen Sie: «Nach meiner Anleitung können Sie …».'
         ], 'Ich kann den Ablauf selbst ausführen und mein Ziel in einem Satz nennen.', [
@@ -38,7 +38,7 @@
           help('Wie klein soll das Thema sein?', 'Eine andere Person soll das Ziel in etwa 2 Minuten erreichen können. Wenn Sie mehrere Programme erklären müssen, verkleinern Sie das Thema.')
         ], 'Titel: «So speichern Sie eine Datei, die Sie morgen wiederfinden.» Ziel: Eine Datei erhält einen klaren Namen und einen festen Ordner.'),
         step('Den Ablauf in kleine Schritte zerlegen', '7 Min.', 'Sie haben einen Plan, bevor Sie gestalten oder aufnehmen.', [
-          'Wählen Sie Bildanleitung oder Erklärvideo. Öffnen Sie unten die Projektvorlage und übernehmen Sie sie in OneNote oder PowerPoint.',
+          'Wählen Sie in der Kurzübersicht Bildanleitung oder Erklärvideo. Öffnen Sie «Meine Werkbank» und wählen Sie eine Vorlage. Sie können direkt dort arbeiten oder den Entwurf später in OneNote oder PowerPoint übernehmen.',
           'Notieren Sie mindestens 5 sinnvolle Schritte: Start vorbereiten, Funktion öffnen, Einstellung wählen, Aktion ausführen, Ergebnis prüfen. Erfinden Sie keine unnötigen Klicks, nur um auf 5 zu kommen.',
           'Schreiben Sie pro Schritt, was man tut und was danach sichtbar sein muss. Benennen Sie Schaltflächen genau.',
           'Für ein Video: Planen Sie etwa 5–10 Sekunden für das Ziel, 40–65 Sekunden für den Ablauf und 10–15 Sekunden für Ergebnis und Kontrolle.'
@@ -110,7 +110,7 @@
         step('Vier klare Bereiche aufbauen','7 Min.','Die Seite ist schnell lesbar, auch ohne aufwendiges Design.',[
           'Erstellen Sie in Ihrem persönlichen OneNote-Bereich die Seite «Mein Cockpit». Verwenden Sie keinen gemeinsamen Klassenbereich.',
           'Setzen Sie die Überschriften «Meine Aufgaben», «Meine Termine», «Meine Links» und «Mein nächstes Ziel». Ordnen Sie sie untereinander an. Eine Tabelle ist freiwillig.',
-          'Übernehmen Sie bei Bedarf die Projektvorlage. Verwenden Sie gut lesbare Schrift, kurze Zeilen und höchstens 2 Farben für die Orientierung.'
+          'Entwerfen Sie die Inhalte bei Bedarf mit einer Vorlage in «Meine Werkbank» und kopieren Sie sie anschliessend nach OneNote. Verwenden Sie gut lesbare Schrift, kurze Zeilen und höchstens 2 Farben für die Orientierung.'
         ],'Meine Seite hat 4 gut erkennbare Bereiche.',[help('Wie erstelle ich eine Seite?','Öffnen Sie links den passenden Abschnitt. Wählen Sie in der Seitenliste «Seite hinzufügen» oder das Pluszeichen. Schreiben Sie den Titel oben auf die Seite.'),help('Muss mein Cockpit aussehen wie das Beispiel?','Nein. Der Aufbau soll Ihnen helfen. Eine klare Liste unter 4 Überschriften genügt. Entscheidend ist, ob die Inhalte funktionieren.')],'Im Aufgabenbereich stehen Handlungen. Unter «Termine» stehen Datum und Uhrzeit. Diese Trennung verhindert eine unübersichtliche Mischliste.'),
         step('Aufgaben und Termine nutzbar machen','8 Min.','Sie sehen, was zu tun ist und bis wann.',[
           'Tragen Sie mindestens 3 Aufgaben ein. Beginnen Sie jede mit einem Verb und nennen Sie ein sichtbares Ergebnis: «Scan prüfen und als PDF speichern».',
@@ -184,7 +184,7 @@
         'Beheben Sie einen gefundenen Fehler. Wenn keiner auffällt, notieren Sie die 3 gefundenen Angaben als Nachweis Ihres Tests.'
       ],'Ich habe jede Seite geprüft und 3 wichtige Informationen in der PDF gefunden.',[help('Die Datei ist sehr gross.','Prüfen Sie zuerst, ob versehentlich doppelte Seiten enthalten sind. Für eine Vertiefung können Sie eine kleinere Exportfassung testen. Reduzieren Sie die Qualität nie so stark, dass Schrift unlesbar wird.'),help('Die Suche mit Strg + F findet keine Wörter.','Eine PDF kann nur aus Bildern bestehen. Das ist nicht automatisch ein Fehler. Sie können den Inhalt trotzdem lesen. Texterkennung ist eine freiwillige Vertiefung dieses Projekts.')],'Kontrollieren Sie immer die fertige Datei. Eine korrekt aussehende Präsentation garantiert noch keine korrekt ausgegebene PDF.'),
       step('Ergebnis und Qualitätscheck sichern','5 Min.','Ihr Dossier ist bereit zum Zeigen.',[
-        'Öffnen Sie die Projektvorlage und füllen Sie den kurzen Qualitätscheck aus: Dateiname, Reihenfolge mit Begründung, 3 Fundstellen und Dateigrösse.',
+        'Öffnen Sie «Meine Werkbank» und füllen Sie den kurzen Qualitätscheck aus: Dateiname, Reihenfolge mit Begründung, 3 Fundstellen und Dateigrösse.',
         'Prüfen Sie unten die Qualitätsliste. Speichern Sie den Check als Notiz bei Ihrem Projekt. Ein Screenshot der Seitenübersicht ist freiwillig.',
         'Zeigen Sie Herrn Marti die PDF und den Check oder nutzen Sie eine vorhandene Teams-Aufgabe. Die Übungsunterlagen sind keine echten Tickets oder Reiseinformationen.',
         'Markieren Sie den Basisauftrag als fertig, sobald PDF und Check vollständig sind.'
@@ -219,7 +219,7 @@
         'Beim Startfall können Sie die unten verlinkten Hilfeseiten von Google und Mozilla nutzen. Lesen Sie, welche Aussagen für beide Browser gelten und wo sich Funktionen unterscheiden.'
       ],'Ich habe 2 geöffnete Quellen von verschiedenen Organisationen, die zur Prüffrage passen.',[help('Starthilfe zum Inkognito-Fall','Öffnen Sie in den Quellenhilfen «Google: Inkognitomodus» und «Mozilla: Privater Modus». Suchen Sie dort nach «unsichtbar», «anonym», «Schule» oder «Internetanbieter». Lesen Sie jeweils auch den Absatz davor und danach.'),help('Zählen zwei Webseiten automatisch als zwei Quellen?','Nein. Zwei Artikel, die dieselbe Pressemitteilung kopieren, liefern nicht zwei unabhängige Belege. Notieren Sie, wenn beide auf denselben Ursprung verweisen.'),help('Nach 10 Minuten finde ich keine zweite Quelle.','Wechseln Sie zum Startfall oder notieren Sie die Lücke. Sie dürfen am Ende «nicht ausreichend belegt» schreiben. Eine fehlende Quelle beweist nicht, dass die Behauptung falsch ist.')],'Eine Originalquelle kann fachlich stark sein und trotzdem eigene Interessen haben. Notieren Sie deshalb auch, wer hinter der Seite steht.'),
       step('Belege herausarbeiten','10 Min.','Ihre Quellen stehen nicht nur als Links da: Sie zeigen, was sie belegen.',[
-        'Öffnen Sie die Projektvorlage. Notieren Sie für jede Quelle Organisation oder Autor, Titel, Webadresse und Abrufdatum. Ergänzen Sie das Veröffentlichungsdatum, wenn es angegeben ist.',
+        'Öffnen Sie «Meine Werkbank». Notieren Sie für jede Quelle Organisation oder Autor, Titel, Webadresse und Abrufdatum. Ergänzen Sie das Veröffentlichungsdatum, wenn es angegeben ist.',
         'Schreiben Sie den passenden Beleg in 1–2 eigenen Sätzen auf. Fügen Sie die Überschrift des Abschnitts hinzu, damit man ihn wiederfindet.',
         'Prüfen Sie: Bezieht sich die Information wirklich auf dasselbe Gerät, dieselbe Funktion, denselben Zeitpunkt oder denselben Ort?',
         'Ergänzen Sie pro Quelle einen Satz: Warum ist sie brauchbar? Welche Grenze hat sie?'
@@ -231,7 +231,7 @@
         'Formulieren Sie eine genauere Version der ursprünglichen Behauptung. Wenn die Belege fehlen, schreiben Sie, welche Information zur Klärung noch nötig wäre.'
       ],'Mein Urteil nennt Belege, Einschränkungen und eine präzisere Aussage.',[help('Die Quellen widersprechen sich.','Vergleichen Sie Datum, Begriffe und untersuchte Situation. Vielleicht geht es um unterschiedliche Funktionen. Bleibt der Widerspruch bestehen, benennen Sie ihn. Sie müssen keine Sicherheit vortäuschen.'),help('Wann ist «nicht ausreichend belegt» sinnvoll?','Wenn Sie die Behauptung mit den verfügbaren verlässlichen Informationen weder bestätigen noch widerlegen können. Erklären Sie konkret, was fehlt. «Ich habe keine Lust mehr zu suchen» ist keine fachliche Begründung.')],'Satzhilfe: «Ich beurteile die Behauptung als … . Quelle A zeigt … . Quelle B ergänzt … . Die Aussage gilt aber nur für … . Genauer wäre deshalb … .»'),
       step('Die Faktencheck-Karte gestalten','8–12 Min.','Eine andere Person kann Ihren Gedankengang nachvollziehen.',[
-        'Erstellen Sie in OneNote oder PowerPoint eine Karte auf 1–2 Seiten. Verwenden Sie die 4 Bereiche «Behauptung», «Belege», «Urteil» und «Quellen».',
+        'Erstellen Sie in der Werkbank, in OneNote oder PowerPoint eine Karte auf 1–2 Seiten. Verwenden Sie die 4 Bereiche «Behauptung», «Belege», «Urteil» und «Quellen».',
         'Setzen Sie das Urteil deutlich ab. Kürzen Sie lange Absätze, aber lassen Sie die Begründung und wichtige Einschränkungen stehen.',
         'Fügen Sie beide vollständigen Quellenlinks hinzu. Ein Bild ist freiwillig. Für die Bewertung Ihrer Aussage sind Belege wichtiger als Dekoration.',
         'Exportieren Sie die Karte als PDF oder speichern Sie eine gut lesbare OneNote-Fassung mit funktionierenden Links.'
@@ -274,7 +274,7 @@
         'Notieren Sie zu jedem Trick ein Alltagsproblem, das er lösen könnte. Bleiben Sie bei Programmen, die Ihnen bereits zur Verfügung stehen.'
       ],'Ich habe 5 nützliche Tricks und zu jedem eine passende Alltagssituation.',[help('Muss ich zuerst im Internet recherchieren?','Nein. Die Trickauswahl reicht zum Start. Wenn Sie eigene Tipps recherchieren, begrenzen Sie die Suche auf etwa 8 Minuten. Danach wird ausprobiert.'),help('Ich kenne schon alle vorgeschlagenen Tricks.','Wählen Sie eine wenig genutzte Funktion in einem Schulprogramm. Beispielsweise eine Folie duplizieren und gezielt anpassen, einen Link verständlich benennen oder eine Dateiversion wiederfinden. Prüfen Sie selbst, ob die Funktion auf Ihrem Gerät verfügbar ist.')],'Eine gute Mischung: Suche, Fensteranordnung, Screenshot, Rückgängig, PDF-Kontrolle.'),
       step('Jeden Trick selbst testen','12–18 Min.','Sie unterscheiden einen guten Tipp von einer blossen Behauptung.',[
-        'Öffnen Sie die Projektvorlage. Testen Sie jeden Trick in einer Übungsdatei oder an unverfänglichen Inhalten.',
+        'Öffnen Sie «Meine Werkbank». Testen Sie jeden Trick in einer Übungsdatei oder an unverfänglichen Inhalten.',
         'Notieren Sie pro Trick: Programm und Gerät, Handlung, sichtbares Ergebnis und persönlicher Nutzen. Der Nutzen darf klein, muss aber konkret sein.',
         'Machen Sie pro Trick einen eigenen Screenshot, ein kurzes Vorher-Nachher-Beispiel oder eine einfache eigene Skizze. Ein dekoratives Symbol allein ist kein Testnachweis.',
         'Wenn ein Trick auf Ihrem Gerät nicht funktioniert, prüfen Sie die Anleitung kurz. Ersetzen Sie ihn nach spätestens 3 Minuten durch einen funktionierenden Trick.'
@@ -286,10 +286,10 @@
         'Ersetzen Sie vage Versprechen wie «spart mega viel Zeit» durch den konkreten Nutzen Ihres Tests.'
       ],'Zu jedem Trick stehen Nutzen, kurze Anleitung, Test und eine Grenze oder Voraussetzung.',[help('Was schreibe ich bei einem ganz einfachen Trick?','Beispiel Rückgängig: «Hilft bei einer versehentlichen Textänderung. 1. In die Übungsdatei klicken. 2. Strg + Z drücken. Mein Test: Das gelöschte Wort war wieder da. Grenze: Funktioniert nicht für jede Aktion.»')],'Der Test muss nicht mit einer Stoppuhr erfolgen. «Ich finde das Wort ohne langes Scrollen» ist eine verständliche Beobachtung.'),
       step('Einen brauchbaren Spickzettel gestalten','10–15 Min.','Ihre 5 Tipps sind auf einen Blick unterscheidbar.',[
-        'Wählen Sie PowerPoint, OneNote oder Canva mit vorhandenem Zugang. Nutzen Sie 1–2 Seiten oder eine kurze Folie pro Trick.',
+        'Arbeiten Sie direkt in der Werkbank oder wählen Sie PowerPoint, OneNote oder Canva mit vorhandenem Zugang. Nutzen Sie 1–2 Seiten oder eine kurze Folie pro Trick.',
         'Verwenden Sie für alle Tipps denselben Aufbau. Setzen Sie klare Titel, gut lesbare Schrift und eigene Bilder ein. Verkleinern Sie die Schrift nicht, nur um alles auf eine Seite zu zwängen.',
         'Kennzeichnen Sie Ihren persönlichen Favoriten mit «Mein nützlichster Tipp» und begründen Sie die Wahl in einem Satz.',
-        'Wenn Sie externe Anleitungen verwendet haben, ergänzen Sie die Links. In Canva genügen kostenlose Elemente. Exportieren Sie die fertige Fassung als PDF.'
+        'Wenn Sie externe Anleitungen verwendet haben, ergänzen Sie die Links. In Canva genügen kostenlose Elemente. Exportieren Sie die fertige Fassung als PDF. In der Werkbank wählen Sie «Als PDF drucken» und im Druckdialog einen PDF-Drucker beziehungsweise «Als PDF speichern».'
       ],'Alle 5 Tipps sind lesbar gestaltet und mein Favorit ist begründet.',[help('Ich habe kein Canva-Konto.','Verwenden Sie PowerPoint oder OneNote. Der Auftrag verlangt kein Canva-Konto und keine kostenpflichtigen Funktionen.'),help('Ich verliere mich im Design.','Wählen Sie weissen Hintergrund, eine dunkle Schrift und eine Akzentfarbe. Wiederholen Sie denselben Aufbau für alle 5 Tipps. Damit haben Sie bereits eine klare Gestaltung.')],'Gute Gestaltung macht den nächsten Klick verständlich. Sie muss nicht wie Werbung aussehen.'),
       step('Einen Tipp ohne Zusatzhilfe testen lassen','5–8 Min.','Sie prüfen die Verständlichkeit Ihrer Erklärung.',[
         'Bitten Sie eine andere fertige Person, einen Ihrer weniger bekannten Tipps nur mit Ihrer Anleitung auszuprobieren.',
@@ -318,5 +318,6 @@
     {projects:['lifehacks'],label:'Google: Tastenkombinationen in Chrome',url:'https://support.google.com/chrome/answer/157179?hl=de'},
     {projects:['tutorial','lifehacks'],label:'Apple: Bildschirmfoto auf dem Mac',url:'https://support.apple.com/de-ch/102646'}
   ];
+  sources.push({projects:['faktencheck'],label:'Mozilla: Privater Modus – englisches Original mit Download-Hinweis',url:'https://support.mozilla.org/en-US/kb/private-browsing-use-firefox-without-history'});
   globalThis.MediaInfoProjects = {version: 1, projects, sources};
 })();

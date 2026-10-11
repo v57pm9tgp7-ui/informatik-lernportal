@@ -1,12 +1,13 @@
 (function () {
   'use strict';
   const SCHEMA = 'mediainfolab-projects';
+  const L = globalThis.MediaInfoLearning;
   const own = (o, key) => Object.prototype.hasOwnProperty.call(o, key);
   const plain = o => !!o && typeof o === 'object' && !Array.isArray(o);
   const string = (value, max = 12000) => typeof value === 'string' ? value.slice(0, max) : '';
   const escape = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
   const empty = () => ({version:1, updatedAt:'', projects:{}});
-  const emptyProject = () => ({checks:[], quality:[], notes:{}, time:'full', choice:'', last:0, startedAt:'', updatedAt:'', finishedAt:''});
+  const emptyProject = () => ({checks:[], quality:[], notes:{}, time:'full', choice:'', last:0, startedAt:'', updatedAt:'', finishedAt:'',planner:L.basePlanner(),studio:L.baseStudio(),actions:[]});
   const validIndices = (items, count) => [...new Set((Array.isArray(items) ? items : []).filter(n => Number.isInteger(n) && n >= 0 && n < count))].sort((a,b) => a-b);
   function cleanProject(raw, project) {
     const out = emptyProject();
@@ -20,6 +21,8 @@
     if (plain(raw.notes)) for (const k of ['plan','pause','result', ...project.steps.map((_, i) => `step${i}`)]) {
       if (own(raw.notes,k)) out.notes[k] = string(raw.notes[k]);
     }
+    out.planner=L.cleanPlanner(raw.planner);out.studio=L.cleanStudio(raw.studio);
+    out.actions=[...new Set((Array.isArray(raw.actions)?raw.actions:[]).filter(x=>typeof x==='string'&&/^[0-5]-[0-9]{1,2}$/.test(x)))].slice(0,100);
     if (out.checks.length !== project.steps.length || out.quality.length !== project.quality.length) out.finishedAt = '';
     return out;
   }
@@ -30,7 +33,7 @@
     return out;
   }
   function decode(text, projects, owner) {
-    if (typeof text !== 'string' || text.length > 3000000) throw new Error('Die Datei ist zu gross für einen Projekt-Arbeitsstand.');
+    if (typeof text !== 'string' || text.length > 6000000) throw new Error('Die Datei ist zu gross für einen Projekt-Arbeitsstand.');
     let raw; try { raw = JSON.parse(text); } catch { throw new Error('Die Datei ist keine lesbare JSON-Sicherung.'); }
     if (!plain(raw) || raw.schema !== SCHEMA || raw.version !== 1) throw new Error('Bitte wählen Sie eine Sicherung aus dem Bereich «Projekte».');
     if (string(raw.owner).toLowerCase() !== String(owner).toLowerCase()) throw new Error('Diese Sicherung gehört zu einer anderen Schulmailadresse. Wechseln Sie zuerst zur passenden Schulmail.');
@@ -49,7 +52,8 @@
     if (!p) return {project:null, page:'catalogue', index:-1};
     const match = /^schritt-([1-9][0-9]*)$/.exec(bits[1] || '');
     if(match && Number(match[1]) <= p.steps.length) return {project:p,page:'step',index:Number(match[1])-1};
-    return {project:p,page:bits[1]==='abschluss'?'finish':'overview',index:-1};
+    const pages={abschluss:'finish',cockpit:'planner',werkbank:'studio',beispiele:'media'};
+    return {project:p,page:pages[bits[1]]||'overview',index:-1};
   }
   globalThis.MediaInfoProjectsCore = {SCHEMA,escape,empty,emptyProject,cleanProject,normalize,decode,encode,record,eligible,status,next,route};
 })();

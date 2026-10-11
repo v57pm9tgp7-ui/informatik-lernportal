@@ -1,3 +1,41 @@
+# MedienInfoLab – Version 1.21
+
+## Projekte mit Cockpit, Werkbank und Beispielvideos
+
+Der eigenständige Bereich `/projekte.html` führt weiterhin zuerst in die Kurzübersicht. Die fünf Aufträge wurden zu einer zusammenhängenden Arbeitsumgebung ausgebaut:
+
+- **Mein Cockpit:** aktueller Klassenfokus aus der vorhandenen `/api/today`-Schnittstelle, bewusste Einschätzung der Pflichtarbeit, frei wählbare Zeit für heute, Abschlussreserve, konkrete Arbeitsetappe und Vorschau auf die Folgelektion. Eine Start-/Pause-Funktion misst das gewählte Zeitfenster. Nur ein Projekt-Timer läuft gleichzeitig. Zeitablauf setzt keine Häkchen. Teilweise erledigte Schritte können mit einer Restzeitschätzung geplant werden. Zu viel Pflichtarbeit wird ausdrücklich als Überhang angezeigt.
+- **Wiedereinstieg:** Am Lektionsende tatsächlichen Speicherort, nächsten Handgriff und gegebenenfalls übrige Pflichtarbeit festhalten. Die letzten zwölf Etappen bleiben sichtbar. Das Folgedatum ist eine Planungshilfe, keine Benachrichtigung.
+- **Übersichtliche Schritte:** kleine Teilaufgaben, aufklappbare Erklärungen, passende grafische Beispiele, Hilfe am richtigen Ort und eigener Ergebnischeck. Auf kleinen Bildschirmen ist die Schrittnavigation zunächst eingeklappt.
+- **Meine Werkbank:** drei wählbare Vorlagen pro Projekt (einschliesslich freier Eingabe), direkt bearbeitbare Texte, eigene Bereiche, Reihenfolge ändern, Bild-Upload und Einfügen aus der Zwischenablage. Vorlagen werden erst nach einer Vorschau und ausdrücklicher Übernahme eingesetzt. Ein Vorlagenwechsel ist innerhalb der Sitzung rückgängig zu machen. Ersetzen und Entfernen erfordern eine konkrete Bestätigung.
+- **Weiterverwenden:** Vorschau, Kopieren für OneNote/Word, Druck als PDF, selbstständige HTML-Ansicht und bearbeitbare JSON-Sicherung. Das OneNote-Cockpit wird im eigentlichen OneNote funktionsfähig gemacht; der PDF-Plan ersetzt die zu erstellende dreiseitige PDF nicht. Die Oberfläche erklärt diese Unterschiede.
+- **Video & Beispiele:** fünf lokal bereitgestellte MP4-Videos (viermal 100 Sekunden, einmal 108 Sekunden), 36 originale SVG-Grafiken, Kapitelmarken, VTT-Texterläuterungen, schriftliche Bildfolgen und vergrösserbare Ansichten. Keine externen Video-Einbettungen und kein Autoplay. Die Filme verwenden bewegte Hervorhebungen und eingeblendete Texte, **keine Sprecherstimme**. Beispieloberflächen sind ausdrücklich als Beispielaufbau bezeichnet.
+
+### Speicherung und Kompatibilität
+
+Bestehende v1-Arbeitsstände bleiben lesbar; der Speicherschlüssel wird beibehalten. Die validierte Struktur wird um `planner`, `studio` und kleine Teilaufgaben-Häkchen erweitert. Projektdaten bleiben lokal und von der bestehenden D1-Workshop-Synchronisation getrennt. Die Sicherung enthält jetzt auch Werkbank-Texte und eingefügte Bilder. Externe Video-, PDF- und OneNote-Produkte müssen zusätzlich gesichert werden. Änderungen an einem bereits geprüften Werkbank-Produkt setzen dessen Qualitätscheck zurück. Ein Wechsel des Arbeitswegs verlangt bei bestehendem Fortschritt eine Bestätigung.
+
+Bilder werden lokal über Canvas auf maximal 1280 Pixel Breite, 1600 Pixel Höhe und 180.000 Data-URL-Zeichen reduziert; die zusätzliche Bildaufnahme endet bei rund 2,2 Millionen Zeichen Gesamtstand. Browserquoten können wegen anderer Daten früher erreicht werden. In diesem Fall bleibt die Sitzung exportierbar und zeigt eine deutliche Speicherwarnung. Importdateien sind auf 6 MB begrenzt, kontogebunden und werden nur nach Bestätigung übernommen. Kontowechsel verwerfen offene Übernahmeaktionen.
+
+### Inhalte und weitere Projekte
+
+- `projects-data.js`: die vollständigen Lernaufträge, Qualitätskriterien und Quellen.
+- `projects-learning.js`: Zeitplanung, validierte Daten und die 15 Vorlagen.
+- `projects-workspace.js`: Cockpit, Werkbank, Medienansichten und zugehörige Abläufe.
+- `projects-core.js` / `projects.js`: Kontostand, Routing und allgemeine Oberfläche.
+- `tools/project-media.json`: redaktionelle Grundlage der 36 Szenen.
+- `tools/build-project-media.py`: reproduzierbare Erstellung der SVGs, Poster, VTT-Dateien, Kapitelmetadaten und MP4s mit Pillow/ffmpeg. `--stills-only` überspringt das Rendern der Videos.
+
+Beim Erweitern eine stabile Projekt-ID, sechs Lernschritte, Qualitätskriterien, Vorlagen und passende Medien ergänzen. Bestehende IDs nicht ändern. Die neue Struktur bleibt unabhängig von einzelnen Unterrichtswochen.
+
+### Prüfung
+
+`npm test` prüft die gesamte vorhandene Seitenstruktur und JavaScript-Syntax. `npm run test:projects` prüft 56 Bildschirmansichten und 5 Druckansichten als erzeugtes HTML sowie die tatsächlichen Ereignisabläufe in einer DOM-Testumgebung. Dazu gehören Zeitbudget und Überhang, Pausieren, Wiedereinstieg, Altstände, Sicherungsrundlauf mit Bildern, Kontotrennung, Vorlagenvorschau und -ersetzung, Bearbeiten, Sortieren, Entfernen, HTML-Ausgabe und ungültig gewordene Qualitätschecks. Die fünf H.264-Videos werden zusätzlich vollständig mit ffmpeg decodiert; Originalgrafiken werden visuell kontrolliert.
+
+Eine visuelle Prüfung der Website und realer Zwischenablage-/Druck-/Upload-Abläufe im Browser ist in dieser Arbeitsumgebung nicht verfügbar. Automatisierte Struktur- und Ereignisprüfungen ersetzen diesen Schritt nicht.
+
+---
+
 # MedienInfoLab – Version 1.20
 
 ## Neuer dauerhafter Bereich «Projekte»
