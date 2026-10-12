@@ -10,9 +10,9 @@
     ],nextHref:'scannen.html#auftrag-1',nextLabel:'Scan-Workshop beginnen'},
     scan:{required:[1,2,3,4,5,7],optional:[6,8],summaryWord:'Pflichtaufträgen',tasks:[
       [1,'OneDrive fürs Scannen vorbereiten',1],[2,'Eine Seite als PDF scannen',2],[3,'Eine Packliste gut lesbar scannen',3],[4,'Mehrere Seiten in eine PDF bringen',4],[5,'Den Scan am Notebook wiederfinden',5],[7,'Infos übernehmen, ohne alles abzutippen',6],[6,'Einen Aushang sichern',7],[8,'Einen Mini-Comic als PDF machen',8]
-    ],nextHref:'#woche-38',nextLabel:'Woche 38 anzeigen'}
+    ],nextHref:'#woche-42',nextLabel:'Nächster Schritt in Woche 42'}
   };
-  const views=['start','wochen','woche-37','woche-38','scan-guide','training','fortschritt'];
+  const views=['start','wochen','woche-37','woche-38','woche-42','scan-guide','training','fortschritt'];
   const $=(s,r=document)=>r.querySelector(s);const $$=(s,r=document)=>[...r.querySelectorAll(s)];
   function read(key){try{return JSON.parse(localStorage.getItem(key)||'{}')}catch{return {}}}
   function write(key,value){try{localStorage.setItem(key,JSON.stringify(value));return true}catch{return false}}
@@ -62,6 +62,42 @@
       }
     });
   }
+  function week42State(s){
+    const settings=window.MediaInfoAssignments?.status?.(),required=[],optional=[];
+    Object.entries(HOME_TRACKS).forEach(([track,config])=>{
+      config.tasks.forEach(([id,title,number=id])=>{
+        const kind=settings?.[track]?.[id]||(config.required.includes(id)?'required':'optional');
+        if(kind!=='required'&&kind!=='optional')return;
+        const item={track,id,title,number,status:homeTaskState(track,id,s[track].raw||{})};
+        (kind==='required'?required:optional).push(item);
+      });
+    });
+    const pending=required.filter(t=>t.status!=='done'),choicePending=optional.filter(t=>t.status!=='done');
+    return {required,optional,pending,choicePending,next:pending[0]||choicePending[0]||null,done:required.length-pending.length};
+  }
+  function updateWeek42(s){
+    const q=week42State(s),names={onenote:'Woche 37 · OneNote',digipen:'Woche 38 · DigiPen',scan:'Woche 38 · Scannen'},statusNames={open:'Offen',working:'In Arbeit',done:'Erledigt'};
+    const pct=q.required.length?Math.round(q.done/q.required.length*100):100;
+    $$('[data-week42-progress]').forEach(el=>el.textContent=`${q.done} von ${q.required.length} Pflichtaufträgen erledigt`);
+    $$('[data-week42-percent]').forEach(el=>el.textContent=pct+'%');
+    function groups(tasks,choice){return Object.entries(names).map(([track,name])=>{
+      const list=tasks.filter(t=>t.track===track),done=list.filter(t=>t.status==='done').length;
+      if(!list.length)return `<div class="week42-empty"><strong>${name}</strong><p>Aktuell keine ${choice?'Wahl':'Pflicht'}aufträge in diesem Bereich.</p></div>`;
+      return `<details class="week42-group" ${done<list.length?'open':''}><summary>${name}<span>${done} von ${list.length} erledigt</span></summary><ol class="home-task-list">${list.map(t=>`<li><a class="home-task-row is-${choice?'optional':'required'} is-${t.status}" href="${taskHref(track,t.id)}" data-module-open="${track}"><span class="home-task-number">${t.number}</span><span class="home-task-name">${t.title}<small class="home-task-kind ${choice?'optional':'required'}">${choice?'Wahlbereich':'Pflicht'}</small></span><span class="home-task-state">${statusNames[t.status]}</span></a></li>`).join('')}</ol></details>`;
+    }).join('')}
+    const required=$('[data-week42-required]'),optional=$('[data-week42-optional]');
+    if(required)required.innerHTML=groups(q.required,false);if(optional)optional.innerHTML=groups(q.optional,true);
+    const title=q.pending.length?'Zuerst den Pflichtteil fertig lösen':q.choicePending.length?'Ihr nächster Bereich: die Wahlaufgaben':'Besprechen Sie Ihren nächsten Schritt mit Herrn Marti';
+    const text=q.pending.length?`Noch ${q.pending.length} Pflichtaufträge sind offen. Beginnen Sie mit ${names[q.next.track]}, Auftrag ${q.next.number}: «${q.next.title}». Prüfen Sie das Ergebnis, bevor Sie den Auftrag als erledigt markieren.`:q.choicePending.length?'Alle Pflichtaufträge sind als erledigt markiert. Prüfen Sie Ihre Ergebnisse kurz und wählen Sie dann eine passende Zusatzaufgabe. Der Vorschlag unten ist ein möglicher Einstieg; Sie können auch eine andere Wahlaufgabe auswählen.':'Ihre gespeicherten Pflicht- und Wahlaufträge sind erledigt. Zeigen Sie Herrn Marti Ihre Ergebnisse und besprechen Sie eine passende Projektidee. Die Anzeige erteilt keine Projektfreigabe.';
+    const nextTitle=$('[data-week42-next-title]'),nextText=$('[data-week42-next-text]'),link=$('[data-week42-next-link]');
+    if(nextTitle)nextTitle.textContent=title;if(nextText)nextText.textContent=text;
+    if(link){link.href=q.next?taskHref(q.next.track,q.next.id):'projekte.html';link.textContent=q.next?`${q.pending.length?'Nächsten Pflichtauftrag':'Eine mögliche Wahlaufgabe'} öffnen →`:'Projektideen ansehen – Start nach Absprache →';if(q.next)link.dataset.moduleOpen=q.next.track;else delete link.dataset.moduleOpen;}
+    const choiceStatus=$('[data-week42-choice-status]');if(choiceStatus)choiceStatus.textContent=q.pending.length?'Zur Orientierung können Sie die Wahlaufgaben bereits ansehen. Bearbeiten Sie zuerst die noch offenen Pflichtaufträge.':`${q.optional.length-q.choicePending.length} von ${q.optional.length} Wahlaufträgen sind als erledigt markiert. Das ist eine Übersicht, keine Vorgabe, sämtliche Wahlaufträge zu bearbeiten.`;
+    // The general continuation card follows the current week's priority too.
+    const homeTitle=$('[data-continue-title]'),homeText=$('[data-continue-text]'),homeLink=$('[data-continue-link]');
+    if(homeTitle)homeTitle.textContent=title;if(homeText)homeText.textContent=text;
+    if(homeLink){homeLink.href='#woche-42';homeLink.textContent='Meine nächsten Schritte in Woche 42 →';delete homeLink.dataset.moduleOpen;}
+  }
   function updateModule(id,s){
     $$(`[data-module="${id}"]`).forEach(card=>{
       const label=$('[data-status]',card),bar=$('[data-progress-bar]',card),copy=$('[data-progress-copy]',card),link=$('[data-module-link]',card);
@@ -86,12 +122,13 @@
     if(continueLink){continueLink.href=moduleHref(id,next);continueLink.dataset.moduleOpen=id}
     const weekDone=s.digipen.done+s.scan.done,weekTotal=11;$$('[data-week-progress]').forEach(el=>el.textContent=`${weekDone} von ${weekTotal} Pflichtaufträgen`);$$('[data-week-percent]').forEach(el=>el.textContent=Math.round(weekDone/weekTotal*100)+'%');
     $$('[data-week37-progress]').forEach(el=>el.textContent=`${s.onenote.done} von ${s.onenote.total} Aufträgen`);$$('[data-week37-percent]').forEach(el=>el.textContent=percent(s.onenote)+'%');
+    updateWeek42(s);
   }
   function currentView(){const hash=location.hash.replace('#','');return views.includes(hash)?hash:'start'}
   function showView(){
     const view=currentView();$$('[data-view]').forEach(el=>{const active=el.dataset.view===view;el.hidden=!active;el.classList.toggle('is-active',active)});
     const navView=view.startsWith('woche-')?'wochen':view;$$('[data-nav]').forEach(a=>a.setAttribute('aria-current',a.dataset.nav===navView?'page':'false'));
-    document.title=(view==='start'?'Informatik · Herr Marti':({wochen:'Wochen','woche-37':'Woche 37','woche-38':'Woche 38','scan-guide':'Scan-Guide',training:'Training',fortschritt:'Fortschritt'}[view]+' · Informatik'));
+    document.title=(view==='start'?'Informatik · Herr Marti':({wochen:'Wochen','woche-37':'Woche 37','woche-38':'Woche 38','woche-42':'Woche 42','scan-guide':'Scan-Guide',training:'Training',fortschritt:'Fortschritt'}[view]+' · Informatik'));
     const y=Number(sessionStorage.getItem('portalScroll:'+view)||0);requestAnimationFrame(()=>scrollTo(0,y));
     const menu=$('.mobile-nav');if(menu)menu.open=false;
   }
@@ -216,6 +253,7 @@
   window.addEventListener('scroll',()=>{clearTimeout(window.__portalScrollTimer);window.__portalScrollTimer=setTimeout(()=>sessionStorage.setItem('portalScroll:'+currentView(),String(scrollY)),100)},{passive:true});
   window.addEventListener('hashchange',showView);
   window.addEventListener('pageshow',updateDashboard);
+  window.addEventListener('mediainfo:assignments',updateDashboard);
   window.addEventListener('storage',updateDashboard);
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)updateDashboard()});
   document.addEventListener('DOMContentLoaded',()=>{

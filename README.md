@@ -1,3 +1,15 @@
+# MedienInfoLab – Version 1.23
+
+## Woche 42: Pflichtteil, Wahlbereich, Projekte nach Absprache
+
+`index.html#woche-42` ist die aktuelle Wochenansicht für den 12.–16. Oktober 2026. Startseite und Wochenliste führen dorthin. Die Anleitung erklärt Vorbereitung, Pflichtabschluss, Wahlaufgaben, das Gespräch vor dem Projektstart sowie den Abschluss der Lektion.
+
+Die Übersicht übernimmt vorhandene Workshop-Häkchen und berücksichtigt die Klasseneinstellungen der Lehrperson. Standardmässig umfasst der Pflichtteil zehn OneNote-, fünf DigiPen- und sechs Scan-Aufträge. Die Scan-Anzeige «Auftrag 6» verwendet weiterhin die bestehende interne ID 7. Pflicht- und Wahlbereiche verlinken direkt zu den richtigen Aufträgen. Der nächste offene Pflichtauftrag hat Vorrang vor Wahlaufgaben. Fertige Häkchen erteilen nie eine Projektfreigabe; dafür bleibt die Absprache mit Herrn Marti erforderlich. Der Wahlbereich ist eine Auswahl, keine neue Pflicht, alle Zusatzaufgaben zu erledigen.
+
+Prüfung: `npm test` und `npm run test:week42` (Routen, vorhandene Arbeitsstände, Scan-Nummerierung, Bereichswechsel und Klasseneinstellungen). Eine visuelle Browserprüfung ist in dieser Arbeitsumgebung nicht verfügbar.
+
+---
+
 # MedienInfoLab – Version 1.22
 
 ## Alle fünf Beispielvideos mit Sprecherinnenstimme

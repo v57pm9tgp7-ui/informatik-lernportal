@@ -9,7 +9,7 @@
   function isVisible(t,id){return status(t,id)!=='hidden'}
   function label(st){return {required:'Pflicht',optional:'Zusatz',hidden:'Verborgen',completed:'Abgeschlossen'}[st]||st}
   function allDone(track){try{const key=track==='onenote'?'onenoteWorkshopGS1_student_v3':track==='digipen'?'digitalArbeiten_digipen_v1':'digitalArbeiten_scannen_v1';const raw=JSON.parse(localStorage.getItem(key)||'{}');return new Set((track==='onenote'?raw.doneTasks:raw.done)||[])}catch{return new Set()}}
-  async function load(){const email=readEmail();if(!email||email===lastEmail&&loaded)return;lastEmail=email;try{const r=await fetch('/api/assignments?email='+encodeURIComponent(email),{cache:'no-store'}),d=await r.json();if(r.ok&&d.settings){settings=d.settings;className=d.className||null;loaded=true;apply()}}catch{} }
+  async function load(){const email=readEmail();if(!email||email===lastEmail&&loaded)return;lastEmail=email;try{const r=await fetch('/api/assignments?email='+encodeURIComponent(email),{cache:'no-store'}),d=await r.json();if(r.ok&&d.settings){settings=d.settings;className=d.className||null;loaded=true;apply();window.dispatchEvent(new Event('mediainfo:assignments'))}}catch{} }
   function applyIndex(){
     const doneBy={onenote:allDone('onenote'),digipen:allDone('digipen'),scan:allDone('scan')};
     for(const t of Object.keys(DEFAULTS)){
