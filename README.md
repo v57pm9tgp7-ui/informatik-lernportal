@@ -1,3 +1,15 @@
+# MedienInfoLab – Version 1.24
+
+## Einheitliche Tastenbeschriftung «Ctrl»
+
+Alle sichtbaren Tastenkombinationen, Hilfetexte, Projektvorlagen und Projektmedien verwenden neu die auf den Schulgeräten sichtbare Bezeichnung `Ctrl` statt der deutschen Alternativbezeichnung. Die zugrunde liegenden Medienquellen und Generatoren sind ebenfalls angepasst, damit die Schreibweise bei späteren Aktualisierungen erhalten bleibt.
+
+### Feste redaktionelle Konvention
+
+Auf MedienInfoLab wird die Steuerungstaste immer als `Ctrl` bezeichnet. Andere Abkürzungen dürfen in neuen oder überarbeiteten Lerninhalten nicht verwendet werden. Vor einer Veröffentlichung prüft `npm test` diese Vorgabe für alle ausgelieferten Textdateien.
+
+---
+
 # MedienInfoLab – Version 1.23
 
 ## Woche 42: Pflichtteil, Wahlbereich, Projekte nach Absprache

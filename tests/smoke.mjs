@@ -121,6 +121,12 @@ check('keine offensichtlichen Zugangsdaten im Webordner',()=>{
   assert.doesNotMatch(all,/-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|sk-[A-Za-z0-9]{20,}|github_pat_/);
 });
 
+check('Tastenkombinationen verwenden einheitlich Ctrl',()=>{
+  const textFiles=[...filesBelow(root),...filesBelow(path.resolve('tools'))].filter(name=>/\.(?:css|html|js|json|md|py|svg|txt|vtt)$/i.test(name));
+  const obsoleteKeyLabel=new RegExp('\\b'+'Str'+'g\\b','i');
+  for(const name of textFiles)assert.doesNotMatch(fs.readFileSync(name,'utf8'),obsoleteKeyLabel,path.relative('.',name));
+});
+
 const digiPenGuide=fs.readFileSync(path.join(root,'digipen-guide.html'),'utf8');
 check('DigiPen-Guide enthält alle drei HP-Stiftmodelle',()=>{
   assert.ok(digiPenGuide.includes('HP Rechargeable Active Pen G3'));

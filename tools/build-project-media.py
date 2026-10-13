@@ -76,7 +76,7 @@ def browser_example(c,pid,index,cards,a):
         c.para(461,432,'«Wählen Sie Speichern.»\nBild und Anweisung passen zusammen.',316,93,23)
         c.boxes.extend([(65,276,395,492),(458,279,780,406)])
     elif index==1:
-        c.rect((62,243,783,290),'#edf3f8',7);c.text(79,258,'Strg + F',22,True,a)
+        c.rect((62,243,783,290),'#edf3f8',7);c.text(79,258,'Ctrl + F',22,True,a)
         c.rect((482,251,761,282),WHITE,6,'#a9bfce',1);c.text(498,259,'Abgabe',18,True);c.text(694,259,'1 / 1',18,color=MUTED)
         c.text(76,324,'Mein Projekt · Termine',28,True)
         c.text(76,381,'Zwischentest: Dienstag',25,color=MUTED)
@@ -89,7 +89,7 @@ def browser_example(c,pid,index,cards,a):
         c.rect((65,283,765,340),'#dce6ee',10)
         c.rect((81,294,251,336),WHITE,8);c.text(97,306,'Aufträge',21,True)
         c.rect((267,294,477,336),'#f6e8e3',8);c.text(283,306,'Projektseite  ×',21,True)
-        c.text(65,366,'2 · Strg + Umschalt + T',27,True,a)
+        c.text(65,366,'2 · Ctrl + Umschalt + T',27,True,a)
         c.rect((65,418,765,500),'#dce6ee',10)
         c.rect((81,432,251,487),WHITE,8);c.text(97,451,'Aufträge',21,True)
         c.rect((267,432,499,487),'#d5eee1',8,'#80b49b',2);c.text(281,451,'Projektseite  ✓',21,True)
