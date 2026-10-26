@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import {test} from 'node:test';
 
 const context=vm.createContext({document:{readyState:'loading',addEventListener(){}},console});
-for(const file of ['projects-data.js','projects-learning.js','projects-core.js','projects-media-data.js','projects-workspace.js','projects.js'])vm.runInContext(fs.readFileSync(`dist/assets/${file}`,'utf8'),context,{filename:file});
+for(const file of ['projektideen.js','projects-data.js','projects-learning.js','projects-core.js','projects-media-data.js','projects-workspace.js','projects.js'])vm.runInContext(fs.readFileSync(`dist/assets/${file}`,'utf8'),context,{filename:file});
 const {projects,sources}=context.MediaInfoProjects,C=context.MediaInfoProjectsCore,V=context.MediaInfoProjectViews;
 const clean=o=>JSON.parse(JSON.stringify(o));
 const owner='test.person@stud.bffbern.ch';
@@ -108,7 +108,7 @@ function runtime(seed=new Map(), failWrites=false){
   const doc={readyState:'loading',activeElement:null,title:'',querySelector:s=>get(s.replace(/^#/,'')),getElementById:get,createElement:()=>new Element(),body:new Element(),documentElement:{classList:{toggle:(v,on)=>on?classes.add(v):classes.delete(v),contains:v=>classes.has(v)}},addEventListener:(k,fn)=>{events.set(k,[...(events.get(k)||[]),fn])}};
   const storage={getItem:k=>seed.get(k)||null,setItem:(k,v)=>{if(failWrites)throw new Error('quota');seed.set(k,v)}};
   const ctx=vm.createContext({document:doc,localStorage:storage,location:{hash:''},navigator:{clipboard:{writeText:async()=>{}}},Blob,URL:{createObjectURL:b=>{const key='blob:'+blobs.size;blobs.set(key,b);return key},revokeObjectURL(){}},setTimeout:()=>1,clearTimeout(){},scrollTo(){},print(){},addEventListener:(k,fn)=>winEvents.set(k,fn)});
-  for(const file of ['projects-data.js','projects-learning.js','projects-core.js','projects-media-data.js','projects-workspace.js','projects.js'])vm.runInContext(fs.readFileSync(`dist/assets/${file}`,'utf8'),ctx);
+  for(const file of ['projektideen.js','projects-data.js','projects-learning.js','projects-core.js','projects-media-data.js','projects-workspace.js','projects.js'])vm.runInContext(fs.readFileSync(`dist/assets/${file}`,'utf8'),ctx);
   for(const fn of events.get('DOMContentLoaded')||[])fn();
   const fire=async(k,target)=>{for(const fn of events.get(k)||[])await fn({target});};
   const action=async(type,project,extra={})=>{const b=new Element();b.dataset={action:type,project,...extra};await fire('click',b)};
@@ -276,3 +276,5 @@ test('spoken captions reproduce every script word, stay synchronized and have an
     for(const text of script){assert.ok(transcript.includes(text));assert.ok(html.includes(C.escape(text)),p.id+' visible transcript');}
   }
 });
+
+test("catalogue offers all nine projects and four new project links",()=>{const html=V.catalogue();assert.match(html,/9 von 9 Projekten/);for(const id of ["nachrichten","bildausschnitt","plakat","storyboard"])assert.ok(html.includes("projekt.html?thema="+id));});

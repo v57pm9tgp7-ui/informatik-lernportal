@@ -95,8 +95,8 @@
     const choiceStatus=$('[data-week42-choice-status]');if(choiceStatus)choiceStatus.textContent=q.pending.length?'Zur Orientierung können Sie die Wahlaufgaben bereits ansehen. Bearbeiten Sie zuerst die noch offenen Pflichtaufträge.':`${q.optional.length-q.choicePending.length} von ${q.optional.length} Wahlaufträgen sind als erledigt markiert. Das ist eine Übersicht, keine Vorgabe, sämtliche Wahlaufträge zu bearbeiten.`;
     // The general continuation card follows the current week's priority too.
     const homeTitle=$('[data-continue-title]'),homeText=$('[data-continue-text]'),homeLink=$('[data-continue-link]');
-    if(homeTitle)homeTitle.textContent=title;if(homeText)homeText.textContent=text;
-    if(homeLink){homeLink.href='#woche-42';homeLink.textContent='Meine nächsten Schritte in Woche 42 →';delete homeLink.dataset.moduleOpen;}
+    if(homeTitle)homeTitle.textContent='Woche 44: Nach der Lernkontrolle selbst wählen';if(homeText)homeText.textContent='Nach der vollständigen Prüfungsabgabe beginnen Sie ein Projekt Ihrer Wahl. Die Anleitung für heute finden Sie in Woche 44.';
+    if(homeLink){homeLink.href='woche44.html';homeLink.textContent='Woche 44 öffnen →';delete homeLink.dataset.moduleOpen;}
   }
   function updateModule(id,s){
     $$(`[data-module="${id}"]`).forEach(card=>{

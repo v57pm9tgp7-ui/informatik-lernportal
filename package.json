@@ -8,6 +8,7 @@
     "test": "node tests/smoke.mjs",
     "test:browser": "node tests/browser.mjs",
     "test:projects": "node tests/projects.mjs",
-    "test:week42": "node --test tests/week42.mjs"
+    "test:week42": "node --test tests/week42.mjs",
+    "test:week44": "node --test tests/woche44.mjs"
   }
 }
