@@ -3,3 +3,27 @@
 @media(max-width:540px){.choicegrid{grid-template-columns:1fr}.heroaside{display:block}.heroaside>div+div{padding:14px 0 0;margin-top:14px;border-left:0;border-top:1px solid #ffffff35}.weekhero{padding:24px}.miniart{min-height:105px}.miniart span{font-size:48px}.atelier h1{font-size:36px}.timechoices button{padding:10px 12px}.a-button{width:100%}.actionbar .a-button{width:auto}.atelier-nav a{font-size:15px}.poster{padding:20px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 @media print{body.atelier{background:white;font-size:11pt;color:#142e46}.atelier .site-header,.atelier .site-footer,.student-access-logout,.atelier .backlinks,.atelier .actionbar,.atelier .savestatus,.atelier .screenonly,.atelier noscript{display:none!important}.atelier-main{max-width:none;padding:0}.atelier.printing #projectApp>*:not(.printout){display:none!important}.atelier.printing .printout{display:block}.printresult h1{font-size:26pt}.printresult h2{font-size:18pt}.printresult h3{font-size:14pt}.printresult p{orphans:3;widows:3}.printresult img{max-height:75mm;width:auto;max-width:100%}.printresult section{break-inside:avoid}.printresult .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.printresult .poster{min-height:220px}.printresult .poster h3{font-size:24pt}.printresult .printtable tr{break-inside:avoid}.atelier .paper{border:1px solid #bbb;padding:15px;break-inside:avoid}.weekhero{background:white!important;color:#142e46;border:1px solid #aaa}.weekhero h1 span,.weekhero .lead,.weekhero .kicker{color:#142e46}.choicegrid{grid-template-columns:1fr 1fr}@page{size:A4;margin:16mm}}
+
+/* Shared project selection: explicit link states keep every action readable. */
+.atelier a.a-button,.atelier a.a-button:visited{color:#fff;background:#184fc4;text-decoration:none}
+.atelier a.a-button:hover,.atelier a.a-button:focus-visible{color:#fff;background:#113c9a}
+.atelier a.a-button.outline,.atelier a.a-button.outline:visited{color:#194da1;background:#fff}
+.atelier a.a-button.outline:hover{color:#103d86;background:#edf3ff}
+.atelier a.a-button.white,.atelier a.a-button.white:visited{color:#174486;background:#fff}
+.projectvisual{position:relative;aspect-ratio:900/460;background:#e5edf3;overflow:hidden;border-bottom:1px solid #d7e1e9}
+.projectvisual img{display:block;width:100%;height:100%;object-fit:cover}
+.projectvisual.existing{padding:18px 20px 0;background:#eef3f8}
+.projectvisual.existing img{object-fit:cover;object-position:top;border:1px solid #c6d5e1;border-radius:10px 10px 0 0}
+.visualbadge{position:absolute;left:18px;bottom:16px;background:#fff;color:#17384f;box-shadow:0 3px 12px #122b4520;border:1px solid #d6e1ea;border-radius:8px;padding:7px 12px;font:650 15px/1.3 "Segoe UI",Arial,sans-serif}
+.cropoutline{position:absolute;border:3px solid #fff;box-shadow:0 0 0 1px #172d4e70;left:10%;top:15%;width:30%;height:64%;border-radius:3px}
+.choicecard{box-shadow:0 8px 24px #18364e09;border-radius:20px;transition:box-shadow .18s,border-color .18s}
+.choicecard:hover,.choicecard:focus-within{border-color:#94b0ce;box-shadow:0 13px 30px #18364e15}
+.choicebody{padding:28px;gap:0}.choicebody h3{font-size:28px;line-height:1.2;max-width:95%}
+.choicebody>.kicker{font-size:13px!important;letter-spacing:.07em;margin:0 0 14px;color:#4a6482}
+.choicebody>p{color:#445e73;line-height:1.6}.choicebody .resultbox{background:#f1f5f9;border:1px solid #e0e8ef;border-radius:12px;padding:16px 18px;margin:6px 0 12px;width:100%}
+.resultbox>span{font-size:13px;text-transform:uppercase;letter-spacing:.09em;font-weight:750;color:#526c83}.resultbox p{color:#203d55;margin:6px 0 0}
+.atelier .choicebody .a-button{width:100%;min-height:50px;display:flex;justify-content:space-between;align-items:center;text-align:left;margin-top:auto;padding:13px 18px;font-size:17px}
+.choicebody>.muted{font-size:15px;margin:2px 0 22px}.choicegrid.compact .choicebody h3{font-size:25px}.groupheading{padding-bottom:16px;border-bottom:1px solid #ccdbe8}
+.project-card .projectvisual{flex:none}.project-card .card-body>.p-button.primary{color:#fff;background:#153b50;margin-top:auto;width:100%}
+@media(max-width:600px){.choicebody{padding:22px}.choicebody h3{font-size:26px}.visualbadge{font-size:13px;left:12px;bottom:12px}.choicegrid{gap:22px}}
+@media(prefers-reduced-motion:reduce){.choicecard{transition:none}}
