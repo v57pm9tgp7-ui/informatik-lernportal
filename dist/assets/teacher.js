@@ -13,6 +13,66 @@
     scan:{label:'Scannen',ids:[1,2,3,4,5,7,6,8]}
   };
 
+  const week43Tasks=[{"id":1,"title":"OneNote öffnen und zurückfinden"},{"id":2,"title":"Die passende Struktur"},{"id":3,"title":"Aus einem Text wird eine Lernseite"},{"id":4,"title":"Eine hilfreiche Quelle"},{"id":5,"title":"Bild und PDF sinnvoll einsetzen"},{"id":6,"title":"Nicht nur teilen, sondern bearbeiten"},{"id":7,"title":"Gemeinsame Planung statt Doppelarbeit"},{"id":8,"title":"Eine Schnupperlehrbeurteilung beilegen"},{"id":9,"title":"Hausaufgaben vergessen – als Scan nachreichen"},{"id":10,"title":"Unterschriebenes Formular nachreichen"},{"id":11,"title":"Zwei Blätter, eine Datei"},{"id":12,"title":"Quittung für einen Garantiefall"},{"id":13,"title":"PDF-Qualitätskontrolle"},{"id":14,"title":"DigiPen im Unterricht anwenden"},{"id":15,"title":"Materialsammlung übersichtlich machen"}];
+
+  function week43Cell(student){
+  const w=student.week43;
+  if(!w?.synced)return '<span class="week43-no-data">Kein Stand</span>';
+  const n=Number(w.done||0);
+  return `<div class="week43-cell"><strong>${n}/15</strong><span class="week43-mini-bar"><i style="width:${Math.round(n/15*100)}%"></i></span></div>`;
+}
+
+  function week43Grid(student){
+  const w=student.week43;
+  if(!w?.synced)return '<span class="week43-no-data">Noch nicht synchronisiert</span>';
+  const done=new Set(w.done_ids||[]),started=new Set(w.started_ids||[]);
+  return `<div class="week43-exercises" aria-label="15 Übungen">${week43Tasks.map(task=>{
+    const state=done.has(task.id)?'done':started.has(task.id)?'started':'open';
+    const label=state==='done'?'Erledigt':state==='started'?'Begonnen':'Nicht abgehakt';
+    return `<span class="week43-dot ${state}" title="${esc(`${task.id}. ${task.title} – ${label}`)}" aria-label="${esc(`${task.title}: ${label}`)}">${task.id}</span>`;
+  }).join('')}</div>`;
+}
+
+  function renderWeek43(){
+  const known=students.filter(st=>st.week43?.synced);
+  $('#week43SyncedCount').textContent=known.length;
+  $('#week43DoneCount').textContent=known.filter(st=>st.week43.done===15).length;
+  $('#week43PartialCount').textContent=known.filter(st=>st.week43.done>0&&st.week43.done<15).length;
+  $('#week43MissingCount').textContent=students.length-known.length;
+  const sorted=[...students].sort((a,b)=>{
+    if(a.week43?.synced!==b.week43?.synced)return a.week43?.synced?1:-1;
+    return (b.week43?.open_ids?.length||0)-(a.week43?.open_ids?.length||0)||
+      String(a.name||'').localeCompare(String(b.name||''),'de');
+  });
+  $('#week43Rows').innerHTML=sorted.map(student=>{
+    const w=student.week43,last=w?.synced?when(w.updated_at):null;
+    return `<tr>
+      <td><button type="button" class="week43-person" data-week43-open="${esc(student.email)}">${esc(student.name||student.email)}</button></td>
+      <td>${week43Cell(student)}</td>
+      <td>${week43Grid(student)}</td>
+      <td>${w?.synced?`${w.open_ids.length} / 15`:'–'}</td>
+      <td>${last?`${last.main} <small>${last.sub}</small>`:'–'}</td>
+    </tr>`;
+  }).join('');
+  $('[data-week43-open]').forEach(button=>button.addEventListener('click',()=>openDetail(button.dataset.week43Open)));
+}
+
+  function week43Detail(student){
+  const w=student.week43;
+  if(!w?.synced)return `<section class="detail-task-section"><h3>Woche 43 · 15 Übungen</h3>
+    <p class="week43-no-data">Noch keine zentrale Synchronisierung. Die Lernenden öffnen Woche 43 auf dem bisherigen Gerät, damit bereits abgehakte Übungen übernommen werden.</p></section>`;
+  const done=new Set(w.done_ids||[]),started=new Set(w.started_ids||[]);
+  const rows=week43Tasks.map(task=>{
+    const completed=done.has(task.id),inProgress=started.has(task.id);
+    const state=completed?'Erledigt':inProgress?'Begonnen':'Noch nicht markiert';
+    const css=completed?'done':inProgress?'started':'';
+    return `<div class="task-status ${css}"><span class="num">${task.id}</span><span><strong>${esc(task.title)}</strong></span><span class="state">${state}</span></div>`;
+  }).join('');
+  return `<section class="detail-task-section week43-detail"><h3>Woche 43 · ${w.done} von 15 markiert</h3>
+    <p class="panel-sub">Die 15 Übungen waren eine Auswahl für die Prüfungsvorbereitung und nicht alle Pflicht.</p>
+    <div class="task-status-list">${rows}</div></section>`;
+}
+
   let currentClass='GS1B';
   let students=[];
   let selected=null;
@@ -109,6 +169,7 @@
       <td>${meter(student.onenote_done,student.onenote_possible)}</td>
       <td>${meter(student.digipen_done,student.digipen_possible)}</td>
       <td>${meter(student.scan_done,student.scan_possible)}</td>
+      <td>${week43Cell(student)}</td>
       <td><span class="overall ${progress===100&&possible?'done':progress<30?'low':''}">${progress}%</span><small> ${total}/${possible}</small></td>
       <td><div class="activity"><strong>${activity.main}</strong><small>${activity.sub}</small></div></td>
       <td>${student.roster_locked?`<span class="class-badge">${esc(student.class_name)}</span>`:`<select class="class-select" data-assign="${esc(student.email)}"><option value="" ${!student.class_name?'selected':''}>Nicht zugeordnet</option><option value="GS1B" ${student.class_name==='GS1B'?'selected':''}>GS1B</option><option value="GS1D" ${student.class_name==='GS1D'?'selected':''}>GS1D</option></select>`}</td>
@@ -385,7 +446,7 @@
       </div>
       <section class="detail-task-section"><h3>OneNote</h3><div class="task-status-list">${taskList('onenote',student.progress?.onenote)}</div></section>
       <section class="detail-task-section"><h3>DigiPen</h3><div class="task-status-list">${taskList('digipen',student.progress?.digipen)}</div></section>
-      <section class="detail-task-section"><h3>Scannen</h3><div class="task-status-list">${taskList('scan',student.progress?.scan)}</div></section>`;
+      <section class="detail-task-section"><h3>Scannen</h3><div class="task-status-list">${taskList('scan',student.progress?.scan)}</div></section>${week43Detail(student)}`;
     $('#removeStudentButton').hidden=Boolean(student.roster_locked);
     $('#detailDialog').showModal();
     if(restoreContext){assignmentSettings=restoreContext.assignmentSettings;todayFocus=restoreContext.todayFocus}
@@ -396,6 +457,7 @@
     renderSummary();
     renderRadar();
     renderTable();
+    renderWeek43();
     renderTodayEditor();
     renderAssignments();
     renderMatrix();
@@ -431,17 +493,29 @@
   }
 
   function exportCsv(){
-    const rows=[['Name','Schulmail','Klasse','Status','Begründung','OneNote','DigiPen','Scannen','Gesamt','Heute','Letzte Aktivität']];
-    for(const student of students){
-      const status=statusInfo(student),focus=focusState(student),activity=student.last_seen?new Date(student.last_seen).toLocaleString('de-CH'):'';
-      rows.push([student.name,student.email,student.class_name||'',status.label,status.reason,`${student.onenote_done}/${student.onenote_possible}`,`${student.digipen_done}/${student.digipen_possible}`,`${student.scan_done}/${student.scan_possible}`,`${student.total_done}/${student.total_possible}`,focus==='done'?'Fertig':focus==='working'?'In Arbeit':focus==='open'?'Offen':'',activity]);
-    }
-    const csv='\uFEFF'+rows.map(row=>row.map(csvEscape).join(';')).join('\n');
-    const blob=new Blob([csv],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),link=document.createElement('a');
-    link.href=url;link.download=`MedienInfoLab_${currentClass}_${new Date().toISOString().slice(0,10)}.csv`;document.body.appendChild(link);link.click();link.remove();URL.revokeObjectURL(url);
-    toast('CSV exportiert');
+  const rows=[['Name','Schulmail','Klasse','Status','Begründung','OneNote','DigiPen','Scannen','Gesamt',
+    'Woche 43 erledigt','Woche 43 offen','Woche 43 offene Nummern','Woche 43 zuletzt synchronisiert',
+    ...week43Tasks.map(task=>`W43 Übung ${task.id}: ${task.title}`),'Heute','Letzte Aktivität']];
+  for(const student of students){
+    const status=statusInfo(student),focus=focusState(student);
+    const activity=student.last_seen?new Date(student.last_seen).toLocaleString('de-CH'):'';
+    const w=student.week43||{},done=new Set(w.done_ids||[]),started=new Set(w.started_ids||[]);
+    const w43States=week43Tasks.map(task=>!w.synced?'Kein Stand':done.has(task.id)?'Erledigt':started.has(task.id)?'Begonnen':'Offen');
+    rows.push([student.name,student.email,student.class_name||'',status.label,status.reason,
+      `${student.onenote_done}/${student.onenote_possible}`,`${student.digipen_done}/${student.digipen_possible}`,
+      `${student.scan_done}/${student.scan_possible}`,`${student.total_done}/${student.total_possible}`,
+      w.synced?`${w.done}/15`:'Kein Stand',
+      w.synced?w.open_ids.length:'',
+      w.synced?w.open_ids.join(', '):'',
+      w.updated_at?new Date(w.updated_at).toLocaleString('de-CH'):'',
+      ...w43States,focus==='done'?'Fertig':focus==='working'?'In Arbeit':focus==='open'?'Offen':'',activity]);
   }
-
+  const csv='\uFEFF'+rows.map(row=>row.map(csvEscape).join(';')).join('\n');
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),link=document.createElement('a');
+  link.href=url;link.download=`MedienInfoLab ${currentClass} ${new Date().toISOString().slice(0,10)}.csv`;
+  document.body.appendChild(link);link.click();link.remove();URL.revokeObjectURL(url);
+  toast('CSV exportiert, einschliesslich aller 15 Übungen der Woche 43');
+}
   function bindEvents(){
     $$('.class-tab').forEach(button=>button.addEventListener('click',async()=>{
       currentClass=button.dataset.class;
