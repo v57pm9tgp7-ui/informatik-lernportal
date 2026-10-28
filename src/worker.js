@@ -229,7 +229,14 @@ async function listStudents(request,env){
   // zusätzliche Tabelle für Woche 43 noch nicht angelegt werden konnte.
   let week43ByEmail=new Map(),week43Available=true;
   try{
-    const week43Rows=await env.DB.prepare('SELECT email,completed_json,started_json,updated_at FROM week43_progress').all();
+    let week43Rows;
+    try{
+      week43Rows=await env.DB.prepare('SELECT email,completed_json,started_json,updated_at FROM week43_progress').all();
+    }catch{
+      // Tabelle bei der ersten Verwendung automatisch vorbereiten.
+      await ensureWeek43Table(env);
+      week43Rows=await env.DB.prepare('SELECT email,completed_json,started_json,updated_at FROM week43_progress').all();
+    }
     week43ByEmail=new Map((week43Rows.results||[]).map(row=>[cleanEmail(row.email),row]));
   }catch(error){
     week43Available=false;
@@ -367,8 +374,19 @@ async function updateToday(request,env){
 }
 
 async function health(env){
-  if(!env.DB)return json({ok:false,d1:false},503);
-  try{await env.DB.prepare('SELECT 1 AS ok').first();return json({ok:true,d1:true})}catch{return json({ok:false,d1:false},503)}
+  if(!env.DB)return json({ok:false,d1:false,week43:false,reason:'DB-Binding fehlt'},503);
+  try{
+    await env.DB.prepare('SELECT 1 AS ok').first();
+  }catch{
+    return json({ok:false,d1:false,week43:false,reason:'D1-Abfrage fehlgeschlagen'},503);
+  }
+  let week43=true;
+  try{
+    await env.DB.prepare('SELECT 1 FROM week43_progress LIMIT 1').first();
+  }catch{
+    week43=false;
+  }
+  return json({ok:true,d1:true,week43});
 }
 
 const ONENOTE_DESKTOP_GUIDE_STYLE=`
