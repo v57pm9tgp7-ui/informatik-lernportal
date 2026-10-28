@@ -57,7 +57,7 @@
       <td>${last?`${last.main} <small>${last.sub}</small>`:'–'}</td>
     </tr>`;
   }).join('');
-  $('[data-week43-open]').forEach(button=>button.addEventListener('click',()=>openDetail(button.dataset.week43Open)));
+  $$('[data-week43-open]').forEach(button=>button.addEventListener('click',()=>openDetail(button.dataset.week43Open)));
 }
 
   function week43Detail(student){
