@@ -225,9 +225,16 @@ async function listStudents(request,env){
   const statement='SELECT email,class_name,progress_json,onenote_done,digipen_done,scan_done,total_done,first_seen,last_seen,updated_at FROM students';
   const result=await env.DB.prepare(statement).all();
   const rows=new Map((result.results||[]).map(row=>[cleanEmail(row.email),row]));
-  await ensureWeek43Table(env);
-  const week43Rows=await env.DB.prepare('SELECT email,completed_json,started_json,updated_at FROM week43_progress').all();
-  const week43ByEmail=new Map((week43Rows.results||[]).map(row=>[cleanEmail(row.email),row]));
+  // Die bisherige Klassenübersicht darf nie ausfallen, nur weil die
+  // zusätzliche Tabelle für Woche 43 noch nicht angelegt werden konnte.
+  let week43ByEmail=new Map(),week43Available=true;
+  try{
+    const week43Rows=await env.DB.prepare('SELECT email,completed_json,started_json,updated_at FROM week43_progress').all();
+    week43ByEmail=new Map((week43Rows.results||[]).map(row=>[cleanEmail(row.email),row]));
+  }catch(error){
+    week43Available=false;
+    console.warn('Woche-43-Abfrage nicht verfügbar, bisheriger Fortschritt bleibt erreichbar:',String(error));
+  }
   const settingsByClass={GS1B:await assignmentMapForClass(env,'GS1B'),GS1D:await assignmentMapForClass(env,'GS1D')};
   const students=[];
   const build=(row,email,name,className,rosterLocked)=>{
@@ -246,7 +253,7 @@ async function listStudents(request,env){
   const counts={GS1B:students.filter(student=>student.class_name==='GS1B').length,GS1D:students.filter(student=>student.class_name==='GS1D').length,UNASSIGNED:students.filter(student=>!student.class_name).length,ALL:students.length};
   const filtered=students.filter(student=>CLASSES.has(filter)?student.class_name===filter:filter==='UNASSIGNED'?!student.class_name:true);
   filtered.sort((a,b)=>String(a.class_name||'ZZZ').localeCompare(String(b.class_name||'ZZZ'))||String(a.name).localeCompare(String(b.name),'de'));
-  return json({ok:true,classes:[...CLASSES],teacherEmail:TEACHER_EMAIL,students:filtered,rosterCount:ROSTER.length,counts});
+  return json({ok:true,classes:[...CLASSES],teacherEmail:TEACHER_EMAIL,students:filtered,rosterCount:ROSTER.length,counts,week43Available});
 }
 async function publicAssignments(request,env){
   if(!env.DB)return json({ok:false,error:'D1 ist noch nicht verbunden.'},503);
