@@ -34,6 +34,9 @@
 }
 
   function renderWeek43(){
+  // Falls Browser/Cloudflare HTML und JavaScript kurz unterschiedlich cachen,
+  // darf die neue Anzeige nicht die gesamte Übersicht blockieren.
+  if(!$('#week43Rows')||!$('#week43SyncedCount'))return;
   const known=students.filter(st=>st.week43?.synced);
   $('#week43SyncedCount').textContent=known.length;
   $('#week43DoneCount').textContent=known.filter(st=>st.week43.done===15).length;
@@ -464,26 +467,59 @@
   }
 
   async function load(){
-    $('#setupNotice').hidden=true;
+    const notice=$('#setupNotice');
+    notice.hidden=true;
+    let data;
     try{
-      const data=await api(`/lehrperson/api/students?class=${encodeURIComponent(currentClass)}`);
-      students=data.students||[];
-      renderClassCounts(data.counts||{});
-      if(currentClass==='GS1B'||currentClass==='GS1D'){
-        const [assignments]=await Promise.all([
-          api(`/lehrperson/api/assignments?class=${encodeURIComponent(currentClass)}`),
-          loadToday()
-        ]);
-        assignmentSettings=assignments.settings||null;
+      data=await api(`/lehrperson/api/students?class=${encodeURIComponent(currentClass)}`);
+      if(!Array.isArray(data.students))throw new Error('Die Klassenliste wurde nicht korrekt übertragen.');
+    }catch(error){
+      // Nur der tatsächliche Fehler der Klassenlisten-API führt zu dieser Anzeige.
+      $('strong',notice).textContent='Klassenübersicht momentan nicht verfügbar';
+      $('p',notice).textContent='Die Anfrage an die Klassenübersicht ist fehlgeschlagen: '+error.message+
+        '. Bitte die Seite neu laden. Falls die Meldung bleibt, den Fehlertext weitergeben.';
+      notice.hidden=false;
+      toast(error.message);
+      return;
+    }
+    students=data.students;
+    renderClassCounts(data.counts||{});
+    const warning=$('#week43AvailabilityNotice');
+    if(warning)warning.hidden=data.week43Available!==false;
+    const secondaryErrors=[];
+    if(currentClass==='GS1B'||currentClass==='GS1D'){
+      const results=await Promise.allSettled([
+        api(`/lehrperson/api/assignments?class=${encodeURIComponent(currentClass)}`),
+        loadToday()
+      ]);
+      if(results[0].status==='fulfilled'){
+        assignmentSettings=results[0].value.settings||null;
       }else{
         assignmentSettings=null;
-        await loadToday();
+        secondaryErrors.push('Auftragssteuerung: '+results[0].reason.message);
       }
-      $('#lastRefresh').textContent=`Aktualisiert ${new Date().toLocaleTimeString('de-CH',{hour:'2-digit',minute:'2-digit'})}`;
+      if(results[1].status==='rejected'){
+        todayFocus={active:false,title:'Heute wichtig',message:'',tasks:[],updatedAt:null};
+        secondaryErrors.push('Heutiger Fokus: '+results[1].reason.message);
+      }
+    }else{
+      assignmentSettings=null;
+      try{await loadToday()}catch(error){secondaryErrors.push('Heutiger Fokus: '+error.message)}
+    }
+    $('#lastRefresh').textContent=`Aktualisiert ${new Date().toLocaleTimeString('de-CH',{hour:'2-digit',minute:'2-digit'})}`;
+    try{
       render();
     }catch(error){
-      $('#setupNotice').hidden=false;
-      toast(error.message);
+      console.error('Lehrpersonenansicht konnte nicht vollständig dargestellt werden',error);
+      $('strong',notice).textContent='Fehler bei der Darstellung';
+      $('p',notice).textContent='Die Klassenliste wurde geladen, aber ein Teil der Darstellung ist fehlgeschlagen: '+error.message;
+      notice.hidden=false;
+      return;
+    }
+    if(secondaryErrors.length){
+      $('strong',notice).textContent='Einzelne Zusatzfunktionen vorübergehend nicht verfügbar';
+      $('p',notice).textContent='Die Klassenliste ist geladen. Einschränkung: '+secondaryErrors.join('; ');
+      notice.hidden=false;
     }
   }
 
