@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="color-scheme" content="light">
   <title>Lehrpersonenbereich · MedienInfoLab</title>
-  <link rel="stylesheet" href="../assets/teacher.css">
-  <script defer src="../assets/teacher.js"></script>
+  <link rel="stylesheet" href="../assets/teacher.css?v=43">
+  <script defer src="../assets/teacher.js?v=43"></script>
 </head>
 <body>
   <header class="teacher-topbar">
@@ -50,6 +50,30 @@
       <article class="summary-card"><span>Heute aktiv</span><strong id="activeToday">0</strong><small>mit synchronisiertem Arbeitsstand</small></article>
       <article class="summary-card"><span>Pflichtfortschritt</span><strong id="averageProgress">0%</strong><small>Durchschnitt der Klasse</small></article>
       <article class="summary-card attention"><span>Im Blick behalten</span><strong id="supportCount">0</strong><small>Beobachten oder dringend</small></article>
+    </section>
+
+    <section class="week43-panel" id="week43Panel" aria-labelledby="week43Title">
+      <div class="panel-head week43-head">
+        <div>
+          <p class="eyebrow">Prüfungstraining · 15 Übungen</p>
+          <h2 id="week43Title">Woche 43 · Übungsstand</h2>
+          <p class="panel-sub">Jede Zahl steht für eine Übung. Grün = als erledigt markiert, Blau = begonnen, Hellgrau = noch nicht als erledigt markiert. Nicht alle 15 Übungen waren Pflicht.</p>
+        </div>
+        <a class="button secondary" href="../woche-43.html">Übungen ansehen</a>
+      </div>
+      <div class="week43-metrics">
+        <article><span>Mit gespeichertem Stand</span><strong id="week43SyncedCount">0</strong></article>
+        <article><span>Alle 15 markiert</span><strong id="week43DoneCount">0</strong></article>
+        <article><span>Teilweise markiert</span><strong id="week43PartialCount">0</strong></article>
+        <article><span>Noch ohne Daten</span><strong id="week43MissingCount">0</strong></article>
+      </div>
+      <div class="table-wrap">
+        <table class="week43-table">
+          <thead><tr><th>Lernende/r</th><th>Erledigt</th><th>Übungen 1–15</th><th>Offen</th><th>Letzte Synchronisierung</th></tr></thead>
+          <tbody id="week43Rows"></tbody>
+        </table>
+      </div>
+      <p class="week43-note">«Kein Stand» bedeutet, dass die Woche-43-Seite noch nicht mit der zentralen Datenbank synchronisiert wurde. Bereits vorhandene Häkchen werden beim erneuten Öffnen im gleichen Browser übernommen. Die Übersicht zeigt Selbstkontrollen, keine überprüften Abgaben.</p>
     </section>
 
     <section class="today-panel" id="todayPanel">
@@ -133,7 +157,7 @@
       </div>
       <div class="table-wrap">
         <table class="student-table">
-          <thead><tr><th>Lernende/r</th><th>Status</th><th>OneNote</th><th>DigiPen</th><th>Scannen</th><th>Gesamt</th><th>Letzte Aktivität</th><th>Klasse</th></tr></thead>
+          <thead><tr><th>Lernende/r</th><th>Status</th><th>OneNote</th><th>DigiPen</th><th>Scannen</th><th>Woche 43</th><th>Gesamt</th><th>Letzte Aktivität</th><th>Klasse</th></tr></thead>
           <tbody id="studentRows"></tbody>
         </table>
         <div id="emptyState" class="empty-state" hidden><strong>Keine Lernenden in dieser Auswahl</strong><p>Ändern Sie Filter oder Suche. Neue Schulmailadressen ausserhalb der Klassenlisten erscheinen unter «Nicht zugeordnet».</p></div>
