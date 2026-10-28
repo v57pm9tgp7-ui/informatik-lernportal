@@ -41,6 +41,57 @@ const ROSTER=[
   {email:'niyat.yohannes@stud.bffbern.ch',name:'Niyat Yohannes',className:'GS1D'}
 ];
 const ROSTER_BY_EMAIL=new Map(ROSTER.map(item=>[item.email,item]));
+const WEEK43_IDS=Array.from({length:15},(_,index)=>index+1);
+
+async function ensureWeek43Table(env){
+  await env.DB.prepare(`CREATE TABLE IF NOT EXISTS week43_progress (
+    email TEXT PRIMARY KEY,
+    completed_json TEXT NOT NULL DEFAULT '[]',
+    started_json TEXT NOT NULL DEFAULT '[]',
+    updated_at TEXT NOT NULL
+  )`).run();
+}
+
+function week43View(row){
+  if(!row)return {synced:false,done:0,total:15,done_ids:[],started_ids:[],open_ids:[],updated_at:null};
+  let done=[],started=[];
+  try{done=cleanIds(JSON.parse(row.completed_json||'[]'),WEEK43_IDS)}catch{}
+  try{started=cleanIds(JSON.parse(row.started_json||'[]'),WEEK43_IDS)}catch{}
+  return {synced:true,done:done.length,total:15,done_ids:done,started_ids:started,
+    open_ids:WEEK43_IDS.filter(id=>!done.includes(id)),updated_at:row.updated_at||null};
+}
+
+async function syncWeek43(request,env){
+  if(!env.DB)return json({ok:false,error:'D1 ist noch nicht verbunden.'},503);
+  let body;try{body=await readJson(request)}catch{return json({ok:false,error:'Ungültige Daten.'},400)}
+  const email=cleanEmail(body.email);
+  if(!validStudentEmail(email))return json({ok:false,error:'Ungültige Schulmailadresse.'},400);
+  const mode=String(body.mode||'');
+  if(!['merge','patch','start'].includes(mode))return json({ok:false,error:'Ungültige Synchronisierung.'},400);
+  if(mode==='patch'&&(!WEEK43_IDS.includes(Number(body.taskId))||typeof body.done!=='boolean'))
+    return json({ok:false,error:'Ungültige Übung.'},400);
+  await ensureWeek43Table(env);
+  const existing=await env.DB.prepare('SELECT email,completed_json,started_json,updated_at FROM week43_progress WHERE email=?').bind(email).first();
+  const previous=week43View(existing);
+  const completed=new Set(previous.done_ids),started=new Set(previous.started_ids);
+  if(mode==='merge'){
+    for(const id of cleanIds(body.completed,WEEK43_IDS))completed.add(id);
+    for(const id of cleanIds(body.started,WEEK43_IDS))started.add(id);
+  }else if(mode==='patch'){
+    const id=Number(body.taskId);
+    if(body.done){completed.add(id);started.add(id)}else completed.delete(id);
+  }else{
+    for(const id of cleanIds(body.started,WEEK43_IDS))started.add(id);
+  }
+  const now=new Date().toISOString();
+  const doneIds=[...completed].sort((a,b)=>a-b),startedIds=[...started].sort((a,b)=>a-b);
+  await env.DB.prepare(`INSERT INTO week43_progress (email,completed_json,started_json,updated_at)
+    VALUES (?,?,?,?) ON CONFLICT(email) DO UPDATE SET
+      completed_json=excluded.completed_json,started_json=excluded.started_json,
+      updated_at=excluded.updated_at`)
+    .bind(email,JSON.stringify(doneIds),JSON.stringify(startedIds),now).run();
+  return json({ok:true,done:doneIds.length,total:15,updatedAt:now});
+}
 
 const DEFAULT_ASSIGNMENTS={
   onenote:{required:[1,2,3,4,5,6,7,8,9,10],optional:[11,12]},
@@ -174,13 +225,16 @@ async function listStudents(request,env){
   const statement='SELECT email,class_name,progress_json,onenote_done,digipen_done,scan_done,total_done,first_seen,last_seen,updated_at FROM students';
   const result=await env.DB.prepare(statement).all();
   const rows=new Map((result.results||[]).map(row=>[cleanEmail(row.email),row]));
+  await ensureWeek43Table(env);
+  const week43Rows=await env.DB.prepare('SELECT email,completed_json,started_json,updated_at FROM week43_progress').all();
+  const week43ByEmail=new Map((week43Rows.results||[]).map(row=>[cleanEmail(row.email),row]));
   const settingsByClass={GS1B:await assignmentMapForClass(env,'GS1B'),GS1D:await assignmentMapForClass(env,'GS1D')};
   const students=[];
   const build=(row,email,name,className,rosterLocked)=>{
     let progress=cleanProgress({});if(row){try{progress=cleanProgress(JSON.parse(row.progress_json||'{}'))}catch{}}
     const settings=settingsByClass[className]||Object.fromEntries(Object.keys(DEFAULT_ASSIGNMENTS).map(track=>[track,Object.fromEntries([...DEFAULT_ASSIGNMENTS[track].required,...DEFAULT_ASSIGNMENTS[track].optional].map(id=>[id,defaultAssignmentStatus(track,id)]))]));
     const calc=recalcProgress(progress,settings);
-    return {email,name,class_name:className,roster_locked:rosterLocked,progress,
+    return {email,name,class_name:className,roster_locked:rosterLocked,progress,week43:week43View(week43ByEmail.get(email)),
       onenote_done:calc.modules.onenote.done,onenote_possible:calc.modules.onenote.possible,
       digipen_done:calc.modules.digipen.done,digipen_possible:calc.modules.digipen.possible,
       scan_done:calc.modules.scan.done,scan_possible:calc.modules.scan.possible,
@@ -437,6 +491,7 @@ export default {
   async fetch(request,env){
     const url=new URL(request.url),path=url.pathname;
     if(path==='/api/progress'&&request.method==='POST')return syncStudent(request,env);
+    if(path==='/api/week43'&&request.method==='POST')return syncWeek43(request,env);
     if(path==='/api/assignments'&&request.method==='GET')return publicAssignments(request,env);
     if(path==='/api/today'&&request.method==='GET')return publicToday(request,env);
     if(path==='/lehrperson/api/students'&&request.method==='GET')return listStudents(request,env);
