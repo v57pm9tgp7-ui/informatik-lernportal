@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="color-scheme" content="light">
   <title>Lehrpersonenbereich · MedienInfoLab</title>
-  <link rel="stylesheet" href="../assets/teacher.css?v=43">
-  <script defer src="../assets/teacher.js?v=43"></script>
+  <link rel="stylesheet" href="../assets/teacher.css?v=44">
+  <script defer src="../assets/teacher.js?v=44"></script>
 </head>
 <body>
   <header class="teacher-topbar">
@@ -34,8 +34,8 @@
     </section>
 
     <section id="setupNotice" class="setup-notice" hidden>
-      <strong>Cloud-Speicherung nicht erreichbar</strong>
-      <p>Der Lehrpersonenbereich kann D1 gerade nicht erreichen. Die Lernenden-Webseite speichert lokal weiter; prüfen Sie Deployment und D1-Binding.</p>
+      <strong>Die Klassenübersicht wird geladen</strong>
+      <p>Die Verbindung wird überprüft. Bitte aktualisieren Sie die Seite, falls diese Meldung bestehen bleibt.</p>
     </section>
 
     <nav class="class-tabs" aria-label="Klasse auswählen">
@@ -61,6 +61,7 @@
         </div>
         <a class="button secondary" href="../woche-43.html">Übungen ansehen</a>
       </div>
+      <p id="week43AvailabilityNotice" class="week43-unavailable" hidden>Die Daten der Woche 43 können vorübergehend nicht geladen werden. Die bisherigen Pflichtaufträge sind weiterhin verfügbar. Falls dies nach der Aktualisierung bestehen bleibt, kontrollieren Sie die D1-Verbindung und die neue Tabelle.</p>
       <div class="week43-metrics">
         <article><span>Mit gespeichertem Stand</span><strong id="week43SyncedCount">0</strong></article>
         <article><span>Alle 15 markiert</span><strong id="week43DoneCount">0</strong></article>
