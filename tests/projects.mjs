@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import {test} from 'node:test';
 
 const context=vm.createContext({document:{readyState:'loading',addEventListener(){}},console});
-for(const file of ['projektideen.js','projects-data.js','projects-learning.js','projects-core.js','projects-media-data.js','projects-workspace.js','projects.js'])vm.runInContext(fs.readFileSync(`dist/assets/${file}`,'utf8'),context,{filename:file});
+for(const file of ['projektideen.js','projects-data.js','projects-learning.js','projects-core.js','projects-media-data.js','projects-workspace.js','project-catalogue.js','projects.js'])vm.runInContext(fs.readFileSync(`dist/assets/${file}`,'utf8'),context,{filename:file});
 const {projects,sources}=context.MediaInfoProjects,C=context.MediaInfoProjectsCore,V=context.MediaInfoProjectViews;
 const clean=o=>JSON.parse(JSON.stringify(o));
 const owner='test.person@stud.bffbern.ch';
@@ -105,10 +105,10 @@ function runtime(seed=new Map(), failWrites=false){
   }
   const get=id=>{if(!elements.has(id))elements.set(id,new Element(id));return elements.get(id)};
   const classes=new Set(),blobs=new Map();
-  const doc={readyState:'loading',activeElement:null,title:'',querySelector:s=>get(s.replace(/^#/,'')),getElementById:get,createElement:()=>new Element(),body:new Element(),documentElement:{classList:{toggle:(v,on)=>on?classes.add(v):classes.delete(v),contains:v=>classes.has(v)}},addEventListener:(k,fn)=>{events.set(k,[...(events.get(k)||[]),fn])}};
+  const doc={readyState:'loading',activeElement:null,title:'',querySelectorAll:()=>[],querySelector:s=>get(s.replace(/^#/,'')),getElementById:get,createElement:()=>new Element(),body:new Element(),documentElement:{classList:{toggle:(v,on)=>on?classes.add(v):classes.delete(v),contains:v=>classes.has(v)}},addEventListener:(k,fn)=>{events.set(k,[...(events.get(k)||[]),fn])}};
   const storage={getItem:k=>seed.get(k)||null,setItem:(k,v)=>{if(failWrites)throw new Error('quota');seed.set(k,v)}};
   const ctx=vm.createContext({document:doc,localStorage:storage,location:{hash:''},navigator:{clipboard:{writeText:async()=>{}}},Blob,URL:{createObjectURL:b=>{const key='blob:'+blobs.size;blobs.set(key,b);return key},revokeObjectURL(){}},setTimeout:()=>1,clearTimeout(){},scrollTo(){},print(){},addEventListener:(k,fn)=>winEvents.set(k,fn)});
-  for(const file of ['projektideen.js','projects-data.js','projects-learning.js','projects-core.js','projects-media-data.js','projects-workspace.js','projects.js'])vm.runInContext(fs.readFileSync(`dist/assets/${file}`,'utf8'),ctx);
+  for(const file of ['projektideen.js','projects-data.js','projects-learning.js','projects-core.js','projects-media-data.js','projects-workspace.js','project-catalogue.js','projects.js'])vm.runInContext(fs.readFileSync(`dist/assets/${file}`,'utf8'),ctx);
   for(const fn of events.get('DOMContentLoaded')||[])fn();
   const fire=async(k,target)=>{for(const fn of events.get(k)||[])await fn({target});};
   const action=async(type,project,extra={})=>{const b=new Element();b.dataset={action:type,project,...extra};await fire('click',b)};
@@ -277,4 +277,4 @@ test('spoken captions reproduce every script word, stay synchronized and have an
   }
 });
 
-test("catalogue offers all nine projects and four new project links",()=>{const html=V.catalogue();assert.match(html,/9 von 9 Projekten/);for(const id of ["nachrichten","bildausschnitt","plakat","storyboard"])assert.ok(html.includes("projekt.html?thema="+id));});
+test('shared catalogue contains all 13 projects with complete media and valid destinations',()=>{const catalogue=context.MediaInfoCatalogue,html=V.catalogue();assert.match(html,/13 von 13 Projekten/);assert.equal(catalogue.items.length,13);assert.equal(new Set(catalogue.items.map(x=>x.key)).size,13);assert.deepEqual(clean(catalogue.items.slice(0,4).map(x=>x.key)),['werkstatt-werbespot','werkstatt-geschichte','werkstatt-plakat','werkstatt-app']);for(const p of catalogue.items){assert.ok(fs.existsSync(path.join('dist',p.image)),p.image);assert.ok(fs.existsSync(path.join('dist',p.href.split(/[?#]/)[0])),p.href);}for(const category of ['Gestalten','Erklären','Prüfen','Organisieren','Entdecken']){const shown=catalogue.markup(category);assert.equal((shown.match(/data-project-key=/g)||[]).length,catalogue.items.filter(p=>p.category===category).length);assert.match(shown,new RegExp('data-catalogue-filter="'+category+'" aria-pressed="true"'));}assert.doesNotMatch(html,/neue Projekte|bisherigen Projekten|Prüfungsabgabe/)});

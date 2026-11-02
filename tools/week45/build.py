@@ -10,7 +10,7 @@ for group,prefix in [('posterBad','ausgang'),('posterGood','muster')]:
 s=(HERE/'template.html').read_text().replace('__ENHANCEMENTS__',(HERE/'enhancements.js').read_text())
 for key,value in data.items():s=s.replace('__'+key+'__',json.dumps(value,ensure_ascii=False).replace('</','<\\/'))
 js=re.findall(r'<script>(.*?)</script>',s,re.S)[-1]
-s=s.replace('<script>'+js+'</script>','<script src="assets/werkstatt45.js"></script>')
+s=s.replace('<script>'+js+'</script>','<script src="assets/werkstatt45.js?v=46"></script>')
 (ROOT/'dist/assets/werkstatt45.js').write_text(js)
 (ROOT/'dist/werkstatt45.html').write_text(s)
 print('Built werkstatt45.html:',len(s.encode()),'bytes')

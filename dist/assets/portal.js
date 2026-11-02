@@ -243,10 +243,6 @@
     $$('[data-guide-image]').forEach(button=>button.addEventListener('click',()=>open(button)));closeButton?.addEventListener('click',close);box?.addEventListener('click',event=>{if(event.target===box||event.target.classList.contains('guide-lightbox-stage'))close()});document.addEventListener('keydown',event=>{if(box?.hidden)return;if(event.key==='Escape')close();if(event.key==='Tab'){event.preventDefault();closeButton?.focus()}});window.addEventListener('hashchange',close);
   }
   function addDigiPenGuideLinks(){
-    const desktopScan=$('.desktop-nav [data-nav="scan-guide"]');
-    if(desktopScan&&!$('.desktop-nav [data-pen-guide-link]')){const a=document.createElement('a');a.className='nav-link';a.href='digipen-guide.html';a.textContent='DigiPen-Guide';a.dataset.penGuideLink='';desktopScan.before(a)}
-    const mobileScan=$('.mobile-menu [data-nav="scan-guide"]');
-    if(mobileScan&&!$('.mobile-menu [data-pen-guide-link]')){const a=document.createElement('a');a.href='digipen-guide.html';a.textContent='DigiPen-Guide';a.dataset.penGuideLink='';mobileScan.before(a)}
     $$('.module-card.pen .card-progress').forEach(area=>{if(area.querySelector('[data-pen-guide-card]'))return;const a=document.createElement('a');a.className='card-secondary';a.href='digipen-guide.html';a.textContent='DigiPen-Guide öffnen';a.dataset.penGuideCard='';area.append(a)});
   }
   document.addEventListener('click',e=>{const open=e.target.closest('[data-module-open]');if(open){saveUi({lastModule:open.dataset.moduleOpen,lastRoute:open.getAttribute('href')})}});

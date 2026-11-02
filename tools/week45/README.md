@@ -7,3 +7,5 @@ The shared local journal lives in `dist/assets/lernprotokoll.js`; it stores draf
 Existing project samples and contextual week-45 guidance are additive in `project-boost.js`; original project storage formats and the Worker API are unchanged.
 
 Validation: `npm test`, `npm run test:projects`, `npm run test:week44`, plus browser checks of interactive stories, app paths, poster download, journal export/import and mobile layout.
+
+Card illustrations: `python tools/week45/covers.py`. Both catalogue pages use `dist/assets/project-catalogue.js` and `project-catalogue.css`. Keep the four workshop links first; do not label projects as old/new. See `GESTALTUNG.md`.

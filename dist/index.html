@@ -8,13 +8,12 @@
   <meta name="description" content="Lernportal für den Informatikunterricht der GS1 an der BFF Bern.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%2308243d'/%3E%3Cpath d='M17 17h30v30H17zM24 25h16M24 32h16M24 39h10' fill='none' stroke='white' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="assets/portal.css?v=42">
-  <script defer src="assets/portal.js?v=44"></script>
+  <script defer src="assets/portal.js?v=46"></script>
   <link rel="stylesheet" href="assets/student-access.css">
   <script>document.documentElement.classList.add('student-access-check')</script>
   <script defer src="assets/student-access.js"></script>
   <script src="assets/cloud-sync.js"></script>
   <script defer src="assets/assignment-control.js?v=42"></script>
-  <script defer src="assets/today.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Direkt zum Inhalt</a>
@@ -28,14 +27,14 @@
         <a class="nav-link" href="#start" data-nav="start">Start</a>
         <a class="nav-link" href="#wochen" data-nav="wochen">Wochen</a>
         <a class="nav-link" href="projekte.html">Projekte</a>
-        <a class="nav-link" href="#scan-guide" data-nav="scan-guide">Scan-Guide</a>
-        <a class="nav-link" href="#training" data-nav="training">Training</a>
-        <a class="nav-link" href="#fortschritt" data-nav="fortschritt">Fortschritt</a>
+
+
+
       </nav>
       <details class="mobile-nav">
         <summary>Menü</summary>
         <div class="mobile-menu">
-          <a href="#start" data-nav="start">Start</a><a href="#wochen" data-nav="wochen">Wochen</a><a href="projekte.html">Projekte</a><a href="#scan-guide" data-nav="scan-guide">Scan-Guide</a><a href="#training" data-nav="training">Training</a><a href="#fortschritt" data-nav="fortschritt">Fortschritt</a>
+          <a href="#start" data-nav="start">Start</a><a href="#wochen" data-nav="wochen">Wochen</a><a href="projekte.html">Projekte</a>
         </div>
       </details>
       <button class="font-button" type="button" data-font-toggle aria-pressed="false" title="Schrift deutlich vergrössern">A+</button>
@@ -48,108 +47,25 @@
         <div class="portal-hero-copy">
           <p class="hero-kicker">BFF Bern · GS1 · Schuljahr 2026/27</p>
           <h1 id="start-title">Informatik.<br><span>Digital arbeiten.</span></h1>
-          <p class="hero-lead">Diese Webseite ist Ihre Arbeitsgrundlage für den Informatikunterricht bei <strong>Herrn Marti</strong>. Hier finden Sie die Aufträge der aktuellen Woche, passende Hilfen und Ihren Arbeitsstand.</p>
-          <div class="hero-facts" aria-label="Das bietet die Webseite"><span>Klare Aufträge</span><span>Hilfe bei jedem Schritt</span><span>Automatisch gespeichert</span></div>
+          <p class="hero-lead">Ihre Arbeitsgrundlage für den Informatikunterricht bei <strong>Herrn Marti</strong>. Öffnen Sie Woche 45, wählen Sie ein Projekt und beginnen Sie mit der Anleitung.</p>
+          <div class="hero-facts" aria-label="Woche 45"><span>Ein Projekt auswählen</span><span>90 Minuten Zeit</span></div>
         </div>
         <aside class="hero-week" aria-label="Aktuelle Woche 45">
-          <span class="hero-week-label">Aktuelle Woche</span><strong>45</strong><p>Projektwerkstatt · gestalten und weiterplanen</p><a href="woche45.html">Woche 45 öffnen →</a>
+          <span class="hero-week-label">Aktuelle Woche</span><strong>45</strong><p>Ein Projekt Ihrer Wahl</p><a href="woche45.html">Woche 45 öffnen →</a>
         </aside>
       </section>
 
-      <section class="current-week" aria-labelledby="current-week-title"><div class="section-head start-week-head"><div><p class="page-kicker">Aktuell · 2.–6. November</p><h2 id="current-week-title">Woche 45 · Ihre Projektwerkstatt</h2><p>Vier neue Projekte mit fertigen Beispielen, Schemas und Hilfen. Wählen Sie einen Auftrag, entwickeln Sie Ihr Ergebnis und sichern Sie den nächsten Schritt im Kurzprotokoll.</p></div><a class="button primary" href="woche45.html">Woche 45 öffnen →</a></div></section>
-
-      <section class="student-today-panel" id="studentTodayPanel" hidden aria-labelledby="studentTodayTitle">
-        <div class="student-today-head">
-          <div><p class="page-kicker"><span id="studentTodayClass"></span> · Unterricht heute</p><h2 id="studentTodayTitle">Heute wichtig</h2><p id="studentTodayMessage" hidden></p></div>
-          <div class="student-today-progress"><strong id="studentTodayProgress">0 Fokus-Aufträge</strong><div class="student-today-progressbar"><span id="studentTodayBar"></span></div></div>
-        </div>
-        <div class="student-today-tasks" id="studentTodayTasks"></div>
-      </section>
-
-      <section class="home-progress-overview" aria-labelledby="home-progress-title">
-        <div class="home-progress-head">
-          <div>
-            <p class="page-kicker">Ihr Arbeitsstand</p>
-            <h2 id="home-progress-title">Was ist schon erledigt?</h2>
-            <p>Öffnen Sie einen Auftrag direkt. Die Farbe zeigt die Auftragsart, der Status steht jeweils rechts.</p>
-          </div>
-          <div class="home-progress-keys">
-            <div class="home-kind-legend" aria-label="Bedeutung der Auftragsfarben">
-              <span class="legend-kind required">Pflichtauftrag</span>
-              <span class="legend-kind optional">Zusatzauftrag</span>
-            </div>
-            <div class="home-progress-legend" aria-label="Bedeutung der Statusanzeigen">
-              <span><i class="legend-dot open" aria-hidden="true"></i>Offen</span>
-              <span><i class="legend-dot working" aria-hidden="true"></i>In Arbeit</span>
-              <span><i class="legend-dot done" aria-hidden="true">✓</i>Erledigt</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="home-progress-grid">
-          <article class="home-progress-column note" data-home-track="onenote">
-            <header>
-              <span class="home-week-label">Woche 37</span>
-              <h3>OneNote clever nutzen</h3>
-              <p data-home-summary="onenote">0 von 10 Grundaufträgen erledigt</p>
-              <div class="home-progress-bar" aria-hidden="true"><span data-home-bar="onenote"></span></div>
-            </header>
-            <ol class="home-task-list" data-home-task-list="onenote" aria-label="Aufträge OneNote"></ol>
-            <footer class="home-transition" data-home-transition="onenote">
-              <div class="transition-top"><span>Wechselpunkt</span><b data-transition-state="onenote">Noch offen</b></div>
-              <strong>Nach Auftrag 10</strong>
-              <p>Danach dürfen Sie mit dem DigiPen weitermachen. Auftrag 11 und 12 gehören zum anschliessenden Wahlbereich.</p>
-              <a href="onenote.html#auftrag-1" data-transition-link="onenote" data-module-open="onenote">Mit Auftrag 1 beginnen</a>
-            </footer>
-          </article>
-
-          <article class="home-progress-column pen" data-home-track="digipen">
-            <header>
-              <span class="home-week-label">Woche 38 · Teil 1</span>
-              <h3>Arbeiten mit dem DigiPen</h3>
-              <p data-home-summary="digipen">0 von 5 Pflichtaufträgen erledigt</p>
-              <div class="home-progress-bar" aria-hidden="true"><span data-home-bar="digipen"></span></div>
-            </header>
-            <ol class="home-task-list" data-home-task-list="digipen" aria-label="Aufträge DigiPen"></ol>
-            <footer class="home-transition" data-home-transition="digipen">
-              <div class="transition-top"><span>Wechselpunkt</span><b data-transition-state="digipen">Noch offen</b></div>
-              <strong>Nach Pflichtauftrag 5</strong>
-              <p>Danach dürfen Sie mit dem Scan-Workshop weitermachen. Die übrigen Aufträge gehören zum anschliessenden Wahlbereich.</p>
-              <a href="digipen.html#auftrag-1" data-transition-link="digipen" data-module-open="digipen">Mit Auftrag 1 beginnen</a>
-            </footer>
-          </article>
-
-          <article class="home-progress-column scan" data-home-track="scan">
-            <header>
-              <span class="home-week-label">Woche 38 · Teil 2</span>
-              <h3>Scannen mit OneDrive</h3>
-              <p data-home-summary="scan">0 von 6 Pflichtaufträgen erledigt</p>
-              <div class="home-progress-bar" aria-hidden="true"><span data-home-bar="scan"></span></div>
-            </header>
-            <ol class="home-task-list" data-home-task-list="scan" aria-label="Aufträge Scannen"></ol>
-            <footer class="home-transition" data-home-transition="scan">
-              <div class="transition-top"><span>Abschluss</span><b data-transition-state="scan">Noch offen</b></div>
-              <strong>Nach Pflichtauftrag 6</strong>
-              <p>Danach ist der Pflichtteil der Woche 38 abgeschlossen. Zusatzauftrag 7 und 8 gehören zum Wahlbereich. Woche 42 zeigt Ihren nächsten Schritt.</p>
-              <a href="scannen.html#auftrag-1" data-transition-link="scan" data-module-open="scan">Mit Auftrag 1 beginnen</a>
-            </footer>
-          </article>
-        </div>
-        <p class="home-progress-note">Die Anzeige zeigt, wann der Pflichtteil abgeschlossen ist. Alle Themen und Aufträge bleiben jederzeit frei zugänglich.</p>
-      </section>
-
       <section class="home-projects" aria-labelledby="home-projects-title">
-        <div><p class="page-kicker">Neu · Projekte</p><h2 id="home-projects-title">Ein Projekt gestalten und selbständig weiterarbeiten.</h2><p>In Woche 45 wählen Sie zwischen Werbespot, Entscheidungsgeschichte, Informationsplakat und App. Fertige Beispiele, genaue Hilfen und das Kurzprotokoll unterstützen Sie.</p><p class="home-projects-note">13 Projekte · freie Auswahl · Material, Beispiele und Hilfen</p></div>
-        <a class="button primary" href="projekte.html">Projekte entdecken →</a>
+        <div><p class="page-kicker">Projektauswahl</p><h2 id="home-projects-title">Was möchten Sie gestalten oder ausprobieren?</h2><p>Werbespot, App, Plakat, Bildanleitung und mehr: Zu jedem Projekt finden Sie Beispiele und eine Anleitung.</p><p class="home-projects-note">13 Projekte zur Auswahl</p></div>
+        <a class="button primary" href="projekte.html">Alle Projekte ansehen →</a>
       </section>
-
 
     </section>
 
     <section class="view" data-view="wochen" hidden aria-labelledby="weeks-title">
       <p class="page-kicker">Unterricht</p><h1 class="page-title" id="weeks-title">Wochen</h1><p class="page-lead">Öffnen Sie die aktuelle Woche 45 oder eine frühere Woche. Alle bisherigen Aufträge und Arbeitsstände bleiben verfügbar.</p>
-      <div class="panel week-list"><article class="week-row"><div class="week-number"><span>Aktuell</span><strong>45</strong></div><div class="week-info"><h2>Projektwerkstatt · gestalten und weiterplanen</h2><p>Vier neue Projekte, fertige Beispiele und ein Kurzprotokoll. Danach stehen neun bisherige Projekte bereit.</p></div><a class="week-open" href="woche45.html">Woche 45 öffnen</a></article>
-        <article class="week-row"><div class="week-number"><span>Woche</span><strong>44</strong></div><div class="week-info"><h2>Lernkontrolle und freie Projektwahl</h2><p>Nach der Abgabe wählen Sie selbst. 9 Projekte, vier neue Kurzaufträge und eine genaue Anleitung für Ihre verbleibende Zeit.</p></div><a class="week-open" href="woche44.html">Woche 44 öffnen</a></article><article class="week-row"><div class="week-number"><span>Woche</span><strong>43</strong></div><div class="week-info"><h2>Prüfungstraining · OneNote und OneDrive</h2><p>90-Minuten-Lerncoach, gezielte Übungen, drei Wissenstests, Probeprüfung und Reservematerial.</p></div><a class="week-open" href="woche-43.html">Lerncoach öffnen</a></article>
+      <div class="panel week-list"><article class="week-row"><div class="week-number"><span>Aktuell</span><strong>45</strong></div><div class="week-info"><h2>Ein Projekt Ihrer Wahl</h2><p>Wählen Sie ein Projekt. Beispiele und Anleitungen helfen Ihnen bei der Arbeit.</p></div><a class="week-open" href="woche45.html">Woche 45 öffnen</a></article>
+        <article class="week-row"><div class="week-number"><span>Woche</span><strong>44</strong></div><div class="week-info"><h2>Lernkontrolle und freie Projektwahl</h2><p>Nach der Abgabe wählen Sie selbst. Projekte und eine Anleitung für Ihre verbleibende Zeit.</p></div><a class="week-open" href="woche44.html">Woche 44 öffnen</a></article><article class="week-row"><div class="week-number"><span>Woche</span><strong>43</strong></div><div class="week-info"><h2>Prüfungstraining · OneNote und OneDrive</h2><p>90-Minuten-Lerncoach, gezielte Übungen, drei Wissenstests, Probeprüfung und Reservematerial.</p></div><a class="week-open" href="woche-43.html">Lerncoach öffnen</a></article>
         <article class="week-row"><div class="week-number"><span>Woche</span><strong>42</strong></div><div class="week-info"><h2>Aufträge abschliessen und weiterarbeiten</h2><p>Pflichtteil aus Woche 37 und 38 → Wahlbereich → Projekte nach Absprache · <strong data-week42-progress>Arbeitsstand wird geladen</strong>.</p></div><a class="week-open" href="#woche-42">Woche anzeigen</a></article>
         <article class="week-row">
           <div class="week-number"><span>Woche</span><strong>37</strong></div>

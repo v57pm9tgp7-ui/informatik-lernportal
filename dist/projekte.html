@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="color-scheme" content="light">
   <title>Projekte · MedienInfoLab</title>
-  <meta name="description" content="Neun selbstständige Projekte für den Informatikunterricht: eigene Tutorials, ein OneNote-Cockpit, PDF-Dossiers, Faktenchecks und Digitaltipps.">
+  <meta name="description" content="13 Projekte für Medien und Informatik mit Beispielen und Schritt-für-Schritt-Anleitungen.">
   <link rel="stylesheet" href="assets/portal.css">
   <link rel="stylesheet" href="assets/student-access.css">
   <link rel="stylesheet" href="assets/projects.css?v=3"><link rel="stylesheet" href="assets/atelier.css?v=44b">
@@ -16,18 +16,20 @@
   <script defer src="assets/projects-learning.js?v=2"></script>
   <script defer src="assets/projects-core.js?v=2"></script>
   <script defer src="assets/projects-media-data.js?v=3"></script>
-  <script defer src="assets/projects-workspace.js?v=45"></script>
+  <script defer src="assets/projects-workspace.js?v=46"></script>
   <script defer src="assets/projektideen.js?v=44"></script>
-  <script defer src="assets/projects.js?v=45"></script>
-<link rel="stylesheet" href="assets/lernprotokoll.css"><link rel="stylesheet" href="assets/project-boost.css"><script defer src="assets/project-boost.js"></script><script defer src="assets/lernprotokoll.js"></script></head>
+  <link rel="stylesheet" href="assets/project-catalogue.css?v=46">
+  <script defer src="assets/project-catalogue.js?v=46"></script>
+  <script defer src="assets/projects.js?v=46"></script>
+<link rel="stylesheet" href="assets/lernprotokoll.css"><link rel="stylesheet" href="assets/project-boost.css"><script defer src="assets/project-boost.js?v=46"></script><script defer src="assets/lernprotokoll.js?v=46"></script><style>.selection-heading{margin:18px 0 32px;max-width:780px}.selection-heading h1{font-size:clamp(36px,4.8vw,58px);line-height:1.1;margin:8px 0 16px}.selection-heading>p:not(.eyebrow){font-size:20px;color:#405c6f;line-height:1.6}</style></head>
 <body class="projects-page">
   <a class="skip-link" href="#main">Direkt zum Inhalt</a>
   <header class="site-header"><div class="header-inner">
     <a class="site-brand" href="index.html#start"><span class="brand-mark" aria-hidden="true">IT</span><span class="brand-copy"><strong>Informatik</strong><span>Unterricht bei Herrn Marti · GS1</span></span></a>
     <nav class="desktop-nav" aria-label="Hauptnavigation">
-      <a class="nav-link" href="index.html#start">Start</a><a class="nav-link" href="index.html#wochen">Wochen</a><a class="nav-link" href="projekte.html" aria-current="page">Projekte</a><a class="nav-link" href="digipen-guide.html">DigiPen-Guide</a><a class="nav-link" href="index.html#scan-guide">Scan-Guide</a><a class="nav-link" href="index.html#fortschritt">Fortschritt</a>
+      <a class="nav-link" href="index.html#start">Start</a><a class="nav-link" href="index.html#wochen">Wochen</a><a class="nav-link" href="projekte.html" aria-current="page">Projekte</a>
     </nav>
-    <details class="mobile-nav"><summary>Menü</summary><div class="mobile-menu"><a href="index.html#start">Start</a><a href="index.html#wochen">Wochen</a><a href="projekte.html" aria-current="page">Projekte</a><a href="digipen-guide.html">DigiPen-Guide</a><a href="index.html#scan-guide">Scan-Guide</a><a href="index.html#fortschritt">Fortschritt</a></div></details>
+    <details class="mobile-nav"><summary>Menü</summary><div class="mobile-menu"><a href="index.html#start">Start</a><a href="index.html#wochen">Wochen</a><a href="projekte.html" aria-current="page">Projekte</a></div></details>
     <button class="font-button" type="button" id="projectFont" aria-pressed="false" title="Schrift vergrössern">A+</button>
   </div></header>
   <div class="project-tools"><div><a href="projekte.html">Alle Projekte</a><span id="saveStatus" role="status" aria-live="polite">Arbeitsstand: lokal in diesem Browser</span></div><div><button type="button" data-action="backup">Arbeitsstand sichern</button><button type="button" data-action="import">Sicherung laden</button><button type="button" data-action="storage-help" aria-label="Hilfe zur Speicherung">?</button></div></div>
@@ -37,7 +39,7 @@
   </main>
   <noscript><p class="storage-warning">Bitte aktivieren Sie JavaScript, um die Projekte und ihre Schritte anzuzeigen.</p></noscript>
   <div id="printProject"></div>
-  <footer class="site-footer">MedienInfoLab · Informatik bei Herrn Marti · BFF Bern<br>Projektaufträge und Beispiele · Stand Oktober 2026</footer>
+  <footer class="site-footer">MedienInfoLab · Informatik bei Herrn Marti · BFF Bern<br>Projektaufträge und Beispiele</footer>
   <dialog id="projectDialog" aria-labelledby="dialogTitle"><div class="dialog-head"><h2 id="dialogTitle"></h2><button type="button" data-action="close-dialog" aria-label="Dialog schliessen">✕</button></div><div id="dialogBody"></div></dialog>
   <input type="file" id="importProjectFile" accept="application/json,.json" hidden>
   <input type="file" id="studioImageFile" accept="image/png,image/jpeg,image/webp" hidden>
