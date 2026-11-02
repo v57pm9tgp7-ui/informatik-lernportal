@@ -1,0 +1,1342 @@
+{
+  "PROJECTS": [
+    {
+      "id": "werbespot",
+      "nr": "01",
+      "original": "Idee 1",
+      "title": "Ein Werbespot für einen Alltagsgegenstand",
+      "short": "Machen Sie einen gewöhnlichen Gegenstand interessant. Ihr Spot dauert 15 bis 30 Sekunden.",
+      "tag": "Film oder Bildspot",
+      "difficulty": "Gut für den Einstieg",
+      "color": "#a7472e",
+      "product": "Ein Video von 15–30 Sekunden oder eine Bildwerbung mit vier Folien zu je fünf Sekunden.",
+      "tools": "Smartphone oder Computerkamera für eigene Aufnahmen. Für einen Bildspot: PowerPoint. Ein vorhandenes Schulgerät reicht.",
+      "work": "Allein oder zu zweit. Zu zweit wechseln Sie nach der Probe die Aufgaben: aufnehmen und Gegenstand bewegen bzw. Text gestalten.",
+      "learn": "Sie wählen Bildausschnitt und Text so, dass ein Produkt und sein Nutzen schnell verständlich werden.",
+      "choices": [
+        [
+          "Radiergummi",
+          "Für alle, die beim Schreiben öfter neu anfangen. Zeigen Sie eine Korrektur."
+        ],
+        [
+          "Trinkflasche",
+          "Für einen langen Schultag. Zeigen Sie, wie sie in eine Tasche passt und schnell zur Hand ist."
+        ],
+        [
+          "Kugelschreiber",
+          "Für eine Idee, die man nicht vergessen will. Zeigen Sie eine kurze Notiz."
+        ],
+        [
+          "Ihr Gegenstand",
+          "Etwas, das Sie dabeihaben und im Zimmer aufnehmen können. Nennen Sie einen echten Nutzen."
+        ]
+      ],
+      "steps": [
+        {
+          "title": "Den fertigen Spot ansehen",
+          "time": 5,
+          "text": "<p>Spielen Sie das Beispiel <b>«Nochmal»</b> ab. Es dauert 20 Sekunden und funktioniert ohne Ton. Achten Sie auf drei Fragen: Welches Problem sieht man? Was hilft dagegen? Welchen Namen merkt man sich?</p><p>Wählen Sie danach Ihren Weg: <b>A: ein durchgehend gefilmter Clip</b> oder <b>B: vier selbst aufgenommene Fotos in PowerPoint</b>. Bei Weg A brauchen Sie kein Schnittprogramm. Bei Weg B ist ein Videoexport freiwillig.</p>",
+          "sample": "ad"
+        },
+        {
+          "title": "Gegenstand und Botschaft wählen",
+          "time": 10,
+          "text": "<p>Wählen Sie unten einen Gegenstand. Erfinden Sie einen kurzen Produktnamen. Schreiben Sie auf, für wen Sie werben und welchen Nutzen Sie zeigen. Bleiben Sie bei <b>einer</b> Botschaft.</p><p><b>Beispiel:</b> Produkt «Nochmal», Zielgruppe Lernende, Nutzen «Bleistiftfehler korrigieren», Werbesatz «Platz für einen zweiten Versuch.»</p><p>Sie dürfen übertreiben und Humor einsetzen. Lassen Sie erfundene Leistungsversprechen klar als Scherz erkennbar. Der Gegenstand muss im Spot tatsächlich zu sehen sein.</p>",
+          "choices": true,
+          "fields": [
+            [
+              "idee",
+              "Mein Produkt, meine Zielgruppe und mein Werbesatz",
+              "Produktname: …\nFür wen: …\nDas zeige ich: …\nMein Werbesatz: …"
+            ]
+          ]
+        },
+        {
+          "title": "Vier kurze Teile planen",
+          "time": 10,
+          "text": "<p>Planen Sie den Ablauf, bevor Sie aufnehmen. Jeder Teil dauert ungefähr fünf Sekunden. Bei einem durchgehenden Film laufen die vier Teile ohne Unterbruch nacheinander ab.</p><div class=\"tablewrap\"><table><thead><tr><th>Zeit</th><th>Ihre Aufgabe</th><th>Beispiel «Nochmal»</th></tr></thead><tbody><tr><td>0–5 s</td><td>Ein kleines Problem zeigen.</td><td>Ein Blatt mit einem Bleistiftfehler. Text: «Verschrieben?»</td></tr><tr><td>5–10 s</td><td>Den Gegenstand einsetzen.</td><td>Der Radiergummi liegt auf der Stelle. Text: «Einmal zurück.»</td></tr><tr><td>10–15 s</td><td>Das Ergebnis zeigen.</td><td>Das Blatt bietet wieder Platz. Text: «Platz für einen zweiten Versuch.»</td></tr><tr><td>15–20 s</td><td>Name und Werbesatz.</td><td>Radiergummi gross im Bild. Text: «Nochmal. Ihr Radiergummi.»</td></tr></tbody></table></div><p>Bei Weg A können Sie die Sätze sprechen oder auf kleine Papierkarten schreiben. Bei Weg B stehen die Sätze als Text auf den Folien.</p>",
+          "fields": [
+            [
+              "plan",
+              "Mein Ablauf mit Bild und Text",
+              "0–5 Sekunden: Bild … / Text …\n5–10 Sekunden: Bild … / Text …\n10–15 Sekunden: Bild … / Text …\n15–20 Sekunden: Bild … / Text …"
+            ]
+          ]
+        },
+        {
+          "title": "Den Spot herstellen",
+          "time": 35,
+          "text": "<p><b>Weg A, Film:</b> Legen Sie den Gegenstand auf einen aufgeräumten Tisch nahe am Fenster. Stellen Sie das Smartphone quer und stabil auf oder lassen Sie eine zweite Person filmen. Öffnen Sie die Kamera und wählen Sie «Video». Machen Sie zuerst eine Probe von fünf Sekunden. Prüfen Sie Bild und Ton. Filmen Sie dann den ganzen Ablauf. Zwei oder drei Versuche reichen. Behalten Sie den besten.</p><p><b>Weg B, Bildspot:</b> Machen Sie vier eigene Fotos für Ihren Plan. Erstellen Sie in PowerPoint vier leere Folien im Querformat. Fügen Sie pro Folie ein Foto und einen kurzen Satz ein. Zeigen Sie jede Folie später fünf Sekunden lang. Ihr Produktname steht auf der letzten Folie.</p><p>Verwenden Sie nur Aufnahmen von Gegenständen und Ihren eigenen Händen. So können alle mitmachen, ohne vor die Kamera treten zu müssen. Musik ist für diesen Auftrag nicht nötig.</p>",
+          "help": [
+            "photos",
+            "slide",
+            "adtime"
+          ],
+          "fields": [
+            [
+              "zwischenstand",
+              "Mein Zwischenstand nach der Herstellung",
+              "Dateiname: …\nDas ist bereits fertig: …\nDas fehlt noch: …"
+            ]
+          ]
+        },
+        {
+          "title": "Mit einer Person testen",
+          "time": 15,
+          "text": "<p>Zeigen Sie den Spot einmal, ohne ihn vorher zu erklären. Fragen Sie danach: <b>«Für welchen Gegenstand war das? Was soll daran gut sein? Welcher Satz ist hängen geblieben?»</b> Notieren Sie die Antworten. Prüfen Sie die Dauer mit einer Uhr.</p><p>Überarbeiten Sie eine Stelle, die noch nicht funktioniert: etwa einen unleserlichen Text, eine zu dunkle Aufnahme oder einen zu langen Satz. Ist gerade niemand frei, spielen Sie den Spot mit Abstand noch einmal ab und beantworten Sie dieselben Fragen selbst. Kennzeichnen Sie das als Selbsttest.</p>",
+          "fields": [
+            [
+              "test",
+              "Was kam beim Test heraus?",
+              "Getestet mit / Selbsttest: …\nErkanntes Produkt: …\nErkannter Nutzen: …\nDauer: … Sekunden\nEine Änderung: vorher … / nachher …"
+            ]
+          ]
+        },
+        {
+          "title": "Ergebnis prüfen und speichern",
+          "time": 10,
+          "text": "<p>Prüfen Sie Ihren Spot mit den Punkten unten. Öffnen Sie danach die gespeicherte Datei noch einmal. Lässt sich alles abspielen? Bei einem Bildspot starten Sie die Bildschirmpräsentation und zählen je Folie fünf Sekunden.</p><p><b>Ergebnisdatei:</b> Ihr Film als <b>MP4 oder MOV</b>, oder Ihr Bildspot als <b>PPTX</b>. Nennen Sie die Datei zum Beispiel «Werbespot Alex». Ein PDF ersetzt hier den abspielbaren Spot nicht.</p>",
+          "checks": true,
+          "help": [
+            "save"
+          ]
+        },
+        {
+          "title": "Kurz erklären und abschliessen",
+          "time": 5,
+          "text": "<p>Erklären Sie unten eine wichtige Entscheidung. Speichern Sie Ihren Projektbericht und Ihre Ergebnisdatei im selben Ordner. Öffnen Sie danach <b>«Stopp &amp; Protokoll»</b>: Halten Sie in vier kurzen Angaben fest, was erledigt ist, wo Ihre Datei liegt und wie Sie nächstes Mal weiterarbeiten. Auch ein unfertiger Stand ist in Ordnung.</p>",
+          "finish": true
+        }
+      ],
+      "checks": [
+        "Mein Spot dauert 15–30 Sekunden oder besteht aus vier Folien zu je fünf Sekunden.",
+        "Der Gegenstand ist deutlich zu erkennen.",
+        "Ich zeige einen nachvollziehbaren Nutzen.",
+        "Produktname und Werbesatz kommen vor.",
+        "Bild und Text sind gut erkennbar; gesprochener Text ist verständlich.",
+        "Ich habe einen Test gemacht und mindestens eine Verbesserung festgehalten.",
+        "Meine Aufnahmen sind selbst gemacht und meine Ergebnisdatei lässt sich öffnen."
+      ],
+      "extensions": [
+        "Gestalten Sie einen zweiten Schluss für eine andere Zielgruppe. Vergleichen Sie die Wirkung.",
+        "Zeigen Sie dieselbe Botschaft einmal ernst und einmal humorvoll. Erklären Sie den Unterschied.",
+        "Oder: Sichern Sie Ihren Grundauftrag und wählen Sie auf der Seite Woche 45 eines der bisherigen Projekte als Anschlussauftrag."
+      ],
+      "reflection": "Ich habe mich für diese Aufnahme und diesen Werbesatz entschieden, weil …",
+      "rescue": "Nehmen Sie den Radiergummi oder einen Stift. Filmen Sie 20 Sekunden in einer Aufnahme. Zeigen Sie das Problem, die Anwendung und den Gegenstand. Sprechen Sie zum Schluss Ihren Werbesatz."
+    },
+    {
+      "id": "geschichte",
+      "nr": "02",
+      "original": "Idee 3",
+      "title": "Eine Geschichte zum Anklicken",
+      "short": "Eine Nachricht, zwei Entscheidungen und drei mögliche Enden. Wer Ihre Geschichte spielt, entscheidet den Weg.",
+      "tag": "Interaktive PowerPoint",
+      "difficulty": "Mit genauer Linkhilfe",
+      "color": "#355cb5",
+      "product": "Eine PowerPoint mit sechs Folien, zwei Entscheidungsstellen und drei unterschiedlichen Enden.",
+      "tools": "PowerPoint im Browser mit Ihrem vorhandenen Schulkonto oder die PowerPoint-App auf dem Computer.",
+      "work": "Allein oder zu zweit. Zu zweit schreibt jede Person mindestens einen Handlungszweig und richtet mindestens einen Link ein.",
+      "learn": "Sie planen Verzweigungen und verlinken Folien. Sie prüfen, ob jede Entscheidung zu einer passenden Folge führt.",
+      "choices": [
+        [
+          "Eine unbekannte Nachricht",
+          "Jemand bietet Ihnen eine überraschende Gelegenheit an. Prüfen, antworten oder ignorieren?"
+        ],
+        [
+          "Ein Fund im Bus",
+          "Sie finden einen ungewöhnlichen Gegenstand. Wem gehört er, und was tun Sie?"
+        ],
+        [
+          "Eine Panne vor dem Auftritt",
+          "Kurz vor einem Anlass fehlt etwas Wichtiges. Sie haben zwei Lösungsideen."
+        ],
+        [
+          "Eigene Geschichte",
+          "Eine alltägliche oder erfundene Situation. Sie muss ohne lange Vorgeschichte verständlich sein."
+        ]
+      ],
+      "steps": [
+        {
+          "title": "Alle Wege des Beispiels spielen",
+          "time": 5,
+          "text": "<p>Spielen Sie <b>«Zwei Tickets»</b> mindestens dreimal. Probieren Sie beide Schaltflächen aus und finden Sie alle drei Enden. Eine Schaltfläche ist eine anklickbare Fläche.</p><p>Im Grundauftrag bauen Sie dieselbe überschaubare Struktur mit einer <b>eigenen</b> Geschichte. Bilder und Animationen sind freiwillig. Entscheidend sind verständliche Entscheidungen und funktionierende Links.</p><p>Unter der spielbaren Geschichte sehen Sie den gesamten Weg als Schema. Die Zahlen sind die Foliennummern. Ein Pfeil entspricht genau einer verlinkten Schaltfläche.</p>",
+          "sample": "story"
+        },
+        {
+          "title": "Situation und Folgen festlegen",
+          "time": 10,
+          "text": "<p>Wählen Sie ein Thema. Beschreiben Sie die Ausgangslage in zwei bis drei Sätzen. Bestimmen Sie zwei mögliche Handlungen. Mindestens eine Handlung führt zu einer zweiten Entscheidung. Planen Sie insgesamt drei verschiedene Enden.</p><p><b>Eine echte Entscheidung:</b> «Ich rufe die bekannte Nummer an» oder «Ich frage im Gruppenchat nach». <b>Keine echte Entscheidung:</b> «Weiter» oder «Weiterlesen».</p><p>Ein Ende soll aus der gewählten Handlung entstehen. Es muss nicht immer ein «richtiges» und ein «falsches» Ende geben.</p>",
+          "choices": true,
+          "fields": [
+            [
+              "idee",
+              "Meine Ausgangslage und drei Enden",
+              "Titel: …\nAusgangslage: …\nEnde A: …\nEnde B: …\nEnde C: …"
+            ]
+          ]
+        },
+        {
+          "title": "Den Folienplan ausfüllen",
+          "time": 10,
+          "text": "<p>Planen Sie <b>sechs Folien, zwei Entscheidungen und drei verschiedene Enden</b>. Verwenden Sie das Schema unten als Bauplan. Zu jeder Schaltfläche schreiben Sie zuerst den Text und die Zielnummer auf.</p><div class=\"diagram\" data-schema=\"story\"></div><p><b>So lesen Sie den Plan:</b> Starten Sie auf Folie 1. Folie 2 verzweigt zu Folie 3 oder Ende A auf Folie 4. Folie 3 verzweigt zu Ende B auf Folie 5 oder Ende C auf Folie 6. Jedes Ende hat den Link «Noch einmal» zu Folie 1. Foliennummer und Reihenfolge der Handlung sind deshalb nicht immer gleich.</p><p><b>Eigene Idee:</b> Ein Rucksack fehlt. Suchen Sie am letzten Ort oder gehen Sie direkt heim? Am letzten Ort: Fragen Sie beim Empfang oder suchen Sie im Raum? Schreiben Sie für alle drei Wege ein nachvollziehbares Ende. Ihre Geschichte braucht keine Gefahr und keine Strafe.</p>",
+          "fields": [
+            [
+              "plan",
+              "Mein vollständiger Folienplan",
+              "1 Titel / Einstieg: …\n2 Situation: …\n   Handlung A nach 3: …\n   Handlung B nach 4: …\n3 Situation: …\n   Handlung C nach 5: …\n   Handlung D nach 6: …\n4 Ende A: …\n5 Ende B: …\n6 Ende C: …"
+            ]
+          ]
+        },
+        {
+          "title": "Folien gestalten und verbinden",
+          "time": 35,
+          "text": "<p>Erstellen Sie zuerst alle sechs Folien mit eindeutigen Titeln. Schreiben Sie die Texte hinein. Verwenden Sie eine gut lesbare Schrift, beispielsweise Aptos oder Bahnschrift. Als Richtwert: Titel 32–40 pt, Text mindestens 22 pt.</p><p>Setzen Sie unten die Schaltflächen ein. Im Browser können Sie ein Textfeld mit einem farbigen Rechteck dahinter verwenden und den <b>gesamten Schaltflächentext</b> verlinken. In der Windows-App lässt sich auch die ganze Form verlinken. Erst wenn alle Folien vorhanden sind, verbinden Sie die Schaltflächen mit den passenden Zielen.</p><p><b>Nach etwa 20 Minuten:</b> Alle Texte sollten vorhanden sein. Wenn noch etwas fehlt, lassen Sie Bilder und Dekoration weg und richten Sie die Links ein.</p><p><b>Linkliste zum Abhaken:</b> 1→2, 2→3, 2→4, 3→5, 3→6, 4→1, 5→1 und 6→1. Das sind acht Verbindungen. Benennen Sie die Folien «1 Start», «2 Entscheidung», «3 Entscheidung», «4 Ende A», «5 Ende B», «6 Ende C», damit Sie im Linkdialog das richtige Ziel finden.</p>",
+          "help": [
+            "slide",
+            "links",
+            "storyfix"
+          ],
+          "fields": [
+            [
+              "zwischenstand",
+              "Mein Zwischenstand",
+              "Die Texte sind fertig auf den Folien: …\nDiese Links funktionieren bereits: …\nDas fehlt noch: …"
+            ]
+          ]
+        },
+        {
+          "title": "Jeden Weg testen",
+          "time": 15,
+          "text": "<p>Starten Sie die Bildschirmpräsentation. Testen Sie mit den Schaltflächen diese drei Wege: <b>1–2–4</b>, <b>1–2–3–5</b> und <b>1–2–3–6</b>. Prüfen Sie auch von jedem Ende den Rückweg zu Folie 1.</p><p>Lassen Sie danach eine andere Person ohne Erklärung einen Weg spielen. Fragen Sie: «Wussten Sie bei jeder Schaltfläche, was Sie entscheiden? Passt das Ende zu Ihrem Weg?» Verbessern Sie einen Text oder einen Link. Wenn niemand frei ist, führen Sie den Test selbst durch und notieren Sie «Selbsttest».</p>",
+          "fields": [
+            [
+              "test",
+              "Mein Testprotokoll",
+              "Weg 1–2–4: …\nWeg 1–2–3–5: …\nWeg 1–2–3–6: …\nRückwege von 4, 5 und 6: …\nRückmeldung / Selbsttest: …\nVerbesserung vorher / nachher: …"
+            ]
+          ]
+        },
+        {
+          "title": "Prüfen und als PowerPoint speichern",
+          "time": 10,
+          "text": "<p>Prüfen Sie die Punkte unten. Speichern Sie die Geschichte als <b>PPTX</b>, zum Beispiel «Geschichte Alex». Öffnen Sie diese Datei und testen Sie mindestens einen vollständigen Weg erneut.</p><p>Geben Sie die bearbeitbare PowerPoint ab. Ein PDF oder Video ersetzt die interaktive Datei bei diesem Projekt nicht.</p>",
+          "checks": true,
+          "help": [
+            "save"
+          ]
+        },
+        {
+          "title": "Eine Entscheidung erklären",
+          "time": 5,
+          "text": "<p>Erklären Sie unten eine wichtige Entscheidung. Speichern Sie Ihren Projektbericht und Ihre Ergebnisdatei im selben Ordner. Öffnen Sie danach <b>«Stopp &amp; Protokoll»</b>: Halten Sie in vier kurzen Angaben fest, was erledigt ist, wo Ihre Datei liegt und wie Sie nächstes Mal weiterarbeiten. Auch ein unfertiger Stand ist in Ordnung.</p>",
+          "finish": true
+        }
+      ],
+      "checks": [
+        "Meine Geschichte hat sechs Folien, zwei Entscheidungsstellen und drei Enden.",
+        "Jede Entscheidung bietet zwei verständliche Handlungen an.",
+        "Die Folgen passen zur jeweiligen Entscheidung.",
+        "Jede Folie enthält höchstens 50 Wörter Erzähltext und gut lesbare Schaltflächen.",
+        "Alle drei Wege und alle Rückwege funktionieren.",
+        "Ich habe eine Rückmeldung oder einen Selbsttest festgehalten und etwas verbessert.",
+        "Die gespeicherte PPTX lässt sich öffnen und spielen."
+      ],
+      "extensions": [
+        "Ergänzen Sie einen weiteren Entscheidungszweig. Erweitern Sie zuerst den Plan und testen Sie anschliessend alle neuen Wege.",
+        "Erzählen Sie einen Abschnitt aus der Sicht einer anderen Figur. Prüfen Sie, wie sich dadurch die Entscheidungen verändern.",
+        "Oder: Sichern Sie Ihren Grundauftrag und wählen Sie auf der Seite Woche 45 eines der bisherigen Projekte als Anschlussauftrag."
+      ],
+      "reflection": "Die Entscheidung «…» führt bei mir zu … Das passt, weil …",
+      "rescue": "Übernehmen Sie den Plan mit sechs Folien. Schreiben Sie pro Folie zwei kurze Sätze. Bauen und testen Sie zuerst den Weg 1–2–4–1. Ergänzen Sie dann 1–2–3–5–1 und 1–2–3–6–1. Bilder sind freiwillig."
+    },
+    {
+      "id": "plakat",
+      "nr": "03",
+      "original": "Idee 5",
+      "title": "Ein Plakat verbessern",
+      "short": "Drei Themen, drei Gestaltungsprobleme. Machen Sie aus einem unübersichtlichen Entwurf ein verständliches Informationsplakat.",
+      "tag": "Gestaltung in PowerPoint",
+      "difficulty": "Gut für den Einstieg",
+      "color": "#816020",
+      "product": "Ein verbessertes Plakat, die Ausgangsversion und eine kurze Erklärung von drei Änderungen.",
+      "tools": "PowerPoint. Alle nötigen Angaben und die Ausgangsplakate stehen auf dieser Seite. Bilder sind freiwillig.",
+      "work": "Allein oder zu zweit. Zu zweit entwickelt jede Person zuerst eine kleine Skizze; danach entscheiden Sie gemeinsam und teilen die Gestaltung auf.",
+      "learn": "Sie ordnen Informationen nach Wichtigkeit und verbessern Lesbarkeit, Kontrast und Abstände.",
+      "choices": [
+        [
+          "Mein Lehrberuf",
+          "Startmaterial: Logistiker/in EFZ, Fachrichtung Lager. Ein Berufsporträt mit Aufgaben, Ausbildung, Arbeitsort und Anforderungen. Sie dürfen später Ihren eigenen Lehr- oder Wunschberuf einsetzen."
+        ],
+        [
+          "Porträt einer NGO",
+          "Startmaterial: WWF Schweiz. Erklären Sie, was die Organisation erreichen möchte, in welchen Bereichen sie arbeitet und wie sie vorgeht. NGO bedeutet Nichtregierungsorganisation."
+        ],
+        [
+          "Plakat über ein Körpersystem",
+          "Startmaterial: das Atmungssystem. Zeigen Sie den Weg der Luft, den Gasaustausch und die Rolle des Zwerchfells. Eine beschriftete Ablaufgrafik hilft beim Verstehen."
+        ]
+      ],
+      "steps": [
+        {
+          "title": "Vorher und nachher vergleichen",
+          "time": 5,
+          "text": "<p>Sehen Sie sich die drei Vorher-Nachher-Paare an. Die Ausgangsplakate sind absichtlich unübersichtlich: Beim Beruf sind Schriften und Abstände ungeordnet, beim NGO-Porträt dominiert Dekoration, beim Atmungssystem fehlt eine erkennbare Leserichtung.</p><p>Zu jedem Thema gibt es eine vollständige gute Fassung und drei begründete Änderungen. <b>Wählen Sie ein Thema.</b> Ihre eigene Fassung darf anders aussehen, soll aber die Informationen vollständig und klar vermitteln.</p>",
+          "sample": "poster"
+        },
+        {
+          "title": "Thema wählen und Inhalt sichern",
+          "time": 10,
+          "text": "<p>Wählen Sie ein Thema. Laden Sie das dazugehörige Ausgangsplakat unten herunter. Es kommt später als erste Folie in Ihre PowerPoint. Darunter finden Sie die verbindlichen Fakten mit Quellen. Diese Fakten können Sie direkt verwenden. Sie müssen für den Grundauftrag nichts recherchieren.</p><p><b>Ihr eigener Lehr- oder Wunschberuf:</b> Wenn Sie beim Berufsthema andere Inhalte einsetzen möchten, öffnen Sie <a href=\"https://www.berufsberatung.ch/de/berufe\" target=\"_blank\" rel=\"noopener\">berufsberatung.ch</a>, suchen Ihren Beruf und ersetzen die Fakten vollständig. Planen Sie dafür höchstens fünf zusätzliche Minuten. Bei Zeitmangel verwenden Sie Logistiker/in EFZ.</p>",
+          "choices": true,
+          "posterpicker": true,
+          "fields": [
+            [
+              "idee",
+              "Mein Thema und drei Gestaltungsprobleme",
+              "Thema: …\n1. Problem im Ausgangsplakat: …\n2. Problem: …\n3. Problem: …"
+            ]
+          ]
+        },
+        {
+          "title": "Die neue Ordnung planen",
+          "time": 10,
+          "text": "<p>Skizzieren Sie auf Papier drei bis vier Bereiche. Schreiben Sie erst die Überschriften hinein, dann ordnen Sie die Fakten zu.</p><ul><li><b>Beruf:</b> grosser Berufsname; typische Aufgaben; Ausbildung und Anforderungen.</li><li><b>NGO:</b> Name und Ziel; Themen; konkrete Arbeitsweise.</li><li><b>Körpersystem:</b> Titel; Weg der Luft mit Pfeilen; Gasaustausch; Atembewegung.</li></ul><p>Bestimmen Sie, was zuerst, als Zweites und als Drittes auffallen soll. Reservieren Sie unten einen ruhigen Platz für die Quelle. Sie dürfen die Skizze als Foto in Ihre PowerPoint aufnehmen.</p>",
+          "fields": [
+            [
+              "plan",
+              "Mein Aufbau",
+              "Zuerst fällt auf: …\nDanach erkennt man: …\nMeine Bereiche heissen: …\nDiese Farben und diese Schrift verwende ich: …"
+            ]
+          ]
+        },
+        {
+          "title": "Das neue Plakat gestalten",
+          "time": 35,
+          "text": "<p>Erstellen Sie drei Folien in PowerPoint: <b>1 Ausgangsplakat · 2 meine Verbesserung · 3 meine Erklärung.</b> Fügen Sie das heruntergeladene Ausgangsplakat auf Folie 1 ein. Gestalten Sie Folie 2 mit eigenen Textfeldern und Formen neu. Das Ausgangsbild lässt sich nicht wie ein Textfeld bearbeiten.</p><ol><li>Beginnen Sie auf Folie 2 mit einer leeren Folie. Nutzen Sie eine gut lesbare Schrift und höchstens zwei Schriftgrössen für Überschriften.</li><li>Schreiben Sie den wichtigsten Begriff gross. Gruppieren Sie zusammengehörige Fakten unter kurzen Überschriften.</li><li>Geben Sie jedem Textblock Platz. Bei einer normalen Querformatfolie helfen etwa 44–60 pt für den Titel und mindestens 24 pt für den Haupttext. Quellen dürfen kleiner sein.</li><li>Beim Körpersystem fügen Sie beschriftete Pfeile ein: Luftweg und Gasaustausch sind zwei unterschiedliche Abläufe. Lassen Sie Sauerstoff <b>ins Blut</b> und Kohlendioxid <b>in die Lungenbläschen</b> zeigen.</li><li>Tragen Sie unten die Quelle ein. Schreiben Sie auf Folie 3 drei Sätze nach dem Muster «Vorher … Jetzt … Dadurch …».</li></ol><p><b>Eigene Gestaltung:</b> Ändern Sie gegenüber der fertigen Musterlösung mindestens die Anordnung und einen weiteren Punkt, etwa Farben, Überschriften oder grafische Darstellung. Übernehmen Sie die überprüften Fakten, nicht das fertige Bild als Ihre Lösung.</p>",
+          "help": [
+            "slide",
+            "posterdesign"
+          ],
+          "fields": [
+            [
+              "zwischenstand",
+              "Meine drei Änderungen",
+              "1. Vorher … Jetzt … Dadurch …\n2. Vorher … Jetzt … Dadurch …\n3. Vorher … Jetzt … Dadurch …"
+            ]
+          ]
+        },
+        {
+          "title": "Den Fünfsekundentest durchführen",
+          "time": 15,
+          "text": "<p>Blenden Sie Ihre Folie fünf Sekunden ein. Fragen Sie eine Person danach: «Was ist das Thema? Welche zwei Aussagen sind Ihnen geblieben?» Ohne Testperson schauen Sie nach einer kurzen Pause selbst nochmals auf die Folie und kennzeichnen dies als Selbsttest.</p><p>Prüfen Sie anschliessend jede Faktenzeile gegen den Faktenkasten. Ändern Sie mindestens eine unklare Stelle. Beispiel: «Der Titel war zu klein. Ich habe ihn von 28 auf 52 pt vergrössert. Jetzt erkennt man den Beruf sofort.»</p>",
+          "fields": [
+            [
+              "test",
+              "Mein Lesbarkeitstest",
+              "Testperson / Selbsttest: …\nSofort erkannt: …\nNoch unklar: …\nAlle Angaben geprüft: …\nVerbesserung vorher / nachher: …"
+            ]
+          ]
+        },
+        {
+          "title": "Vollständigkeit und Export prüfen",
+          "time": 10,
+          "text": "<p>Haken Sie die Kriterien unten ab. Speichern Sie Ihre drei Folien als <b>PPTX und PDF</b>, zum Beispiel «Plakat Alex». Öffnen Sie das PDF und kontrollieren Sie, ob die drei Seiten vollständig sind.</p><p>Die PowerPoint bleibt bearbeitbar. Das PDF zeigt zuverlässig, wie Ihr Ergebnis aussieht.</p>",
+          "checks": true,
+          "help": [
+            "save",
+            "pdf"
+          ]
+        },
+        {
+          "title": "Eine Gestaltungsentscheidung erklären",
+          "time": 5,
+          "text": "<p>Erklären Sie unten eine wichtige Entscheidung. Speichern Sie Ihren Projektbericht und Ihre Ergebnisdatei im selben Ordner. Öffnen Sie danach <b>«Stopp &amp; Protokoll»</b>: Halten Sie in vier kurzen Angaben fest, was erledigt ist, wo Ihre Datei liegt und wie Sie nächstes Mal weiterarbeiten. Auch ein unfertiger Stand ist in Ordnung.</p>",
+          "finish": true
+        }
+      ],
+      "checks": [
+        "Ausgangsplakat, eigene Fassung und Erklärung sind vorhanden.",
+        "Alle Fakten aus dem gewählten Faktenkasten sind sinngemäss enthalten und korrekt.",
+        "Die Quellenangabe steht auf dem Plakat.",
+        "Titel, Textgruppen und Leserichtung sind sofort erkennbar.",
+        "Die eigene Fassung unterscheidet sich in Anordnung und mindestens einem weiteren Gestaltungspunkt vom Muster.",
+        "Ich erkläre drei konkrete Änderungen mit ihrer Wirkung.",
+        "Ich habe getestet, etwas verbessert und die gespeicherte PDF geprüft."
+      ],
+      "extensions": [
+        "Gestalten Sie eine zweite Version im Hochformat. Ordnen Sie die Inhalte neu, statt das ganze Plakat zu strecken.",
+        "Reduzieren Sie das Plakat auf Schwarz und Weiss. Prüfen Sie, ob die Hierarchie auch ohne Farbe funktioniert.",
+        "Oder: Sichern Sie Ihren Grundauftrag und wählen Sie auf der Seite Woche 45 eines der bisherigen Projekte als Anschlussauftrag."
+      ],
+      "reflection": "Meine wichtigste Änderung ist … Dadurch können die Betrachtenden …",
+      "rescue": "Wählen Sie das Berufsporträt. Verwenden Sie den fertigen Faktenkasten. Ordnen Sie Ihre Folie in drei Felder: Berufsname, Aufgaben, Ausbildung und Anforderungen. Eine dunkle Schrift auf weissem Hintergrund genügt. Verzichten Sie auf Bilder."
+    },
+    {
+      "id": "app",
+      "nr": "04",
+      "original": "Idee 6",
+      "title": "Eine eigene App entwerfen",
+      "short": "Planen Sie eine kleine App und bauen Sie fünf Bildschirme, die sich anklicken lassen.",
+      "tag": "Klickbarer Prototyp",
+      "difficulty": "Mit genauer Linkhilfe",
+      "color": "#20715d",
+      "product": "Eine PowerPoint mit fünf verbundenen App-Bildschirmen und ein dokumentierter Bedienungstest.",
+      "tools": "PowerPoint im Browser mit Ihrem vorhandenen Schulkonto oder die PowerPoint-App.",
+      "work": "Allein oder zu zweit. Zu zweit gestaltet jede Person mindestens zwei Bildschirme und richtet mindestens einen Link ein.",
+      "learn": "Sie planen eine verständliche Bedienung und unterscheiden zwischen einem Entwurf und einer programmierten App.",
+      "choices": [
+        [
+          "Fundbüro · Wieder da",
+          "Finden Sie die schwarze Trinkflasche, lesen Sie den Abholort und merken Sie den Fund."
+        ],
+        [
+          "Kleider & Outfits · Schon im Schrank",
+          "Stellen Sie aus vorhandenen Kleidern den Look «Schultag» zusammen und merken Sie ihn."
+        ],
+        [
+          "Make-up · Mein Look",
+          "Wählen Sie einen dezenten Look mit vorhandenen Produkten und öffnen Sie die Packliste."
+        ],
+        [
+          "Training · Meine Trainingswoche",
+          "Planen Sie Ihren bereits bekannten Trainingstermin am Dienstag und sehen Sie die Wochenübersicht."
+        ],
+        [
+          "Lernen · Lernrunde",
+          "Wählen Sie zehn Minuten Französisch und starten Sie die vorbereitete Lerneinheit."
+        ],
+        [
+          "Essen & Pause · Snackpause",
+          "Wählen Sie einen Snack aus vorhandenen Zutaten und merken Sie die Zutatenliste."
+        ],
+        [
+          "Schulweg · Los jetzt",
+          "Wählen Sie eine fiktive Verbindung und sehen Sie, wann Sie zu Hause losgehen müssten."
+        ],
+        [
+          "Ausgaben im Blick · Bis Freitag",
+          "Prüfen Sie an erfundenen Zahlen, wie viel nach einem geplanten Einkauf übrig bleibt."
+        ],
+        [
+          "Eigene Idee",
+          "Zum Beispiel: Musik für eine Lernpause wählen, einen Gegenstand ausleihen oder eine Schultasche packen. Begrenzen Sie sich auf eine Hauptaufgabe."
+        ]
+      ],
+      "steps": [
+        {
+          "title": "Die Beispiel-App ausprobieren",
+          "time": 5,
+          "text": "<p>Probieren Sie zuerst eine fertige Beispiel-App aus. Wählen Sie im Menü ein Thema, lesen Sie den Testauftrag und klicken Sie bis zur Bestätigung. Testen Sie auch «Zurück» und «Start».</p><p>Ein <b>Prototyp</b> ist ein ausprobierbarer Entwurf. Er wechselt hier zwischen fünf vorbereiteten Ansichten. Es gibt keine echte Suche, Buchung, Speicherung, Berechnung oder Anmeldung. Genau diese Art von Entwurf bauen Sie in PowerPoint.</p>",
+          "sample": "app"
+        },
+        {
+          "title": "Ein Problem und eine Hauptaufgabe wählen",
+          "time": 10,
+          "text": "<p>Wählen Sie ein Thema. Beschreiben Sie eine konkrete Person und eine Aufgabe, die sie mit Ihrer App erledigen soll. Begrenzen Sie sich auf eine Hauptfunktion.</p><p><b>Beispiel:</b> «Eine lernende Person hat ihre Trinkflasche verloren. Sie möchte sehen, ob sie gefunden wurde, und erfahren, wo sie sie abholen kann.»</p><p>Planen Sie keinen Login, keine Bezahlung und keine echte Chatfunktion. Verwenden Sie erfundene Beispieldaten. Das hält Ihren Entwurf übersichtlich.</p>",
+          "choices": true,
+          "fields": [
+            [
+              "idee",
+              "Meine App und ihre Hauptaufgabe",
+              "App-Name: …\nFür wen: …\nDieses Problem löst sie: …\nDiese eine Aufgabe soll man erledigen können: …"
+            ]
+          ]
+        },
+        {
+          "title": "Fünf Bildschirme planen",
+          "time": 10,
+          "text": "<p>Zeichnen Sie zuerst fünf Kästen. Jeder Kasten wird später eine Folie. Schreiben Sie in jeden Kasten: <b>Titel, wichtigste Information und Schaltfläche mit Zielnummer.</b> Unten sehen Sie die fünf Ansichten des gewählten Beispiels gleichzeitig.</p><div data-schema=\"app\"></div><p><b>Das Grundmuster:</b> 1 Start → 2 Auswahl → 3 Detail → 4 nächster Schritt → 5 Bestätigung. Dazu kommen die Rückwege. Kopieren Sie diese Struktur für Ihre eigene Idee, ändern Sie aber Inhalte und Beschriftungen.</p><p><b>Planungsbeispiel «Schon im Schrank»:</b> 1 Looks ansehen → 2 Schultag auswählen → 3 Kleidungsstücke prüfen → 4 Look merken → 5 Bestätigung. Ein Button «Zurück» führt jeweils genau eine Ansicht zurück. Auf Ansicht 5 führen «Zur Auswahl» und «Start» zu 2 beziehungsweise 1.</p>",
+          "fields": [
+            [
+              "plan",
+              "Mein Bildschirmplan",
+              "1 Titel / Inhalt / Schaltfläche und Ziel: …\n2 Titel / Inhalt / Schaltflächen und Ziele: …\n3 Titel / Inhalt / Schaltflächen und Ziele: …\n4 Titel / Inhalt / Schaltflächen und Ziele: …\n5 Titel / Inhalt / Schaltflächen und Ziele: …"
+            ]
+          ]
+        },
+        {
+          "title": "Fünf Ansichten bauen und verbinden",
+          "time": 35,
+          "text": "<p>Arbeiten Sie die vier Bauetappen nacheinander ab. <b>Erst Inhalt, dann Verbindungen, dann Gestaltung.</b> Nach jeder Etappe können Sie prüfen, ob das sichtbare Ergebnis stimmt.</p>\n<div class=\"buildstage\"><h3>A · Eine Grundfläche bauen <small>5 Min.</small></h3><p>Öffnen Sie eine leere Präsentation. Wählen Sie «Start → Layout → Leer». Fügen Sie über «Einfügen → Formen → Rechteck» eine hochkant stehende Fläche ein. Die Folie selbst darf im Querformat bleiben. Geben Sie der Fläche einen hellen Hintergrund.</p><div data-schema=\"wireframe\"></div><p>Fügen Sie mit «Einfügen → Textfeld» oben den App-Namen, in der Mitte eine kurze Erklärung und unten den Text für die Hauptaktion ein. Legen Sie eine farbige Form hinter den Buttontext. Auf der Startansicht steht klein <b>«Entwurf mit Beispieldaten»</b>.</p><p class=\"checkpoint\"><b>Kontrolle:</b> Erkennen Sie Name, Zweck und nächste Handlung sofort?</p></div>\n<div class=\"buildstage\"><h3>B · Daraus fünf Folien machen <small>10 Min.</small></h3><p>Klicken Sie links mit der rechten Maustaste auf die Folie und wählen Sie «Folie duplizieren». Wiederholen Sie das, bis fünf Folien vorhanden sind. Ersetzen Sie die Texte nach Ihrem Plan. Verwenden Sie die Titel «1 Start», «2 Auswahl», «3 Detail», «4 nächster Schritt», «5 Bestätigung», damit Sie die Ziele später eindeutig erkennen.</p><p>Ergänzen Sie ab Folie 2 einen Button «Zurück». Folie 5 erhält «Zur Auswahl» und «Start». Lassen Sie Position, Schrift und Farbe dieser Elemente gleich. Verzichten Sie auf Menüs und Suchfelder, die nicht funktionieren.</p><p class=\"checkpoint\"><b>Kontrolle:</b> Alle fünf Ansichten enthalten echte Beispieltexte und keine Platzhalter mehr.</p></div>\n<div class=\"buildstage\"><h3>C · Einen Link verstehen, dann alle einrichten <small>15 Min.</small></h3><div data-schema=\"link\"></div><p>Markieren Sie im Browser <b>den vollständigen Buttontext</b>. Wählen Sie «Einfügen → Link → Diese Präsentation». Wählen Sie die Zielansicht und bestätigen Sie. In der Windows-App können Sie auch die ganze Form am Rand markieren und unter «Einfügen → Link → Aktuelles Dokument» das Ziel auswählen.</p><p><b>Konkretes Beispiel:</b> Auf Folie 3 der Fundbüro-App soll «Abholort ansehen» auf Folie 4 führen. Markieren Sie den Text auf <b>Folie 3</b>, wählen Sie im Dialog <b>Folie 4</b> und bestätigen Sie. Der Link führt zu einer Folie innerhalb Ihrer Datei, nicht zur Internetadresse der Präsentation.</p><div class=\"linkpractice\"><label for=\"practiceTarget\"><b>Kurze Trockenübung:</b> Wohin muss «Abholort ansehen» auf Folie 3 führen?</label><select id=\"practiceTarget\"><option value=\"\">Ziel wählen</option><option value=\"1\">Folie 1 · Start</option><option value=\"3\">Folie 3 · Details</option><option value=\"4\">Folie 4 · Abholort</option></select><button class=\"btn small\" onclick=\"checkLinkPractice()\">Ziel prüfen</button><p id=\"practiceFeedback\" role=\"status\"></p></div><p>Richten Sie anschliessend alle Haupt- und Rückwege ein. <b>Vorsicht beim Duplizieren:</b> Ein kopierter Button kann noch das alte Ziel haben. Prüfen Sie jeden einzelnen Link.</p></div>\n<div class=\"buildstage\"><h3>D · Im Spielmodus testen <small>5 Min.</small></h3><p>Starten Sie «Bildschirmpräsentation → Von Beginn an» beziehungsweise «Präsentieren». Klicken Sie auf die <b>verlinkten Wörter</b> und spielen Sie den Hauptweg bis zur Bestätigung durch. Testen Sie danach jeden Rückweg. Beenden Sie mit Esc.</p><p class=\"checkpoint\"><b>Kontrolle:</b> Alle sichtbaren Buttons führen dorthin, wo ihr Text es verspricht. Ein Klick auf den leeren Folienhintergrund kann zur nächsten Folie wechseln; das ist noch kein Beweis für einen funktionierenden Link.</p></div>",
+          "help": [
+            "slide",
+            "links",
+            "appdesign"
+          ],
+          "fields": [
+            [
+              "zwischenstand",
+              "Mein Zwischenstand",
+              "Diese Bildschirme sind fertig: …\nDiese Verbindungen funktionieren: …\nDas fehlt noch: …"
+            ]
+          ]
+        },
+        {
+          "title": "Die Bedienung beobachten",
+          "time": 15,
+          "text": "<p>Starten Sie die Bildschirmpräsentation. Geben Sie einer Person nur die Aufgabe aus Schritt 2. Erklären Sie keine Schaltflächen. Beobachten Sie: Wo klickt die Person zuerst? Wo zögert sie? Erreicht sie die Bestätigung?</p><p>Notieren Sie eine konkrete Beobachtung. Ändern Sie anschliessend eine Beschriftung, einen Rückweg oder die Anordnung. Prüfen Sie alle Links erneut. Ohne Testperson: durchlaufen Sie die Hauptaufgabe und jeden Rückweg selbst und kennzeichnen Sie dies als Selbsttest.</p><p><b>Beispiel einer sinnvollen Änderung:</b> Vorher stand «Weiter». Jetzt steht «Abholort ansehen». Dadurch weiss man vor dem Klicken, welche Information folgt.</p>",
+          "fields": [
+            [
+              "test",
+              "Mein Bedienungstest",
+              "Testauftrag: …\nTestperson / Selbsttest: …\nHier war die Bedienung klar: …\nHier gab es Zögern: …\nÄnderung vorher / nachher: …\nHauptweg und Rückwege erneut geprüft: …"
+            ]
+          ]
+        },
+        {
+          "title": "Alle Schaltflächen prüfen und speichern",
+          "time": 10,
+          "text": "<p>Haken Sie die Kriterien unten ab. Speichern Sie die fünf Ansichten als <b>PPTX</b>, zum Beispiel «App Alex». Öffnen Sie die gespeicherte Datei und führen Sie die Hauptaufgabe noch einmal aus.</p><p>Die App ist fertig, wenn ihr geplanter Ablauf verständlich funktioniert. Sie müssen keinen Programmcode schreiben. Geben Sie die PowerPoint ab; ein PDF allein zeigt die Bedienung nicht zuverlässig.</p>",
+          "checks": true,
+          "help": [
+            "save"
+          ]
+        },
+        {
+          "title": "Die wichtigste Änderung erklären",
+          "time": 5,
+          "text": "<p>Erklären Sie unten eine wichtige Entscheidung. Speichern Sie Ihren Projektbericht und Ihre Ergebnisdatei im selben Ordner. Öffnen Sie danach <b>«Stopp &amp; Protokoll»</b>: Halten Sie in vier kurzen Angaben fest, was erledigt ist, wo Ihre Datei liegt und wie Sie nächstes Mal weiterarbeiten. Auch ein unfertiger Stand ist in Ordnung.</p>",
+          "finish": true
+        }
+      ],
+      "checks": [
+        "Meine App hat fünf Bildschirme und eine klar erkennbare Hauptaufgabe.",
+        "Die Startansicht nennt den Zweck und kennzeichnet den Entwurf.",
+        "Schaltflächen sagen verständlich, was beim Anklicken passiert.",
+        "Alle sichtbaren Schaltflächen funktionieren.",
+        "Jede Ansicht ausser dem Start bietet einen passenden Rückweg.",
+        "Schrift, Farben und Anordnung sind einheitlich und gut lesbar.",
+        "Ich habe die Bedienung getestet, eine Änderung begründet und die PPTX erneut geöffnet."
+      ],
+      "extensions": [
+        "Ergänzen Sie eine hilfreiche Ansicht für «Kein passender Fund». Sie muss einen sinnvollen nächsten Schritt anbieten.",
+        "Gestalten Sie eine zweite Detailansicht. Prüfen Sie, ob Ihre Vorlage dafür ohne neue Erklärung funktioniert.",
+        "Oder: Sichern Sie Ihren Grundauftrag und wählen Sie auf der Seite Woche 45 eines der bisherigen Projekte als Anschlussauftrag."
+      ],
+      "reflection": "Beim Test fiel auf, dass … Deshalb habe ich … geändert. Jetzt …",
+      "rescue": "Verwenden Sie die Fundbüro-Idee, aber einen anderen Gegenstand. Übernehmen Sie die fünf Ansichten des Plans. Gestalten Sie nur Text und Schaltflächen; Bilder sind nicht erforderlich."
+    }
+  ],
+  "HELP": {
+    "slide": [
+      "PowerPoint: leere Folie, Text und Bild",
+      "<ol><li>Öffnen Sie PowerPoint. Erstellen Sie eine leere Präsentation und geben Sie ihr oben einen Namen.</li><li>Wählen Sie <b>Start → Neue Folie</b>. Unter <b>Layout</b> wählen Sie «Leer». Erstellen Sie zunächst alle nötigen Folien.</li><li>Text: <b>Einfügen → Textfeld</b>, auf die Folie klicken und schreiben. Markieren Sie den Text, um Schrift und Grösse unter «Start» zu ändern.</li><li>Bild: <b>Einfügen → Bilder</b>, dann Ihr Gerät bzw. die Datei wählen. Ziehen Sie an einer <b>Ecke</b>, damit das Bild nicht verzerrt wird.</li><li>Form: <b>Einfügen → Formen → Rechteck</b>. Farben ändern Sie über «Formformat» oder die eingeblendeten Formatwerkzeuge.</li><li>Zum Duplizieren klicken Sie links mit der rechten Maustaste auf eine Folie und wählen «Folie duplizieren». So bleibt das Layout gleich.</li></ol><p><b>Etwas liegt hinter dem Bild?</b> Markieren Sie das Bild und wählen Sie per rechter Maustaste «In den Hintergrund». Nutzen Sie sonst «Anordnen».</p><p>Die Befehle können je nach Ansicht leicht anders angeordnet sein. Die Suchfunktion oben in PowerPoint findet Begriffe wie «Textfeld», «Layout» oder «Link».</p>"
+    ],
+    "links": [
+      "Schritt für Schritt: eine Folie verlinken",
+      "<div class=\"helpcolumns\"><div><h5>PowerPoint im Browser</h5><ol><li>Schreiben Sie den Text der Schaltfläche in ein Textfeld, zum Beispiel «Abholort ansehen».</li><li>Markieren Sie <b>alle Wörter dieses Textes</b>.</li><li>Wählen Sie <b>Einfügen → Link</b>.</li><li>Wählen Sie <b>«Diese Präsentation»</b>.</li><li>Wählen Sie die Zielfolie und klicken Sie auf «Einfügen».</li></ol><p>Beim Test klicken Sie auf den verlinkten Text. Die farbige Fläche dahinter muss nicht selbst verlinkt sein.</p></div><div><h5>PowerPoint als Windows-App</h5><ol><li>Klicken Sie auf den <b>Rand der Form</b>, damit die ganze Schaltfläche ausgewählt ist.</li><li>Wählen Sie <b>Einfügen → Link</b> bzw. «Link einfügen».</li><li>Wählen Sie <b>«Aktuelles Dokument»</b>.</li><li>Wählen Sie die Zielfolie und bestätigen Sie mit «OK».</li></ol><p>Für einen Rückweg machen Sie dasselbe und wählen die Start- oder vorherige Ansicht als Ziel.</p></div></div><p><b>Test:</b> Starten Sie <b>Bildschirmpräsentation → Von Beginn an</b>. Je nach Browseransicht finden Sie dies unter «Ansicht» oder «Präsentieren». Klicken Sie auf den Schaltflächentext. Mit <b>Esc</b> beenden Sie die Vorführung.</p><p><b>Häufiger Fehler:</b> Ein Link zur Webadresse der ganzen Datei ist kein Link zu einer Folie. Wählen Sie ausdrücklich «Diese Präsentation» bzw. «Aktuelles Dokument».</p><p><b>Die Auswahl fehlt?</b> Schliessen Sie den Dialog. Markieren Sie nur den Text und öffnen Sie «Einfügen → Link» nochmals. Falls die Schulversion die Funktion nicht anbietet, öffnen Sie die Datei über «In Desktop-App öffnen» in PowerPoint. Wenn auch das nicht geht, sichern Sie Texte und Zielplan und zeigen Sie die genaue Stelle der Lehrperson. Erstellen Sie kein zusätzliches Konto.</p><p><b>Kein interner Link möglich?</b> Prüfen Sie zuerst die vorhandene Windows-App. Wenn auch diese nicht verfügbar ist, beschriften Sie die Buttons mit ihren Zielnummern und testen den Ablauf durch manuelles Wechseln der Folien. Sichern Sie dies als <b>Zwischenstand</b>; im Protokoll steht «Interne Links noch einrichten». So können Sie an Inhalt und Gestaltung weiterarbeiten.</p>"
+    ],
+    "storyfix": [
+      "Die Geschichte springt an die falsche Stelle",
+      "<ul><li><b>Falsche Folie:</b> Klicken Sie im Bearbeitungsmodus rechts auf den verlinkten Text oder die Form. Wählen Sie «Link bearbeiten» und korrigieren Sie das Ziel.</li><li><b>Keine Reaktion:</b> Testen Sie in der Bildschirmpräsentation. In der Bearbeitungsansicht wählen Sie per Rechtsklick «Link öffnen».</li><li><b>Beim Klicken erscheint die nächste Folie:</b> Klicken Sie genau auf den verlinkten Text, nicht daneben. Ergänzen Sie auf Folie 1 den Hinweis «Spielen Sie mit den Schaltflächen».</li><li><b>Optional in der Windows-App:</b> Unter «Bildschirmpräsentation → Bildschirmpräsentation einrichten» können Sie «Ansicht an einem Kiosk» wählen. Dann steuern die Links den Ablauf. Prüfen Sie anschliessend alle Rückwege. Für den Grundauftrag ist dies nicht nötig.</li></ul>"
+    ],
+    "photos": [
+      "Aufnahmen ohne technische Umwege",
+      "<p><b>Kein Smartphone:</b> Wenn Ihr Computer eine Kamera hat, verwenden Sie die vorhandene Kamera-App. Für einen Bildspot lassen sich auch vier eigene Bilder zeichnen und mit der Kamera aufnehmen. Zu zweit genügt ein Gerät.</p><p><b>Vom Handy zum Schulcomputer:</b> Wenn Sie bereits mit Ihrem Schulkonto in OneDrive angemeldet sind, laden Sie die gewählten Aufnahmen dort in Ihren Projektordner hoch. Öffnen Sie denselben Ordner am Computer und laden Sie die Dateien herunter. Alternativ verwenden Sie ein vorhandenes USB-Kabel. Der Auftrag braucht kein neues Konto. Wenn die Übertragung nicht klappt, arbeiten Sie direkt am Aufnahmegerät weiter und zeigen den fertigen Film dort.</p><p><b>Für lesbare Aufnahmen:</b> Licht von vorne oder von der Seite, ruhiger Hintergrund, Kamera stabil, Gegenstand nah genug. Tippen Sie auf dem Smartphone auf den Gegenstand, damit die Kamera darauf scharfstellt. Prüfen Sie die Aufnahme, bevor Sie weitermachen.</p>"
+    ],
+    "adtime": [
+      "Vier Fotos als 20-Sekunden-Spot zeigen",
+      "<p><b>Einfacher Weg in jeder PowerPoint-Version:</b> Starten Sie die Bildschirmpräsentation. Zeigen Sie jede der vier Folien fünf Sekunden. Eine zweite Person kann die Zeit messen. Speichern Sie die PPTX und schreiben Sie «5 Sekunden pro Folie» in Ihren Projektbericht.</p><p><b>Optional mit der Windows-App:</b> Unter «Übergänge» stellen Sie für jede Folie unter «Nächste Folie» den Wert «Nach: 00:05» ein und wenden ihn auf alle Folien an. Prüfen Sie die Wiedergabe. Für eine MP4 wählen Sie «Datei → Exportieren → Video erstellen». Wählen Sie eine passende Auflösung und fünf Sekunden pro Folie bzw. Ihre gespeicherten Zeiten. Prüfen Sie den fertigen Film.</p><p>Ein Videoexport im Browser ist für den Auftrag nicht erforderlich. Der beigefügte Beispielspot ist eine fertige Bildwerbung mit vier Standbildern.</p>"
+    ],
+    "posterdesign": [
+      "Informationen ordnen und lesbar machen",
+      "<ol><li><b>Gewichten:</b> Der Themenname erhält die grösste Schrift. Verwandte Fakten stehen unter einer gemeinsamen Überschrift.</li><li><b>Ausrichten:</b> Nutzen Sie die Führungslinien beim Verschieben. Für mehrere Textfelder: Ctrl gedrückt halten, Felder markieren, unter «Anordnen → Ausrichten» gemeinsame Kanten wählen.</li><li><b>Kontrast:</b> Dunkle Schrift auf hellem Grund oder weisse Schrift auf sehr dunklem Grund. Kleine Schrift gehört nicht auf ein unruhiges Bild.</li><li><b>Kürzen:</b> Streichen Sie leere Werbesätze. Die Fakten bleiben erhalten. Teilen Sie lange Sätze in kurze Stichpunkte.</li></ol><p><b>Kein Bild nötig:</b> Gut geordnete Texte und einfache Formen reichen. Fachliche Grafiken brauchen eindeutige Beschriftungen.</p>"
+    ],
+    "appdesign": [
+      "Damit man die App ohne Erklärung bedienen kann",
+      "<ul><li>Verwenden Sie für die Hauptaktion auf jeder Ansicht dieselbe Farbe.</li><li>Setzen Sie «Zurück» möglichst immer an dieselbe Stelle.</li><li>Schreiben Sie eine konkrete Handlung auf die Schaltfläche: «Details ansehen» ist klarer als «Los».</li><li>Halten Sie Texte kurz. Der Bildschirm zeigt nur, was man für diesen Schritt braucht.</li><li>Vermeiden Sie winzige Symbole. Textschaltflächen sind für den ersten Prototyp ausreichend.</li></ul><p><b>Beim Duplizieren:</b> Eine kopierte Schaltfläche behält möglicherweise das alte Linkziel. Prüfen und ändern Sie es auf jeder neuen Folie.</p>"
+    ],
+    "save": [
+      "Speichern, wieder öffnen und zur Abgabe bereitlegen",
+      "<p>Legen Sie einen Ordner <b>«OneDrive → Informatik → Projekte → Projektname Ihr Name»</b> in Ihrem üblichen Schulablageort an. Speichern Sie darin Ergebnisdatei und Projektbericht.</p><div class=\"helpcolumns\"><div><h5>Windows-App</h5><p>«Datei → Speichern unter» oder «Kopie speichern». Wählen Sie Ihren Projektordner und als Dateityp <b>PowerPoint-Präsentation (.pptx)</b>. Mit <b>Ctrl + S</b> sichern Sie Änderungen.</p></div><div><h5>PowerPoint im Browser</h5><p>Geben Sie der Präsentation oben einen sinnvollen Namen. Warten Sie, bis PowerPoint die Speicherung bestätigt. Für eine Datei auf dem Computer suchen Sie unter <b>«Datei → Herunterladen»</b> bzw. <b>«Speichern unter → Eine Kopie herunterladen»</b> die PowerPoint-Kopie.</p></div></div><p>Öffnen Sie die gespeicherte Datei zur Kontrolle. Lassen Sie am Ende das Ergebnis für die Lehrperson geöffnet. Wenn im Kurs bereits eine passende Teams-Aufgabe bereitsteht, fügen Sie dort die Ergebnisdatei(en) und den Projektbericht an und wählen Sie «Abgeben». Die HTML-Datei hier lädt nichts zu Teams hoch.</p><p><b>Sie sind noch nicht fertig?</b> Sichern Sie Ihren Zwischenstand trotzdem. Schreiben Sie im Abschluss den nächsten konkreten Schritt auf. Geben Sie keinen unfertigen Stand als fertig aus.</p>"
+    ],
+    "pdf": [
+      "Die Folien als PDF ausgeben",
+      "<p><b>Windows-App:</b> «Datei → Exportieren → PDF/XPS-Dokument erstellen». Alternativ wählen Sie unter «Speichern unter» den Dateityp PDF. Exportieren Sie alle Folien.</p><p><b>Browser:</b> Unter «Datei» finden Sie je nach Ansicht <b>«Exportieren → Als PDF herunterladen»</b> oder <b>«Herunterladen → PDF»</b>. Speichern Sie die Datei in Ihrem Projektordner.</p><p>Öffnen Sie die PDF-Datei danach. Prüfen Sie Anzahl der Seiten, abgeschnittene Texte und Bilddarstellung. Der PDF-Export ersetzt nicht das Speichern der bearbeitbaren PPTX.</p>"
+    ]
+  },
+  "STORY": [
+    {
+      "title": "Zwei Tickets",
+      "text": "Es ist 17.10 Uhr. Sie sind auf dem Heimweg. Eine Nachricht von einer unbekannten Nummer erscheint: «Ich habe zwei Tickets für heute Abend übrig. Interesse?»",
+      "buttons": [
+        [
+          "Start",
+          1
+        ]
+      ],
+      "label": "Eine erfundene Geschichte"
+    },
+    {
+      "title": "Die erste Entscheidung",
+      "text": "Die Person nennt sich Lio. So heisst auch jemand aus Ihrer Klasse. Das Profilbild ist leer. Die Nachricht lautet: «Ich brauche nur schnell eine Antwort.» Was tun Sie?",
+      "buttons": [
+        [
+          "Über die bekannte Nummer nachfragen",
+          2
+        ],
+        [
+          "Die Nachricht ignorieren",
+          3
+        ]
+      ],
+      "label": "Entscheidung 1"
+    },
+    {
+      "title": "Es ist tatsächlich Lio",
+      "text": "Sie rufen die bereits gespeicherte Nummer an. Lio bestätigt die Nachricht. Die Tickets sind echt. Doch am Eingang steht ein Mindestalter von 18 Jahren. Sie sind 17. Was schlagen Sie vor?",
+      "buttons": [
+        [
+          "Trotzdem zur Veranstaltung gehen",
+          4
+        ],
+        [
+          "Lio einen anderen Abend vorschlagen",
+          5
+        ]
+      ],
+      "label": "Entscheidung 2"
+    },
+    {
+      "title": "Ein ruhiger Abend",
+      "text": "Sie lassen die unbekannte Nachricht unbeantwortet. Später erklärt Lio in der Schule, dass die Tickets von ihm waren. Sie haben den Anlass verpasst, aber Ihren geplanten Abend verbracht. Beim nächsten Mal fragen Sie über die bekannte Nummer nach.",
+      "buttons": [
+        [
+          "Noch einmal",
+          0
+        ]
+      ],
+      "label": "Ende A"
+    },
+    {
+      "title": "Der Ausweis entscheidet",
+      "text": "Am Eingang wird das Alter kontrolliert. Sie kommen nicht hinein. Lio bleibt bei Ihnen. Auf dem Rückweg überlegen Sie, wie Sie solche Bedingungen nächstes Mal vorher prüfen können.",
+      "buttons": [
+        [
+          "Noch einmal",
+          0
+        ]
+      ],
+      "label": "Ende B"
+    },
+    {
+      "title": "Ein anderer Plan",
+      "text": "Sie erklären Lio, weshalb der Anlass heute nicht passt. Gemeinsam verabreden Sie sich für Samstag zum Billardspielen. Lio fragt eine volljährige Person wegen des zweiten Tickets. Ihr Abend ist geklärt.",
+      "buttons": [
+        [
+          "Noch einmal",
+          0
+        ]
+      ],
+      "label": "Ende C"
+    }
+  ],
+  "APP": [
+    {
+      "title": "Wieder da",
+      "text": "Etwas verloren? Hier finden Sie gemeldete Gegenstände aus dem Schulhaus.",
+      "detail": "Entwurf mit Beispieldaten",
+      "buttons": [
+        [
+          "Funde ansehen",
+          1
+        ]
+      ]
+    },
+    {
+      "title": "Gefundene Gegenstände",
+      "text": "Schwarze Trinkflasche",
+      "detail": "Gefunden am Dienstag im Aufenthaltsraum.",
+      "buttons": [
+        [
+          "Details ansehen",
+          2
+        ],
+        [
+          "Start",
+          0
+        ]
+      ]
+    },
+    {
+      "title": "Schwarze Trinkflasche",
+      "text": "Metallflasche mit blauem Deckel. Am Boden ist ein kleiner weisser Stern.",
+      "detail": "Bitte prüfen Sie bei der Abholung, ob die Flasche Ihnen gehört.",
+      "buttons": [
+        [
+          "Abholort ansehen",
+          3
+        ],
+        [
+          "Zur Auswahl",
+          1
+        ]
+      ]
+    },
+    {
+      "title": "So holen Sie den Fund ab",
+      "text": "Die Flasche liegt am Empfang des fiktiven Schulhauses West. Öffnungszeit: an Schultagen 08.00–16.00 Uhr.",
+      "detail": "Beschreiben Sie dort die Flasche. «Fund merken» zeigt Ihnen die Bestätigung im Entwurf.",
+      "buttons": [
+        [
+          "Fund merken",
+          4
+        ],
+        [
+          "Zurück",
+          2
+        ]
+      ]
+    },
+    {
+      "title": "Fund vorgemerkt",
+      "text": "Schwarze Trinkflasche · Empfang · 08.00–16.00 Uhr",
+      "detail": "In diesem Prototyp ist dies eine Beispielbestätigung. Es wird nichts dauerhaft gespeichert oder versendet.",
+      "buttons": [
+        [
+          "Zur Auswahl",
+          1
+        ],
+        [
+          "Start",
+          0
+        ]
+      ]
+    }
+  ],
+  "APPS": [
+    {
+      "name": "Wieder da",
+      "topic": "Fundbüro",
+      "task": "Finden Sie die schwarze Trinkflasche, lesen Sie den Abholort und merken Sie den Fund.",
+      "color": "#20715d",
+      "screens": [
+        {
+          "title": "Wieder da",
+          "text": "Etwas verloren? Hier finden Sie gemeldete Gegenstände aus dem Schulhaus.",
+          "detail": "Entwurf mit Beispieldaten",
+          "buttons": [
+            [
+              "Funde ansehen",
+              1
+            ]
+          ]
+        },
+        {
+          "title": "Gefundene Gegenstände",
+          "text": "Schwarze Trinkflasche",
+          "detail": "Gefunden am Dienstag im Aufenthaltsraum.",
+          "buttons": [
+            [
+              "Details ansehen",
+              2
+            ],
+            [
+              "Start",
+              0
+            ]
+          ]
+        },
+        {
+          "title": "Schwarze Trinkflasche",
+          "text": "Metallflasche mit blauem Deckel. Am Boden ist ein kleiner weisser Stern.",
+          "detail": "Bitte prüfen Sie bei der Abholung, ob die Flasche Ihnen gehört.",
+          "buttons": [
+            [
+              "Abholort ansehen",
+              3
+            ],
+            [
+              "Zur Auswahl",
+              1
+            ]
+          ]
+        },
+        {
+          "title": "So holen Sie den Fund ab",
+          "text": "Die Flasche liegt am Empfang des fiktiven Schulhauses West. Öffnungszeit: an Schultagen 08.00–16.00 Uhr.",
+          "detail": "Beschreiben Sie dort die Flasche. «Fund merken» zeigt Ihnen die Bestätigung im Entwurf.",
+          "buttons": [
+            [
+              "Fund merken",
+              4
+            ],
+            [
+              "Zurück",
+              2
+            ]
+          ]
+        },
+        {
+          "title": "Fund vorgemerkt",
+          "text": "Schwarze Trinkflasche · Empfang · 08.00–16.00 Uhr",
+          "detail": "In diesem Prototyp ist dies eine Beispielbestätigung. Es wird nichts dauerhaft gespeichert oder versendet.",
+          "buttons": [
+            [
+              "Zur Auswahl",
+              1
+            ],
+            [
+              "Start",
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Schon im Schrank",
+      "topic": "Kleider & Outfits",
+      "task": "Stellen Sie aus vorhandenen Kleidern den Look «Schultag» zusammen und merken Sie ihn.",
+      "color": "#765c9f",
+      "screens": [
+        {
+          "title": "Schon im Schrank",
+          "text": "Was ziehe ich morgen an? Finden Sie einen Look aus Kleidern, die Sie bereits besitzen.",
+          "detail": "Entwurf mit erfundenen Kleidungsstücken.",
+          "buttons": [
+            [
+              "Looks ansehen",
+              1
+            ]
+          ]
+        },
+        {
+          "title": "Für den Schultag",
+          "text": "Vorschlag: Jeans, grüner Pullover und weisse Sneakers.",
+          "detail": "Ein vorhandener Look, kein Einkauf.",
+          "buttons": [
+            [
+              "Look ansehen",
+              2
+            ],
+            [
+              "Zurück",
+              0
+            ]
+          ]
+        },
+        {
+          "title": "Mein Schultag-Look",
+          "text": "Blaue Jeans · grüner Pullover · weisse Sneakers.",
+          "detail": "Jedes Kleidungsstück ist schon im Beispielschrank.",
+          "buttons": [
+            [
+              "Für morgen auswählen",
+              3
+            ],
+            [
+              "Zurück",
+              1
+            ]
+          ]
+        },
+        {
+          "title": "Bereit für morgen",
+          "text": "Schultag-Look: drei Teile, ein fertiges Outfit.",
+          "detail": "Prüfen Sie die Kombination.",
+          "buttons": [
+            [
+              "Look merken",
+              4
+            ],
+            [
+              "Zurück",
+              2
+            ]
+          ]
+        },
+        {
+          "title": "Look vorgemerkt",
+          "text": "Ihr Schultag-Look steht für morgen bereit.",
+          "detail": "Beispielbestätigung. Es wird nichts gespeichert.",
+          "buttons": [
+            [
+              "Zur Auswahl",
+              1
+            ],
+            [
+              "Start",
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mein Look",
+      "topic": "Make-up",
+      "task": "Wählen Sie einen dezenten Look mit vorhandenen Produkten und öffnen Sie die Packliste.",
+      "color": "#a4486b",
+      "screens": [
+        {
+          "title": "Mein Look",
+          "text": "Ihre Looks und vorhandenen Produkte an einem Ort.",
+          "detail": "Entwurf mit erfundenen Produktnamen.",
+          "buttons": [
+            [
+              "Looks entdecken",
+              1
+            ]
+          ]
+        },
+        {
+          "title": "Dezenter Alltag",
+          "text": "Ein kurzer Look mit drei vorhandenen Produkten.",
+          "detail": "Keine Produktwerbung und kein Einkauf.",
+          "buttons": [
+            [
+              "Produkte ansehen",
+              2
+            ],
+            [
+              "Zurück",
+              0
+            ]
+          ]
+        },
+        {
+          "title": "Diese drei sind dabei",
+          "text": "Brauner Kajal · rosiges Rouge · getönter Lippenbalsam.",
+          "detail": "Beispielprodukte aus Ihrer Sammlung.",
+          "buttons": [
+            [
+              "Packliste ansehen",
+              3
+            ],
+            [
+              "Zurück",
+              1
+            ]
+          ]
+        },
+        {
+          "title": "Alles dabei?",
+          "text": "Kajal, Rouge und Lippenbalsam liegen bereit.",
+          "detail": "Sie können vor dem Weggehen kurz vergleichen.",
+          "buttons": [
+            [
+              "Packliste merken",
+              4
+            ],
+            [
+              "Zurück",
+              2
+            ]
+          ]
+        },
+        {
+          "title": "Look vorgemerkt",
+          "text": "«Dezenter Alltag» ist in diesem Entwurf vorgemerkt.",
+          "detail": "Die App zeigt eine Bestätigung ohne echte Speicherung.",
+          "buttons": [
+            [
+              "Zur Auswahl",
+              1
+            ],
+            [
+              "Start",
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Meine Trainingswoche",
+      "topic": "Training",
+      "task": "Planen Sie Ihren bereits bekannten Trainingstermin am Dienstag und sehen Sie die Wochenübersicht.",
+      "color": "#b05c26",
+      "screens": [
+        {
+          "title": "Meine Trainingswoche",
+          "text": "Wann passt Ihr nächster Trainingstermin?",
+          "detail": "Fiktive Terminplanung, keine Trainingsanleitung.",
+          "buttons": [
+            [
+              "Termine ansehen",
+              1
+            ]
+          ]
+        },
+        {
+          "title": "Freie Zeit",
+          "text": "Dienstag · 17.30–18.00 Uhr.",
+          "detail": "Beispiel für eine selbst gewählte Aktivität.",
+          "buttons": [
+            [
+              "Termin auswählen",
+              2
+            ],
+            [
+              "Zurück",
+              0
+            ]
+          ]
+        },
+        {
+          "title": "Dienstag reservieren",
+          "text": "17.30 Uhr · eigene bekannte Trainingseinheit.",
+          "detail": "Dauer: 30 Minuten. Aktivität und Intensität bestimmen Sie selbst.",
+          "buttons": [
+            [
+              "Übersicht ansehen",
+              3
+            ],
+            [
+              "Zurück",
+              1
+            ]
+          ]
+        },
+        {
+          "title": "Ihr Wochenplan",
+          "text": "Dienstag 17.30–18.00 Uhr: Training.",
+          "detail": "Prüfen Sie, ob der Termin passt.",
+          "buttons": [
+            [
+              "Termin vormerken",
+              4
+            ],
+            [
+              "Zurück",
+              2
+            ]
+          ]
+        },
+        {
+          "title": "Termin vorgemerkt",
+          "text": "Dienstag um 17.30 Uhr ist im Entwurf eingetragen.",
+          "detail": "Keine echte Kalenderbuchung.",
+          "buttons": [
+            [
+              "Zur Auswahl",
+              1
+            ],
+            [
+              "Start",
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Lernrunde",
+      "topic": "Lernen",
+      "task": "Wählen Sie zehn Minuten Französisch und starten Sie die vorbereitete Lerneinheit.",
+      "color": "#276597",
+      "screens": [
+        {
+          "title": "Lernrunde",
+          "text": "Eine kleine Aufgabe für Ihre nächste Lernpause.",
+          "detail": "Entwurf mit Beispieldaten.",
+          "buttons": [
+            [
+              "Fächer ansehen",
+              1
+            ]
+          ]
+        },
+        {
+          "title": "Heute: Französisch",
+          "text": "Zehn Wörter wiederholen · zehn Minuten.",
+          "detail": "Sie arbeiten mit Ihrer eigenen Wortliste.",
+          "buttons": [
+            [
+              "Aufgabe ansehen",
+              2
+            ],
+            [
+              "Zurück",
+              0
+            ]
+          ]
+        },
+        {
+          "title": "Zehn Wörter",
+          "text": "1. Deutsche Seite abdecken. 2. Übersetzen. 3. Schwierige Wörter markieren.",
+          "detail": "Verwenden Sie eine bereits vorhandene Lernliste.",
+          "buttons": [
+            [
+              "Zeitplan ansehen",
+              3
+            ],
+            [
+              "Zurück",
+              1
+            ]
+          ]
+        },
+        {
+          "title": "Zehn Minuten planen",
+          "text": "2 Minuten vorbereiten · 6 Minuten üben · 2 Minuten prüfen.",
+          "detail": "In diesem Entwurf läuft kein echter Timer.",
+          "buttons": [
+            [
+              "Lernrunde beginnen",
+              4
+            ],
+            [
+              "Zurück",
+              2
+            ]
+          ]
+        },
+        {
+          "title": "Lernrunde bereit",
+          "text": "Öffnen Sie jetzt Ihre Wortliste und beginnen Sie.",
+          "detail": "Diese Ansicht bestätigt nur die Auswahl.",
+          "buttons": [
+            [
+              "Zur Auswahl",
+              1
+            ],
+            [
+              "Start",
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Snackpause",
+      "topic": "Essen & Pause",
+      "task": "Wählen Sie einen Snack aus vorhandenen Zutaten und merken Sie die Zutatenliste.",
+      "color": "#647d26",
+      "screens": [
+        {
+          "title": "Snackpause",
+          "text": "Was lässt sich aus vorhandenen Zutaten mitnehmen?",
+          "detail": "Fiktive Auswahl, ohne Einkauf.",
+          "buttons": [
+            [
+              "Ideen ansehen",
+              1
+            ]
+          ]
+        },
+        {
+          "title": "Joghurt mit Früchten",
+          "text": "Ein Becher Joghurt und eine geschnittene Frucht.",
+          "detail": "Verwenden Sie nur Zutaten, die Sie vertragen.",
+          "buttons": [
+            [
+              "Zutaten ansehen",
+              2
+            ],
+            [
+              "Zurück",
+              0
+            ]
+          ]
+        },
+        {
+          "title": "Das brauchen Sie",
+          "text": "Joghurt · ein Apfel · ein verschliessbarer Behälter · ein Löffel.",
+          "detail": "Dies ist eine Beispielidee.",
+          "buttons": [
+            [
+              "Packliste ansehen",
+              3
+            ],
+            [
+              "Zurück",
+              1
+            ]
+          ]
+        },
+        {
+          "title": "Für die Pause",
+          "text": "Joghurt und Apfel vorbereiten. Löffel und Behälter bereitlegen.",
+          "detail": "Beachten Sie die Kühlhinweise Ihrer Lebensmittel.",
+          "buttons": [
+            [
+              "Idee merken",
+              4
+            ],
+            [
+              "Zurück",
+              2
+            ]
+          ]
+        },
+        {
+          "title": "Snack vorgemerkt",
+          "text": "«Joghurt mit Früchten» steht auf Ihrer Beispielsammlung.",
+          "detail": "Keine echte Speicherung.",
+          "buttons": [
+            [
+              "Zur Auswahl",
+              1
+            ],
+            [
+              "Start",
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Los jetzt",
+      "topic": "Schulweg",
+      "task": "Wählen Sie eine fiktive Verbindung und sehen Sie, wann Sie zu Hause losgehen müssten.",
+      "color": "#3e7092",
+      "screens": [
+        {
+          "title": "Los jetzt",
+          "text": "Ihre nächste Verbindung auf einen Blick.",
+          "detail": "Alle Fahrzeiten sind erfunden. Keine Fahrplanauskunft.",
+          "buttons": [
+            [
+              "Beispielverbindung ansehen",
+              1
+            ]
+          ]
+        },
+        {
+          "title": "Linie 4 zur Schule",
+          "text": "Abfahrt 07.42 Uhr · Ankunft 07.55 Uhr.",
+          "detail": "Haltestellen: Park – Schulhaus, frei erfunden.",
+          "buttons": [
+            [
+              "Details ansehen",
+              2
+            ],
+            [
+              "Zurück",
+              0
+            ]
+          ]
+        },
+        {
+          "title": "Weg zur Haltestelle",
+          "text": "Fünf Minuten zu Fuss und drei Minuten Reserve.",
+          "detail": "07.42 minus acht Minuten ergibt 07.34 Uhr.",
+          "buttons": [
+            [
+              "Losgehzeit ansehen",
+              3
+            ],
+            [
+              "Zurück",
+              1
+            ]
+          ]
+        },
+        {
+          "title": "Um 07.34 Uhr losgehen",
+          "text": "So wären Sie mit Reserve an der Haltestelle.",
+          "detail": "Für echte Fahrten immer einen aktuellen Fahrplan prüfen.",
+          "buttons": [
+            [
+              "Verbindung merken",
+              4
+            ],
+            [
+              "Zurück",
+              2
+            ]
+          ]
+        },
+        {
+          "title": "Verbindung vorgemerkt",
+          "text": "07.34 Uhr los · 07.42 Uhr Abfahrt · 07.55 Uhr Ankunft.",
+          "detail": "Fiktives Rechenbeispiel, keine Echtzeitdaten.",
+          "buttons": [
+            [
+              "Zur Auswahl",
+              1
+            ],
+            [
+              "Start",
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bis Freitag",
+      "topic": "Ausgaben im Blick",
+      "task": "Prüfen Sie an erfundenen Zahlen, wie viel nach einem geplanten Einkauf übrig bleibt.",
+      "color": "#846234",
+      "screens": [
+        {
+          "title": "Bis Freitag",
+          "text": "Ein kleiner Überblick über das verfügbare Wochenbudget.",
+          "detail": "Nur Beispieldaten. Keine Kontoverbindung.",
+          "buttons": [
+            [
+              "Übersicht ansehen",
+              1
+            ]
+          ]
+        },
+        {
+          "title": "Noch verfügbar",
+          "text": "Im Beispiel sind noch CHF 25.– übrig.",
+          "detail": "Ein geplanter Einkauf kostet CHF 7.–.",
+          "buttons": [
+            [
+              "Einkauf ansehen",
+              2
+            ],
+            [
+              "Zurück",
+              0
+            ]
+          ]
+        },
+        {
+          "title": "Geplanter Einkauf",
+          "text": "CHF 7.– für eine Trinkflasche aus zweiter Hand.",
+          "detail": "Erfundener Preis, kein Kaufangebot.",
+          "buttons": [
+            [
+              "Rest berechnen",
+              3
+            ],
+            [
+              "Zurück",
+              1
+            ]
+          ]
+        },
+        {
+          "title": "Danach bleiben CHF 18.–",
+          "text": "25 minus 7 ergibt 18.",
+          "detail": "Der Prototyp zeigt eine vorbereitete Rechnung.",
+          "buttons": [
+            [
+              "Plan merken",
+              4
+            ],
+            [
+              "Zurück",
+              2
+            ]
+          ]
+        },
+        {
+          "title": "Plan vorgemerkt",
+          "text": "Einkauf CHF 7.– · Rest CHF 18.–.",
+          "detail": "Es wird nichts gekauft oder abgebucht.",
+          "buttons": [
+            [
+              "Zur Auswahl",
+              1
+            ],
+            [
+              "Start",
+              0
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}
