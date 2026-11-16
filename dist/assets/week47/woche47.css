@@ -1,0 +1,56 @@
+body.gamma-week{background:#f7f6ef;color:#142f3e}
+.lesson{max-width:1200px;margin:auto;padding:26px 24px 70px;font:17px/1.6 "Segoe UI",Arial,sans-serif}
+.lesson *{box-sizing:border-box}
+.lesson h1,.lesson h2,.lesson h3,.lesson p{margin:0}
+.lesson h1,.lesson h2,.lesson h3{line-height:1.14;letter-spacing:-.035em}
+.lesson h1{font-size:clamp(42px,5.7vw,82px);max-width:730px;color:white;margin:.18em 0}
+.lesson h2{font-size:clamp(28px,3vw,41px)}
+.lesson h3{font-size:23px;margin:1.1em 0 .45em}
+.lesson p,.lesson li{line-height:1.57}
+.lesson p+p{margin-top:.7em}
+.lesson a{color:#005954;text-underline-offset:3px;font-weight:660}
+.lesson a:hover{text-decoration:underline}
+.lesson a:focus-visible,.lesson button:focus-visible,.lesson summary:focus-visible,.lesson select:focus-visible,.lesson textarea:focus-visible{outline:3px solid #c76017;outline-offset:3px}
+.lesson .cover{background:#153947;color:#fff;display:grid;grid-template-columns:1.8fr 1fr;gap:35px;align-items:center;border-radius:18px;padding:clamp(24px,4vw,54px)}
+.lesson .kicker,.demo small,.coach small{font-size:13px;font-weight:740;text-transform:uppercase;letter-spacing:.095em}
+.cover .kicker{color:#d9efca}
+.cover p:not(.kicker){max-width:650px;font-size:20px;line-height:1.48}
+.cover aside{border-left:1px solid #709295;padding-left:30px}.cover aside div+div{margin-top:20px}
+.cover aside strong{font-size:47px;line-height:1;letter-spacing:-.045em;color:#e6f4bf;display:block}
+.cover aside small{font-size:19px}.cover aside span{display:block;margin-top:6px;line-height:1.35}
+.lesson .accent,.lesson .smallbtn,.lesson .go{display:inline-flex;align-items:center;justify-content:center;font-size:16px;font-family:inherit;border-radius:7px;font-weight:700;padding:11px 18px;cursor:pointer;text-decoration:none}
+.lesson .accent{background:#e6f4bf;color:#193b36;margin-top:18px}
+.columns{display:grid;grid-template-columns:210px minmax(0,1fr);gap:24px;margin-top:24px;align-items:start}
+.route{position:sticky;top:84px;border-top:3px solid #1b4d4b;padding:16px 4px}
+.route a,.materials>a{display:block;padding:5px 0;font-size:15px}
+.route strong{font-size:22px;display:block;margin-bottom:10px}
+.step,.phase2,.materials{background:#fff;border:1px solid #d4ddd6;border-radius:12px;margin:0 0 12px;scroll-margin-top:78px}
+.step>summary{padding:19px 24px;display:flex;align-items:center;gap:20px;cursor:pointer;font-weight:720;font-size:clamp(18px,2vw,24px);line-height:1.25;list-style:none}
+.step>summary::-webkit-details-marker{display:none}
+.step>summary::after{content:'+';margin-left:auto;color:#17665d}.step[open]>summary::after{content:'−'}
+.step .duration{font-size:14px;white-space:nowrap;font-weight:730;color:#306253;min-width:79px}
+.step[open]>summary{border-bottom:1px solid #dbe4dd}
+.inside,.phase2,.materials{padding:23px clamp(16px,3vw,32px)}
+.inside>p,.inside>.duo,.inside>ol,.inside>.demo,.inside>.coach,.inside>.selects{margin-bottom:16px}
+.lesson ol{padding-left:22px}.lesson li{margin:.5em 0}
+.lesson .go,.lesson .smallbtn{background:#135c51;color:#fff;border:0;margin-top:10px}
+.lesson .go{display:table;margin-top:22px}
+.demo{border:1px solid #c6d8ce;border-radius:12px;overflow:hidden}
+.demobar{background:#eff4eb;display:flex;align-items:center;justify-content:space-between;padding:10px 15px;font-size:15px;gap:8px}
+.demobar button{background:white;color:#15483d;border:1px solid #aac7ba;border-radius:5px;font-size:15px;padding:4px 11px;margin-left:4px;cursor:pointer}
+.demobar button[aria-pressed=true]{background:#174f45;color:white}
+.sample{padding:clamp(18px,3vw,37px);background:#fff9ea;min-height:230px}.sample:nth-of-type(2){background:#eef4e5}.sample:nth-of-type(3){background:#f3f0fc}
+.sample h3{font-size:clamp(26px,3vw,44px);margin:.3em 0}.sample p{max-width:560px}
+.samplecols{display:grid;grid-template-columns:160px 1fr;gap:24px;align-items:center}
+.phone{border:3px solid #214538;border-radius:19px;padding:11px;background:#fff;max-width:160px;line-height:1.18}
+.phone span,.phone b,.phone em{display:block}.phone span{font-size:10px}.phone b{margin:8px 0}.phone em{font-size:12px;font-style:normal;text-align:center;padding:5px;margin:4px 0;background:#c9ecac;border-radius:5px}
+.hint{border-left:3px solid #abc9b7;padding:8px 13px;background:#f6f9f4;margin:15px 0}.hint summary{cursor:pointer;font-weight:670}.hint p{margin:9px 0}
+.selects,.duo,.notes{display:grid;gap:16px;grid-template-columns:1fr 1fr}.duo>div{min-width:0}.duo h3:first-child{margin-top:0}
+.lesson label{font-weight:620;font-size:15px;display:block}.lesson select,.lesson textarea{width:100%;box-sizing:border-box;display:block;margin-top:4px;border:1px solid #8ea899;border-radius:6px;padding:9px;font:inherit;font-weight:400;background:white;color:#183c34}.lesson textarea{min-height:76px;resize:vertical}.notes>label:last-child{grid-column:1/-1}
+.coach{background:#edf4e8;padding:18px 20px;border-radius:8px}.coach h3{margin:.2em 0 .5em}.coach a{display:inline-block;margin-top:10px}
+.lesson pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f2eb;border-left:3px solid #baa35e;padding:16px 18px;font:inherit;font-size:16px;line-height:1.5}
+.script{border-left:3px solid #849f82;padding:6px 16px;margin-bottom:16px}.script b{display:inline-block;min-width:120px}
+.checks{display:grid;gap:9px;margin:14px 0}.checks input{margin-right:8px}
+.phase2{background:#edf4ea}.phase2 h2,.materials h2{margin:.25em 0 .45em}.phase2 .accent{background:#165449;color:#fff}.lesson .quiet{font-size:14px;color:#466459;margin-top:12px}
+@media(max-width:780px){.columns{grid-template-columns:1fr}.route{position:static;display:flex;flex-wrap:wrap;gap:4px 14px}.route strong{width:100%;margin:0}.route a{font-size:14px}.cover aside{padding-left:17px}.lesson{padding:15px 12px 60px}}
+@media(max-width:620px){.lesson .cover{grid-template-columns:1fr;gap:19px}.cover aside{border:0;display:flex;gap:22px;padding:0}.cover aside div+div{margin:0}.cover aside strong{font-size:29px}.cover aside span{font-size:14px}.selects,.duo,.notes{grid-template-columns:1fr}.step>summary{gap:8px;padding:15px 10px}.step .duration{min-width:67px;font-size:12px}.samplecols{grid-template-columns:1fr}.demobar{flex-wrap:wrap}.columns{gap:8px}.route{top:auto}}
