@@ -1,0 +1,53 @@
+.beatstudio {
+  --bs-ink: #102a36; --bs-panel: #173943; --bs-mint: #a6dfce;
+  --bs-accent: #ffbc82; --bs-cream: #f5f5eb;
+  background: var(--bs-ink); color: var(--bs-cream); padding: clamp(17px, 3vw, 38px);
+  border-radius: 16px; text-align: left; scroll-margin-top: 74px; min-width: 0;
+}
+.beatstudio *, .beatstudio *::before, .beatstudio *::after { box-sizing: border-box }
+.beatstudio [hidden] { display: none !important }
+.beatstudio h2 { margin: 0 0 8px; color: var(--bs-cream); font-size: clamp(28px, 3.5vw, 44px); line-height: 1.1 }
+.beatstudio p { color: #dcE8e4; line-height: 1.5; margin: 8px 0 16px }
+.beatstudio .beat-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px }
+.beatstudio .beat-top > div { max-width: 650px }
+.beatstudio label { display: grid; gap: 4px; font-size: 15px; font-weight: 700; color: #fff }
+.beatstudio .beat-top label span { white-space: nowrap }
+.beatstudio input:not([type=file]) { color: var(--bs-ink); background: #fff; font: inherit; font-weight: 500; border: 1px solid #b6cdc4; border-radius: 6px; padding: 8px 9px }
+.beatstudio #beat-tempo { width: 72px }
+.beatstudio #beat-title { width: min(100%, 30em) }
+.beatstudio button { font: inherit; font-size: 15px; line-height: 1.3; font-weight: 700; color: var(--bs-cream); padding: 8px 12px; border: 1px solid #789a9c; border-radius: 6px; background: var(--bs-panel); cursor: pointer }
+.beatstudio button:hover { filter: brightness(1.16) }
+.beatstudio button:disabled { opacity: .5; cursor: default }
+.beatstudio :is(button,input):focus-visible { outline: 3px solid white; outline-offset: 2px }
+.beatstudio :is(.beat-tabs,.beat-editbar,.beat-transport,.beat-files) { display: flex; align-items: center; flex-wrap: wrap; gap: 8px }
+.beatstudio .beat-editbar { border-top: 1px solid #49616a; margin-top: 5px; padding-top: 16px }
+.beatstudio .beat-tabs { margin-right: 8px }
+.beatstudio .beat-tabs button[aria-pressed=true], .beatstudio #beat-preview { background: var(--bs-mint); color: var(--bs-ink); border-color: var(--bs-mint) }
+.beatstudio #beat-arrange,.beatstudio #beat-wav { background: var(--bs-accent); color: var(--bs-ink); border-color: var(--bs-accent) }
+.beatstudio #beat-help { font-size: 14px; margin: 12px 0 8px }
+.beatstudio .beat-scroll { max-width: 100%; overflow-x: auto; padding: 5px 4px 11px; scrollbar-color: #76a09e #173943 }
+.beatstudio .beat-grid { min-width: 570px; display: grid; gap: 5px }
+.beatstudio .beat-row { display: grid; grid-template-columns: 72px repeat(16,minmax(0,1fr)); gap: 4px; align-items: center }
+.beatstudio .beat-label,.beatstudio .beat-group { font-size: 13px; font-weight: 750; text-align: left; line-height: 1.2 }
+.beatstudio .beat-group { grid-column: span 4; margin-left: 4px; color: var(--bs-mint) }
+.beatstudio .beat-cell { border: 1px solid #6d8c91; border-radius: 3px; min-width: 0; height: 32px; padding: 0; background: #244752; font-size: 12px; line-height: 1; color: var(--bs-ink) }
+.beatstudio .beat-cell[data-first=true] { margin-left: 3px; border-left-width: 2px }
+.beatstudio .beat-cell[aria-pressed=true] { background: var(--bs-mint); border-color: var(--bs-mint) }
+.beatstudio .beat-cell[aria-pressed=true]::after { content: ''; display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--bs-ink) }
+.beatstudio .beat-cell.beat-current { box-shadow: inset 0 0 0 2px var(--bs-accent) }
+.beatstudio .beat-transport { margin-top: 8px }
+.beatstudio #beat-playing { color: var(--bs-accent); font-weight: 700 }
+.beatstudio #beat-status { font-size: 14px; min-height: 1.6em; margin: 12px 0 }
+.beatstudio .beat-storage { border-top: 1px solid #49616a; padding-top: 14px }
+.beatstudio .beat-files { margin-top: 12px }
+.beatstudio .beat-storage p { margin: 9px 0 0; font-size: 14px }
+@media(max-width:640px) {
+  .beatstudio .beat-top { flex-direction: column; gap: 0 }
+  .beatstudio .beat-top label { display: flex; gap: 12px; align-items: center; margin-bottom: 12px }
+}
+
+.beatstudio .beat-live { margin: 13px 0 18px; border-top: 1px solid #49616a; padding-top: 14px }
+.beatstudio .beat-live h3 { margin: 0 0 4px; color: var(--bs-cream); font-size: 1.25em }
+.beatstudio .beat-live p { font-size: 14px; margin: 5px 0 10px }
+.beatstudio #beat-live-status { display:block; color: var(--bs-mint); font-weight: 700; margin-top: 10px }
+.beatstudio .beat-live button[aria-pressed=true] { background:var(--bs-mint); color:var(--bs-ink) }

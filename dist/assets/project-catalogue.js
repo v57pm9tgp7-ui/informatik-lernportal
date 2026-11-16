@@ -143,14 +143,26 @@ const items=[
     "tool": "Computer und Browser",
     "href": "projekte.html?kurs=woche45#lifehacks",
     "image": "assets/projects/media/lifehacks-02.svg"
+  },
+  {
+    "key": "musik-elektronik",
+    "title": "Vom Loop zum Live-Set",
+    "category": "Gestalten",
+    "description": "Hören Sie Clubmusik im Studio und auf der Bühne. Bauen Sie zwei eigene Loops und spielen Sie den Wechsel live.",
+    "product": "Ein eigener Mini-Track als Audiodatei und die Projektdatei zum Weiterarbeiten.",
+    "duration": "60 Min.",
+    "tool": "Im Browser mit Kopfhörern",
+    "href": "musikprojekt.html",
+    "image": "assets/musikprojekt/cover.svg",
+    "fromWeek": 47
   }
 ];
 const filters=['Alle','Gestalten','Erklären','Prüfen','Organisieren','Entdecken'];
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function card(p){return `<article class="selection-card" data-project-key="${p.key}"><a class="selection-image" href="${escape(p.href)}" tabindex="-1" aria-hidden="true"><img src="${p.image}" alt="" width="900" height="506" loading="lazy"></a><div class="selection-body"><p class="selection-category">${escape(p.category)}</p><h3><a href="${escape(p.href)}">${escape(p.title)}</a></h3><p class="selection-description">${escape(p.description)}</p><div class="selection-meta"><span>${escape(p.duration)}</span><span>${escape(p.tool)}</span></div><p class="selection-product"><b>Ihr Ergebnis</b>${escape(p.product)}</p><a class="selection-open" href="${escape(p.href)}" aria-label="Projekt öffnen: ${escape(p.title)}">Projekt öffnen <span aria-hidden="true">→</span></a></div></article>`;}
-function markup(filter='Alle'){const shown=items.filter(p=>filter==='Alle'||p.category===filter);return `<div class="selection-toolbar"><div class="selection-filters" role="group" aria-label="Projekte nach Interesse filtern">${filters.map(f=>`<button type="button" data-catalogue-filter="${f}" aria-pressed="${f===filter}">${f}</button>`).join('')}</div><p class="selection-count" role="status">${shown.length} von ${items.length} Projekten</p></div><div class="selection-grid">${shown.map(card).join('')}</div>`;}
-function mount(){document.querySelectorAll('[data-project-catalogue]').forEach(root=>{if(!root.children.length)root.innerHTML=markup();});}
-document.addEventListener('click',ev=>{const button=ev.target.closest('[data-catalogue-filter]');if(!button?.dataset.catalogueFilter)return;const root=button.closest('[data-project-catalogue]');if(!root)return;const filter=button.dataset.catalogueFilter;root.innerHTML=markup(filter);root.querySelector(`[data-catalogue-filter="${filter}"]`).focus({preventScroll:true});});
+function markup(filter='Alle',week){const available=week?items.filter(p=>!p.fromWeek||p.fromWeek<=week):items;const shown=available.filter(p=>filter==='Alle'||p.category===filter);return `<div class="selection-toolbar"><div class="selection-filters" role="group" aria-label="Projekte nach Interesse filtern">${filters.map(f=>`<button type="button" data-catalogue-filter="${f}" aria-pressed="${f===filter}">${f}</button>`).join('')}</div><p class="selection-count" role="status">${shown.length} von ${available.length} Projekten</p></div><div class="selection-grid">${shown.map(card).join('')}</div>`;}
+function mount(){document.querySelectorAll('[data-project-catalogue]').forEach(root=>{if(!root.children.length)root.innerHTML=markup('Alle',root.dataset.week);});}
+document.addEventListener('click',ev=>{const button=ev.target.closest('[data-catalogue-filter]');if(!button?.dataset.catalogueFilter)return;const root=button.closest('[data-project-catalogue]');if(!root)return;const filter=button.dataset.catalogueFilter;root.innerHTML=markup(filter,root.dataset.week);root.querySelector(`[data-catalogue-filter="${filter}"]`).focus({preventScroll:true});});
 globalThis.MediaInfoCatalogue={items,markup};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
 })();
