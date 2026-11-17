@@ -83,7 +83,7 @@
   function selection(){return projects.find(p=>p.key===$('project').value);}
   function prompt(){
     const [aud,ev,why,next,ask] = ids.map((id,i)=>$(id).value.trim() || defaults[i]);
-    return 'Erstelle drei kurze Folien auf Deutsch für eine Minute für eine Person aus meiner Klasse. Mein Projekt heisst «'+selection().title+'».\n\nFolie 1: Mein Ziel und mein Publikum: '+aud+'\nFolie 2: Das kann ich heute zeigen: '+ev+' Meine Entscheidung: '+why+' Lass Platz für mein eigenes Bild. Ich füge es selbst ein.\nFolie 3: Das plane ich als Nächstes: '+next+' Meine Frage an mein Gegenüber: '+ask+'\n\nSprich die zuhörende Person mit du an. Schreibe pro Folie einen klaren Titel und höchstens zwei kurze Sätze. Unterscheide, was schon besteht und was erst geplant ist. Verwende nur meine Angaben. Erfinde keine Ergebnisse, Quellen oder Tests.';
+    return 'Erstelle drei kurze Folien auf Deutsch für eine Minute für eine Person aus meiner Klasse. Mein Projekt heisst «'+selection().title+'».\n\nFolie 1: Mein Ziel und mein Publikum: '+aud+'\nFolie 2: Das kann ich heute zeigen: '+ev+' Meine Entscheidung: '+why+' Lass Platz für mein eigenes Bild. Ich füge es selbst ein.\nFolie 3: Das plane ich als Nächstes: '+next+' Meine Frage an mein Gegenüber: '+ask+'\n\nSchreibe pro Folie einen klaren Titel und höchstens zwei kurze Sätze. Unterscheide, was schon besteht und was erst geplant ist. Verwende nur meine Angaben. Erfinde keine Ergebnisse, Quellen oder Tests.';
   }
   function renderPrompt(){ $('prompt').textContent = prompt(); $('status').textContent=''; }
   function refreshCoach(){
